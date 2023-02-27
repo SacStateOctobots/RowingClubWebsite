@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Rowing Club Website Templates Demo</title>
+</head>
+ 
+<body>
+    <h3>Welcome To the Rowing Club Homepage.</h3>
+	{% for tup in players %}
+		{{ tup[0] }} : {{ tup[1] }} <br>
+	{% endfor %}
+</body>
+ 
+</html> 

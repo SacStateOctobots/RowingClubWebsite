@@ -1,0 +1,1 @@
+This is a barebones flask app. It can be run on your local machine using the command "flask run". This causes your machine to serve a webpage on 127.0.0.1:5000. You can view it in your browser by typing 127.0.0.1:5000 in your address bar.

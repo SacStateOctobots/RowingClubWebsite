@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+ 
+{% extends 'base.html' %}
+
+{% block title %}
+	Admin Page
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+	<h1>Admin Page</h1>
+</div>
+
+<div class="container">
+	<hr/>
+	<div class="row">
+		<h2>Players:</h2>
+		{% for tup in players %}
+			<h5>{{ tup[0] }}</h5>
+			<p>{{ tup[1] }}</p>
+		{% endfor %}
+	</div>
+	<hr/>
+
+    <h4>Specify players to delete here: </h4>
+	<!-- form to delete players by name-->
+	<form method="POST">
+  		<label for="deleteplayer">Player Name:</label><br>
+    	<input name="deleteplayer" value ="Jane Doe" class="form-control"><br>
+    	<input type="submit" id='delete-form' name='delete-form' value="Delete Player" class="btn btn-dark">
+	</form> 
+	<hr/>
+
+    <h4>Specify players to add here: </h4>
+	<!-- form to add players -->
+	<form method="POST" id="add-form" name="add-form">
+  		<label for="addname">Player Name:</label><br>
+  		<input type="text" id="addname" name="addname" value="John Doe" class="form-control"><br>
+  		<label for="desc">Player Description:</label><br>
+  		<input type="text" id="desc" name="desc" value="... player description here ..." class="form-control"><br>
+  		<input type="submit" id='add-form' name='add-form' value="Add Player" class="btn btn-dark">
+	</form> 
+	<hr/>
+
+
+<a href="logout" class="btn btn-dark" role="button">Logout</a>
+</div>
+<br>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<!-- Header stuff goes here -->
+    </head>
+    <body>
+        <!--PLAYER_ONE-->
+        <!--PLAYER_TWO-->
+    </body>
+</html>
+

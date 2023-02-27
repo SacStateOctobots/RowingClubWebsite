@@ -1,0 +1,1 @@
+- The server can be run via the command "flask --app server run". This will serve the webpage on localhost:5000. You can navigate to this address in your browser to see the displayed webpage with some sample data. 

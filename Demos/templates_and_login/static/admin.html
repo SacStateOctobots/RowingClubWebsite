@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Admin Page</title>
+</head>
+ 
+<body>
+    <h2>Admin Page</h2>
+    <h4>Specify players to add/delete below. </h4>
+
+	<!-- form to delete players by name-->
+	<form method="POST">
+  		<label for="deleteplayer">Player Name:</label><br>
+    	<input name="deleteplayer" value ="Jane Doe"><br>
+    	<input type="submit" id='delete-form' name='delete-form' value="Delete Player">
+	</form> 
+
+	<br>
+
+	<!-- form to add players -->
+	<form method="POST" id="add-form" name="add-form">
+  		<label for="addname">Player Name:</label><br>
+  		<input type="text" id="addname" name="addname" value="John Doe"><br>
+  		<label for="desc">Player Description:</label><br>
+  		<input type="text" id="desc" name="desc" value="... player description here ..."><br>
+  		<input type="submit" id='add-form' name='add-form' value="Add Player">
+	</form> 
+
+</body>
+
