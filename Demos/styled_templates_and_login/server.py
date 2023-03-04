@@ -69,6 +69,10 @@ def gallery():
 @app.route("/calendar")
 def calendar():
     return render_template("calendar.html")
+
+@app.route("/instagram")
+def instagram():
+    return render_template("instagram.html")
  
 
 @app.route('/login', methods=['GET', 'POST'])
