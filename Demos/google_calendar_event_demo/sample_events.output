@@ -1,0 +1,106 @@
+{
+ "kind": "calendar#events",
+ "etag": "\"p32c9d3sghrfvq0g\"",
+ "summary": "Octobots Test Calendar",
+ "description": "A test calendar to show calendar embedding functionality in the rowing club website.",
+ "updated": "2023-03-15T23:41:27.775Z",
+ "timeZone": "America/Los_Angeles",
+ "accessRole": "reader",
+ "defaultReminders": [],
+ "nextSyncToken": "CJiWj5CO3_0CEAAYASCW4dD1AQ==",
+ "items": [
+  {
+   "kind": "calendar#event",
+   "etag": "\"3354929819640000\"",
+   "id": "07md9s020g7ou30e433nmr5vuf",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=MDdtZDlzMDIwZzdvdTMwZTQzM25tcjV2dWZfMjAyMzAyMDZUMjAwMDAwWiBjNWZlMDQ0N2QxYTBlNGQ5NDRkZjMwMTZmYjM3NDM2MjdmMjFkYmNjYWNmNGY0YjhjMzhjMTQ1ZWZmYmM2ZTgzQGc",
+   "created": "2023-02-27T02:27:49.000Z",
+   "updated": "2023-02-27T02:28:29.820Z",
+   "summary": "Weekly Club Meeting (Sample Event)",
+   "description": "This is a sample weekly event for the rowing club calendar.",
+   "location": "Area 51, NV, USA",
+   "creator": {
+    "email": "williamvanskike@gmail.com"
+   },
+   "organizer": {
+    "email": "c5fe0447d1a0e4d944df3016fb3743627f21dbccacf4f4b8c38c145effbc6e83@group.calendar.google.com",
+    "displayName": "Octobots Test Calendar",
+    "self": true
+   },
+   "start": {
+    "dateTime": "2023-02-06T12:00:00-08:00",
+    "timeZone": "America/Los_Angeles"
+   },
+   "end": {
+    "dateTime": "2023-02-06T13:00:00-08:00",
+    "timeZone": "America/Los_Angeles"
+   },
+   "recurrence": [
+    "RRULE:FREQ=WEEKLY;BYDAY=MO"
+   ],
+   "iCalUID": "07md9s020g7ou30e433nmr5vuf@google.com",
+   "sequence": 1,
+   "eventType": "default"
+  },
+  {
+   "kind": "calendar#event",
+   "etag": "\"3354929895568000\"",
+   "id": "1ar4dtcdkh09052i84s6n1o2nn",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=MWFyNGR0Y2RraDA5MDUyaTg0czZuMW8ybm4gYzVmZTA0NDdkMWEwZTRkOTQ0ZGYzMDE2ZmIzNzQzNjI3ZjIxZGJjY2FjZjRmNGI4YzM4YzE0NWVmZmJjNmU4M0Bn",
+   "created": "2023-02-27T02:29:07.000Z",
+   "updated": "2023-02-27T02:29:07.784Z",
+   "summary": "Special Club Event",
+   "description": "This is a sample special event for the rowing club calendar.",
+   "creator": {
+    "email": "williamvanskike@gmail.com"
+   },
+   "organizer": {
+    "email": "c5fe0447d1a0e4d944df3016fb3743627f21dbccacf4f4b8c38c145effbc6e83@group.calendar.google.com",
+    "displayName": "Octobots Test Calendar",
+    "self": true
+   },
+   "start": {
+    "dateTime": "2023-02-24T11:00:00-08:00",
+    "timeZone": "America/Los_Angeles"
+   },
+   "end": {
+    "dateTime": "2023-02-24T12:00:00-08:00",
+    "timeZone": "America/Los_Angeles"
+   },
+   "iCalUID": "1ar4dtcdkh09052i84s6n1o2nn@google.com",
+   "sequence": 0,
+   "eventType": "default"
+  },
+  {
+   "kind": "calendar#event",
+   "etag": "\"3355455109114000\"",
+   "id": "6opjecr56gom4b9m6ko3gb9kclh34bb2coq30b9oc9j3ad9k6pj36dr36g",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=Nm9wamVjcjU2Z29tNGI5bTZrbzNnYjlrY2xoMzRiYjJjb3EzMGI5b2M5ajNhZDlrNnBqMzZkcjM2ZyBjNWZlMDQ0N2QxYTBlNGQ5NDRkZjMwMTZmYjM3NDM2MjdmMjFkYmNjYWNmNGY0YjhjMzhjMTQ1ZWZmYmM2ZTgzQGc",
+   "created": "2023-03-02T03:25:54.000Z",
+   "updated": "2023-03-02T03:25:54.557Z",
+   "summary": "I just added this from my phone",
+   "creator": {
+    "email": "williamvanskike@gmail.com"
+   },
+   "organizer": {
+    "email": "c5fe0447d1a0e4d944df3016fb3743627f21dbccacf4f4b8c38c145effbc6e83@group.calendar.google.com",
+    "displayName": "Octobots Test Calendar",
+    "self": true
+   },
+   "start": {
+    "dateTime": "2023-03-24T13:30:00-07:00",
+    "timeZone": "America/Los_Angeles"
+   },
+   "end": {
+    "dateTime": "2023-03-24T14:30:00-07:00",
+    "timeZone": "America/Los_Angeles"
+   },
+   "iCalUID": "6opjecr56gom4b9m6ko3gb9kclh34bb2coq30b9oc9j3ad9k6pj36dr36g@google.com",
+   "sequence": 0,
+   "eventType": "default"
+  }
+ ]
+}
