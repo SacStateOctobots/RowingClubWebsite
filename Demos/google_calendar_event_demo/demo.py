@@ -1,5 +1,8 @@
 import json
 import urllib.request
+import datetime
+from dateutil.parser import *
+from dateutil.rrule import *
 
 # load api key from file
 keyFile = open("API_KEY", "r")
@@ -14,7 +17,6 @@ f = urllib.request.urlopen(url)
 out = json.loads(f.read())
 
 # print output data
-#print(out) # this will print ALL the calendar output
 for a in out["items"]:
 	print("Event:")
 	if "summary" in a.keys():
@@ -23,5 +25,9 @@ for a in out["items"]:
 		print("Description: "+a["description"])	
 	if "location" in a.keys():
 		print("Location: "+a["location"])	
-	print("Date Time: "+a["start"]["dateTime"])	
+	print("Date time: "+a["start"]["dateTime"])	# this should be the date time of the very first occurrence I think
+	if "recurrence" in a.keys():
+		now = datetime.datetime.now()
+		print("Recurrence rule: "+a["recurrence"][0])
+		print("Next date time: "+str(rrulestr(a["recurrence"][0]).after(now)))
 	print("")
