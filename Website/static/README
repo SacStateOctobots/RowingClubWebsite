@@ -1,0 +1,8 @@
+- Sass can be installed via npm.
+- Running make will run sass to build the css file for our project.
+- The bootstrap docs made it seem like styling was meant to be done with sass rather than plain css.
+- I'm pretty sure a couple years ago I did some styling with plain css using bootstrap. We can always do that instead, but sass has some features that plain css doesn't that we might be able to make use of (for example variables).
+- See for more info:
+	- https://sass-lang.com/
+	- https://en.wikipedia.org/wiki/Sass_(stylesheet_language)
+	- https://getbootstrap.com/docs/5.0/customize/sass/

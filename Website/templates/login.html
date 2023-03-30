@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Rowing Club Website Templates Demo
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+	<h1>Login</h1>
+	<p>Please enter your login credentials below.</p>
+</div>
+
+<div class="container">
+	<form action='login' method='POST'>
+  		<div class="form-group">
+			<input type='text' name='email' id='email' placeholder='email' class='form-control'></input><br>
+		</div>
+  		<div class="form-group">
+			<input type='password' name='pw' id='pw' placeholder='password' class='form-control'></input><br>
+		</div>
+		<input type='submit' name='submit' class="btn btn-outline-dark green_back_gold_front_lightened"></input>
+	</form>
+</div>
+<br>
+{% endblock %}

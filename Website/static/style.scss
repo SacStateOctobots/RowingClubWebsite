@@ -1,0 +1,49 @@
+@import "./node_modules/bootstrap/scss/bootstrap";
+//These are the colors from the csus style guide
+$sacstategreen: #043927;
+$sacstategold: #c4b581;
+$sacstatewhite: #fff;
+$sacstateblack: #000;
+$sacstategray: #d3d3d3;
+$stingergreen: #00573d;
+
+//We can change the font settings across all tags here
+//The style guide says to use some font called Liberator, but
+//https://hornetsports.com/sports/general seems like it uses
+//the font below
+*
+{
+	//font-family: Roboto;
+	//font-size: 1.05rem;
+}
+//we can add these as a class to tags we want colored accordingly
+.green_back_gold_front, .nav-link
+{
+	background-color: $sacstategreen;
+	color: $sacstategold;
+}
+.green_back_gold_front_lightened
+{
+	background-color: lighten($sacstategreen,3%);
+	color: $sacstategold;
+}
+.white_back_dark_green_front
+{
+	color: darken($sacstategreen,10%);
+}
+
+//These might need changed or customized.
+.footer
+{
+	bottom: 0;
+}
+.nav-link:hover
+{
+	color: white;
+}
+.btn:hover
+{
+	background-color: $sacstategreen;
+	//color: $sacstategold;
+	color: white;
+}
