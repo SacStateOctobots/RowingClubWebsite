@@ -1,7 +1,7 @@
 import flask
 import flask_login
 from flask import Flask, render_template, current_app, request, redirect
- 
+import google_calendar_reader as cal
 
 app = flask.Flask(__name__)
 app.secret_key = 'super secret string'  # Change this!
@@ -68,7 +68,10 @@ def gallery():
 
 @app.route("/calendar")
 def calendar():
-    return render_template("calendar.html")
+	oldEvents = cal.get_last_five_events()
+	newEvents = cal.get_next_five_events()
+	return render_template("calendar.html",past_events = oldEvents,next_events = newEvents)
+	#return render_template("calendar.html",past_events = [],next_events = [])
 
 @app.route("/instagram")
 def instagram():
