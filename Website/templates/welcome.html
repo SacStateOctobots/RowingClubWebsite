@@ -5,17 +5,110 @@
 {% endblock %}
 
 {% block body %}
-<div class="jumbotron text-center">
-	<h1>Welcome To The Rowing Club HomePage</h1>
-	<p>Brief tagline here!</p>
+
+<style>
+	body {
+	  background-image: url('https://cdn.discordapp.com/attachments/1014300694238482442/1092926714709016757/image.png');
+	  background-repeat: no-repeat;
+	  background-attachment: fixed;
+	  background-size: 100% 100%;
+	}
+	</style>
+<br>
+<br>
+<br>
+
+<div class="jumbotron text-center green_back_gold_front col-5 mx-auto">
+	<h1>Welcome To The Sacramento State Rowing Club Homepage</h1>
 </div>
 
+<br>
+<br>
+
+<div class="card text-left green_back_gold_front col-8 mx-auto">
+	<br>
+	<ul>
+		<h2>About Us</h2>
+	<ul class="list-group list-group-flush offset-md-1 fs-4">
+		<li>
+			<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		</li>
+		<li>
+			<p>I'm a chill guy.</p>
+		</li>
+		<li>
+			<p>A third point.</p>
+		</li>
+	</ul>
+	</ul>
+</div>
+
+<div class="card green_back_gold_front text-center">
+	<img src="https://cdn.discordapp.com/attachments/1014300694238482442/1092929612880805949/image.png" style="height: 400px;" class="card-img" alt="...">
+	<div class="card-img-overlay mx-auto">
+		<h1 class="card-title text-center">Interested in joining?</h1>
+		<button onclick="document.location='https://koralreef.carrd.co/'" class="btn green_back_gold_front btn-lg col-4 fs-2">Recruitment Form</button>
+	</div>
+</div>
+
+<div class="card green_back_gold_front mb-3">
+	<div class="card-header offset-md-1">
+		<h1>Upcoming Events</h1>
+	</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+	<div class="col">
+	  <div class="card col-9 offset-md-4">
+		<div class="card-body">
+			<h3 class="card-title">Date, Time, Event Name</h3>
+		  <p class="card-text">1 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+	  </div>
+	</div>
+	<div class="col">
+	  <div class="card col-9 offset-md-1">
+		<div class="card-body">
+			<h3 class="card-title">Date, Time, Event Name</h3>
+		  <p class="card-text">2 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+	  </div>
+	</div>
+	<div class="col">
+	  <div class="card col-9 offset-md-4">
+		<div class="card-body">
+			<h3 class="card-title">Date, Time, Event Name</h3>
+		  <p class="card-text">3 This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+		</div>
+	  </div>
+	</div>
+	<div class="col">
+	  <div class="card col-9 offset-md-1">
+		<div class="card-body">
+		  <h3 class="card-title">Date, Time, Event Name</h3>
+		  <p class="card-text">4 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <br>
+</div>
+
+<!--make pretty-->
+<!--<div class="card text-center text-white">
+	<img src="https://cdn.discordapp.com/attachments/890299818252042261/1087763475033509961/IMG_2944.jpg" class="card-img" alt="...">
+  	<div class="card-img-overlay">
+		<h5 class="card-title">Interested in joining?</h5>
+		<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		<button onclick="document.location='https://koralreef.carrd.co/'" class="btn py-3 green_back_gold_front btn-lg">Recruitment Form</button>
+	</div>
+</div>-->
+<!--
 <div class="container">
-	<div class="row">
+	<div class="row green_back_gold_front">
 		{% for tup in players %}
 			<h3>{{ tup[0] }}</h3>
 			<p>{{ tup[1] }}</p>
 		{% endfor %}
 	</div>
 </div>
+</div>-->
 {% endblock %}
