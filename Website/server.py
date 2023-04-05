@@ -58,9 +58,9 @@ def unauthorized_handler():
 def welcome():
     return render_template("welcome.html", players=players)
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
  
 @app.route("/gallery")
 def gallery():
