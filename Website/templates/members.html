@@ -1,0 +1,111 @@
+<!-- I have no idea what I am doing. If that answers any questions. Like why. Many, many why's.-->
+<style>
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    img {
+        max-width: 100%
+    }
+
+    .image {
+        flex-basis: 40%
+    }
+
+    .text {
+        font-size: 40px;
+        padding-left: 20px;
+    }
+
+    .grid-container {
+        display: grid;
+        column-gap: 50px;
+        row-gap: 50px;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    col {
+        display: flex;
+        align-items: end;
+        justify-content: end;
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    .button {
+        background-color: #043927;
+        border: none;
+        color: #c4b581;
+        padding: 15px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid bg-2 text-center">
+    <h3>Active Team Members</h3>
+
+    <div class="container">
+        <div class="row-cols-3">
+            <div class="col">
+                <div class="container">
+                    <img src="https://i.pinimg.com/originals/21/d0/95/21d095310d4b22cb7b30028ea44f821e.jpg"
+                        class="d-block w-50" alt="Cat with sunglasses 2.">
+                    <p >Will Smith<br> Position 1<br>Is a fun cat</p>
+
+                </div>
+                <div class="container">
+                    <img src="https://i.pinimg.com/originals/21/d0/95/21d095310d4b22cb7b30028ea44f821e.jpg"
+                        class="d-block w-50" alt="Cat with sunglasses 2.">
+                        <p>Tom Hanks<br> Position 2<br>Is a loud cat</p>
+                </div>
+                <div class="container">
+                    <img src="https://i.pinimg.com/originals/21/d0/95/21d095310d4b22cb7b30028ea44f821e.jpg"
+                        class="d-block w-50" alt="Cat with sunglasses 2.">
+                        <p>Tom Cruise<br> Position 3<br>Is a silly cat</p>
+                </div>
+            </div>
+        </div>
+        <div class="row-cols-3">
+            <div class="col">
+                <div class="container">
+                    <img src="https://i.pinimg.com/originals/21/d0/95/21d095310d4b22cb7b30028ea44f821e.jpg"
+                        class="d-block w-50" alt="Cat with sunglasses 2.">
+                        <p>Johnny Depp<br> Position 4<br>Is a sad cat</p>
+                </div>
+                <div class="container">
+                    <img src="https://i.pinimg.com/originals/21/d0/95/21d095310d4b22cb7b30028ea44f821e.jpg"
+                        class="d-block w-50" alt="Cat with sunglasses 2.">
+                        <p>Nick Cage<br> Position 4<br>Is a hungry cat</p>
+                </div>
+                <div class="container">
+                    <img src="https://i.pinimg.com/originals/21/d0/95/21d095310d4b22cb7b30028ea44f821e.jpg"
+                        class="d-block w-50" alt="Cat with sunglasses 2.">
+                        <p>Bruce Willus<br> Position 5<br>Is a small cat</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4> Are you looking for Alumni?</h4>
+    <a href="/alumni" class="button">Alumni Page</a>
+</div>
+
+<br>
+
+{% endblock %}

@@ -66,6 +66,10 @@ def about():
 def gallery():
     return render_template("gallery.html")
 
+@app.route("/members")
+def members():
+    return render_template("members.html")
+
 @app.route("/calendar")
 def calendar():
 	oldEvents = cal.get_last_five_events()
