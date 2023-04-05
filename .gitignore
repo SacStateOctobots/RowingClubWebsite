@@ -92,3 +92,4 @@ lerna-debug.log
 
 # System Files
 .DS_Store
+Demos/google_calendar_event_demo/API_KEY
