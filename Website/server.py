@@ -83,7 +83,7 @@ def instagram():
 
 #recruitment page
 @app.route("/join")
-def recruitment():
+def join():
     return render_template("recruitment.html")
  
 
