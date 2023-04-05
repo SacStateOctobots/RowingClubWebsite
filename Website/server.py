@@ -80,6 +80,11 @@ def calendar():
 @app.route("/instagram")
 def instagram():
     return render_template("instagram.html")
+
+#recruitment page
+@app.route("/join")
+def join():
+    return render_template("recruitment.html")
  
 
 @app.route('/login', methods=['GET', 'POST'])
