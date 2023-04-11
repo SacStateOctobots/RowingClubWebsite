@@ -19,6 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .video-introduction-content {
@@ -29,6 +30,7 @@
     font-size: 120px;
     color: #fff;
     font-weight: 600;
+    animation: slide-up 2s ease;
 }
 
 .video-introduction-content h1:hover {
@@ -45,10 +47,41 @@
     padding: 14px 70px;
     border-radius: 50px;
     margin-top: 20px;
-
+    animation: slide-up 2s ease;
 }
 
 .video-introduction-content a:hover {
+    text-decoration: none;
+    display: inline-block;
+    color: #c3b680;
+    font-weight: 600;
+    font-size: 24px;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: #005440;
+    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
+    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
+    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
+    -khtml-box-shadow: 10px 10px 5px #3131315c;
+}
+
+.video-introduction-content-button {
+    text-align: center;
+}
+
+.video-introduction-content-button a {
+    text-decoration: none;
+    display: inline-block;
+    color: #005440;
+    font-size: 24px;
+    border: 2px solid #005440;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.video-introduction-content-button a:hover {
     text-decoration: none;
     display: inline-block;
     color: #c3b680;
@@ -88,7 +121,7 @@
 /*CSS for Last Block - Video Help*/
 .video-help {
     width: 100%;
-    height: 55vh;
+    height: 70vh;
     background-image: linear-gradient(rgba(12, 3, 51, 0.3), rgba(12, 3, 51, 0.3));
     position: relative;
     padding: 0 5%;
@@ -330,4 +363,15 @@
     -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
     -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
     -khtml-box-shadow: 10px 10px 5px #3131315c;
+}
+
+/*Amination*/
+@keyframes slide-up {
+    0% {
+        transform: translateY(250px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
