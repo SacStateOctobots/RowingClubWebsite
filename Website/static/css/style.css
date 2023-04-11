@@ -30,7 +30,6 @@
     font-size: 120px;
     color: #fff;
     font-weight: 600;
-    animation: slide-up 2s ease;
 }
 
 .video-introduction-content h1:hover {
@@ -47,7 +46,6 @@
     padding: 14px 70px;
     border-radius: 50px;
     margin-top: 20px;
-    animation: slide-up 2s ease;
 }
 
 .video-introduction-content a:hover {
@@ -366,6 +364,7 @@
 }
 
 /*Amination*/
+/*
 @keyframes slide-up {
     0% {
         transform: translateY(250px);
@@ -375,3 +374,4 @@
         transform: translateY(0px);
     }
 }
+*/
