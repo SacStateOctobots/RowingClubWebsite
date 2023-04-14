@@ -1,7 +1,10 @@
 import flask
 import flask_login
+import os
 from flask import Flask, render_template, current_app, request, redirect
+from werkzeug.utils import secure_filename
 import google_calendar_reader as cal
+import database_library as db
 
 app = flask.Flask(__name__)
 app.secret_key = 'super secret string'  # Change this!
@@ -13,7 +16,12 @@ login_manager.init_app(app)
 # irl we should use an actual database for this.
 # We would also obviously not want to store username/login info in plain text like this.
 users = {'foo@bar.tld': {'pw': 'secret'}} #for user login info
-players = [('player1','Hello, my name is player1'),('player2','Hello, my name is player2'),('player3','Hello, my name is player3'),('player4','Hello, my name is player4'),('player5','Hello, my name is player5'),('player6','Hello, my name is player6')] #for templates
+
+# see: https://flask.palletsprojects.com/en/2.2.x/patterns/fileuploads/
+# directory where uploaded images will be stored
+UPLOAD_FOLDER = 'static/image_uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 class User(flask_login.UserMixin):
     pass
@@ -56,7 +64,8 @@ def unauthorized_handler():
 #        #return 'Hello user' 
 @app.route("/")
 def welcome():
-    return render_template("welcome.html", players=players)
+    #return render_template("welcome.html", players=players)
+    return render_template("welcome.html")
 
 @app.route("/contact")
 def contact():
@@ -75,7 +84,6 @@ def calendar():
 	oldEvents = cal.get_last_five_events()
 	newEvents = cal.get_next_five_events()
 	return render_template("calendar.html",past_events = oldEvents,next_events = newEvents)
-	#return render_template("calendar.html",past_events = [],next_events = [])
 
 @app.route("/instagram")
 def instagram():
@@ -94,22 +102,13 @@ def recruitment():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if flask.request.method == 'GET':
-    	return render_template("login.html", players=players)
-        #return '''
-        #       <form action='login' method='POST'>
-        #        <input type='text' name='email' id='email' placeholder='email'></input>
-        #        <input type='password' name='pw' id='pw' placeholder='password'></input>
-        #        <input type='submit' name='submit'></input>
-        #       </form>
-        #       '''
-
+    	return render_template("login.html")
     email = flask.request.form['email']
     if flask.request.form['pw'] == users[email]['pw']:
         user = User()
         user.id = email
         flask_login.login_user(user)
         return flask.redirect(flask.url_for('protected'))
-
     return 'Bad login'
 
 @app.route('/protected', methods=['POST'])
@@ -117,26 +116,50 @@ def login():
 def my_form_post():
 	if "delete-form" in request.form:
 		text = request.form['deleteplayer']
-		for tup in players:
-			if tup[0] == text:
-				players.remove(tup) 
+		db.delete_player(text)
 	if "add-form" in request.form:
 		nametext = request.form['addname']
 		desc = request.form['desc']
-		players.append((nametext,desc))
-	#return redirect('/')
-	return render_template("admin.html", players=players)
+		#db.insert_player(nametext,desc)
+		# check if the post request has the file part
+		if 'file' not in request.files:
+			print('No file part')
+			return redirect(request.url)
+		file = request.files['file']
+		# If the user does not select a file, the browser submits an
+		# empty file without a filename.
+		if file.filename == '':
+			print('No file name')
+			#filename = 'default_image.jpg'
+			return redirect(request.url)
+		if file and allowed_file(file.filename):
+			print('Success')
+			filename = secure_filename(file.filename)
+			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+		else:
+			print('File name not allowed')
+			filename = 'default_image.jpg'
+			return redirect(request.url)
+		db.insert_player(nametext,desc,filename)
+	return render_template("admin.html", players=db.get_players())
 
 @app.route('/protected')
 @flask_login.login_required
 def protected():
-	#return current_app.send_static_file('admin.html')
-	return render_template("admin.html", players=players)
+	return render_template("admin.html", players=db.get_players())
 
 
 @app.route('/logout')
 def logout():
 	flask_login.logout_user()
-	#return 'Logged out'
 	return redirect('/')
-	return render_template("admin.html", players=players)
+
+@app.route('/sql_debug')
+def sql_debug():
+	return render_template("sql_debug.html", players=db.get_players())
+
+# checks if file with filename is allowed to be uploaded
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS

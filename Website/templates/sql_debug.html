@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Rowing Club Website Templates Demo
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+	<h1>Welcome To The Rowing Club HomePage</h1>
+	<p>Brief tagline here!</p>
+</div>
+
+<div class="container">
+	<div class="row">
+		{% for tup in players %}
+			<h3>{{ tup[0] }}</h3>
+			<img src="static/image_uploads/{{ tup[2] }}" 
+					alt="{{ tup[0] }} profile photo." 
+					style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
+			>
+			<p>{{ tup[1] }}</p>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
