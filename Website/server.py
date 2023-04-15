@@ -120,7 +120,6 @@ def my_form_post():
 	if "add-form" in request.form:
 		nametext = request.form['addname']
 		desc = request.form['desc']
-		#db.insert_player(nametext,desc)
 		# check if the post request has the file part
 		if 'file' not in request.files:
 			print('No file part')
@@ -130,7 +129,6 @@ def my_form_post():
 		# empty file without a filename.
 		if file.filename == '':
 			print('No file name')
-			#filename = 'default_image.jpg'
 			return redirect(request.url)
 		if file and allowed_file(file.filename):
 			print('Success')
@@ -139,7 +137,6 @@ def my_form_post():
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		else:
 			print('File name not allowed')
-			filename = 'default_image.jpg'
 			return redirect(request.url)
 		db.insert_player(nametext,desc,filename)
 	return render_template("admin.html", players=db.get_players())
