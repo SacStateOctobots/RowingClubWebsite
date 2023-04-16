@@ -67,10 +67,6 @@ def welcome():
     #return render_template("welcome.html", players=players)
     return render_template("welcome.html")
 
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
- 
 @app.route("/gallery")
 def gallery():
     return render_template("gallery.html")
@@ -93,6 +89,10 @@ def instagram():
 @app.route("/join")
 def join():
     return render_template("join.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contactus.html")
 
 @app.route("/recruitment")
 def recruitment():
@@ -145,7 +145,6 @@ def my_form_post():
 @flask_login.login_required
 def protected():
 	return render_template("admin.html", players=db.get_players())
-
 
 @app.route('/logout')
 def logout():

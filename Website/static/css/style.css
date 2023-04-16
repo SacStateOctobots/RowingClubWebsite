@@ -443,3 +443,10 @@
     padding-top: 25px;
     text-shadow: 5px 5px 5px rgba(160, 160, 160, 0.947);
 }
+
+/* Map */
+.map{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Join Us - Rowing Club
+{% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!--CSS-->
+<link href="./static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Boxicons CSS -->
+<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+
+<!--First Block for Video introduction-->
+<section class="video-introduction">
+    <div>
+        <!--Video Introduction page for Desktop-->
+        <!--Video link: https://www.youtube.com/watch?v=sLiYTegsyxk-->
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="./static/video/video_introduction.mp4" type="video/mp4">
+        </video>
+
+        <div class="video-introduction-content">
+            <h1 data-aos="fade-up" data-aos-duration="1000">Contact Us</h1>
+        </div>
+        <div class="wrapper-social-icon" style="text-align: center;">
+            <div class="button-social" data-aos="fade-down" data-aos-duration="1000">
+
+                <div class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <a href="https://facebook.com"><span>Facebook</span></a>
+            </div></a>
+            <div class="button-social" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <div class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <a href="https://instagram.com"><span>Instagram</span></a>
+            </div></a>
+            <div class="button-social" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="400">
+                <div class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <a href="https://youtube.com"><span>YouTube</span></a>
+            </div></a>
+        </div>
+    </div>
+</section>
+<!--End First Block for Video introduction-->
+
+<!--Icon Block-->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="row gy-4">
+                    <!--Home Logo-->
+                    <div class="col-md-4" style="text-align: center;">
+                        <div class="contact-icon" data-aos="fade-down" data-aos-duration="1000">
+                            <i class="fas fa-home"></i>
+                            <h3>VISIT US</h3>
+                            <p> We always welcome you at </p>
+                            <h4>1901 Hazel Ave, <br> Gold River, CA 95670</h4>
+                        </div>
+                    </div>
+                    <!--Phone Logo-->
+                    <div class="col-md-4" style="text-align: center;">
+                        <div class="contact-icon" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
+                            <i class="fas fa-phone"></i>
+                            <h3>CALL US</h3>
+                            <p> We are happy to hear from you </p>
+                            <h4>+1 209 123 4567</h4>
+                        </div>
+                    </div>
+
+                    <!--Email Logo-->
+                    <div class="col-md-4" style="text-align: center;">
+                        <div class="contact-icon" data-aos="fade-down" data-aos-duration="1000"  data-aos-delay="600">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email US</h3>
+                            <p> Even you can send us any messages</p>
+                            <h4>rowing@abcd.csus.edu</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="space"></div>
+        <!--End Icon Block-->
+        <!--Contact Block-->
+        <div class="contact-container" data-aos="zoom-in-up" data-aos-delay="800" data-aos-duration="600">
+            <div class="row no-gutters">
+                <div class="col-md-7">
+                    <div class="contact-wrap w-100 p-md-5 p-4">
+                        <h3>Contact Us</h3>
+                        <div id="form-message-warning" class="mb-4"></div>
+                        <div id="form-message-success" class="mb-4">
+                            Your message was sent, thank you!
+                        </div>
+                        <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+                            <div class="space"></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="label" for="name" style="font-size: 15px;">Full Name</label>
+                                        <input type="text" class="form-control" name="name" id="name"
+                                            placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="label" for="email" style="font-size: 15px;">Email Address</label>
+                                        <input type="email" class="form-control" name="email" id="email"
+                                            placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="space15"></div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="label" for="subject" style="font-size: 15px;">Subject</label>
+                                        <input type="text" class="form-control" name="subject" id="subject"
+                                            placeholder="Subject">
+                                    </div>
+                                </div>
+                                <div class="space15"></div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="label" for="#" style="font-size: 15px;">Message</label>
+                                        <textarea name="message" class="form-control" id="message" cols="30" rows="6"
+                                            placeholder="Message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="submit" value="Send Message" class="btn btn-primary">
+                                        <div class="submitting"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-5 d-flex align-items-stretch">
+                    <div class="info-wrap w-100 p-5 img" style="background-image: url(./static/img/p3.jpeg);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Form Block-->
+<!--Map-->
+<section class="map" data-aos="fade-down" data-aos-duration="600">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3116.65833947523!2d-121.2221972!3d38.6337403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ae7038c8b90b3%3A0xdc6756a6a95c4e06!2s1901%20Hazel%20Ave%2C%20Gold%20River%2C%20CA%2095670!5e0!3m2!1sen!2sus!4v1681677210586!5m2!1sen!2sus"
+        width="100%" height="500px" style="border:0;" allowfullscreen="" loading="lazy" zo
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+<!--End Map-->
+
+
+<!--Amination-->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+{% endblock %}
