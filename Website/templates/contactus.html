@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Join Us - Rowing Club
+Contact Us - Rowing Club
 {% endblock %}
 
 {% block body %}
@@ -52,7 +52,7 @@ Join Us - Rowing Club
     </div>
 </section>
 <!--End First Block for Video introduction-->
-
+<div class="space"></div>
 <!--Icon Block-->
 <div class="container-xxl py-5">
     <div class="container">
@@ -62,7 +62,9 @@ Join Us - Rowing Club
                     <!--Home Logo-->
                     <div class="col-md-4" style="text-align: center;">
                         <div class="contact-icon" data-aos="fade-down" data-aos-duration="1000">
-                            <i class="fas fa-home"></i>
+                            <div class="icon">
+                                <i class="fas fa-home"></i>
+                            </div>
                             <h3>VISIT US</h3>
                             <p> We always welcome you at </p>
                             <h4>1901 Hazel Ave, <br> Gold River, CA 95670</h4>
@@ -71,7 +73,10 @@ Join Us - Rowing Club
                     <!--Phone Logo-->
                     <div class="col-md-4" style="text-align: center;">
                         <div class="contact-icon" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
-                            <i class="fas fa-phone"></i>
+
+                            <div class="icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
                             <h3>CALL US</h3>
                             <p> We are happy to hear from you </p>
                             <h4>+1 209 123 4567</h4>
@@ -80,8 +85,9 @@ Join Us - Rowing Club
 
                     <!--Email Logo-->
                     <div class="col-md-4" style="text-align: center;">
-                        <div class="contact-icon" data-aos="fade-down" data-aos-duration="1000"  data-aos-delay="600">
-                            <i class="fas fa-envelope"></i>
+                        <div class="contact-icon" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="600">
+                            <div class="icon"> <i class="fas fa-envelope"></i>
+                            </div>
                             <h3>Email US</h3>
                             <p> Even you can send us any messages</p>
                             <h4>rowing@abcd.csus.edu</h4>
@@ -92,6 +98,7 @@ Join Us - Rowing Club
         </div>
         <div class="space"></div>
         <!--End Icon Block-->
+        <div class="space"></div>
         <!--Contact Block-->
         <div class="contact-container" data-aos="zoom-in-up" data-aos-delay="800" data-aos-duration="600">
             <div class="row no-gutters">
@@ -102,10 +109,11 @@ Join Us - Rowing Club
                         <div id="form-message-success" class="mb-4">
                             Your message was sent, thank you!
                         </div>
-                        <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+                        <form onsubmit="sendEmail(); reset(); return false" id="contactForm" name="contactForm"
+                            class="contactForm">
                             <div class="space"></div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="label" for="name" style="font-size: 15px;">Full Name</label>
                                         <input type="text" class="form-control" name="name" id="name"
@@ -117,6 +125,13 @@ Join Us - Rowing Club
                                         <label class="label" for="email" style="font-size: 15px;">Email Address</label>
                                         <input type="email" class="form-control" name="email" id="email"
                                             placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="label" for="email" style="font-size: 15px;">Phone number</label>
+                                        <input type="tel" class="form-control" name="phone" id="phone"
+                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="012-345-6789">
                                     </div>
                                 </div>
                                 <div class="space15"></div>
@@ -137,8 +152,8 @@ Join Us - Rowing Club
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="submit" value="Send Message" class="btn btn-primary">
-                                        <div class="submitting"></div>
+                                        <button type="submit" value="Send Message" class="btn btn-primary"> Submit
+                                            <div class="submitting"></div>
                                     </div>
                                 </div>
                             </div>
@@ -164,6 +179,12 @@ Join Us - Rowing Club
 </section>
 <!--End Map-->
 
+
+<!--SMTP-->
+<script src="./static/js/smtp.js"></script>
+
+<!--Javascript-->
+<script src="./static/js/script.js"></script>
 
 <!--Amination-->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

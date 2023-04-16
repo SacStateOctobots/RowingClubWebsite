@@ -374,21 +374,34 @@
 
 /*Icon For Contact Page*/
 
+.icon{
+    transition: width 0.1s, height 0.1s, transform 0.2s;
+}
+
+.icon :hover{
+    padding-top: 30px;
+    font-size: 130px;
+}
+
 .fa-home {
     color: #005440;
-    font-size: 110px;
+    font-size: 100px;
     padding-top: 25px;
+}
+
+.fa-home :hover{
+    transform: rotate(5deg);
 }
 
 .fa-phone {
     color: #005440;
-    font-size: 110px;
+    font-size: 100px;
     padding-top: 25px;
 }
 
 .fa-envelope {
     color: #005440;
-    font-size: 110px;
+    font-size: 100px;
     padding-top: 25px;
 }
 
@@ -412,7 +425,7 @@
 }
 
 .contact-icon h4:hover {
-    color: #cd6000;
+    color: #c3b680;
     font-size: 25px;
     font-weight: 600;
 }
