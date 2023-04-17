@@ -13,9 +13,11 @@ var swiper = new Swiper(".mySwiper", {
     },
 });
 
+
 /*For sending email
 More information: https://smtpjs.com */
 
+/*
 function sendEmail() {
     Email.send({
         SecureToken: "5af3dbb1-a0a2-4f4f-b8b0-a934fdc9aba8",
@@ -32,3 +34,4 @@ function sendEmail() {
         message => alert("Thank you for your message. We will contact you soon.")
     );
 }
+*/
