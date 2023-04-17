@@ -2,6 +2,8 @@
 
 #Google Calender API key
 **/API_KEY
+**/EMAIL_KEY
+**/EMAIL_ADDRESS
 
 __pycache__/
 # compiled output

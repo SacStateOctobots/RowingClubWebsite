@@ -2,6 +2,7 @@ import flask
 import flask_login
 import os
 from flask import Flask, render_template, current_app, request, redirect
+from flask_mail import Mail, Message
 from werkzeug.utils import secure_filename
 import google_calendar_reader as cal
 import database_library as db
@@ -22,6 +23,22 @@ users = {'foo@bar.tld': {'pw': 'secret'}} #for user login info
 UPLOAD_FOLDER = 'static/image_uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# set up the mail instance
+keyFile = open("EMAIL_KEY", "r")
+emailKey = keyFile.read()
+keyFile.close()
+addressFile = open("EMAIL_ADDRESS", "r")
+emailAddress = addressFile.read()
+addressFile.close()
+app.config.update(
+	MAIL_SERVER='smtp.gmail.com',
+	MAIL_PORT=465,
+	MAIL_USE_SSL=True,
+	MAIL_USERNAME = emailAddress,
+	MAIL_PASSWORD = emailKey
+)
+mail = Mail(app)
 
 class User(flask_login.UserMixin):
     pass
@@ -93,6 +110,14 @@ def join():
 @app.route("/contact")
 def contact():
     return render_template("contactus.html")
+@app.route("/contact",methods=['POST'])
+def contact_post():
+	msg = Message(subject=request.form['subject'],
+				body="Name: "+request.form['name']+"\n\nMessage: "+request.form['message']+"\n\nPhone: "+request.form['phone'],
+				sender=request.form['email'],
+				recipients=[emailAddress.rstrip()])
+	mail.send(msg)
+	return render_template("contactus.html")
 
 @app.route("/recruitment")
 def recruitment():
