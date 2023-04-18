@@ -18,12 +18,60 @@
 	</head>
 
 
+  <nav class="navbar navbar-expand-md navbar-dark green_back_gold_front">
+    <div class="justify-content-left">
+      <a href="/">
+        <img src="{{url_for('static', filename='img/Rowing_Gold.png')}}" width="auto" height="75" alt="Sacramento State Rowing Club logo">
+      </a>
+    </div>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse d-flex justify-content-end" id="collapsibleNavbar">
+      <ul class="navbar-nav p-2">
+          <li class="nav-item">
+            <a class="nav-link" href="/gallery" >Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/calendar" >Calendar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/members" >Team Members</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/alumni" >Alumni</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="moreInfoDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              More Info</a>
+            <div class="dropdown-menu" aria-labelledby="moreInfoDropdown">
+              <a class="dropdown-item" href="/about">About Us</a>
+              <a class="dropdown-item" href="/socials" >Social Media</a>
+              <a class="dropdown-item" href="/contact" >Contact</a>
+            </div>
+          </li>
+          <li  class="nav-item dropdown">
+            <a class="nav-link" href="/join">Join</a>
+          </li>
+        </ul>
+    </div>
+  </nav>
 
+<!--
   <header class="p-3 green_back_gold_front">
     <div class="container green_back_gold_front">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start green_back_gold_front">
+      <div class="d-flex flex-wrap align-items-center justify-content-lg-start green_back_gold_front">
+        <div class="justify-content-left">
+          <a href="/">
+            <img src="{{url_for('static', filename='img/Rowing_Gold.png')}}" width="auto" height="75" alt="Sacramento State Rowing Club logo">
+          </a>
+        </div>
+        
+
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 green_back_gold_front">
-          <li><a href="/" class="nav-link px-2 green_back_gold_front">Home</a></li>
+          
           <li><a href="/gallery" class="nav-link px-2 green_back_gold_front">Gallery</a></li>
           <li><a href="/calendar" class="nav-link px-2 green_back_gold_front">Calendar</a></li>
           <li><a href="/contact" class="nav-link px-2 green_back_gold_front">Contact</a></li>
@@ -32,13 +80,13 @@
         </ul>
 
         <div class="text-end green_black_gold_front">
-          <!--<button type="button" class="btn btn-outline-light me-2 justify-content-right" onclick="window.location.href='/login';">Login</button>-->
+          </!--<button type="button" class="btn btn-outline-light me-2 justify-content-right" onclick="window.location.href='/login';">Login</button>--/>
           <button type="button" class="btn btn-outline-dark me-2 justify-content-right green_back_gold_front_lightened" onclick="window.location.href='/login';">Login</button>
         </div>
       </div>
     </div>
   </header>
-
+-->
 <title>
 	{% block title %} {% endblock %}
 </title>
