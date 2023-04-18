@@ -18,6 +18,10 @@
 		<h2>Players:</h2>
 		{% for tup in players %}
 			<h5>{{ tup[0] }}</h5>
+			<img src="static/image_uploads/{{ tup[2] }}" 
+				alt="{{ tup[0] }} profile photo." 
+				style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
+			>
 			<p>{{ tup[1] }}</p>
 		{% endfor %}
 	</div>
@@ -34,11 +38,13 @@
 
     <h4>Specify players to add here: </h4>
 	<!-- form to add players -->
-	<form method="POST" id="add-form" name="add-form">
+	<form method="POST" id="add-form" name="add-form" enctype="multipart/form-data">
   		<label for="addname">Player Name:</label><br>
   		<input type="text" id="addname" name="addname" value="John Doe" class="form-control"><br>
   		<label for="desc">Player Description:</label><br>
   		<input type="text" id="desc" name="desc" value="... player description here ..." class="form-control"><br>
+  		<label for="file">Profile Picture:</label><br>
+  		<input type="file" id="file" name="file" class="form-control"><br>
   		<input type="submit" id='add-form' name='add-form' value="Add Player" class="btn btn-outline-dark green_back_gold_front_lightened">
 	</form> 
 	<hr/>
