@@ -92,6 +92,10 @@ def gallery():
 def members():
     return render_template("members.html")
 
+@app.route("/alumni")
+def alumni():
+    return render_template("alumni.html")
+
 @app.route("/calendar")
 def calendar():
 	oldEvents = cal.get_last_five_events()
@@ -101,6 +105,10 @@ def calendar():
 @app.route("/instagram")
 def instagram():
     return render_template("instagram.html")
+
+@app.route("/about")
+def about():
+    return render_template("about_us.html")
 
 #recruitment page
 @app.route("/join")
