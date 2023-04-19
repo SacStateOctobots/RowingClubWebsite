@@ -15,17 +15,32 @@
 	}
 	</style>
 
-<br>
+<!--First Block for ContactUs video-->
+<!--First Block for Video introduction-->
+<section class="video-introduction">
+    <div>
+        <!--Video Introduction page for Desktop-->
+        <!--Video link: https://www.youtube.com/watch?v=sLiYTegsyxk-->
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="./static/video/welcome_video.mp4" type="video/mp4">
+        </video>
 
+        <div class="video-introduction-content">
+            <h1 data-aos="fade-down" data-aos-duration="1000">Sacramento State Rowing Club</h1>
+        </div>
+    </div>
+</section>
 
-<div class="jumbotron text-center green_back_gold_front col-5 mx-auto">
+<!--
+<div data-aos="zoom-in-up" data-aos-duration="1000" class="jumbotron text-center green_back_gold_front col-5 mx-auto">
 	<h1>Welcome To The Sacramento State Rowing Club Homepage</h1>
 </div>
+-->
 
 <br>
 <br>
 
-<div class="card text-left green_back_gold_front col-7 mx-auto">
+<div class="card text-left green_back_gold_front col-7 mx-auto" data-aos="fade-left" data-aos-duration="1000">
 	<br>
 	<ul>
 		<h2>About Us</h2>
@@ -43,12 +58,16 @@
 	</ul>
 </div>
 
-<div class="card green_back_gold_front text-center container-xl">
-	<img src="https://cdn.discordapp.com/attachments/1014300694238482442/1092929612880805949/image.png" style="height: 400px;" class="card-img" alt="...">
+<br>
+<br>
+
+<div class="card green_back_gold_front text-center container-xl" data-aos="fade-right" data-aos-duration="1000">
+	<img src="https://cdn.discordapp.com/attachments/1014300694238482442/1092929612880805949/image.png" style="height: 460px;" class="card-img" alt="...">
 	<div class="card-img-overlay mx-auto">
 		<h1 class="card-title text-center">Interested in joining?</h1>
 		<!--https://forms.gle/nNq3ySVYcjgHjMb27-->
-		<button onclick="document.location='https://forms.gle/nNq3ySVYcjgHjMb27'" class="btn green_back_gold_front btn-lg col-4 fs-2">Recruitment Form</button>
+		<button onclick="document.location='https://forms.gle/nNq3ySVYcjgHjMb27'" class="btn green_back_gold_front btn-lg col-4 fs-2" 
+		data-aos="zoom-in-up" data-aos-duration="1000">Recruitment Form</button>
 	</div>
 </div>
 
@@ -58,7 +77,7 @@
 	</div>
 <div class="row row-cols-1 row-cols-md-2 g-4">
 	<div class="col">
-	  <div class="card col-9 offset-md-4">
+	  <div class="card col-9 offset-md-4" data-aos="fade-right" data-aos-duration="1000">
 		<div class="card-body">
 			<h3 class="card-title">Date, Time, Event Name</h3>
 		  <p class="card-text">1 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -66,7 +85,7 @@
 	  </div>
 	</div>
 	<div class="col">
-	  <div class="card col-9 offset-md-1">
+	  <div class="card col-9 offset-md-1" data-aos="fade-left" data-aos-duration="1000">
 		<div class="card-body">
 			<h3 class="card-title">Date, Time, Event Name</h3>
 		  <p class="card-text">2 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -74,7 +93,7 @@
 	  </div>
 	</div>
 	<div class="col">
-	  <div class="card col-9 offset-md-4">
+	  <div class="card col-9 offset-md-4" data-aos="fade-right" data-aos-duration="1000">
 		<div class="card-body">
 			<h3 class="card-title">Date, Time, Event Name</h3>
 		  <p class="card-text">3 This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -82,7 +101,7 @@
 	  </div>
 	</div>
 	<div class="col">
-	  <div class="card col-9 offset-md-1">
+	  <div class="card col-9 offset-md-1" data-aos="fade-left" data-aos-duration="1000">
 		<div class="card-body">
 		  <h3 class="card-title">Date, Time, Event Name</h3>
 		  <p class="card-text">4 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -92,6 +111,18 @@
   </div>
   <br>
 </div>
+
+    <!--Swiper Js-->
+    <script src="./static/js/swiper-bundle.min.js"></script>
+
+    <!--Javascript-->
+    <script src="./static/js/script.js"></script>
+
+    <!--Amination-->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
 <!--make pretty-->
 <!--<div class="card text-center text-white">
