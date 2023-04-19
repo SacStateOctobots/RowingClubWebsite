@@ -49,18 +49,85 @@
         margin: 4px 2px;
         cursor: pointer;
     }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    img {
+        max-width: 100%
+    }
+
+    .image {
+        flex-basis: 40%
+    }
 </style>
 {% extends 'base.html' %}
 
-    {% block title %}
-    Rowing Club Website Templates Demo
-    {% endblock %}
+{% block title %}
+Rowing Club Website Templates Demo
+{% endblock %}
 
 {% block body %}
 
-<div class="container-fluid bg-2 text-center">
-    <h3>Active Team Members</h3>
 
+<div class="card green_back_gold_front mb-3 container-fluid " style="justify-content: center;">
+    <div class="card-header">
+        <h1 class="text-center">Active Team Members</h1>
+    </div>
+
+
+    <div class="row row-cols-1 row-cols-md-2 g-4 ">
+        <div class="col">
+            <div class="card w-50">
+                <div class="card-img-top d-flex align-items-center bg-light">
+                    <div>
+                        <img class="img" src="http://via.placeholder.com/150x150/1f1a38/ffffff?text=Image"
+                            alt="Card image cap">
+                    </div>
+                    <p class="col p-2 m-0">Tom Hanks<br> Position 2<br>Is a loud cat<br> Hometown Folsom</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card w-50">
+                <div class="card-img-top d-flex align-items-center bg-light">
+                    <div>
+                        <img class="img" src="http://via.placeholder.com/150x150/1f1a38/ffffff?text=Image"
+                            alt="Card image cap">
+                    </div>
+                    <p class="col p-2 m-0">Tom Hanks<br> Position 2<br>Is a loud cat<br>Hometown Atlanta</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card w-50">
+                <div class="card-img-top d-flex align-items-center bg-light">
+                    <div>
+                        <img class="img" src="http://via.placeholder.com/150x150/1f1a38/ffffff?text=Image"
+                            alt="Card image cap">
+                    </div>
+                    <p class="col p-2 m-0">Tom Cruise<br> Position 3<br>Is a silly cat<br>Hometown Stockton</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card w-50">
+                <div class="card-img-top d-flex align-items-center bg-light">
+                    <div>
+                        <img class="img" src="http://via.placeholder.com/150x150/1f1a38/ffffff?text=Image"
+                            alt="Card image cap">
+                    </div>
+                    <p class="col p-2 m-0">ohnny Depp<br> Position 4<br>Is a sad cat<br>Hometown Shingle Springs</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
     <div class="container">
         <div class="row-cols-3">
             <div class="col">
@@ -102,7 +169,10 @@
             </div>
         </div>
     </div>
-    <h4> Are you looking for Alumni?</h4>
+-->
+
+<h4> Are you looking for Alumni?</h4>
+<div class="container">
     <a href="/alumni" class="button">Alumni Page</a>
 </div>
 
