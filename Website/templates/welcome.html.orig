@@ -6,9 +6,6 @@
 
 {% block body %}
 
-<!-- TODO: Linking to an image file like this is a bad idea -->
-<!-- We don't know if discord will continue to host this image or not. -->
-<!-- We should be storing a copy of this image in our static directory instead -->
 <style>
 	body {
 	  background-image: url('https://cdn.discordapp.com/attachments/1014300694238482442/1092926714709016757/image.png');
@@ -76,15 +73,6 @@
 
 <br>
 
-<!-- Example styling for fixed height cards with  -->
-<!-- scrollbar on overflow -->
-<style>
-.card-text{
-  height: 72px;
-  width: 374px;
-  overflow-y: auto;
-}
-</style>
 <div class="card green_back_gold_front mb-3 container-xl" data-aos="fade-up" data-aos-duration="1000">
 	<div class="card-header">
 		<h1 class="offset-md-1">Upcoming Events</h1>
@@ -118,7 +106,7 @@
 	  <div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
 		<div class="card-body">
 		  <h3 class="card-title">Date, Time, Event Name</h3>
-		  <p class="card-text">4 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. ccdnksjcdsncdksjncksnkcdnksjcdsncdksjncksnkcdnksjcdsncdksjncksnkcdnksjcdsncdksjncksnkcdnksjcdsncdksjncksnkcdnksjcdsncdksjncksnkcdnksjcdsncdksjncksnkcdnksjcdsncdksjncksnkcdnksjcdsncdksjncksnkcdnksjcdsncdksjncksnkdnksjcdsncdksjncksnk</p>
+		  <p class="card-text">4 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 		</div>
 	  </div>
 	</div>
