@@ -81,8 +81,8 @@ def unauthorized_handler():
 #        #return 'Hello user' 
 @app.route("/")
 def welcome():
-    #return render_template("welcome.html", players=players)
-    return render_template("welcome.html")
+	newEvents = cal.get_next_five_events()
+	return render_template("welcome.html",next_events=newEvents)
 
 @app.route("/gallery")
 def gallery():
