@@ -1,9 +1,205 @@
+<!-- I have no idea what these do tbh... -->
+<Style>
+	col {
+        display: flex;
+        align-items: end;
+        justify-content: end;
+    }
+
+	.grid-container {
+        display: grid;
+        column-gap: 50px;
+        row-gap: 50px;
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+</Style>
+
 {% extends 'base.html' %}
 
 {% block title %}
-	Rowing Club Website Templates Demo
+About - Rowing Club
 {% endblock %}
 
 {% block body %}
-<p>Here will go information for about the club and cards for info about current club officers and coaches.</p>
+
+<!-- Background Color -->
+<head>
+	<style>
+		body {
+			background-color: #c3b680;
+		}
+	</style>
+</head>
+
+<!-- Banner up top -->
+<img src="https://cdn.discordapp.com/attachments/1069818501621088296/1098754543271022732/Banner2.jpg" style="height: 460px;" class="card-img rounded" alt="...">
+
+
+<!-- "About Us" Title + Card with description -->
+<div class="text-heading">
+	<h1>About Us</h1>
+</div>
+
+<div class="row row-cols-2 row-cols-sm-2 g-lg-1">
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded col-7 mx-auto">
+		<p style="font-size: 22px;">
+		Since 1984 the Sacramento State Men's Rowing team has competed against universities 
+		from all over the country. As part of the Western Intercollegiate Rowing Association, the 
+		team has won multiple conference championships in the Varsity 8. They also have had 
+		championship boats in several other events during the team’s history. The members of this 
+		team throughout history pride themselves on hard work, dedication, and commitment to 
+		a common goal. (Competition & Practice Schedules with be added soon) In 2021, the club 
+		transitioned to become the Rowing Club, now offering both men’s and women’s rowing.
+		</p>
+	</div>
+</div>
+<!-- End of "About Us" Title + Card with description -->
+
+
+<!-- "Meet the Officers!" Title + Cards with pictures and description -->
+<div class="text-heading mx-auto">
+	<h1>Meet The Officers!</h1>
+</div>
+
+<div class="container-fluid">
+	<div class="row row-cols-4 row-cols-sm-4 g-lg-1">
+		<div class="col-4">
+			<div class="card mb-3 green_back_gold_front">
+			<div class="row g-0">
+			<div class="col-md-4">
+				<img src="https://cdn.discordapp.com/attachments/1069818501621088296/1093080715303854110/depositphotos_46562679-stock-photo-happy-man-with-white-teeth.jpg" class="img-fluid rounded-start" alt="...">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-4">
+		<div class="card mb-4 green_back_gold_front">
+			<div class="row g-0">
+			<div class="col-md-4">
+				<img src="https://cdn.discordapp.com/attachments/1069818501621088296/1093080715303854110/depositphotos_46562679-stock-photo-happy-man-with-white-teeth.jpg" class="img-fluid rounded-start" alt="...">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				</div>
+			</div>
+			</div>
+		</div>
+		</div>
+
+	<div class="col-4">
+		<div class="card mb-4 green_back_gold_front">
+			<div class="row g-0">
+			<div class="col-md-4">
+				<img src="https://cdn.discordapp.com/attachments/1069818501621088296/1093080715303854110/depositphotos_46562679-stock-photo-happy-man-with-white-teeth.jpg" class="img-fluid rounded-start" alt="...">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-4">
+		<div class="card mb-4 green_back_gold_front">
+			<div class="row g-0">
+			<div class="col-md-4">
+				<img src="https://cdn.discordapp.com/attachments/1069818501621088296/1093080715303854110/depositphotos_46562679-stock-photo-happy-man-with-white-teeth.jpg" class="img-fluid rounded-start" alt="...">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-4">
+		<div class="card mb-4 green_back_gold_front">
+			<div class="row g-0">
+			<div class="col-md-4">
+				<img src="https://cdn.discordapp.com/attachments/1069818501621088296/1093080715303854110/depositphotos_46562679-stock-photo-happy-man-with-white-teeth.jpg" class="img-fluid rounded-start" alt="...">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-4">
+		<div class="card mb-4 green_back_gold_front">
+			<div class="row g-0">
+			<div class="col-md-4">
+				<img src="https://cdn.discordapp.com/attachments/1069818501621088296/1093080715303854110/depositphotos_46562679-stock-photo-happy-man-with-white-teeth.jpg" class="img-fluid rounded-start" alt="...">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-4">
+		<div class="card mb-4 green_back_gold_front">
+			<div class="row g-0">
+			<div class="col-md-4">
+				<img src="https://cdn.discordapp.com/attachments/1069818501621088296/1093080715303854110/depositphotos_46562679-stock-photo-happy-man-with-white-teeth.jpg" class="img-fluid rounded-start" alt="...">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-4">
+		<div class="card mb-4 green_back_gold_front">
+			<div class="row g-0">
+			<div class="col-md-4">
+				<img src="https://cdn.discordapp.com/attachments/1069818501621088296/1093080715303854110/depositphotos_46562679-stock-photo-happy-man-with-white-teeth.jpg" class="img-fluid rounded-start" alt="...">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of "Meet the Officers!" Title + Cards with pictures and description -->
+
 {% endblock %}
