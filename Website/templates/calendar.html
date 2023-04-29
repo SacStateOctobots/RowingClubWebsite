@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Rowing Club Website Templates Demo
+Rowing Club Website Templates Demo
 {% endblock %}
 
 {% block body %}
@@ -13,67 +13,71 @@
 
 <h3> Upcoming Events </h3>
 <div class="row">
-{% if next_events|length <= 0 %}
-	<p> There are no upcoming events to display. </p>
-{% else %}
-	{% for tup in next_events %}
-<div class="col justify-content-center">
-	<div class="col px-md-4">
-		<div class="card" style="width:12rem;height:15rem;">
-			<div class="card-body d-flex flex-column">
-				<h5 class="card-title">{{ tup[0] }}</h5>
-				<p class="card-text"> {{ tup[1] }} </p>
-					<div class="dropdown mt-auto" style="width: 15rem;">
-						<button type="button" class="btn btn-outline-dark me-2 justify-content-right green_back_gold_front_lightened" data-bs-toggle="dropdown">
-						Event Info
-						</button>
-						<ul class="dropdown-menu" style="margin-right: 10px; !important">
-							<li>Location: {{ tup[2] }}</li>
-							<li>Date: {{ tup[3] }}</li>
-						</ul>
+	{% if next_events|length <= 0 %} <p> There are no upcoming events to display. </p>
+		{% else %}
+		{% for tup in next_events %}
+		<div class="col justify-content-center">
+			<div class="col px-md-4">
+				<div class="card" style="width:12rem;height:15rem;">
+					<div class="card-body d-flex flex-column">
+						<h5 class="card-title">{{ tup[0] }}</h5>
+						<p class="card-text"> {{ tup[1] }} </p>
+						<div class="dropdown mt-auto" style="width: 15rem;">
+							<button type="button"
+								class="btn btn-outline-dark me-2 justify-content-right green_back_gold_front_lightened"
+								data-bs-toggle="dropdown">
+								Event Info
+							</button>
+							<ul class="dropdown-menu" style="margin-right: 10px; !important">
+								<li>Location: {{ tup[2] }}</li>
+								<li>Date: {{ tup[3] }}</li>
+							</ul>
+						</div>
 					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-	{% endfor %}
-{% endif %}
+		{% endfor %}
+		{% endif %}
 </div>
 <br>
 
 <h3> Full Calendar</h3>
-<div class="container-fluid bg-2 text-center" >
-<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=YzVmZTA0NDdkMWEwZTRkOTQ0ZGYzMDE2ZmIzNzQzNjI3ZjIxZGJjY2FjZjRmNGI4YzM4YzE0NWVmZmJjNmU4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%237986CB&color=%23009688" style="border:solid 1px #777" width="1000" height="600" frameborder="0" scrolling="no"></iframe>
+<div class="container-fluid bg-2 text-center">
+	<iframe
+		src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=YzVmZTA0NDdkMWEwZTRkOTQ0ZGYzMDE2ZmIzNzQzNjI3ZjIxZGJjY2FjZjRmNGI4YzM4YzE0NWVmZmJjNmU4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%237986CB&color=%23009688"
+		style="border:solid 1px #777" width="1000" height="600" frameborder="0" scrolling="no"></iframe>
 </div>
 <br>
 
 <h3> Past Events </h3>
 <div class="row">
-{% if past_events|length <= 0 %}
-	<p> There are no upcoming events to display. </p>
-{% else %}
-	{% for tup in past_events%}
-<div class="col justify-content-center">
-	<div class="col px-md-4">
-		<div class="card" style="width:12rem;height:15rem;">
-			<div class="card-body d-flex flex-column">
-				<h5 class="card-title">{{ tup[0] }}</h5>
-				<p class="card-text"> {{ tup[1] }} </p>
-					<div class="dropdown mt-auto" style="width: 15rem;">
-						<button type="button" class="btn btn-outline-dark me-2 justify-content-right green_back_gold_front_lightened" data-bs-toggle="dropdown">
-						Event Info
-						</button>
-						<ul class="dropdown-menu" style="margin-right: 10px; !important">
-							<li>Location: {{ tup[2] }}</li>
-							<li>Date: {{ tup[3] }}</li>
-						</ul>
+	{% if past_events|length <= 0 %} <p> There are no upcoming events to display. </p>
+		{% else %}
+		{% for tup in past_events%}
+		<div class="col justify-content-center">
+			<div class="col px-md-4">
+				<div class="card" style="width:12rem;height:15rem;">
+					<div class="card-body d-flex flex-column">
+						<h5 class="card-title">{{ tup[0] }}</h5>
+						<p class="card-text"> {{ tup[1] }} </p>
+						<div class="dropdown mt-auto" style="width: 15rem;">
+							<button type="button"
+								class="btn btn-outline-dark me-2 justify-content-right green_back_gold_front_lightened"
+								data-bs-toggle="dropdown">
+								Event Info
+							</button>
+							<ul class="dropdown-menu" style="margin-right: 10px; !important">
+								<li>Location: {{ tup[2] }}</li>
+								<li>Date: {{ tup[3] }}</li>
+							</ul>
+						</div>
 					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-	{% endfor %}
-{% endif %}
+		{% endfor %}
+		{% endif %}
 </div>
 <br>
 

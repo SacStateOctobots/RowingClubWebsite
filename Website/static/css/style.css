@@ -1,4 +1,4 @@
-/*CSS for Video introduction*/
+/*CSS for Video introduction or Introduction*/
 .video-introduction {
     width: 100%;
     height: 100vh;
@@ -9,6 +9,24 @@
     align-items: center;
     justify-content: center;
 
+}
+
+.banner-introduction-content{
+    text-align: center;
+}
+
+.banner-introduction-content h1 {
+    font-size: 120px;
+    color: #005440;
+    font-weight: 600;
+    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    
+}
+
+.banner-introduction-content h1:hover {
+    -webkit-text-stroke: 2px #005440;
+    color: transparent;
+    text-shadow: 5px 5px 5px rgba(255, 255, 255, 0)
 }
 
 .video-introduction-content {
@@ -500,6 +518,11 @@
 }
 
 /*Contact Form*/
+
+.space80{
+    padding-top: 80px;
+}
+
 .space {
     padding-top: 30px;
 }
