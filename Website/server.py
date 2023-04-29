@@ -123,8 +123,8 @@ def contact():
 @app.route("/contact",methods=['POST'])
 def contact_post():
 	msg = Message(subject=request.form['subject'],
-				body="Hello, \n\n My name is "+request.form['name']+". My email is" + request.form['email']+ 
-                        "\n\Here is my message: "+request.form['message']+"\n\nYou can contact us at: "+request.form['phone']
+				body="Hello, \n\n My name is "+request.form['name']+". My email is " + request.form['email']+ 
+                        "\n\nHere is my message: "+request.form['message']+"\n\nYou can contact me at: "+request.form['phone']
                                     + "\n\n(Note: There is a message from Contact Page - Sac State Rowing Website)",
                         
 				sender=request.form['email'],
