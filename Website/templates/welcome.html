@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Welcome - Rowing Club
+Welcome - Rowing Club
 {% endblock %}
 
 {% block body %}
@@ -11,27 +11,27 @@
 <!-- We should be storing a copy of this image in our static directory instead -->
 <style>
 	body {
-	  background-image: url('https://cdn.discordapp.com/attachments/1014300694238482442/1092926714709016757/image.png');
-	  background-repeat: no-repeat;
-	  background-attachment: fixed;
-	  background-size: 100% 100%;
+		background-image: url('https://cdn.discordapp.com/attachments/1014300694238482442/1092926714709016757/image.png');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: 100% 100%;
 	}
-	</style>
+</style>
 
 <!--First Block for ContactUs video-->
 <!--First Block for Video introduction-->
 <section class="video-introduction">
-    <div>
-        <!--Video Introduction page for Desktop-->
-        <!--Video link: https://www.youtube.com/watch?v=sLiYTegsyxk-->
-        <video autoplay loop muted plays-inline class="back-video">
-            <source src="./static/video/welcome_video.mp4" type="video/mp4">
-        </video>
+	<div>
+		<!--Video Introduction page for Desktop-->
+		<!--Video link: https://www.youtube.com/watch?v=sLiYTegsyxk-->
+		<video autoplay loop muted plays-inline class="back-video">
+			<source src="./static/video/welcome_video.mp4" type="video/mp4">
+		</video>
 
-        <div class="video-introduction-content">
-            <h1 data-aos="fade-down" data-aos-duration="1000">Sacramento State Rowing Club</h1>
-        </div>
-    </div>
+		<div class="video-introduction-content">
+			<h1 data-aos="fade-down" data-aos-duration="1000">Sacramento State Rowing Club</h1>
+		</div>
+	</div>
 </section>
 
 <!--
@@ -47,17 +47,17 @@
 	<br>
 	<ul>
 		<h2>About Us</h2>
-	<ul class="list-group list-group-flush offset-md-1 fs-4">
-		<li>
-			<p>Website made for the Sacramento State Rowing Team.</p>
-		</li>
-		<li>
-			<p>This website contains many of the ongoing events and current team member rosters.</p>
-		</li>
-		<li>
-			<p>Stingers up!</p>
-		</li>
-	</ul>
+		<ul class="list-group list-group-flush offset-md-1 fs-4">
+			<li>
+				<p>Website made for the Sacramento State Rowing Team.</p>
+			</li>
+			<li>
+				<p>This website contains many of the ongoing events and current team member rosters.</p>
+			</li>
+			<li>
+				<p>Stingers up!</p>
+			</li>
+		</ul>
 	</ul>
 </div>
 
@@ -65,12 +65,14 @@
 <br>
 
 <div class="card green_back_gold_front text-center container-xl" data-aos="fade-right" data-aos-duration="1000">
-	<img src="https://cdn.discordapp.com/attachments/1014300694238482442/1092929612880805949/image.png" style="height: 460px;" class="card-img" alt="...">
+	<img src="https://cdn.discordapp.com/attachments/1014300694238482442/1092929612880805949/image.png"
+		style="height: 460px;" class="card-img" alt="...">
 	<div class="card-img-overlay mx-auto">
 		<h1 class="card-title text-center">Interested in joining?</h1>
 		<!--https://forms.gle/nNq3ySVYcjgHjMb27-->
-		<button onclick="document.location='https://forms.gle/nNq3ySVYcjgHjMb27'" class="btn green_back_gold_front btn-lg col-4 fs-2" 
-		data-aos="zoom-in-up" data-aos-duration="1000">Recruitment Form</button>
+		<button onclick="document.location='https://forms.gle/nNq3ySVYcjgHjMb27'"
+			class="btn green_back_gold_front btn-lg col-4 fs-2" data-aos="zoom-in-up"
+			data-aos-duration="1000">Recruitment Form</button>
 	</div>
 </div>
 
@@ -79,101 +81,109 @@
 <!-- Example styling for fixed height cards with  -->
 <!-- scrollbar on overflow -->
 <style>
-.row {
-  display: flex;
-  overflow-x: scroll;
-  overflow-y: scroll;
-}
-.card-body{
-  height: 179px;
-  width: 406px;
-}
-.card-text{
-  height: 72px;
-  width: 374px;
-  overflow-y: auto;
-}
-.card-title{
-  height: 40px;
-  width: 374px;
-  white-space: nowrap;
-  overflow-x: scroll;
-}
+	.row {
+		display: flex;
+		overflow-x: scroll;
+		overflow-y: scroll;
+	}
+
+	.card-body {
+		height: 179px;
+		width: 406px;
+	}
+
+	.card-text {
+		height: 72px;
+		width: 374px;
+		overflow-y: auto;
+	}
+
+	.card-title {
+		height: 40px;
+		width: 374px;
+		white-space: nowrap;
+		overflow-x: scroll;
+	}
 </style>
 <div class="card green_back_gold_front mb-3 container-xl" data-aos="fade-up" data-aos-duration="1000">
 	<div class="card-header">
-		<h1 class="offset-md-1">Upcoming Events</h1>
+		<h1 class="offset-md-1" style="text-align: center;">Upcoming Events</h1>
 	</div>
-<div class="row row-cols-1 row-cols-md-2 g-4">
+	<div class="space15"></div>
+	<div class="row row-cols-1 row-cols-md-2 g-4">
 
-{% if next_events|length >=1 %}
-	<div class="col">
-	  <div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
-		<div class="card-body">
-			<h3 class="card-title">{{next_events[0][0]}}</h3>
-		  <p class="card-text">Location: {{next_events[0][2]}}<br>Date: {{next_events[0][3]}}<br>{{next_events[0][1]}}</p>
+		{% if next_events|length >=1 %}
+		<div class="col">
+			<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
+				<div class="card-body">
+					<h3 class="card-title">{{next_events[0][0]}}</h3>
+					<p class="card-text">Location: {{next_events[0][2]}}<br>Date:
+						{{next_events[0][3]}}<br>{{next_events[0][1]}}</p>
+				</div>
+			</div>
 		</div>
-	  </div>
-	</div>
-{%else%}
-	<!-- No event to emit here -->
-{% endif %}
+		{%else%}
+		<!-- No event to emit here -->
+		{% endif %}
 
-{% if next_events|length >=2 %}
-	<div class="col">
-	  <div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
-		<div class="card-body">
-			<h3 class="card-title">{{next_events[1][0]}}</h3>
-		  <p class="card-text">Location: {{next_events[1][2]}}<br>Date: {{next_events[1][3]}}<br>{{next_events[1][1]}}</p>
+		{% if next_events|length >=2 %}
+		<div class="col">
+			<div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
+				<div class="card-body">
+					<h3 class="card-title">{{next_events[1][0]}}</h3>
+					<p class="card-text">Location: {{next_events[1][2]}}<br>Date:
+						{{next_events[1][3]}}<br>{{next_events[1][1]}}</p>
+				</div>
+			</div>
 		</div>
-	  </div>
-	</div>
-{%else%}
-	<!-- No event to emit here -->
-{% endif %}
+		{%else%}
+		<!-- No event to emit here -->
+		{% endif %}
 
-{% if next_events|length >=3 %}
-	<div class="col">
-	  <div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
-		<div class="card-body">
-			<h3 class="card-title">{{next_events[2][0]}}</h3>
-		  <p class="card-text">Location: {{next_events[2][2]}}<br>Date: {{next_events[2][3]}}<br>{{next_events[2][1]}}</p>
+		{% if next_events|length >=3 %}
+		<div class="col">
+			<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
+				<div class="card-body">
+					<h3 class="card-title">{{next_events[2][0]}}</h3>
+					<p class="card-text">Location: {{next_events[2][2]}}<br>Date:
+						{{next_events[2][3]}}<br>{{next_events[2][1]}}</p>
+				</div>
+			</div>
 		</div>
-	  </div>
-	</div>
-{%else%}
-	<!-- No event to emit here -->
+		{%else%}
+		<!-- No event to emit here -->
 
-{% endif %}
+		{% endif %}
 
-{% if next_events|length >=4 %}
-	<div class="col">
-	  <div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
-		<div class="card-body">
-			<h3 class="card-title">{{next_events[3][0]}}</h3>
-		  <p class="card-text">Location: {{next_events[3][2]}}<br>Date: {{next_events[3][3]}}<br>{{next_events[3][1]}}</p>
+		{% if next_events|length >=4 %}
+		<div class="col">
+			<div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
+				<div class="card-body">
+					<h3 class="card-title">{{next_events[3][0]}}</h3>
+					<p class="card-text">Location: {{next_events[3][2]}}<br>Date:
+						{{next_events[3][3]}}<br>{{next_events[3][1]}}</p>
+				</div>
+			</div>
 		</div>
-	  </div>
 	</div>
-  </div>
-{%else%}
+	{%else%}
 	<!-- No event to emit here -->
-{% endif %}
+	{% endif %}
 
-  <br>
+	<br>
 </div>
 
-    <!--Swiper Js-->
-    <script src="./static/js/swiper-bundle.min.js"></script>
+<!--Swiper Js-->
+<script src="./static/js/swiper-bundle.min.js"></script>
 
-    <!--Javascript-->
-    <script src="./static/js/script.js"></script>
+<!--Javascript-->
+<script src="./static/js/script.js"></script>
 
-    <!--Amination-->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+<!--Amination-->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>
 
 <!--make pretty-->
 <!--<div class="card text-center text-white">
