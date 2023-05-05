@@ -80,43 +80,44 @@ The Rowing Club needs an updated website that can serve as a central hub for sha
 
 ## Mock-up Diagrams
 
-Project Features
-Landing Page:
-Animated background.
-Responsive animated page elements.
-Access to rowing club recruitment form.
-Brief display of upcoming events via event cards.
+## Project Features
+* Landing Page:
+  - Animated background.
+  - Responsive animated page elements.
+  - Access to rowing club recruitment form.
+  - Brief display of upcoming events via event cards.
 
-Gallery Page:
-Provides link to third party image hosting resource for rowing club event photos.
+* Gallery Page:
+  - Provides link to third party image hosting resource for rowing club event photos.
 
-Calendar Page:
-Display of upcoming and past events via event cards.
-Embedded calendar provides an in-depth view of all past and present events.
-All events are modifiable by club members via access to a shared google calendar.
+* Calendar Page:
+  - Display of upcoming and past events via event cards.
+  - Embedded calendar provides an in-depth view of all past and present events.
+  - All events are modifiable by club members via access to a shared google calendar.
 
-Team Members Page:
-Display of active team members via team member cards.
-Team member cards will be modifiable through the admin page to keep the list of members up to date.
-Links to alumni association page.
+* Team Members Page:
+  - Display of active team members via team member cards.
+  - Team member cards will be modifiable through the admin page to keep the list of members up to date.
+  - Links to alumni association page.
 
-Alumni Page:
-Login/Admin Page:
-Not public facing.
-Login page provides secure login to admin page.
-Admin page allows for modification of site data by users.
+* Alumni Page:
 
-About Us Page:
-Contains responsive animated page elements.
-Displays a brief description of the rowing club.
-Includes cards displaying club officers.
-Club officer cards and club information will be modifiable thru admin page.
+* Login/Admin Page:
+  - Not public facing.
+  - Login page provides secure login to admin page. 
+  - Admin page allows for modification of site data by users.
 
-Social Media Page:
-Contains an embedded instagram feed showing rowing club instagram posts.
-Contains links to various rowing club social media accounts.
+* About Us Page:
+  - Contains responsive animated page elements.
+  - Displays a brief description of the rowing club.
+  - Includes cards displaying club officers.
+  - Club officer cards and club information will be modifiable thru admin page.
 
-Contact Page:
+* Social Media Page:
+  - Contains an embedded instagram feed showing rowing club instagram posts.
+  - Contains links to various rowing club social media accounts.
+
+* Contact Page:
 Links to rowing club social media.
 Includes video background.
 Includes responsive animated page elements.
@@ -124,43 +125,46 @@ Contains various other club related contact info.
 Includes “Contact Us” form which sends emails containing contact info from site users to a rowing club email for potential club members to inquire about the club.	
 Contains embedded map showing club location.
 
-Join Page:
-Also contains video background and responsive page elements.
-Links to rowing club recruitment form.
-Provides information to users interesting in joining the rowing club.
+* Join Page:
+  - Also contains video background and responsive page elements.
+  - Links to rowing club recruitment form.
+  - Provides information to users interesting in joining the rowing club.
 
-Project Timeline (So Far)
-Sprint 01
-Research and barebones
-Getting an idea of what the client wants
-Putting together an initial tech stack (flask, bootstrap)
-Familiarizing team with tools for development
-Sprint 02
-First mockup of what the site looks like
-Layout for all of the pages
-Initial client feedback for the design of the website
+## Project Timeline (So Far)
+### Sprint 01
+* Research and barebones
+* Getting an idea of what the client wants
+* Putting together an initial tech stack (flask, bootstrap)
+* Familiarizing team with tools for development
 
-Sprint 03
-Clean up and standardize the look of the website
-Implement Client feedback
-Implementing integration of external API’s (Calendar, Instagram)
-Implemented UI and navigation
-Added animation to join page
-Sprint 04
-More client feedback! (Tweaks)
-Spike for backend in preparation for next semester
-Begin implementation of mailing list and login
-Added animation to additional site pages
-Project Timeline (Future)
-Sprint 05
-Start work on backend and backend dependent features (database, mailing list).
+### Sprint 02
+* First mockup of what the site looks like
+* Layout for all of the pages
+* Initial client feedback for the design of the website
 
-Sprint 06
-Expand capabilities of admin user
+### Sprint 03
+* Clean up and standardize the look of the website
+* Implement Client feedback
+* Implementing integration of external API’s (Calendar, Instagram)
+* Implemented UI and navigation
+* Added animation to join page
 
-Sprint 07
-Final cleanup, standardization of desktop and mobile display
+### Sprint 04
+* More client feedback! (Tweaks)
+* Spike for backend in preparation for next semester
+* Begin implementation of mailing list and login
+* Added animation to additional site pages
+* Project Timeline (Future)
 
-Sprint 08
-Held in reserve for client feedback and timeline delay
+### Sprint 05
+* Start work on backend and backend dependent features (database, mailing list).
+
+### Sprint 06
+* Expand capabilities of admin user
+
+### Sprint 07
+* Final cleanup, standardization of desktop and mobile display
+
+### Sprint 08
+* Held in reserve for client feedback and timeline delay
 
