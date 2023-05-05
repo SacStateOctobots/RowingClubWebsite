@@ -41,13 +41,15 @@ The Rowing Club needs an updated website that can serve as a central hub for sha
 
 
 ## How to Use (Deployment)
-  - To run the website locally:
-  - Under /Website use
-  - `make`
-  - Which runs the following command:
-  - `flask --app server run`
-  - This command starts an http server on your local machine on port 5000.
-  - To access the site, navigate to http://localhost:5000 in your web browser.
+  * To run the website locally:
+  * Under /Website use
+  
+    - `make`
+  
+  * Which runs the following command:
+    - `flask --app server run`
+  * This command starts an http server on your local machine on port 5000.
+  * To access the site, navigate to http://localhost:5000 in your web browser.
 
 # Dev Instructions
 * Install SQLite3
