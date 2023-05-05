@@ -265,5 +265,5 @@ The Rowing Club needs an updated website that can serve as a central hub for sha
 ### Sprint 08
 * Held in reserve for client feedback and timeline delay
   
-    <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSprint8.png" width="400">
+
 
