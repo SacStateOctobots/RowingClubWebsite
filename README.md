@@ -135,7 +135,7 @@
 
 
 * Responsive Feature on Mobile Devices
-    - Feature not yet implelemted
+    - Feature not yet implemented
 
 
 * Login Function:
