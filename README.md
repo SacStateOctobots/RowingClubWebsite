@@ -1,12 +1,27 @@
 # Rowing Club Website Read Me
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rLogo.png" width="500">
+
 ## Project Summary
 
-<img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rLogo.png" width="500">
-The Rowing Club needs an updated website that can serve as a central hub for sharing information, connecting with members, and recruiting new members. This project is building a new website to fill this need.
-<img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rHomepage.gif" width="500">
+  The OctoBots team was contracted by the Sacramento State Rowing Club to build an updated club website. The Rowing Club needed a website that can serve as a central hub for sharing information, connecting with members, and recruiting new members. This project is building a new website to fill these needs.
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rHomepage.gif" width="500">
 
 
-## Built with
+
+## Table of Contents
+- [Tools](#tools)
+- [How To Use](#how-to-use)
+- [Dev Instructions](#dev-instructions)
+    - [Google App Passwords for SMTP Set-up](#enable-google-app-passwords-for-smtp-contact-page)
+    - [Google Calendar API Set-up](#google-calendar-api-for-calendar-page)
+- [Testing](#testing)
+- [Mock-up Diagrams](#mock-up-diagrams)
+- [Project Features](#project-features)
+- [Project Timeline](#project-timeline)
+    - [Spring 2023](#spring-2023)
+    - [Fall 2023](#fall-2023)
+
+## Tools
 * Python 3
 * Flask
 * SQLite 3
@@ -15,54 +30,29 @@ The Rowing Club needs an updated website that can serve as a central hub for sha
 * CSS+Bootstrap
 * Jquery
 
-## Testing
-* Contact Us Email:
 
-  - Navigate to contact us page.
-  - Fill out contact us form and click submit.
-  - Verify email submission is received in the email account setup in dev instructions section.
-
-* Google Calendar Website Event Cards:
-
-  - Verify landing page loads.
-  - Verify cards at bottom of screen for landing page load with event data.
-  - Verify event data consists of the four most recent events from the google calendar linked in setup from dev instructions.
-  - Repeat the above steps on the calendar page.
-
- *  Animation On Scroll:
-  - On landing page, about us page, contact us page and join page, verify page elements slide in/out of view while scrolling from top to bottom of page and back.
-
-* Responsive Feature on Mobile Devices
-
-* Login Function:
-  - Navigate to <SITE URL>/login, enter admin login+password.
-  - Make changes to data in admin panel.
-  - Verify changes made in admin panel are updated on their corresponding site pages.
-
-
-## How to Use (Deployment)
-  * To run the website locally:
-  * Under /Website use
+## How to Use
+  To run the website locally:
+  Under /Website use
   
-    - `make`
+    make
   
-  * Which runs the following command:
-    - `flask --app server run`
-  * This command starts an http server on your local machine on port 5000.
-  * To access the site, navigate to http://localhost:5000 in your web browser.
+  Which runs the following command:
 
-# Dev Instructions
+    flask --app server run
+
+  This command starts an http server on your local machine on port 5000.
+  To access the site, navigate to http://localhost:5000 in your web browser.
+
+## Dev Instructions
 * Install SQLite3
 * Use the package manager pip to install flask and modules (must have python3.7 or newer installed first):
-  - pip install flask
-  - pip install flask_login
-  - pip install flask_mail
-  - pip install  python-dateutil
-  - npm install sass
+  - `pip install flask`
+  - `pip install flask_login`
+  - `pip install flask_mail`
+  - `pip install  python-dateutil`
+  - `npm install sass`
 * Note: Run setup_database.py script before running website to setup sqlite3 database file
-
-
-
 
 ### Enable Google App Passwords for SMTP (Contact page):
 * First, Google App Passwords can only be used with accounts that have 2-Step Verification turned on.
@@ -119,7 +109,33 @@ The Rowing Club needs an updated website that can serve as a central hub for sha
     
     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rAPI9.png" width="400">
   
-  
+
+## Testing
+* Contact Us Email:
+
+  - Navigate to contact us page.
+  - Fill out contact us form and click submit.
+  - Verify email submission is received in the email account setup in dev instructions section.
+
+* Google Calendar Website Event Cards:
+
+  - Verify landing page loads.
+  - Verify cards at bottom of screen for landing page load with event data.
+  - Verify event data consists of the four most recent events from the google calendar linked in setup from dev instructions.
+  - Repeat the above steps on the calendar page.
+
+ *  Animation On Scroll:
+  - On landing page, about us page, contact us page and join page, verify page elements slide in/out of view while scrolling from top to bottom of page and back.
+
+* Responsive Feature on Mobile Devices
+
+* Login Function:
+  - Navigate to <SITE URL>/login, enter admin login+password.
+  - Make changes to data in admin panel.
+  - Verify changes made in admin panel are updated on their corresponding site pages.
+
+
+
 ## Mock-up Diagrams
 * Sitemap
   
@@ -223,49 +239,54 @@ The Rowing Club needs an updated website that can serve as a central hub for sha
   
   <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rJoin2.png" width="400">
 
-## Project Timeline (So Far)
-### Sprint 01
-* Research and barebones
-* Getting an idea of what the client wants
-* Putting together an initial tech stack (flask, bootstrap)
-* Familiarizing team with tools for development
+## Project Timeline
+ ### Spring 2023
+  * Sprint 01
+     - Research and barebones
+     - Getting an idea of what the client wants
+     - Putting together an initial tech stack (flask, bootstrap)
+     - Familiarizing team with tools for development
+ 
 
-### Sprint 02
-* First mockup of what the site looks like
-* Layout for all of the pages
-* Initial client feedback for the design of the website
+  * Sprint 02
+     - First mockup of what the site looks like
+     - Layout for all of the pages
+     - Initial client feedback for the design of the website
+ 
 
-### Sprint 03
-* Clean up and standardize the look of the website
-* Implement Client feedback
-* Implementing integration of external API’s (Calendar, Instagram)
-* Implemented UI and navigation
-* Added animation to join page
+  * Sprint 03
+     - Clean up and standardize the look of the website
+     - Implement Client feedback
+     - Implementing integration of external API’s (Calendar, Instagram)
+     - Implemented UI and navigation
+     - Added animation to join page
 
-### Sprint 04
-* More client feedback! (Tweaks)
-* Spike for backend in preparation for next semester
-* Begin implementation of mailing list and login
-* Added animation to additional site pages
-* Project Timeline (Future)
 
-### Sprint 05
-* Start work on backend and backend dependent features (database, mailing list).
+  * Sprint 04
+     - More client feedback! (Tweaks)
+     - Spike for backend in preparation for next semester
+     - Begin implementation of mailing list and login
+     - Added animation to additional site pages
+     - Project Timeline (Future)
+
+ ### Fall 2023
+  * Sprint 05
+     - Start work on backend and backend dependent features (database, mailing list).
   
-  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSprint5.png" width="400">
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSprint5.png" width="400">
 
-### Sprint 06
-* Expand capabilities of admin user
+  * Sprint 06
+     - Expand capabilities of admin user
   
-    <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSprint6.png" width="400">
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSprint6.png" width="400">
 
-### Sprint 07
-* Final cleanup, standardization of desktop and mobile display
+  * Sprint 07
+     - Final cleanup, standardization of desktop and mobile display
   
-    <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSprint7.png" width="400">
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSprint7.png" width="400">
 
-### Sprint 08
-* Held in reserve for client feedback and timeline delay
+  * Sprint 08
+     - Held in reserve for client feedback and timeline delay
   
 
 
