@@ -1,5 +1,5 @@
 run:
-	flask --app server run --debug
+	flask --app server run
 setup:
 	python3 setup_database.py
 reset:

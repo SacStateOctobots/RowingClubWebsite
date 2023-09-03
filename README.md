@@ -81,7 +81,7 @@
      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rGoogle5.png" width="400">
   
 ### Google Calendar API (For Calendar page)
-* Access to Google Developer Console
+* Access to Google Developer Console 
   
    <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rAPI1.png" width="400">
   
