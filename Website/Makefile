@@ -8,7 +8,26 @@ reset_db:
 	python3 delete_db_and_data.py
 gen_selfsign_keys:
 	# bash syntax doesn't play nicely with make syntax so we can put the command we want to run in here
-	./gen_https_key.sh
+	./gen_selfsign_https_key.sh
 reset_selfsign_keys:
-	rm private_key.pem 
-	rm certificate.pem
+	sudo rm -f private_key.pem 
+	sudo rm -f certificate.pem
+deploy:
+	# setup database
+	python3 setup_database.py
+	# set up virtual environment
+	nginx_venv_gunicorn_scripts/venv_setup.sh
+	# set up keys
+	./gen_selfsign_https_key.sh
+	# set up systemd
+	nginx_venv_gunicorn_scripts/systemd_setup.sh
+teardown:
+	# setup database
+	python3 delete_db_and_data.py
+	# set up virtual environment
+	nginx_venv_gunicorn_scripts/venv_reset.sh
+	# set up keys
+	rm -f private_key.pem 
+	rm -f certificate.pem
+	# set up systemd
+	nginx_venv_gunicorn_scripts/systemd_reset.sh
