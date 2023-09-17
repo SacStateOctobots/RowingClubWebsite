@@ -69,6 +69,16 @@ def insert_testimonial(name, testimonial, imgfilename,job):
 	insert_to_db("testimonials","(name, testimonial, imgfilename,job)","(?,?,?,?)", (name, testimonial, imgfilename,job))
 def delete_testemonial(name):
 	delete_from_db("testimonials","name",name)
+
+#######################################################
+# team_members table
+#######################################################
+def get_team_members():
+	return query_db('select * from team_members')
+def insert_team_members(name, team_member, imgfilename,role):
+	insert_to_db("team_members","(name, team_member, imgfilename, role)","(?,?,?,?)", (name, team_member, imgfilename, role))
+def delete_testemonial(name):
+	delete_from_db("team_members","name",name)
 #def delete_database(mydb):
 	#mycursor = mydb.cursor()
 	#mycursor.execute("DROP TABLE IF EXISTS customers")
