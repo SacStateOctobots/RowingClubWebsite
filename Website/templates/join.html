@@ -4,6 +4,8 @@
 Join Us - Rowing Club
 {% endblock %}
 
+
+
 {% block body %}
     <!--First Block for Video introduction-->
     <section class="video-introduction">
@@ -161,21 +163,37 @@ Join Us - Rowing Club
                         </div>
                     </div>
                     <div class="slide swiper-slide">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Spider-Man.jpg/1200px-Spider-Man.jpg"
+                        <img src="static/image_uploads/{{ test[2] }}" 
                             alt="" class="image" />
                         <p style="font-size: 18px;">
-                            A testimonial from a
-                            client who benefited from your product or service.
-                            Testimonials can be a highly effective way of establishing
-                            credibility and increasing your company's reputation.
+                            {{ test[1] }}
                         </p>
                         <i class="bx bxs-quote-alt-left quote-icon"></i>
                         <div class="details">
-                            <span class="name">Spiderman</span>
-                            <span class="job">Spiderman Lover</span>
+                            <span class="name">{{ test[0] }}</span>
+                            <span class="job">{{ test[3] }}</span>
                         </div>
                     </div>
                 </div>
+                {% for item in tup %}
+
+                <tr>
+                <div class="slide swiper-slide">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Spider-Man.jpg/1200px-Spider-Man.jpg"
+                        alt="" class="image" />
+                    <p style="font-size: 18px;">
+                        A testimonial from a
+                        client who benefited from your product or service.
+                        Testimonials can be a highly effective way of establishing
+                        credibility and increasing your company's reputation.
+                    </p>
+                    <i class="bx bxs-quote-alt-left quote-icon"></i>
+                    <div class="details">
+                        <span class="name">Spiderman</span>
+                        <span class="job">Student</span>
+                    </div>
+                </div>
+                {% endfor %}
                 <div class="swiper-button-next nav-btn"></div>
                 <div class="swiper-button-prev nav-btn"></div>
                 <div class="swiper-pagination"></div>

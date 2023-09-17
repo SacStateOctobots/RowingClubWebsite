@@ -60,7 +60,15 @@ def insert_player(name,desc,filename):
 def delete_player(name):
 	#runs cur.execute("DELETE FROM players WHERE name=(?)",(name,))
 	delete_from_db("players","name",name)
-
+#######################################################
+# Testimonials table
+#######################################################
+def get_testimonial():
+	return query_db('select * from testimonials')
+def insert_testimonial(name, testimonial, imgfilename,job):
+	insert_to_db("testimonials","(name, testimonial, imgfilename,job)","(?,?,?,?)", (name, testimonial, imgfilename,job))
+def delete_testemonial(name):
+	delete_from_db("testimonials","name",name)
 #def delete_database(mydb):
 	#mycursor = mydb.cursor()
 	#mycursor.execute("DROP TABLE IF EXISTS customers")
