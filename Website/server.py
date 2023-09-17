@@ -90,7 +90,8 @@ def gallery():
 
 @app.route("/members")
 def members():
-    return render_template("members.html")
+    test = db.get_team_members
+    return render_template("members.html", test=test)
 
 @app.route("/alumni")
 def alumni():
