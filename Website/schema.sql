@@ -24,11 +24,7 @@ INSERT INTO testimonials (name, testimonial, imgfilename,job) VALUES ('Spiderman
 CREATE TABLE IF NOT EXISTS team_members (
     name VARCHAR(255) NOT NULL UNIQUE,
     team_member VARCHAR(255) NOT NULL,
-<<<<<<< HEAD
     imgfilename VARCHAR(255) NOT NULL,
-=======
-    imgfilename VARCHAR(255) NOT NULL UNIQUE,
->>>>>>> 1de20cd4127d31e45184c0be554073ccc81d8daf
     role VARCHAR(255) NOT NULL
 );
 
@@ -36,7 +32,6 @@ CREATE TABLE IF NOT EXISTS team_members (
 INSERT INTO team_members (name, team_member, imgfilename, role) VALUES
 	('Team Member 1', 'Hello, I am Team Member 1.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 1'),
 	('Team Member 2', 'Hello, I am Team Member 2.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 2'),
-<<<<<<< HEAD
     ('Team Member 3', 'Hello, I am Team Member 3.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 3'),
 	('Team Member 4', 'Hello, I am Team Member 4.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 4'),
     ('Team Member 5', 'Hello, I am Team Member 5.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 5'),
@@ -52,12 +47,3 @@ CREATE TABLE IF NOT EXISTS alumni (
 
 INSERT INTO alumni (name, description, imgfilename) VALUES ('Alumni1', 'Hello, my name is Alumni1.','Cat1.jpg');
 INSERT INTO alumni (name, description, imgfilename) VALUES ('Alumni2', 'Hello, my name is Alumni2.','Cat2.jpg');	
-=======
-    	('Team Member 3', 'Hello, I am Team Member 3.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 3'),
-	('Team Member 4', 'Hello, I am Team Member 4.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 4'),
-    	('Team Member 5', 'Hello, I am Team Member 5.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 5'),
-    	('Team Member 6', 'Hello, I am Team Member 6.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 6'),
-    	('Team Member 7', 'Hello, I am Team Member 7.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 7'),
-    	('Team Member 8', 'Hello, I am Team Member 8.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 8'),
-    	('Team Member 9', 'Hello, I am Team Member 9.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 9');
->>>>>>> 1de20cd4127d31e45184c0be554073ccc81d8daf

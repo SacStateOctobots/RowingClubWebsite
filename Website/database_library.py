@@ -71,7 +71,6 @@ def delete_testemonial(name):
 	delete_from_db("testimonials","name",name)
 
 #######################################################
-<<<<<<< HEAD
 # alumni table functions
 #######################################################
 def get_alumni():
@@ -82,8 +81,6 @@ def delete_alumni(name):
 	delete_from_db("alumni","name",name)
 
 #######################################################
-=======
->>>>>>> 1de20cd4127d31e45184c0be554073ccc81d8daf
 # team_members table
 #######################################################
 def get_team_members():
