@@ -61,6 +61,25 @@ def delete_player(name):
 	#runs cur.execute("DELETE FROM players WHERE name=(?)",(name,))
 	delete_from_db("players","name",name)
 
+#######################################################
+# alumni table functions
+#######################################################
+def get_alumni():
+	return query_db('select * from alumni')
+def insert_alumni(name,desc,filename):
+	insert_to_db("alumni","(name,description,imgfilename)","(?,?,?)",(name,desc,filename))
+def delete_alumni(name):
+	delete_from_db("alumni","name",name)
+
+#######################################################
+# team_members table
+#######################################################
+def get_team_members():
+	return query_db('select * from team_members')
+def insert_team_members(name, team_member, imgfilename,role):
+	insert_to_db("team_members","(name, team_member, imgfilename, role)","(?,?,?,?)", (name, team_member, imgfilename, role))
+def delete_testemonial(name):
+	delete_from_db("team_members","name",name)
 #def delete_database(mydb):
 	#mycursor = mydb.cursor()
 	#mycursor.execute("DROP TABLE IF EXISTS customers")
