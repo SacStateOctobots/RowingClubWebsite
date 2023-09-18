@@ -109,7 +109,7 @@ def instagram():
 
 @app.route("/about")
 def about():
-    return render_template("about_us.html")
+    return render_template("about_us.html", officers=db.get_about())
 
 #recruitment page
 @app.route("/join")
