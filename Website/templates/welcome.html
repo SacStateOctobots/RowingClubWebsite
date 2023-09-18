@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 {% extends 'base.html' %}
 
 {% block title %}
@@ -9,6 +11,7 @@ Welcome - Rowing Club
 <!-- TODO: Linking to an image file like this is a bad idea -->
 <!-- We don't know if discord will continue to host this image or not. -->
 <!-- We should be storing a copy of this image in our static directory instead -->
+<!-- link card table events to db -->
 <style>
 	body {
 		background-image: url('https://cdn.discordapp.com/attachments/1014300694238482442/1092926714709016757/image.png');
@@ -68,7 +71,7 @@ Welcome - Rowing Club
 	<img src="https://cdn.discordapp.com/attachments/1014300694238482442/1092929612880805949/image.png"
 		style="height: 460px;" class="card-img" alt="...">
 	<div class="card-img-overlay mx-auto">
-		<h1 class="card-title text-center">Interested in joining?</h1>
+		<h1 class="offset-md-0" style="text-align: center;">Interested in joining?</h1>
 		<!--https://forms.gle/nNq3ySVYcjgHjMb27-->
 		<button onclick="document.location='https://forms.gle/nNq3ySVYcjgHjMb27'"
 			class="btn green_back_gold_front btn-lg col-4 fs-2" data-aos="zoom-in-up"
@@ -80,38 +83,34 @@ Welcome - Rowing Club
 
 <!-- Example styling for fixed height cards with  -->
 <!-- scrollbar on overflow -->
+<!-- find out how to scale by resolution instead of hardcoded numbers -->
 <style>
 	.row {
 		display: flex;
-		overflow-x: scroll;
-		overflow-y: scroll;
 	}
 
 	.card-body {
 		height: 179px;
 		width: 406px;
 	}
-
 	.card-text {
 		height: 72px;
-		width: 374px;
+		width: 400px;
 		overflow-y: auto;
 	}
 
 	.card-title {
 		height: 40px;
-		width: 374px;
-		white-space: nowrap;
-		overflow-x: scroll;
+		width: 400px;
+		overflow-x: auto;
 	}
 </style>
 <div class="card green_back_gold_front mb-3 container-xl" data-aos="fade-up" data-aos-duration="1000">
 	<div class="card-header">
-		<h1 class="offset-md-1" style="text-align: center;">Upcoming Events</h1>
+		<h1 class="offset-md-0" style="text-align: center;">Upcoming Events</h1>
 	</div>
 	<div class="space15"></div>
 	<div class="row row-cols-1 row-cols-md-2 g-4">
-
 		{% if next_events|length >=1 %}
 		<div class="col">
 			<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">

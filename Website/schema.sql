@@ -24,7 +24,7 @@ INSERT INTO testimonials (name, testimonial, imgfilename,job) VALUES ('Spiderman
 CREATE TABLE IF NOT EXISTS team_members (
     name VARCHAR(255) NOT NULL UNIQUE,
     team_member VARCHAR(255) NOT NULL,
-    imgfilename VARCHAR(255) NOT NULL UNIQUE,
+    imgfilename VARCHAR(255) NOT NULL,
     role VARCHAR(255) NOT NULL
 );
 
@@ -32,10 +32,34 @@ CREATE TABLE IF NOT EXISTS team_members (
 INSERT INTO team_members (name, team_member, imgfilename, role) VALUES
 	('Team Member 1', 'Hello, I am Team Member 1.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 1'),
 	('Team Member 2', 'Hello, I am Team Member 2.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 2'),
-    	('Team Member 3', 'Hello, I am Team Member 3.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 3'),
+    ('Team Member 3', 'Hello, I am Team Member 3.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 3'),
 	('Team Member 4', 'Hello, I am Team Member 4.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 4'),
-    	('Team Member 5', 'Hello, I am Team Member 5.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 5'),
-    	('Team Member 6', 'Hello, I am Team Member 6.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 6'),
-    	('Team Member 7', 'Hello, I am Team Member 7.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 7'),
-    	('Team Member 8', 'Hello, I am Team Member 8.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 8'),
-    	('Team Member 9', 'Hello, I am Team Member 9.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 9');
+    ('Team Member 5', 'Hello, I am Team Member 5.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 5'),
+    ('Team Member 6', 'Hello, I am Team Member 6.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 6'),
+    ('Team Member 7', 'Hello, I am Team Member 7.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 7'),
+    ('Team Member 8', 'Hello, I am Team Member 8.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 8'),
+    ('Team Member 9', 'Hello, I am Team Member 9.', 'https://upload.wikimedia.org/wikipedia/commons/0/08/Astronotus_ocellatus.jpg', 'Role 9');
+
+CREATE TABLE IF NOT EXISTS alumni (
+	name VARCHAR(255) NOT NULL UNIQUE, 
+	description VARCHAR(255) NOT NULL UNIQUE, 
+	imgfilename VARCHAR(255) NOT NULL UNIQUE);	
+
+INSERT INTO alumni (name, description, imgfilename) VALUES ('Alumni1', 'Hello, my name is Alumni1.','Cat1.jpg');
+INSERT INTO alumni (name, description, imgfilename) VALUES ('Alumni2', 'Hello, my name is Alumni2.','Cat2.jpg');	
+
+-- sql table for officers (about page)
+CREATE TABLE IF NOT EXISTS officers (
+	name VARCHAR(255) NOT NULL UNIQUE,
+	desc VARCHAR(255) NOT NULL UNIQUE, 
+	filename VARCHAR(255) NOT NULL);
+
+INSERT INTO officers (name, desc, filename) VALUES 
+('Officer1', 'This is test text for officer1.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer2', 'This is test text for officer2.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer3', 'This is test text for officer3.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer4', 'This is test text for officer4.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer5', 'This is test text for officer5.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer6', 'This is test text for officer6.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer7', 'This is test text for officer7.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer8', 'This is test text for officer8.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg');

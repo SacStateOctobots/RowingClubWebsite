@@ -5,5 +5,56 @@
 {% endblock %}
 
 {% block body %}
-<p>Here will go information for alumni association and email subscription sign up.</p>
+
+<head>
+	<style>
+		body {
+			background-color: #c3b680;
+		}
+
+		.smashinglogo {
+			background: url(https://cdn.discordapp.com/attachments/1069818501621088296/1098754543271022732/Banner2.jpg);
+			background-size: cover;
+			background-position: center;
+			height: 500px;
+		}
+	</style>
+</head>
+
+
+<!--About US Introduction Banner-->
+<section id="first" class="story" data-speed="8" data-type="background">
+	<div class="smashinglogo" data-offsetY="100" data-Xposition="50%" data-speed="-2">
+
+		<div class="banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
+			<div class="space80"></div>
+			<div class="space80"></div>
+			<h1>About Us</h1>
+		</div>
+
+
+	</div>
+</section>
+
+<div class="container">
+	<hr/>
+	<div class="row">
+		<h2>Alumni:</h2>
+		{% for tup in alumni %}
+			<h5>{{ tup[0] }}</h5>
+			<img src="static/image_uploads/{{ tup[2] }}" 
+				alt="{{ tup[0] }} profile photo." 
+				style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
+			>
+			<p>{{ tup[1] }}</p>
+		{% endfor %}
+	</div>
+	<hr/>
+</div>
+
+<!--Amination-->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>
 {% endblock %}

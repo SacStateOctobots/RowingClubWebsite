@@ -26,7 +26,7 @@
 		{% endfor %}
 	</div>
 	<hr/>
-
+</div>
     <h4>Specify players to delete here: </h4>
 	<!-- form to delete players by name-->
 	<form method="POST">
@@ -35,6 +35,15 @@
     	<input type="submit" id='delete-form' name='delete-form' value="Delete Player" class="btn btn-outline-dark green_back_gold_front_lightened">
 	</form> 
 	<hr/>
+
+	<h4>Specify alumni to delete here: </h4>
+	<!-- form to delete players by name-->
+	<form method="POST">
+		<label for="deletealumni">Player Name:</label><br>
+	  <input name="deletealumni" value ="Jane Doe" class="form-control"><br>
+	  <input type="submit" id='delete-form' name='alumni-delete-form' value="Delete Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
+    </form> 
+    <hr/>
 
     <h4>Specify players to add here: </h4>
 	<!-- form to add players -->
@@ -49,6 +58,18 @@
 	</form> 
 	<hr/>
 
+	<h4>Specify players to add to alumni: </h4>
+	<!-- form to add players -->
+	<form method="POST" id="add-form" name="alumni-add-form" enctype="multipart/form-data">
+  		<label for="addname">Alumni Name:</label><br>
+  		<input type="text" id="addname" name="alumni-addname" value="John Doe" class="form-control"><br>
+  		<label for="desc">Alumni Description:</label><br>
+  		<input type="text" id="desc" name="alumni-desc" value="... player description here ..." class="form-control"><br>
+  		<label for="file">Alumni Picture:</label><br>
+  		<input type="file" id="file" name="alumni-file" class="form-control"><br>
+  		<input type="submit" id='add-form' name='alumni-add-form' value="Add Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
+	</form> 
+	<hr/>
 
 <a href="logout" class="btn btn-outline-dark green_back_gold_front_lightened" role="button">Logout</a>
 </div>

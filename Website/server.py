@@ -95,7 +95,7 @@ def members():
 
 @app.route("/alumni")
 def alumni():
-    return render_template("alumni.html")
+    return render_template("alumni.html", alumni=db.get_alumni())
 
 @app.route("/calendar")
 def calendar():
@@ -109,7 +109,7 @@ def instagram():
 
 @app.route("/about")
 def about():
-    return render_template("about_us.html")
+    return render_template("about_us.html", officers=db.get_about())
 
 #recruitment page
 @app.route("/join")
@@ -180,7 +180,37 @@ def my_form_post():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_player(nametext,desc,filename)
-	return render_template("admin.html", players=db.get_players())
+            
+#######################################################
+# sample copy of a secondary add form
+#######################################################
+
+	if "alumni-delete-form" in request.form:
+		text = request.form['deletealumni']
+		db.delete_alumni(text)
+	if "alumni-add-form" in request.form:
+		nametext = request.form['alumni-addname']
+		desc = request.form['alumni-desc']
+		# check if the post request has the file part
+		if 'alumni-file' not in request.files:
+			print('No file part')
+			return redirect(request.url)
+		file = request.files['alumni-file']
+		# If the user does not select a file, the browser submits an
+		# empty file without a filename.
+		if file.filename == '':
+			print('No file name')
+			return redirect(request.url)
+		if file and allowed_file(file.filename):
+			print('Succes alumni')
+			filename = secure_filename(file.filename)
+			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+		else:
+			print('File name not allowed')
+			return redirect(request.url)
+		db.insert_alumni(nametext,desc,filename)
+	return render_template("admin.html", players=db.get_players(), alumni=db.get_alumni())
 
 @app.route('/protected')
 @flask_login.login_required
