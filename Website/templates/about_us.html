@@ -227,6 +227,24 @@ About - Rowing Club
 	<!-- End of "Meet the Officers!" Title + Cards with pictures and description -->
 </div>
 
+<!-- db test -->
+<div class="container">
+	<hr/>
+	<div class="row">
+		<h2>Officers: </h2>
+	{% for tup in officers %}
+	<h5> {{ tup[0] }}</h5>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg" 
+			alt="Officer 1 Image" 
+			class ="img-fluid rounded-start"
+			style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
+		/>
+		<p>{{ tup[1] }}</p>
+	{% endfor %}
+	</div>
+	<hr/>
+</div>
+
 
 <!--Amination-->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

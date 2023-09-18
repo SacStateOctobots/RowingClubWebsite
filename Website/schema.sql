@@ -47,3 +47,19 @@ CREATE TABLE IF NOT EXISTS alumni (
 
 INSERT INTO alumni (name, description, imgfilename) VALUES ('Alumni1', 'Hello, my name is Alumni1.','Cat1.jpg');
 INSERT INTO alumni (name, description, imgfilename) VALUES ('Alumni2', 'Hello, my name is Alumni2.','Cat2.jpg');	
+
+-- sql table for officers (about page)
+CREATE TABLE IF NOT EXISTS officers (
+	name VARCHAR(255) NOT NULL UNIQUE,
+	desc VARCHAR(255) NOT NULL UNIQUE, 
+	filename VARCHAR(255) NOT NULL);
+
+INSERT INTO officers (name, desc, filename) VALUES 
+('Officer1', 'This is test text for officer1.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer2', 'This is test text for officer2.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer3', 'This is test text for officer3.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer4', 'This is test text for officer4.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer5', 'This is test text for officer5.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer6', 'This is test text for officer6.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer7', 'This is test text for officer7.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
+ ('Officer8', 'This is test text for officer8.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg');
