@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn instance to serve rowing club Website project
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/RowingClubWebsite/Website
+Environment="PATH=/home/ubuntu/RowingClubWebsite/Website/website_venv/bin"
+#ExecStart=/home/ubuntu/RowingClubWebsite/Website/website_venv/bin/gunicorn -w 4 -m 007 --bind unix:/home/ubuntu/RowingClubWebsite/Website/website.sock 'wsgi:app'
+ExecStart=/home/ubuntu/RowingClubWebsite/Website/website_venv/bin/gunicorn -w 4 -m 007 --bind unix:/home/ubuntu/RowingClubWebsite/Website/website.sock 'wsgi:app'
+
+[Install]
+WantedBy=multi-user.target

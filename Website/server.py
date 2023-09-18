@@ -114,7 +114,9 @@ def about():
 #recruitment page
 @app.route("/join")
 def join():
-    return render_template("join.html")
+    test = db.get_testimonial
+    
+    return render_template("join.html",test=test)
 
 @app.route("/contact")
 def contact():

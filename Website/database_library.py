@@ -60,8 +60,18 @@ def insert_player(name,desc,filename):
 def delete_player(name):
 	#runs cur.execute("DELETE FROM players WHERE name=(?)",(name,))
 	delete_from_db("players","name",name)
+#######################################################
+# Testimonials table
+#######################################################
+def get_testimonial():
+	return query_db('select * from testimonials')
+def insert_testimonial(name, testimonial, imgfilename,job):
+	insert_to_db("testimonials","(name, testimonial, imgfilename,job)","(?,?,?,?)", (name, testimonial, imgfilename,job))
+def delete_testemonial(name):
+	delete_from_db("testimonials","name",name)
 
 #######################################################
+<<<<<<< HEAD
 # alumni table functions
 #######################################################
 def get_alumni():
@@ -72,6 +82,8 @@ def delete_alumni(name):
 	delete_from_db("alumni","name",name)
 
 #######################################################
+=======
+>>>>>>> 1de20cd4127d31e45184c0be554073ccc81d8daf
 # team_members table
 #######################################################
 def get_team_members():
