@@ -82,10 +82,9 @@ Calender - Rowing Club
 </div>
 
 
-<!--Calendar-->
 <div class="space80"> </div>
 
-<!--Past events-->
+<!--Calendar-->
 <div class="container">
 	<div class="container-fluid bg-2 text-center">
 		<div id="block-title">
@@ -100,44 +99,47 @@ Calender - Rowing Club
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="space80"> </div>
+<div class="space80"> </div>
 
-	<div class="container">
-		<div class="container-fluid bg-2 text-center">
-			<div id="block-title1">
-				<div id="title-label1" class="name"> Past Events</div>
-				<div class="name-phone">Past Events</div>
-				<div class="space15"></div>
-				<div class="row">
-					{% if past_events|length <= 0 %} <p> There are no past events to display. </p>
-						{% else %}
-						{% for tup in past_events%}
-						<div class="event-container">
-							<div class="event">
-								<div class="event-left">
-									<div class="event-date">
-										<div class="date"> {{ tup[3] }} </div>
-									</div>
-								</div>
 
-								<div class="event-right">
-									<h3 class="event-title"> {{ tup[0] }} </h3>
-
-									<div class="event-description"> {{ tup[1] }} </div>
-
-									<div class="space15"></div>
-
-									<div class="event-location"> <strong>Location: {{ tup[2] }} </strong></div>
+<!--Past events-->
+<div class="container">
+	<div class="container-fluid bg-2 text-center">
+		<div id="block-title1">
+			<div id="title-label2" class="name"> Past Events</div>
+			<div class="name-phone">Past Events</div>
+			<div class="space15"></div>
+			<div class="row">
+				{% if past_events|length <= 0 %} <p> There are no past events to display. </p>
+					{% else %}
+					{% for tup in past_events%}
+					<div class="event-container">
+						<div class="event">
+							<div class="event-left-past">
+								<div class="event-date">
+									<div class="date"> {{ tup[3] }} </div>
 								</div>
 							</div>
+
+							<div class="event-right">
+								<h3 class="event-title"> {{ tup[0] }} </h3>
+
+								<div class="event-description"> {{ tup[1] }} </div>
+
+								<div class="space15"></div>
+
+								<div class="event-location"> <strong>Location: {{ tup[2] }} </strong></div>
+							</div>
 						</div>
-						{% endfor %}
-						{% endif %}
-				</div>
+					</div>
+					{% endfor %}
+					{% endif %}
 			</div>
 		</div>
 	</div>
+</div>
 	<div class="space15"></div>
 </div>
 

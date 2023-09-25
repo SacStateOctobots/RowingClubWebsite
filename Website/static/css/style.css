@@ -649,6 +649,20 @@ h1.hero-heading {
         text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
     }
 
+    #title-label2 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 280px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
 
 
     div.name-phone{
@@ -697,6 +711,19 @@ h1.hero-heading {
 
 .event .event-left {
     background: #005440;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+    padding: 8px 10px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+}
+
+.event .event-left-past{
+    background: #c3b680;
     min-width: 60px;
     display: flex;
     align-items: center;
@@ -766,6 +793,10 @@ h1.hero-heading {
     }
 
     .event .event-left {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .event .event-left-past{
         border-radius: 8px 8px 0 0;
     }
 
