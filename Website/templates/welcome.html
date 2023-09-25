@@ -85,24 +85,26 @@ Welcome - Rowing Club
 <!-- scrollbar on overflow -->
 <!-- find out how to scale by resolution instead of hardcoded numbers -->
 <style>
-	.row {
-		display: flex;
+	/*Style for card title and body for this page.*/
+	/*These determine the behavior for text overflow in card title and body*/
+	.card-title{
+    	font-size:20px;
+    	text-overflow: ellipsis;
+    	white-space: nowrap;
+    	overflow: hidden;
 	}
-
-	.card-body {
-		height: 179px;
-		width: 406px;
+	.card-body{
+    	font-size:15px;
+	/*
+    	font-size:15px;
+    	text-overflow: ellipsis;
+    	white-space: nowrap;
+    	overflow: hidden;
+	*/
 	}
-	.card-text {
-		height: 72px;
-		width: 400px;
-		overflow-y: auto;
-	}
-
-	.card-title {
-		height: 40px;
-		width: 400px;
-		overflow-x: auto;
+	/* adds some padding to the row container containing the cards*/
+	.my_row {
+		padding-bottom: 1em;
 	}
 </style>
 <div class="card green_back_gold_front mb-3 container-xl" data-aos="fade-up" data-aos-duration="1000">
@@ -110,7 +112,7 @@ Welcome - Rowing Club
 		<h1 class="offset-md-0" style="text-align: center;">Upcoming Events</h1>
 	</div>
 	<div class="space15"></div>
-	<div class="row row-cols-1 row-cols-md-2 g-4">
+	<div class="row row-cols-1 row-cols-md-2 g-4 my_row">
 		{% if next_events|length >=1 %}
 		<div class="col">
 			<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
