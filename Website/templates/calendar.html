@@ -1,85 +1,149 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Rowing Club Website Templates Demo
+Calender - Rowing Club
 {% endblock %}
 
 {% block body %}
-<div class="jumbotron text-center">
-	<br>
-	<h1>Rowing Club Events Calendar</h1>
-</div>
-<br>
 
-<h3> Upcoming Events </h3>
-<div class="row">
-	{% if next_events|length <= 0 %} <p> There are no upcoming events to display. </p>
-		{% else %}
-		{% for tup in next_events %}
-		<div class="col justify-content-center">
-			<div class="col px-md-4">
-				<div class="card" style="width:12rem;height:15rem;">
-					<div class="card-body d-flex flex-column">
-						<h5 class="card-title">{{ tup[0] }}</h5>
-						<p class="card-text"> {{ tup[1] }} </p>
-						<div class="dropdown mt-auto" style="width: 15rem;">
-							<button type="button"
-								class="btn btn-outline-dark me-2 justify-content-right green_back_gold_front_lightened"
-								data-bs-toggle="dropdown">
-								Event Info
-							</button>
-							<ul class="dropdown-menu" style="margin-right: 10px; !important">
-								<li>Location: {{ tup[2] }}</li>
-								<li>Date: {{ tup[3] }}</li>
-							</ul>
+<!-- Background Color -->
+
+<head>
+	<style>
+		body {
+			background-color: hsl(0, 0%, 100%);
+		}
+
+		.smashinglogo {
+			background: url(https://cdn.discordapp.com/attachments/1069818501621088296/1098754543271022732/Banner2.jpg);
+			background-size: cover;
+			background-position: center;
+			height: 500px;
+		}
+
+		@media (max-width :768px) {
+			.smashinglogo {
+				height: 300px;
+			}
+		}
+	</style>
+</head>
+<!-- END Background Color -->
+
+<!--Calender Banner-->
+<section id="first" class="story" data-speed="8" data-type="background">
+	<div class="smashinglogo" data-offsetY="100" data-Xposition="50%" data-speed="-2">
+		<div class="banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
+			<div class="space80"></div>
+			<h1 class="hero-heading">Events</h1>
+			<h1 class="hero-heading">Calendar</h1>
+		</div>
+	</div>
+</section>
+<!--END Calender Banner-->
+
+<div class="space80"> </div>
+
+<!--Next Events-->
+<div class="container">
+	<div class="container-fluid bg-2 text-center">
+		<div id="block-title1">
+			<div id="title-label1" class="name"> Upcoming Events</div>
+			<div class="name-phone">Upcoming Events</div>
+			<div class="space15"></div>
+			<div class="row">
+				{% if next_events|length <= 0 %} <p> There are no upcoming events to display. </p>
+					{% else %}
+					{% for tup in next_events %}
+					<div class="event-container">
+						<div class="event">
+							<div class="event-left">
+								<div class="event-date">
+									<div class="date"> {{ tup[3] }} </div>
+								</div>
+							</div>
+
+							<div class="event-right">
+								<h3 class="event-title"> {{ tup[0] }} </h3>
+
+								<div class="event-description"> {{ tup[1] }} </div>
+
+								<div class="space15"></div>
+
+								<div class="event-location"> <strong>Location: {{ tup[2] }} </strong></div>
+							</div>
 						</div>
 					</div>
+					{% endfor %}
+					{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--Calendar-->
+<div class="space80"> </div>
+
+<!--Past events-->
+<div class="container">
+	<div class="container-fluid bg-2 text-center">
+		<div id="block-title">
+			<div id="title-label" class="name"> Full Calendar</div>
+			<div class="name-phone">Full Calendar</div>
+			<div class="space15">
+				<div class="googleCalendar">
+					<iframe
+						src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=YzVmZTA0NDdkMWEwZTRkOTQ0ZGYzMDE2ZmIzNzQzNjI3ZjIxZGJjY2FjZjRmNGI4YzM4YzE0NWVmZmJjNmU4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%237986CB&color=%23009688"
+						style="border:solid 0px #777" width="90%" height="600" frameborder="0" scrolling="yes"></iframe>
 				</div>
 			</div>
 		</div>
-		{% endfor %}
-		{% endif %}
-</div>
-<br>
+	</div>
 
-<h3> Full Calendar</h3>
-<div class="container-fluid bg-2 text-center">
-	<iframe
-		src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=YzVmZTA0NDdkMWEwZTRkOTQ0ZGYzMDE2ZmIzNzQzNjI3ZjIxZGJjY2FjZjRmNGI4YzM4YzE0NWVmZmJjNmU4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%237986CB&color=%23009688"
-		style="border:solid 1px #777" width="1000" height="600" frameborder="0" scrolling="no"></iframe>
-</div>
-<br>
+	<div class="space80"> </div>
 
-<h3> Past Events </h3>
-<div class="row">
-	{% if past_events|length <= 0 %} <p> There are no upcoming events to display. </p>
-		{% else %}
-		{% for tup in past_events%}
-		<div class="col justify-content-center">
-			<div class="col px-md-4">
-				<div class="card" style="width:12rem;height:15rem;">
-					<div class="card-body d-flex flex-column">
-						<h5 class="card-title">{{ tup[0] }}</h5>
-						<p class="card-text"> {{ tup[1] }} </p>
-						<div class="dropdown mt-auto" style="width: 15rem;">
-							<button type="button"
-								class="btn btn-outline-dark me-2 justify-content-right green_back_gold_front_lightened"
-								data-bs-toggle="dropdown">
-								Event Info
-							</button>
-							<ul class="dropdown-menu" style="margin-right: 10px; !important">
-								<li>Location: {{ tup[2] }}</li>
-								<li>Date: {{ tup[3] }}</li>
-							</ul>
+	<div class="container">
+		<div class="container-fluid bg-2 text-center">
+			<div id="block-title1">
+				<div id="title-label1" class="name"> Past Events</div>
+				<div class="name-phone">Past Events</div>
+				<div class="space15"></div>
+				<div class="row">
+					{% if past_events|length <= 0 %} <p> There are no past events to display. </p>
+						{% else %}
+						{% for tup in past_events%}
+						<div class="event-container">
+							<div class="event">
+								<div class="event-left">
+									<div class="event-date">
+										<div class="date"> {{ tup[3] }} </div>
+									</div>
+								</div>
+
+								<div class="event-right">
+									<h3 class="event-title"> {{ tup[0] }} </h3>
+
+									<div class="event-description"> {{ tup[1] }} </div>
+
+									<div class="space15"></div>
+
+									<div class="event-location"> <strong>Location: {{ tup[2] }} </strong></div>
+								</div>
+							</div>
 						</div>
-					</div>
+						{% endfor %}
+						{% endif %}
 				</div>
 			</div>
 		</div>
-		{% endfor %}
-		{% endif %}
+	</div>
+	<div class="space15"></div>
 </div>
-<br>
 
-
+<!--Amination-->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>
 {% endblock %}

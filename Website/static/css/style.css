@@ -11,7 +11,7 @@
 
 }
 
-.banner-introduction-content{
+.banner-introduction-content {
     text-align: center;
 }
 
@@ -20,7 +20,7 @@
     color: #005440;
     font-weight: 600;
     text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    
+
 }
 
 .banner-introduction-content h1:hover {
@@ -37,6 +37,18 @@
     font-size: 120px;
     color: #fff;
     font-weight: 600;
+}
+
+/* Text banner responsive */
+h1.hero-heading {
+    font-size: 120px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    h1.hero-heading {
+        font-size: 60px;
+    }
 }
 
 .video-introduction-content h4 {
@@ -421,7 +433,7 @@
 
 
 /*CSS for text heading*/
-.text-heading-background{
+.text-heading-background {
     background-color: white;
 }
 
@@ -519,7 +531,7 @@
 
 /*Contact Form*/
 
-.space80{
+.space80 {
     padding-top: 80px;
 }
 
@@ -555,3 +567,217 @@
     align-items: center;
     justify-content: center;
 }
+
+/* Google Calendar */
+.googleCalendar {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 54%;
+}
+
+.googleCalendar iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media (max-width: 767px) {
+    .googleCalendar iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Title Block*/
+
+@media (min-width: 568px){
+    #block-title {
+        height: 800px;
+        width: 100%;
+        border: 3px solid #005440;
+        position: relative;
+        padding-top: 50px;
+    
+    }
+
+    #block-title1 {
+        height: 600px;
+        width: 100%;
+        border: 3px solid #000000;
+        position: relative;
+        padding-top: 50px;
+    
+    }
+    
+    #title-label {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 300px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label1 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+
+
+    div.name-phone{
+        font-size: 0;
+    }
+}
+
+@media (max-width : 567px) {
+    #block-title {
+        font-family: "Roboto", sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+
+        position: relative;
+        overflow: hidden;
+        padding-top: 10.25%;
+    }
+
+    
+    div.name{      
+        font-size: 0;
+    }
+
+    div.name-phone{
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+        border-bottom: 1px solid #000000;
+        border-width: 1px;
+    }
+}
+/* Event CSS*/
+
+.event-container {
+    font-family: "Roboto", sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.event-container .event {
+    box-shadow: 15px 15px 20px -10px rgba(12, 12, 12, 0.4);
+    display: flex;
+    border-radius: 20px;
+    margin: 32px 0;
+}
+
+.event .event-left {
+    background: #005440;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+    padding: 8px 10px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+}
+
+.event .event-left .date {
+    font-size: 20px;
+}
+
+
+.event .event-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 24px;
+    padding-bottom: 10px;
+
+}
+
+.event .event-right h3.event-title {
+    font-weight: 600;
+    font-size: 24px;
+    margin: 24px 0 10px 0;
+    color: #005440;
+    text-transform: uppercase;
+}
+
+.event .event-right .event-timing {
+    background: #fff8ba;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    padding: 8px;
+    border-radius: 16px;
+    margin: 24px 0;
+    font-size: 14px;
+}
+
+.event .event-right .event-timing img {
+    height: 20px;
+    padding-right: 8px;
+}
+
+@media (max-width: 550px) {
+    .event {
+        flex-direction: column;
+    }
+
+    .event-container .event-right {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .event .event-right h3.event-title {
+        font-weight: 600;
+        font-size: 20px;
+        margin: 10px 0 5px 0;
+        color: #005440;
+        text-transform: uppercase;
+    }
+
+    .event .event-left {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .event .event-left .event-date .date,
+    .event .event-left .event-date .month {
+        display: inline-block;
+        font-size: 18px;
+    }
+
+    .event .event-left .event-date {
+        padding: 3px 0;
+    }
+}
+
+/* End event CSS */

@@ -78,7 +78,7 @@ def get_next_five_events():
 	out = []
 	for i in events:
 		# we're only printing the next five upcoming events
-		if cnt > 5:
+		if cnt > 4:
 			break
 
 		# here we are just printing events, but this general structure can be used to build a list of the
@@ -169,10 +169,11 @@ def get_last_five_events():
 	events = sorted(events,key=lambda x: datetime.datetime.strptime(x[3], "%Y-%m-%d %H:%M:%S"))
 	cnt = 1
 	out = []
+	
 	events.reverse() # we iterate across old events backwards
 	for i in events:
-		# we're only printing the next five upcoming events
-		if cnt > 5:
+		# we're only printing the next THREE past events
+		if cnt > 4:
 			break
 
 		# here we are just printing events, but this general structure can be used to build a list of the
