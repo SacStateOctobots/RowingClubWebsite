@@ -84,9 +84,9 @@ def welcome():
 	newEvents = cal.get_next_five_events()
 	return render_template("welcome.html",next_events=newEvents)
 
-@app.route("/gallery")
-def gallery():
-    return render_template("gallery.html")
+@app.route("/donate")
+def donate():
+    return render_template("donate.html")
 
 @app.route("/members")
 def members():
