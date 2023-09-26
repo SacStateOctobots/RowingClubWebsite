@@ -105,11 +105,11 @@ def calendar():
 
 @app.route("/instagram")
 def instagram():
-    return render_template("instagram.html")
+    return render_template("instagram.html",content=db.get_page("social"))
 
 @app.route("/about")
 def about():
-    return render_template("about_us.html", officers=db.get_about())
+    return render_template("about_us.html", officers=db.get_about(), content=db.get_page("aboutus"))
 
 #recruitment page
 @app.route("/join")
@@ -230,3 +230,20 @@ def sql_debug():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/cmspages')
+@flask_login.login_required
+def cmspages():
+	return render_template("cmspages.html", pages=db.get_pages())
+
+
+@app.route('/editpage/<slug>', methods=['GET','POST'])
+@flask_login.login_required
+def updatepage(slug):
+	if flask.request.method == 'GET':
+		return render_template("editpage.html",page=db.get_page(slug))
+	else:
+		content = request.form['content']
+		db.update_page(slug,content)
+		return render_template("editpage.html",page=db.get_page(slug))
+            

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+	Rowing Club Website Templates Demo
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+	<hr/>
+	<div class="row">
+		<h2>Pages:</h2>
+		
+			<div class="app-inner-layout app-inner-layout-page">
+                <div class="app-inner-layout__wrapper">
+                  <div class="app-inner-layout__content pt-1">
+                    <div class="tab-content">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="main-card mb-3 card">
+                              <div class="card-body">
+                                <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                  <div class="row">
+                                    <div class="col-sm-12">
+                                      <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered dataTable dtr-inline" role="grid" aria-describedby="example_info">
+                                        <thead>
+                                          <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">Title</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 216.2px;" aria-label="Position: activate to sort column ascending">Slug</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100.2px;" aria-label="Office: activate to sort column ascending">Modified Date</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for tup in pages %}
+                                          <tr role="row" class="odd">
+                                            <td tabindex="0" class="sorting_1"><a href="editpage/{{ tup[0] }}">{{ tup[1] }}</a></td>
+                                            <td>{{ tup[0] }}</td>
+                                            <td>{{ tup[3] }}</td>
+                                          </tr>
+                                          {% endfor %}
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+		
+	</div>
+	<hr/>
+</div>
+    <!--
+      Sourcing the `tinymce-webcomponent` from jsDelivr,
+      which sources TinyMCE from the Tiny Cloud.
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-webcomponent@1/dist/tinymce-webcomponent.min.js"></script>
+{% endblock %}

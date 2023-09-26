@@ -63,3 +63,59 @@ INSERT INTO officers (name, desc, filename) VALUES
  ('Officer6', 'This is test text for officer6.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
  ('Officer7', 'This is test text for officer7.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
  ('Officer8', 'This is test text for officer8.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg');
+
+-- sql table for cmspages (about page)
+CREATE TABLE IF NOT EXISTS cmspages (
+	slug VARCHAR(255) NOT NULL UNIQUE,
+	title VARCHAR(255) NOT NULL UNIQUE, 
+	content TEXT NOT NULL,
+	modifieddate VARCHAR(255));
+
+INSERT INTO cmspages (slug, title, content, modifieddate) VALUES 
+('aboutus', 'About Us', "<div class='col-lg-6'>
+				<p style='font-size: 22px;' data-aos='fade-right' data-aos-duration='1000'> 
+					&#x2022; Since 1984 the Sacramento State Men's Rowing team has competed
+					against universities
+					from all over the country. As part of the Western Intercollegiate Rowing Association, the
+					team has won multiple conference championships in the Varsity 8. They also have had
+					championship boats in several other events during the team’s history.
+				</p>
+				<p style='font-size: 22px;' data-aos='fade-left' data-aos-duration='1000'> &#x2022; The members of this
+					team throughout history pride themselves on hard work, dedication, and commitment to
+					a common goal. (Competition & Practice Schedules with be added soon) In 2021, the club
+					transitioned to become the Rowing Club, now offering both men’s and women’s rowing.
+				</p>
+			</div>
+			<div class='col-md-6' data-aos='fade-down' data-aos-duration='1000'>
+				<img class='img-fluid rounded w-100' src='./static/img/p5.jpeg'>
+			</div>",datetime('now'));
+INSERT INTO cmspages (slug, title, content, modifieddate) VALUES ('social', 'Social Block',
+"<section class='video-help' style='background-image:none;'>
+        <div class='video-help-content'>
+            <p style='color:black'>Have any questions?</p>
+            <br>
+            <p style='color:black;'>Email us at abcd@csus.com</p>
+            <br>
+            <br>
+            <div class='wrapper-social-icon'>
+                <div class='button-social'>
+                    <div class='social-icon'>
+                        <i class='fab fa-facebook-f'></i>
+                    </div>
+                    <a href='https://facebook.com'><span>Facebook</span></a>
+                </div></a>
+                <div class='button-social'>
+                    <div class='social-icon'>
+                        <i class='fab fa-instagram'></i>
+                    </div>
+                    <a href='https://instagram.com'><span>Instagram</span></a>
+                </div></a>
+                <div class='button-social'>
+                    <div class='social-icon'>
+                        <i class='fab fa-youtube'></i>
+                    </div>
+                    <a href='https://youtube.com'><span>YouTube</span></a>
+                </div></a>
+            </div>
+        </div>
+    </section>",datetime('now'));
