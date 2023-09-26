@@ -20,13 +20,16 @@
 {% endblock %}
 
 {% block body %}
-
 <div>Edit {{page [0][1] }}</div>
+{% if result != 0 %}
+<div class="alert alert-success" role="alert">
+    Updated the content successfully!
+  </div>
+  {% endif %}
 <form method="post" name="update-page">
     <textarea id="content" name="content">{{page[0][2]}}</textarea>
      <button type="submit" id="submit" class="mb-2 mr-2 btn btn-outline-2x btn-outline-success" onclick="return submit();">Update</button>
     
-</form>
- 
+</form>       
     
 {% endblock %}

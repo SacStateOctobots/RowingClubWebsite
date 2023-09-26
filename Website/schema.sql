@@ -100,19 +100,19 @@ INSERT INTO cmspages (slug, title, content, modifieddate) VALUES ('social', 'Soc
             <div class='wrapper-social-icon'>
                 <div class='button-social'>
                     <div class='social-icon'>
-                        <i class='fab fa-facebook-f'></i>
+                        <em class='fab fa-facebook-f'>&nbsp;</em>
                     </div>
                     <a href='https://facebook.com'><span>Facebook</span></a>
                 </div></a>
                 <div class='button-social'>
                     <div class='social-icon'>
-                        <i class='fab fa-instagram'></i>
+                        <em class='fab fa-instagram'>&nbsp;</em>
                     </div>
                     <a href='https://instagram.com'><span>Instagram</span></a>
                 </div></a>
                 <div class='button-social'>
                     <div class='social-icon'>
-                        <i class='fab fa-youtube'></i>
+                        <em class='fab fa-youtube'>&nbsp;</em>
                     </div>
                     <a href='https://youtube.com'><span>YouTube</span></a>
                 </div></a>

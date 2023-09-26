@@ -241,9 +241,9 @@ def cmspages():
 @flask_login.login_required
 def updatepage(slug):
 	if flask.request.method == 'GET':
-		return render_template("editpage.html",page=db.get_page(slug))
+		return render_template("editpage.html",page=db.get_page(slug), result = 0)
 	else:
 		content = request.form['content']
 		db.update_page(slug,content)
-		return render_template("editpage.html",page=db.get_page(slug))
+		return render_template("editpage.html",page=db.get_page(slug), result = 1)
             

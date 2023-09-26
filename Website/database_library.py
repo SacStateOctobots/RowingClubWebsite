@@ -118,12 +118,12 @@ def get_pages():
 	return query_db('select * from cmspages')
 def get_page(slug):
 	return query_db('select * from cmspages where slug = :val',{'val': slug})
-def insert_team_members(slug, title, content,date):
+def insert_cmspage(slug, title, content,date):
 	insert_to_db("cmspages","(slug, title, content,date)","(?,?,?)", (slug, title, content,date))
 def update_page(slug, content):
 	query = "UPDATE cmspages SET content= :content , modifieddate= :date WHERE slug= :slug"
 	args = {'content': content, 'slug': slug, 'date': datetime.now()}
-	if(update_to_db(query, args) != None):
+	if(update_to_db(query, args)):
 		return query_db('select * from cmspages where slug = :val',{'val': slug})
 	else:
 		return None
