@@ -663,6 +663,7 @@ h1.hero-heading {
         text-align: center;
         border-bottom: 1px solid #000000;
         border-width: 1px;
+        text-shadow: 1px 4px 4px rgba(116, 116, 116, 0.947);
     }
 }
 /* Event CSS*/
