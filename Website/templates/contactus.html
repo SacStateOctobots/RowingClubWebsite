@@ -27,27 +27,7 @@ Contact Us - Rowing Club
         <div class="video-introduction-content">
             <h1 data-aos="fade-up" data-aos-duration="1000">Contact Us</h1>
         </div>
-        <div class="wrapper-social-icon" style="text-align: center;">
-            <div class="button-social" data-aos="fade-down" data-aos-duration="1000">
-
-                <div class="social-icon">
-                    <i class="fab fa-facebook-f"></i>
-                </div>
-                <a href="https://facebook.com"><span>Facebook</span></a>
-            </div></a>
-            <div class="button-social" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                <div class="social-icon">
-                    <i class="fab fa-instagram"></i>
-                </div>
-                <a href="https://instagram.com"><span>Instagram</span></a>
-            </div></a>
-            <div class="button-social" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="400">
-                <div class="social-icon">
-                    <i class="fab fa-youtube"></i>
-                </div>
-                <a href="https://youtube.com"><span>YouTube</span></a>
-            </div></a>
-        </div>
+        {{social[0][2] | safe}}
     </div>
 </section>
 
@@ -75,39 +55,7 @@ Contact Us - Rowing Club
             <div class="col-12">
                 <div class="row gy-4">
                     <!--Home Logo-->
-                    <div class="col-md-4" style="text-align: center;">
-                        <div class="contact-icon" data-aos="fade-down" data-aos-duration="1000">
-                            <div class="icon">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <h3>VISIT US</h3>
-                            <p> We always welcome you at </p>
-                            <h4>1901 Hazel Ave, <br> Gold River, CA 95670</h4>
-                        </div>
-                    </div>
-                    <!--Phone Logo-->
-                    <div class="col-md-4" style="text-align: center;">
-                        <div class="contact-icon" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
-
-                            <div class="icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <h3>CALL US</h3>
-                            <p> We are happy to hear from you </p>
-                            <h4>+1 209 123 4567</h4>
-                        </div>
-                    </div>
-
-                    <!--Email Logo-->
-                    <div class="col-md-4" style="text-align: center;">
-                        <div class="contact-icon" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="600">
-                            <div class="icon"> <i class="fas fa-envelope"></i>
-                            </div>
-                            <h3>Email US</h3>
-                            <p> Even you can send us any messages</p>
-                            <h4>rowing@abcd.csus.edu</h4>
-                        </div>
-                    </div>
+                    {{logo[0][2] | safe}}
                 </div>
             </div>
         </div>

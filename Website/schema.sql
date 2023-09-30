@@ -90,32 +90,61 @@ INSERT INTO cmspages (slug, title, content, modifieddate) VALUES
 				<img class='img-fluid rounded w-100' src='./static/img/p5.jpeg'>
 			</div>",datetime('now'));
 INSERT INTO cmspages (slug, title, content, modifieddate) VALUES ('social', 'Social Block',
-"<section class='video-help' style='background-image:none;'>
-        <div class='video-help-content'>
-            <p style='color:black'>Have any questions?</p>
-            <br>
-            <p style='color:black;'>Email us at abcd@csus.com</p>
-            <br>
-            <br>
-            <div class='wrapper-social-icon'>
-                <div class='button-social'>
-                    <div class='social-icon'>
-                        <em class='fab fa-facebook-f'>&nbsp;</em>
+"<div class='wrapper-social-icon'>
+			<div class='button-social'>
+				<div class='social-icon'>
+					<em class='fab fa-facebook-f'>&nbsp;</em>
+				</div>
+				<a href='https://facebook.com'><span>Facebook</span></a>
+			</div></a>
+			<div class='button-social'>
+				<div class='social-icon'>
+					<em class='fab fa-instagram'>&nbsp;</em>
+				</div>
+				<a href='https://instagram.com'><span>Instagram</span></a>
+			</div></a>
+			<div class='button-social'>
+				<div class='social-icon'>
+					<em class='fab fa-youtube'>&nbsp;</em>
+				</div>
+				<a href='https://youtube.com'><span>YouTube</span></a>
+			</div></a>
+		</div>",datetime('now'));
+INSERT INTO cmspages (slug, title, content, modifieddate) VALUES ('contact', 'Contact Information',
+"<p style='color:black'>Have any questions?</p>
+		<br>
+		<p style='color:black;'>Email us at abcd@csus.com</p>",datetime('now'));
+INSERT INTO cmspages (slug, title, content, modifieddate) VALUES ('contact_logo', 'Contact Logo',
+"<div class='col-md-4' style='text-align: center;'>
+                        <div class='contact-icon' data-aos='fade-down' data-aos-duration='1000'>
+                            <div class='icon'>
+                                <i class='fas fa-home'></i>
+                            </div>
+                            <h3>VISIT US</h3>
+                            <p> We always welcome you at </p>
+                            <h4>1901 Hazel Ave, <br> Gold River, CA 95670</h4>
+                        </div>
                     </div>
-                    <a href='https://facebook.com'><span>Facebook</span></a>
-                </div></a>
-                <div class='button-social'>
-                    <div class='social-icon'>
-                        <em class='fab fa-instagram'>&nbsp;</em>
+                    <!--Phone Logo-->
+                    <div class='col-md-4' style='text-align: center;'>
+                        <div class='contact-icon' data-aos='fade-down' data-aos-duration='1000' data-aos-delay='300'>
+
+                            <div class='icon'>
+                                <i class='fas fa-phone'></i>
+                            </div>
+                            <h3>CALL US</h3>
+                            <p> We are happy to hear from you </p>
+                            <h4>+1 209 123 4567</h4>
+                        </div>
                     </div>
-                    <a href='https://instagram.com'><span>Instagram</span></a>
-                </div></a>
-                <div class='button-social'>
-                    <div class='social-icon'>
-                        <em class='fab fa-youtube'>&nbsp;</em>
-                    </div>
-                    <a href='https://youtube.com'><span>YouTube</span></a>
-                </div></a>
-            </div>
-        </div>
-    </section>",datetime('now'));
+
+                    <!--Email Logo-->
+                    <div class='col-md-4' style='text-align: center;'>
+                        <div class='contact-icon' data-aos='fade-down' data-aos-duration='1000' data-aos-delay='600'>
+                            <div class='icon'> <i class='fas fa-envelope'></i>
+                            </div>
+                            <h3>Email US</h3>
+                            <p> Even you can send us any messages</p>
+                            <h4>rowing@abcd.csus.edu</h4>
+                        </div>
+                    </div>",datetime('now'));

@@ -105,7 +105,7 @@ def calendar():
 
 @app.route("/instagram")
 def instagram():
-    return render_template("instagram.html",content=db.get_page("social"))
+    return render_template("instagram.html",social=db.get_page("social"), contact=db.get_page("contact"))
 
 @app.route("/about")
 def about():
@@ -120,7 +120,7 @@ def join():
 
 @app.route("/contact")
 def contact():
-    return render_template("contactus.html")
+    return render_template("contactus.html",social=db.get_page("social"),logo=db.get_page("contact_logo"))
 
 
 @app.route("/contact",methods=['POST'])
