@@ -278,9 +278,6 @@ def my_form_post():
 #######################################################
 # testimonial
 #######################################################
-@app.route('/protected')
-@flask_login.login_required
-def protected():
 	if "testimonial-delete-form" in request.form:
 		text = request.form['deletetestimonial']
 		db.delete_testimonial(text)
@@ -306,7 +303,7 @@ def protected():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_testimonial(nametext,desc,file)
-	return render_template("admin.html", players=db.get_players(), testimonial=db.get_testimonial())
+	return render_template("admin.html", players=db.get_players())
 
 @app.route('/logout')
 def logout():
