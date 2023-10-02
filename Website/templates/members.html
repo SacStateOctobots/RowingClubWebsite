@@ -48,61 +48,56 @@
         margin: 4px 2px;
         cursor: pointer;
     }
-    /* Team member styling displaying cleanly on multiple device form factors*/
-    /* CSS for team member cards */
-    .team-member-card {
-        padding: 20px;
+    /* Team member cards */
+    .card {
+        border: none;
+        transition: transform 0.2s;
     }
-    
-    @media (min-width: 768px) {
-        /* For screens larger than 768px (tablets and desktops) */
-        .team-member-card {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Show 3 cards per row */
-            gap: 20px;
-        }
+
+    .card:hover {
+        transform: scale(1.05);
     }
+
+    /* Media Queries */
     @media (max-width: 767px) {
         /* For screens smaller than 768px (mobile devices) */
-        .team-member-card {
+        .row-cols-md-3 {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+        }
+        .col {
+            flex-basis: calc(50% - 1rem);
+            margin-right: 1rem;
+            margin-bottom: 2rem;
+        }
+        .col:last-child {
+            margin-right: 0;
         }
     }
 </style>
+
 {% extends 'base.html' %}
 
-    {% block title %}
+{% block title %}
     Team Roster - Rowing Club
-    {% endblock %}
+{% endblock %}
 
 {% block body %}
-
-<br>
-
 <div class="container-fluid bg-primary text-white text-center py-4">
     <h1 class="display-4">Active Team Members</h1>
 </div>
 
-<br>
-
-<div class="container-fluid">
-    <div class="row row-cols-3 row-cols-sm-3 g-lg-1">
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for tup in member %}
-        <div class="col-4">
-            <div class="card mb-3 green_back_gold_front">
-            <div class="row g-0">
-            <div class="col-md-4">
+        <div class="col">
+            <div class="card">
+                <img src="static/image_uploads/{{ tup[2] }}" class="card-img-top" alt="{{ tup[0] }}'s profile photo">
                 <div class="card-body">
-                <h5 class="card-title">{{ tup[0] }}</h5>
-                    <img src="static/image_uploads/{{ tup[2] }}"  
-                    class="img-fluid rounded-start" 
-                    alt="{{ tup[0] }}'s profile photo.">
+                    <h5 class="card-title">{{ tup[0] }}</h5>
                     <p class="card-text">{{ tup[1] }}</p>
-                <p class="card-text text-muted">Role: {{ tup[3] }}</small></p>
+                    <p class="card-text"><small class="text-muted">Role: {{ tup[3] }}</small></p>
                 </div>
-            </div>
-            </div>
             </div>
         </div>
         {% endfor %}
@@ -113,17 +108,12 @@
     <h4 class="mb-4">Are you looking for Alumni?</h4>
     <a href="/alumni" class="btn btn-success btn-lg">Alumni Page</a>
 </div>
-<br>
 
-    <!--Swiper Js-->
-    <script src="./static/js/swiper-bundle.min.js"></script>
-
-    <!--Javascript-->
-    <script src="./static/js/script.js"></script>
-
-    <!--Amination-->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+<!-- Add any necessary scripts here -->
+<script src="./static/js/swiper-bundle.min.js"></script>
+<script src="./static/js/script.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 {% endblock %}
