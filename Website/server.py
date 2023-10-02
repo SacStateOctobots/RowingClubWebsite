@@ -84,14 +84,13 @@ def welcome():
 	newEvents = cal.get_next_five_events()
 	return render_template("welcome.html",next_events=newEvents)
 
-@app.route("/gallery")
-def gallery():
-    return render_template("gallery.html")
+@app.route("/donate")
+def donate():
+    return render_template("donate.html")
 
 @app.route("/members")
 def members():
-    test = db.get_team_members
-    return render_template("members.html", test=test)
+    return render_template("members.html", member=db.get_team_members())
 
 @app.route("/alumni")
 def alumni():
@@ -210,12 +209,104 @@ def my_form_post():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_alumni(nametext,desc,filename)
-	return render_template("admin.html", players=db.get_players(), alumni=db.get_alumni())
 
+#######################################################
+# team members form
+#######################################################
+
+	if "team-delete-form" in request.form:
+		text = request.form['deleteteam']
+		db.delete_team_members(text)
+	if "team-add-form" in request.form:
+		nametext = request.form['team-addname']
+		desc = request.form['team-desc']
+		role = request.form['role-desc']
+		# check if the post request has the file part
+		if 'team-file' not in request.files:
+			print('No file part')
+			return redirect(request.url)
+		file = request.files['team-file']
+		# If the user does not select a file, the browser submits an
+		# empty file without a filename.
+		if file.filename == '':
+			print('No file name')
+			return redirect(request.url)
+		if file and allowed_file(file.filename):
+			print('Success team member')
+			filename = secure_filename(file.filename)
+			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+		else:
+			print('File name not allowed')
+			return redirect(request.url)
+		db.insert_team_members(nametext,desc,filename,role)
+
+#######################################################
+# team members form
+#######################################################
+
+	if "officers-delete-form" in request.form:
+		text = request.form['deleteofficers']
+		db.delete_about(text)
+	if "officers-add-form" in request.form:
+		nametext = request.form['officers-addname']
+		desc = request.form['officers-desc']
+		# check if the post request has the file part
+		if 'officers-file' not in request.files:
+			print('No file part')
+			return redirect(request.url)
+		file = request.files['officers-file']
+		# If the user does not select a file, the browser submits an
+		# empty file without a filename.
+		if file.filename == '':
+			print('No file name')
+			return redirect(request.url)
+		if file and allowed_file(file.filename):
+			print('Success officer')
+			filename = secure_filename(file.filename)
+			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+		else:
+			print('File name not allowed')
+			return redirect(request.url)
+		db.insert_about(nametext,desc,filename)
+
+
+		
+	return render_template("admin.html", players=db.get_players())
+
+#######################################################
+# testimonial
+#######################################################
 @app.route('/protected')
 @flask_login.login_required
 def protected():
-	return render_template("admin.html", players=db.get_players())
+	if "testimonial-delete-form" in request.form:
+		text = request.form['deletetestimonial']
+		db.delete_testimonial(text)
+	if "testimonial-add-form" in request.form:
+		nametext = request.form['testimonial-addname']
+		desc = request.form['testimonial-desc']
+		# check if the post request has the file part
+		if 'testimonial-file' not in request.files:
+			print('No file part')
+			return redirect(request.url)
+		filetext = request.files['testimonial-file']
+		# If the user does not select a file, the browser submits an
+		# empty file without a filename.
+		if filetext.file == '':
+			print('No file name')
+			return redirect(request.url)
+		if filetext and allowed_file(filetext.file):
+			print('Success testimonial')
+			file = secure_filename(filetext.file)
+			print(os.path.join(app.config['UPLOAD_FOLDER'], file))
+			filetext.save(os.path.join(app.config['UPLOAD_FOLDER'], file))
+		else:
+			print('File name not allowed')
+			return redirect(request.url)
+		db.insert_testimonial(nametext,desc,file)
+	return render_template("admin.html", players=db.get_players(), testimonial=db.get_testimonial())
 
 @app.route('/logout')
 def logout():
