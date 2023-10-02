@@ -273,7 +273,7 @@ def my_form_post():
 
 
 		
-	return render_template("admin.html", players=db.get_players())
+
 
 #######################################################
 # testimonial
@@ -303,6 +303,9 @@ def my_form_post():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_testimonial(nametext,desc,file)
+
+
+		
 	return render_template("admin.html", players=db.get_players())
 
 @app.route('/logout')
