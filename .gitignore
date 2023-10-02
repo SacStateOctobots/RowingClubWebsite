@@ -9,6 +9,11 @@
 #Excecutables
 *.exe
 
+#Database
+*.db
+#Image Uploads from DB setup
+/Website/static/image_uploads/**
+
 #Google Calender API key
 **/API_KEY
 **/EMAIL_KEY
