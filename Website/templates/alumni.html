@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-
+<!--copied from the about us page-->
 <head>
 	<style>
 		body {
@@ -29,7 +29,7 @@
 		<div class="banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
 			<div class="space80"></div>
 			<div class="space80"></div>
-			<h1>About Us</h1>
+			<h1>About The Alumni</h1>
 		</div>
 
 
@@ -43,7 +43,7 @@
 		{% for tup in alumni %}
 			<h5>{{ tup[0] }}</h5>
 			<img src="static/image_uploads/{{ tup[2] }}" 
-				alt="{{ tup[0] }} profile photo." 
+				alt="{{ tup[0] }}'s profile photo." 
 				style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
 			>
 			<p>{{ tup[1] }}</p>

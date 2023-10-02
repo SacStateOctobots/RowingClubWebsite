@@ -38,6 +38,13 @@
     color: #fff;
     font-weight: 600;
 }
+@media only screen and (max-width: 600px) {
+    .video-introduction-content h1 {
+        font-size: 70px;
+        color: #fff;
+        font-weight: 600;
+    }
+}
 
 .video-introduction-content h4 {
     font-size: 30px;
