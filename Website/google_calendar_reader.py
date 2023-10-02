@@ -26,7 +26,7 @@ def get_next_five_events():
 		summary = ""
 		description = ""
 		location = ""
-		date = ""
+		date = "" 
 
 		# get event summary
 		if "summary" in a.keys():
@@ -115,7 +115,7 @@ def get_last_five_events():
 		date = ""
 
 		# get event summary
-		if "summary" in a.keys():
+		if a.keys()   and "summary" in a.keys():
 			summary += a["summary"]
 		else:
 			summary += "n/a"
@@ -144,7 +144,7 @@ def get_last_five_events():
 					events.append((summary,description,location,date))
 					date=""
 					start = rrulestr(a["recurrence"][0],dtstart=last_month).after(start)
-		elif "dateTime" in a["start"].keys(): # the date and time are present
+		elif a["start"] and "dateTime" in a["start"].keys(): # the date and time are present
 			date += a["start"]["dateTime"]	
 			# chop up the date into the required format for sorting
 			date1 = date.split("T")[0]
@@ -155,7 +155,7 @@ def get_last_five_events():
 			if eventDate < datetime.datetime.now(): # only include dates before the current date
 				events.append((summary,description,location,date))
 			date=""
-		elif "date" in a["start"].keys(): # just the date is present
+		elif a["start"] and "date" in a["start"].keys(): # just the date is present
 			date += a["start"]["date"]	
 			date += " 00:00:00" # a dummy time
 			eventDate = datetime.datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
