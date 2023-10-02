@@ -184,7 +184,38 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- form to add testimonials -->
+	<div class="col-4">
+		<div class="card mb-2 green_back_gold_front">
+			<div class="row g-0">
+				<h4>Specify testimonials to delete here: </h4>
+				<!-- form to delete testimonials by name-->
+				<form method="POST">
+					<label for="deletetestimonial">Testimonial Name:</label><br>
+					<input name="deletetestimonial" value="John Doe" class="form-control"><br>
+					<input type="submit" id='delete-form' name='testimonial-delete-form' value="Delete Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
+				</form> 
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-4">
+		<div class="card mb-2 green_back_gold_front">
+			<div class="row g-0">
+				<h4>Specify testimonials to add here: </h4>
+				<!-- form to add testimonials -->
+				<form method="POST" id="add-form" name="testimonial-add-form" enctype="multipart/form-data">
+					<label for="testimonial-addname">Testimonial Name:</label><br>
+					<input type="text" id="testimonial-addname" name="testimonial-addname" value="John Doe" class="form-control"><br>
+					<label for="testimonial-desc">Testimonial Description:</label><br>
+					<input type="text" id="testimonial-desc" name="testimonial-desc" value="... testimonial description here ..." class="form-control"><br>
+					<label for="testimonial-file">Testimonial Picture:</label><br>
+					<input type="file" id="testimonial-file" name="testimonial-file" class="form-control"><br>
+					<input type="submit" id='add-form' name='testimonial-add-form' value="Add Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
+				</form> 
+			</div>
+		</div>
+	</div>
 <a href="logout" class="btn btn-outline-dark green_back_gold_front_lightened" role="button">Logout</a>
 </div>
 <br>
