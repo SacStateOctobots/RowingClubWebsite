@@ -1,56 +1,109 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Rowing Club Website Templates Demo
+Alumni - Rowing Club
 {% endblock %}
 
 {% block body %}
-
+<!--copied from the about us page-->
 <head>
 	<style>
 		body {
 			background-color: #c3b680;
 		}
-
-		.smashinglogo {
-			background: url(https://cdn.discordapp.com/attachments/1069818501621088296/1098754543271022732/Banner2.jpg);
-			background-size: cover;
-			background-position: center;
-			height: 500px;
+		.carousel {
+			width:100%;
+			height:540px;
+			overflow: hidden;
+		}
+		.carousel-img {
+    		width: 100% !important;
+    		height: 100% !important;
+    		object-fit: cover;
+		overflow: hidden;
+  		background-size: cover;
 		}
 	</style>
 </head>
 
-
-<!--About US Introduction Banner-->
-<section id="first" class="story" data-speed="8" data-type="background">
-	<div class="smashinglogo" data-offsetY="100" data-Xposition="50%" data-speed="-2">
-
-		<div class="banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
-			<div class="space80"></div>
-			<div class="space80"></div>
-			<h1>About Us</h1>
+<body>
+<!--Alumni Introduction Banner-->
+<div class="container">
+	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+		<!-- Slider Buttons -->
+		<div class="carousel-indicators">
+		  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
 		</div>
 
-
+		<!-- Slider Images -->
+		<div class="carousel-inner">
+		  	<div class="carousel-item active">
+				<img src="./static/img/p9.jpg" class="img-responsive w-100" alt="Alum1">
+		  	</div>
+		 	 <div class="carousel-item">
+				<img src="./static/img/p10.jpg" class="img-responsive w-100" alt="Alum2">
+			</div>
+			<div class="carousel-item">
+				<img src="./static/img/p11.png" class="img-responsive w-100" alt="Alum3">
+			</div>
+		</div>
 	</div>
-</section>
+	<div class="banner-introduction-content" style="position:relative; top:-420px;" data-aos="fade-up" data-aos-duration="1000">
+		<h1>Alumni</h1>
+	</div>
+</div>
+  
+<!-- Alumni Association Text Boxes -->
+<div class="container-xxl py-5">
+	<div class="container">
+		<div class="row g-4">
+			<div class="col-lg-6">
+				<p style="font-size: 22px;" data-aos="fade-right" data-aos-duration="1000"> 
+					&#x2022; This section will be a few paragraphs long and have info regarding what
+					the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
+					dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+					labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+				</p>
+				<p style="font-size: 22px;" data-aos="fade-left" data-aos-duration="1000"> &#x2022; This section will 
+					be a few paragraphs long and have info regarding what the Alumni Association is and what Alumni in
+					general have been doing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+				</p>
+			</div>
+			<div class="col-md-6" data-aos="fade-down" data-aos-duration="1000">
+				<img class="img-fluid rounded w-100" src="./static/img/p5.jpeg">
+			</div>
+		</div>
+	</div>
+</div>
 
+<!-- Alumni Database and Text Boxes -->
 <div class="container">
-	<hr/>
-	<div class="row">
-		<h2>Alumni:</h2>
-		{% for tup in alumni %}
-			<h5>{{ tup[0] }}</h5>
-			<img src="static/image_uploads/{{ tup[2] }}" 
-				alt="{{ tup[0] }} profile photo." 
-				style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
-			>
-			<p>{{ tup[1] }}</p>
-		{% endfor %}
+	<div class="text-heading mx-auto">
+		<h1>What Have Alumni Been Up To?</h1>
 	</div>
+	<div class="card text-left green_back_gold_front mx-auto">
+		<div class="card-body">
+			<p style="font-size: 22px;" data-aos="fade-right" data-aos-duration="1000"> 
+				This section will be a few paragraphs long and have info regarding what
+				the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
+				dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+			</p>
+			<p style="font-size: 22px;" data-aos="fade-left" data-aos-duration="1000"> 
+				This section will be a few paragraphs long and have info regarding what
+				the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
+				dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+			</p>
+		</div>
+	</div>
+	<br>
 	<hr/>
 </div>
+</body>
 
 <!--Amination-->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

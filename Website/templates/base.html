@@ -40,61 +40,85 @@
   }
   </style>
 -->
+
 {% block custom_head %} {% endblock %}
+
 </head>
 
-  <nav class="navbar navbar-expand-md navbar-dark green_back_gold_front">
-    <div class="justify-content-left">
-      <a href="/">
-        <img src="{{url_for('static', filename='img/Rowing_Gold.png')}}" width="auto" height="75" alt="Sacramento State Rowing Club logo">
-      </a>
-    </div>
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse d-flex justify-content-end" id="collapsibleNavbar">
-      <ul class="navbar-nav p-2">
-          <li class="nav-item">
-            <a class="nav-link" href="/gallery" >Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/calendar" >Calendar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/members" >Team Members</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/alumni" >Alumni</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login" >login</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="moreInfoDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              More Info</a>
-            <div class="dropdown-menu" aria-labelledby="moreInfoDropdown">
-              <a class="dropdown-item" href="/about">About Us</a>
-              <a class="dropdown-item" href="/instagram" >Social Media</a>
-              <a class="dropdown-item" href="/contact" >Contact</a>
-            </div>
-          </li>
-          <li  class="nav-item dropdown">
-            <a class="nav-link" href="/join">Join</a>
-          </li>
-        </ul>
-    </div>
-  </nav>
-
-
-
-  <title>
+<title>
   {% block title %} {% endblock %}
 </title>
 
 <body class="white_back_dark_green_front">
+  <header>
+    <!--NavBar-->
+    <nav class="navbar navbar-expand-xl navbar-dark green_back_gold_front" style="padding: 2px;">
+      <div class="container-fluid green_back_gold_front" >
+        <!--Club Logo-->
+        <div class="justify-content-left p-2">
+          <a href="/">
+            <img src="{{url_for('static', filename='img/Rowing_Gold_Crop.png')}}" width="auto" height="70" alt="Sacramento State Rowing Club logo">
+          </a>
+        </div>
+        <!--Hamburger toggle icon-->
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--links for site navigation-->
+        <div class="collapse navbar-collapse justify-content-center" style="font-size: 1.375em; white-space: nowrap;" id="collapsibleNavbar">
+          <ul class="navbar-nav p-2">
+            <li class="nav-item p-2">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item p-2">
+              <a class="nav-link" href="/calendar" >Calendar</a>
+            </li>
+            <li class="nav-item p-2">
+              <a class="nav-link" href="/members" >Team Members</a>
+            </li>
+             <li class="nav-item p-2">
+              <a class="nav-link" href="/instagram" >Social Medias</a>
+            </li>
+            <li class="nav-item dropdown p-2">
+              <a class="nav-link dropdown-toggle" href="#" id="moreInfoDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                More Info
+              </a>
+              <div class="dropdown-menu" aria-labelledby="moreInfoDropdown">
+                <a class="dropdown-item" href="/alumni" >Alumni</a>
+                <a class="dropdown-item" href="/about">About Us</a>
+                <a class="dropdown-item" href="/contact" >Contact</a>
+              </div>
+            </li>
+            <!--Alternate version without dropdown
+              <li class="nav-item">
+                <a class="nav-link" href="/alumni" >Alumni</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about" >About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact" >Contact</a>
+              </li>
+            -->
+            <li  class="nav-item p-2">
+              <a class="nav-link" href="/join">Join</a>
+            </li>
+            <li class="nav-item p-2">
+              <a class="nav-link" href="/donate" >Donate</a>
+            </li>
+            <!--Link to log-in page should be hidden when project is ready for release-->
+            <li class="nav-item p-2">
+              <a class="nav-link" href="/login" >Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!--Main body of webpage-->
   {% block body %} {% endblock %}
+
 </body>
 
 <!--

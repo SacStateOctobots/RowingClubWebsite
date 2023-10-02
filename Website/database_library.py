@@ -37,7 +37,7 @@ def query_db(query, args=(), one=False):
     return (rv[0] if rv else None) if one else rv
 def insert_to_db(table_str,column_str,valfmt_str,vals):
 	cur = sqlite3.connect(DATABASE)
-	cur.execute("INSERT INTO "+table_str+" "+column_str+" VALUES "+valfmt_str,vals)
+	cur.execute("INSERT OR IGNORE INTO "+table_str+" "+column_str+" VALUES "+valfmt_str,vals)
 	cur.commit()
 def update_to_db(query,args):
 	cur = sqlite3.connect(DATABASE)
@@ -91,9 +91,9 @@ def delete_alumni(name):
 #######################################################
 def get_team_members():
 	return query_db('select * from team_members')
-def insert_team_members(name, team_member, imgfilename,role):
-	insert_to_db("team_members","(name, team_member, imgfilename, role)","(?,?,?,?)", (name, team_member, imgfilename, role))
-def delete_testemonial(name):
+def insert_team_members(name,desc,filename,role):
+	insert_to_db("team_members","(name,description,imgfilename,role)","(?,?,?,?)", (name,desc,filename,role))
+def delete_team_members(name):
 	delete_from_db("team_members","name",name)
 
 #######################################################
@@ -102,7 +102,7 @@ def delete_testemonial(name):
 def get_about():
 	return query_db('select * from officers')
 def insert_about(name,desc,filename):
-	insert_to_db("officers","(name,description,imgfilename)","(?,?,?)", (name,desc,filename))
+	insert_to_db("officers","(name,description,filename)","(?,?,?)", (name,desc,filename))
 def delete_about(name):
 	delete_from_db("officers","name",name)
 
