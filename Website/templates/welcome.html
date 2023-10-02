@@ -52,7 +52,7 @@ Welcome - Rowing Club
 		<h2>About Us</h2>
 		<ul class="list-group list-group-flush offset-md-1 fs-4">
 			<li>
-				<p>Website for everthing Sacramento State Rowing related.</p>
+				<p>Website for everything Sacramento State Rowing related.</p>
 			</li>
 			<li>
 				<p>This website contains many of the ongoing events and current team member rosters.</p>
@@ -67,50 +67,33 @@ Welcome - Rowing Club
 <br>
 <br>
 
-<div class="card green_back_gold_front text-center container-xl" data-aos="fade-right" data-aos-duration="1000">
-	<img src="https://cdn.discordapp.com/attachments/1014300694238482442/1092929612880805949/image.png"
-		style="height: 460px;" class="card-img" alt="...">
+<div class="text-center container-xl" data-aos="fade-right" data-aos-duration="1000">
+	<img src="https://cdn.discordapp.com/attachments/1014300694238482442/1092929612880805949/image.png" 
+		class="img-fluid rounded" alt="">
 	<div class="card-img-overlay mx-auto">
 		<h1 class="offset-md-0" style="text-align: center;">Interested in joining?</h1>
 		<!--https://forms.gle/nNq3ySVYcjgHjMb27-->
 		<button onclick="document.location='https://forms.gle/nNq3ySVYcjgHjMb27'"
-			class="btn green_back_gold_front btn-lg col-4 fs-2" data-aos="zoom-in-up"
-			data-aos-duration="1000">Recruitment Form</button>
+			class="btn green_back_gold_front" data-aos="zoom-in-up"
+			data-aos-duration="1000">
+			<span style="font-size: 120%;">	Recruitment Form </span>
+		</button>
+<!-- style="height:22%; width:22%;"-->
 	</div>
 </div>
-
+	
 <br>
 
 <!-- Example styling for fixed height cards with  -->
 <!-- scrollbar on overflow -->
 <!-- find out how to scale by resolution instead of hardcoded numbers -->
-<style>
-	.row {
-		display: flex;
-	}
-
-	.card-body {
-		height: 179px;
-		width: 406px;
-	}
-	.card-text {
-		height: 72px;
-		width: 400px;
-		overflow-y: auto;
-	}
-
-	.card-title {
-		height: 40px;
-		width: 400px;
-		overflow-x: auto;
-	}
 </style>
-<div class="card green_back_gold_front mb-3 container-xl" data-aos="fade-up" data-aos-duration="1000">
+<div class="card green_back_gold_front mb-3 container-fluid" data-aos="fade-up" data-aos-duration="1000">
 	<div class="card-header">
 		<h1 class="offset-md-0" style="text-align: center;">Upcoming Events</h1>
 	</div>
 	<div class="space15"></div>
-	<div class="row row-cols-1 row-cols-md-2 g-4">
+	<div class="row row-cols-1 row-cols-md-2 g-4 my_row">
 		{% if next_events|length >=1 %}
 		<div class="col">
 			<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
