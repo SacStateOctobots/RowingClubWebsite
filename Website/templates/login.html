@@ -1,25 +1,37 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Rowing Club Website Templates Demo
+Rowing Club Website Templates Demo
 {% endblock %}
 
 {% block body %}
-<div class="jumbotron text-center">
-	<h1>Login</h1>
-	<p>Please enter your login credentials below.</p>
-</div>
+<div class="parent clearfix">
+	<div class="bg-illustration">
+		<img src=".\static\img\Rowinglogo.svg" alt="logo">
+	</div>
 
-<div class="container">
-	<form action='login' method='POST'>
-  		<div class="form-group">
-			<input type='text' name='email' id='email' placeholder='email' class='form-control'></input><br>
+	<div class="login">
+		<div class="container">
+			<h1>Hello Admin;-)<br />Welcome to Admin Portal</h1>
+			<div class="login-form">
+				<form form action='login' method='POST'>
+					<input type='text' name='email' id='email' placeholder='Email Adress' class='form-control'></input>
+					<input type='password' name='pw' id='pw' placeholder='Password' class='form-control'>
+
+					<div class="remember-form">
+						<input type="checkbox">
+						<span>Remember me</span>
+					</div>
+					<div class="forget-pass">
+						<a href="#">Forgot Password ?</a>
+					</div>
+
+					<button type='submit' name='submit'>LOG IN</button>
+				</form>
+			</div>
 		</div>
-  		<div class="form-group">
-			<input type='password' name='pw' id='pw' placeholder='password' class='form-control'></input><br>
-		</div>
-		<input type='submit' name='submit' class="btn btn-outline-dark green_back_gold_front_lightened"></input>
-	</form>
+	</div>
 </div>
-<br>
+<div class="space15"></div>
+
 {% endblock %}
