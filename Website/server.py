@@ -94,7 +94,8 @@ def members():
 
 @app.route("/alumni")
 def alumni():
-    return render_template("alumni.html", alumni=db.get_alumni())
+	print(db.get_alumni())
+	return render_template("alumni.html", alumni=db.get_alumni())
 
 @app.route("/calendar")
 def calendar():
@@ -157,7 +158,7 @@ def my_form_post():
 	if "delete-form" in request.form:
 		text = request.form['deleteplayer']
 		db.delete_player(text)
-	if "add-form" in request.form:
+	if "player-button-name" in request.form:
 		nametext = request.form['addname']
 		desc = request.form['desc']
 		# check if the post request has the file part
@@ -187,7 +188,7 @@ def my_form_post():
 	if "alumni-delete-form" in request.form:
 		text = request.form['deletealumni']
 		db.delete_alumni(text)
-	if "alumni-add-form" in request.form:
+	if "alumni-form-button-name" in request.form:
 		nametext = request.form['alumni-addname']
 		desc = request.form['alumni-desc']
 		# check if the post request has the file part
@@ -217,7 +218,7 @@ def my_form_post():
 	if "team-delete-form" in request.form:
 		text = request.form['deleteteam']
 		db.delete_team_members(text)
-	if "team-add-form" in request.form:
+	if "team-button-name" in request.form:
 		nametext = request.form['team-addname']
 		desc = request.form['team-desc']
 		role = request.form['role-desc']
@@ -244,11 +245,14 @@ def my_form_post():
 #######################################################
 # team members form
 #######################################################
-
+	print("TEST")
+	print(request.form)
 	if "officers-delete-form" in request.form:
 		text = request.form['deleteofficers']
 		db.delete_about(text)
-	if "officers-add-form" in request.form:
+	#if "officers-add-form" in request.form:
+	if "officers-button-name" in request.form:
+		print('Officers add form')
 		nametext = request.form['officers-addname']
 		desc = request.form['officers-desc']
 		# check if the post request has the file part
