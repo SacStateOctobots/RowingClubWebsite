@@ -49,16 +49,12 @@ CREATE TABLE IF NOT EXISTS officers (
 	description VARCHAR(255) NOT NULL UNIQUE, 
 	filename VARCHAR(255) NOT NULL UNIQUE);
 
-
-INSERT INTO officers (name, desc, filename) VALUES 
-('Officer1', 'This is test text for officer1.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
- ('Officer2', 'This is test text for officer2.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
- ('Officer3', 'This is test text for officer3.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
- ('Officer4', 'This is test text for officer4.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
- ('Officer5', 'This is test text for officer5.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
- ('Officer6', 'This is test text for officer6.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
- ('Officer7', 'This is test text for officer7.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg'),
- ('Officer8', 'This is test text for officer8.', 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Quite_the_happy_dog.jpg');
+INSERT INTO officers (name, description, filename) VALUES 
+('Officer1', 'This is test text for officer1.', 'Cat1.jpg'),
+ ('Officer2', 'This is test text for officer2.', 'Cat2.jpg'),
+ ('Officer3', 'This is test text for officer3.', 'Cat3.jpg'),
+ ('Officer4', 'This is test text for officer4.', 'Cat4.jpg'),
+ ('Officer5', 'This is test text for officer5.', 'Cat5.jpg');
 
 -- sql table for cmspages (about page)
 CREATE TABLE IF NOT EXISTS cmspages (

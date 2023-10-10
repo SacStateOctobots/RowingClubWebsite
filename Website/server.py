@@ -306,7 +306,7 @@ def protected():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_testimonial(nametext,desc,file)
-	return render_template("admin.html", players=db.get_players(), testimonial=db.get_testimonial())
+	return render_template("admin.html", players=db.get_players(), testimonial=db.get_testimonial(), blocks=db.get_pages())
 
 @app.route('/logout')
 def logout():
@@ -322,19 +322,26 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/cmspages')
+@app.route('/updatecontent', methods=['POST'])
 @flask_login.login_required
 def cmspages():
-	return render_template("cmspages.html", pages=db.get_pages())
+	if flask.request.method == 'POST':
+		json_data = flask.request.get_json()
+		db.update_page(json_data["slug"],json_data["content"])
+		return {
+			'data' : db.get_page(json_data["slug"]),
+			'message': "Updated!"
+		}
+	return render_template('admin.html')
 
 
-@app.route('/editpage/<slug>', methods=['GET','POST'])
+@app.route('/editpage', methods=['POST'])
 @flask_login.login_required
-def updatepage(slug):
-	if flask.request.method == 'GET':
-		return render_template("editpage.html",page=db.get_page(slug), result = 0)
-	else:
-		content = request.form['content']
-		db.update_page(slug,content)
-		return render_template("editpage.html",page=db.get_page(slug), result = 1)
+def updatepage():
+	if flask.request.method == 'POST':
+		json_data = flask.request.get_json()
+		return {
+			'data' : db.get_page(json_data["slug"])
+		}
+	return render_template('admin.html')
             
