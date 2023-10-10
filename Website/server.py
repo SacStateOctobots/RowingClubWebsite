@@ -148,12 +148,12 @@ def login():
         user = User()
         user.id = email
         flask_login.login_user(user)
-        return flask.redirect(flask.url_for('protected'))
+        return flask.redirect(flask.url_for('protected_get'))
     return 'Bad login'
 
 @app.route('/protected', methods=['POST'])
 @flask_login.login_required
-def my_form_post():
+def protected_post():
 	if "delete-form" in request.form:
 		text = request.form['deleteplayer']
 		db.delete_player(text)
@@ -181,7 +181,7 @@ def my_form_post():
 		db.insert_player(nametext,desc,filename)
             
 #######################################################
-# sample copy of a secondary add form
+# Alumni form -> needs to be changed to edit text. Alumni memebers not a part of page
 #######################################################
 
 	if "alumni-delete-form" in request.form:
@@ -242,7 +242,7 @@ def my_form_post():
 		db.insert_team_members(nametext,desc,filename,role)
 
 #######################################################
-# team members form
+# Officer form
 #######################################################
 
 	if "officers-delete-form" in request.form:
@@ -271,16 +271,10 @@ def my_form_post():
 			return redirect(request.url)
 		db.insert_about(nametext,desc,filename)
 
-
-		
-	return render_template("admin.html", players=db.get_players())
-
 #######################################################
 # testimonial
 #######################################################
-@app.route('/protected')
-@flask_login.login_required
-def protected():
+
 	if "testimonial-delete-form" in request.form:
 		text = request.form['deletetestimonial']
 		db.delete_testimonial(text)
@@ -306,7 +300,14 @@ def protected():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_testimonial(nametext,desc,file)
-	return render_template("admin.html", players=db.get_players(), testimonial=db.get_testimonial())
+		
+	return render_template("admin.html", players=db.get_players())
+
+
+@app.route('/protected', methods=['GET'])
+@flask_login.login_required
+def protected_get():
+	return render_template("admin.html", players=db.get_players());
 
 @app.route('/logout')
 def logout():
