@@ -324,7 +324,7 @@ def allowed_file(filename):
 
 @app.route('/updatecontent', methods=['POST'])
 @flask_login.login_required
-def cmspages():
+def cmsPages():
 	if flask.request.method == 'POST':
 		json_data = flask.request.get_json()
 		db.update_page(json_data["slug"],json_data["content"])
@@ -337,11 +337,28 @@ def cmspages():
 
 @app.route('/editpage', methods=['POST'])
 @flask_login.login_required
-def updatepage():
+def updatePage():
 	if flask.request.method == 'POST':
 		json_data = flask.request.get_json()
 		return {
 			'data' : db.get_page(json_data["slug"])
 		}
 	return render_template('admin.html')
+
+@app.route('/uploadimage', methods=['POST'])
+@flask_login.login_required
+def uploadImage():
+	if flask.request.method == 'POST':
+		if request.files.get("file"):
+			if allowed_file(request.files.get("file").filename):
+				file = secure_filename(request.files.get("file").filename)
+				request.files.get("file").save(os.path.join(app.config['UPLOAD_FOLDER'], file))
+	return {
+			'location' : os.path.join(app.config['UPLOAD_FOLDER'], file)
+		}
+			
+
+
+          
+	
             

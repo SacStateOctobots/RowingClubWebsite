@@ -29,7 +29,9 @@
 	tinymce.init({
 		selector: "#content",
 		plugins: ['link','image','code'],
-		toolbar: 'bold italic backcolor | alignleft aligncenter alignright alignjustify | code'
+		toolbar: 'bold italic backcolor | alignleft aligncenter alignright alignjustify | code',
+		images_upload_url: '/uploadimage',
+		images_reuse_filename: false
 	});
 
 </script>
@@ -265,6 +267,7 @@ function openTab(tabName) {
 						<div id="currentSlug" style="display: none;"></div>
 						<textarea id="content"></textarea>
 						<button type="submit" id="btnUdpateContent" class="mb-2 mr-2 btn btn-outline-2x btn-outline-success"">Update</button>
+						<input id='tinymce-uploader' type='file' name='pic' accept='image/*'' style='display:none'>
 					</form>			
 				</div>
 			
