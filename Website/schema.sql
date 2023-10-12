@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS testimonials (
 INSERT INTO testimonials (name, testimonial, imgfilename,job) VALUES ('Spiderman', 'A testimonial from a
                             client who benefited from your product or service.
                             Testimonials can be a highly effective way of establishing
-                            credibility and increasing your companys reputation.','https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Spider-Man.jpg/1200px-Spider-Man.jpg','superhero');
+                            credibility and increasing your companys reputation.','Spider-Man.jpg','superhero');
 
 CREATE TABLE IF NOT EXISTS team_members (
     name VARCHAR(255) NOT NULL UNIQUE,

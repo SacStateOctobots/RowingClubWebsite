@@ -4,7 +4,67 @@ from selenium.webdriver.common.by import By
 import datetime 
 from test_harness import run_tests, PATH_STRING
 import os 
-#from selenium.webdriver.support.wait import WebDriverWait
+
+def test_input_helper(driver,tab,field_input_pairs,submit_id):
+	# Navigate to admin page
+	driver.get(PATH_STRING+"/protected")
+	# Navigate to the required tab
+	element = driver.find_element(By.ID,tab)
+	element.click()
+	# fill out the fields of this form based on given list
+	for val in field_input_pairs:
+		# This is a hack where we run javascript in the browser to scroll the submit button element into view by id
+		# We have to wait a second for the viewport to update for this one to work.
+		driver.execute_script("document.getElementById(\""+val[0]+"\").scrollIntoView();")
+		element = driver.find_element(By.ID,val[0])
+		input("Wait for viewport update.")
+		element.clear()
+		element.send_keys(val[1])
+		input("Verify value "+val[1]+" input to form.")
+
+	# force user to confirm field input
+	input("Press enter if all form inputs worked correctly")
+
+	# This is a hack where we run javascript in the browser to scroll the submit button element into view by id
+	# We have to wait a second for the viewport to update for this one to work.
+	driver.execute_script("document.getElementById(\""+submit_id+"\").scrollIntoView();")
+	element = driver.find_element(By.ID, submit_id)
+
+	# wait for viewport update, submit, then force user to confirm submission
+	input("Wait for viewport update.")
+	#element.click()
+	element.submit()
+	input("Press enter if submission worked correctly.")
+
+def test_delete_helper(driver,tab,field_id,field_input,submit_id):
+	# Navigate to admin page
+	driver.get(PATH_STRING+"/protected")
+	# Navigate to the required tab
+	element = driver.find_element(By.ID,tab)
+	element.click()
+
+	# fill out the delete field of this form based on given values
+	# This is a hack where we run javascript in the browser to scroll the submit button element into view by id
+	# We have to wait a second for the viewport to update for this one to work.
+	driver.execute_script("document.getElementById(\""+field_id+"\").scrollIntoView();")
+	element = driver.find_element(By.ID,field_id)
+	input("Wait for viewport update.")
+	element.clear()
+	element.send_keys(field_input)
+
+	# force user to confirm field input
+	input("Press enter if all form inputs worked correctly")
+
+	# This is a hack where we run javascript in the browser to scroll the submit button element into view by id
+	# We have to wait a second for the viewport to update for this one to work.
+	driver.execute_script("document.getElementById(\""+submit_id+"\").scrollIntoView();")
+	element = driver.find_element(By.ID, submit_id)
+
+	# wait for viewport update, submit, then force user to confirm submission
+	input("Wait for viewport update.")
+	#element.click()
+	element.submit()
+	input("Press enter if submission worked correctly.")
 
 def admin_page_test(driver): 
 
@@ -22,95 +82,53 @@ def admin_page_test(driver):
 	input("Press enter if login worked correctly.")
 
 	dir_path = os.path.dirname(os.path.realpath(__file__))
+	now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 	# test player form input
-	driver.get(PATH_STRING+"/protected")
-	element = driver.find_element(By.ID, "players-tab")
-	element.click()
-	element = driver.find_element(By.ID, "addname-player")
-	element.clear()
-	element.send_keys("Test Player "+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-	element = driver.find_element(By.ID, "desc-player")
-	element.clear()
-	element.send_keys("Test description "+datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
-	element = driver.find_element(By.ID, "file-player")
-	element.clear()
-	element.send_keys(dir_path+"/sample-image.jpg")
-	#element = driver.find_element(By.ID, "add-form-submit-player")
-	element = driver.find_element(By.NAME, "player-button-name")
-	input("Press enter if player form input worked correctly")
-	#element = driver.find_element(By.ID, "add-form-submit-player")
-	element.click()
-	input("Press enter if player submission worked correctly.")
+	form_input_pairs = [
+		("player-name-id","Test Player "+now),
+		("player-desc-id","Test Player Description "+now),
+		("player-file-id",dir_path+"/sample-image.jpg")
+	]
+	print("Testing player input.")
+	test_input_helper(driver,"players-tab",form_input_pairs,"player-button-id")
+	print("Testing player delete.")
+	test_delete_helper(driver,"players-tab","deleteplayer-id",form_input_pairs[0][1],"delete-player-button-id")
 	
-	# Test alumni form
-	driver.get(PATH_STRING+"/protected")
-	element = driver.find_element(By.ID, "alumni-tab")
-	element.click()
-	element = driver.find_element(By.NAME, "alumni-addname")
-	element.clear()
-	element.send_keys("Test Player "+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-	element = driver.find_element(By.NAME, "alumni-desc")
-	element.clear()
-	element.send_keys("Test description "+datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
-	element = driver.find_element(By.NAME, "alumni-file")
-	element.clear()
-	element.send_keys(dir_path+"/sample-image.jpg")
-	element = driver.find_element(By.NAME, "alumni-form-button-name")
-	driver.execute_script("document.getElementById(\"alumni-form-button-id\").scrollIntoView();")
-	input("Press enter if alumni form input worked correctly")
-	#element = driver.find_element(By.NAME, "alumni-add-form")
-	element.click()
-	input("Press enter if alumni submission worked correctly.")
+	# test alumni form input
+	form_input_pairs = [
+		("alumni-name-id","Test Alumni "+now),
+		("alumni-desc-id","Test Alumni Description "+now),
+		("alumni-file-id",dir_path+"/sample-image.jpg")
+	]
+	print("Testing alumni input.")
+	test_input_helper(driver,"alumni-tab",form_input_pairs,"alumni-button-id")
+	print("Testing alumni delete.")
+	test_delete_helper(driver,"alumni-tab","deletealumni-id",form_input_pairs[0][1],"delete-alumni-button-id")
 
-	# Test team members form
-	driver.get(PATH_STRING+"/protected")
-	element = driver.find_element(By.ID, "team-tab")
-	element.click()
-	element = driver.find_element(By.NAME, "team-addname")
-	element.clear()
-	element.send_keys("Test Player "+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-	element = driver.find_element(By.NAME, "team-desc")
-	element.clear()
-	element.send_keys("Test description 1 "+datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
-	element = driver.find_element(By.NAME, "role-desc")
-	element.clear()
-	element.send_keys("Test description 2 "+datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
-	element = driver.find_element(By.NAME, "team-file")
-	# This element fails to scroll into view using only selenium.
-	# This is a hack where we run javascript in the browser to scroll the file element into view by id
-	driver.execute_script("document.getElementById(\"team-file\").scrollIntoView();")
-	element = driver.find_element(By.ID, "team-file")
-	input("Wait for viewport update")
-	element.clear()
-	element.send_keys(dir_path+"/sample-image.jpg")
-	element = driver.find_element(By.NAME, "team-button-name")
-	input("Press enter if team member form input worked correctly")
-	element.click()
-	input("Press enter if team member form submission worked correctly.")
-	
-	# Test officers form
-	driver.get(PATH_STRING+"/protected")
-	element = driver.find_element(By.ID, "officers-tab")
-	element.click()
-	element = driver.find_element(By.NAME, "officers-addname")
-	element.clear()
-	element.send_keys("Test Player "+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-	element = driver.find_element(By.NAME, "officers-desc")
-	element.clear()
-	element.send_keys("Test description "+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-	element = driver.find_element(By.NAME, "officers-file")
-	element.clear()
-	element.send_keys(dir_path+"/sample-image.jpg")
-	input("Press enter if officers form input worked correctly")
-	# This element fails to scroll into view using only selenium.
-	# This is a hack where we run javascript in the browser to scroll the submit button element into view by id
-	# We have to wait a second for the viewport to update for this one to work.
-	driver.execute_script("document.getElementById(\"officers-button-id\").scrollIntoView();")
-	element = driver.find_element(By.ID, "officers-button-id")
-	input("Wait for viewport update.")
-	element.click()
-	input("Press enter if officers submission worked correctly.")
+	# test team member form input
+	form_input_pairs = [
+		("team-name-id","Test Member "+now),
+		("team-player-desc-id","Test Member Player Description "+now),
+		("team-role-desc-id","Test Member Role Description "+now),
+		("team-file-id",dir_path+"/sample-image.jpg")
+	]
+	print("Testing team member input.")
+	test_input_helper(driver,"team-tab",form_input_pairs,"team-button-id")
+	print("Testing team member delete.")
+	test_delete_helper(driver,"team-tab","deleteteam-id",form_input_pairs[0][1],"delete-team-button-id")
+
+	# test officer form input
+	form_input_pairs = [
+		("officers-name-id","Test Officer "+now),
+		("officers-desc-id","Test Officer Description "+now),
+		("officers-file-id",dir_path+"/sample-image.jpg")
+	]
+	print("Testing officers input.")
+	test_input_helper(driver,"officers-tab",form_input_pairs,"officers-button-id")
+	print("Testing officers delete.")
+	test_delete_helper(driver,"officers-tab","deleteofficers-id",form_input_pairs[0][1],"delete-officers-button-id")
+
 
 	# logout
 	print("Testing logout.")
