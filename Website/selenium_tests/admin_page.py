@@ -1,6 +1,7 @@
 # import webdriver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 import datetime 
 from test_harness import run_tests, PATH_STRING
 import os 
@@ -47,10 +48,20 @@ def test_delete_helper(driver,tab,field_id,field_input,submit_id):
 	# This is a hack where we run javascript in the browser to scroll the submit button element into view by id
 	# We have to wait a second for the viewport to update for this one to work.
 	driver.execute_script("document.getElementById(\""+field_id+"\").scrollIntoView();")
+
+	# For raw text fields things work as in the previous helper function
+	#element = driver.find_element(By.ID,field_id)
+	#input("Wait for viewport update.")
+	#element.clear()
+	#element.send_keys(field_input)
+
+	# For select elements we can do the following
 	element = driver.find_element(By.ID,field_id)
 	input("Wait for viewport update.")
-	element.clear()
-	element.send_keys(field_input)
+	select = Select(element)
+	select.select_by_value(field_input)
+
+
 
 	# force user to confirm field input
 	input("Press enter if all form inputs worked correctly")

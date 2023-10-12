@@ -75,7 +75,11 @@ function openTab(tabName) {
 						<!-- form to delete players by name-->
 						<form method="POST">
   							<label for="deleteplayer">Player Name:</label><br>
-    						<input id="deleteplayer-id" name="deleteplayer" value ="Jane Doe" class="form-control"><br>
+							<select name="deleteplayer" id="deleteplayer-id" class="form-control">
+								{% for tup in players %}
+									<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+								{% endfor %}
+							</select><br>
     						<input type="submit" id='delete-player-button-id' name='delete-player-button' value="Delete Player" class="btn btn-outline-dark green_back_gold_front_lightened">
 						</form> 
 						<hr/>
@@ -129,7 +133,11 @@ function openTab(tabName) {
 					<!-- form to delete players by name-->
 					<form method="POST">
 						<label for="delete">Player Name:</label><br>
-	  					<input id="deletealumni-id" name="deletealumni" value ="Jane Doe" class="form-control"><br>
+						<select name="deletealumni" id="deletealumni-id" class="form-control">
+							{% for tup in alumni %}
+								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+							{% endfor %}
+						</select><br>
 	  					<input type="submit" id='delete-alumni-button-id' name='delete-alumni-button' value="Delete Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
     				</form> 
     				<hr/>
@@ -182,7 +190,11 @@ function openTab(tabName) {
 					<!-- form to delete players by name-->
 					<form method="POST">
 						<label for="deleteteam">Player Name:</label><br>
-						<input id="deleteteam-id" name="deleteteam" value ="Jane Doe" class="form-control"><br>
+						<select name="deleteteam" id="deleteteam-id" class="form-control">
+							{% for tup in team_members %}
+								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+							{% endfor %}
+						</select><br>
 						<input type="submit" id='delete-team-button-id' name='delete-team-button' value="Delete Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
 					</form> 
     				<hr/>
@@ -238,7 +250,11 @@ function openTab(tabName) {
 					<!-- form to delete officers by name-->
 					<form method="POST">
 						<label for="deleteofficers">Player Name:</label><br>
-						<input id="deleteofficers-id" name="deleteofficers" value ="Jane Doe" class="form-control"><br>
+						<select name="deleteofficers" id="deleteofficers-id" class="form-control">
+							{% for tup in officers %}
+								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+							{% endfor %}
+						</select><br>
 						<input type="submit" id='delete-officers-button-id' name='delete-officers-button' value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
 					</form> 
     				<hr/>
