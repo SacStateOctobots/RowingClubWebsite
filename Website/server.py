@@ -242,7 +242,7 @@ def my_form_post():
 		db.insert_team_members(nametext,desc,filename,role)
 
 #######################################################
-# team members form
+# officers form
 #######################################################
 
 	if "officers-delete-form" in request.form:
@@ -273,7 +273,7 @@ def my_form_post():
 
 
 		
-	return render_template("admin.html", players=db.get_players())
+	return render_template("admin.html", players=db.get_players(), member=db.get_team_members(), officers=db.get_about(), testimonial=db.get_testimonial())
 
 #######################################################
 # testimonial
@@ -306,7 +306,7 @@ def protected():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_testimonial(nametext,desc,file)
-	return render_template("admin.html", players=db.get_players(), testimonial=db.get_testimonial())
+	return render_template("admin.html", players=db.get_players(), testimonial=db.get_testimonial(), member=db.get_team_members(), officers=db.get_about())
 
 @app.route('/logout')
 def logout():
