@@ -61,8 +61,6 @@ def test_delete_helper(driver,tab,field_id,field_input,submit_id):
 	select = Select(element)
 	select.select_by_value(field_input)
 
-
-
 	# force user to confirm field input
 	input("Press enter if all form inputs worked correctly")
 
@@ -140,7 +138,18 @@ def admin_page_test(driver):
 	print("Testing officers delete.")
 	test_delete_helper(driver,"officers-tab","deleteofficers-id",form_input_pairs[0][1],"delete-officers-button-id")
 
-
+	# test testimonial form input
+	form_input_pairs = [
+		("testimonial-name-id","Test Testimonial "+now),
+		("testimonial-text1-id","Testimonial Text1 "+now),
+		("testimonial-text2-id","Testimonial Text2 "+now),
+		("testimonial-file-id",dir_path+"/sample-image.jpg")
+	]
+	print("Testing testimonial input.")
+	test_input_helper(driver,"testimonials-tab",form_input_pairs,"testimonial-button-id")
+	print("Testing testimonial delete.")
+	test_delete_helper(driver,"testimonials-tab","deletetestimonial-id",form_input_pairs[0][1],"delete-testimonial-button-id")
+	
 	# logout
 	print("Testing logout.")
 	driver.get(PATH_STRING+"/logout")
