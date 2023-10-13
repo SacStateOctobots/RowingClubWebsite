@@ -310,6 +310,13 @@ function openTab(tabName) {
 						<!-- form to delete testimonials -->
 						<form method="POST">
 							<!-- TESTIMONIAL DELETE FORM WILL GO HERE -->
+							<label for="deletetestimonial">Testimonial Name:</label><br>
+							<select name="deletetestimonial" id="deletetestimonial-id" class="form-control">
+								{% for tup in testimonial %}
+									<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+								{% endfor %}
+							</select><br>
+							<input type="submit" id='delete-testimonial-button-id' name='delete-testimonial-button' value="Delete Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
 						</form> 
 						<hr/>
 					</div>
@@ -321,7 +328,15 @@ function openTab(tabName) {
 						<h4>Specify testimonials to add here: </h4>
 						<!-- form to add testimonials-->
 						<form method="POST" id="testimonials-add-form-id" name="testimonials-add-form-name" enctype="multipart/form-data">
-							<!-- TESTIMONIAL ADD FORM WILL GO HERE -->
+							<label for="addname">Testimonial Name:</label><br>
+							<input type="text" id="testimonial-name-id" name="testimonial-name" value="John Doe" class="form-control"><br>
+							<label for="desc">Testimonial Text 1:</label><br>
+							<input type="text" id="testimonial-text1-id" name="testimonial-text1" value="... testimonial text 1 here ..." class="form-control"><br>
+							<label for="desc">Testimonial Text 2:</label><br>
+							<input type="text" id="testimonial-text2-id" name="testimonial-text2" value="... testimonial text 2 here  ..." class="form-control"><br>
+							<label for="file">Testimonial Picture:</label><br>
+							<input type="file" id="testimonial-file-id" name="testimonial-file" class="form-control"><br>
+							<input type="submit" id='testimonial-button-id' name='testimonial-button' value="Add Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
 						</form> 
 						<hr/>
 					</div>
@@ -334,6 +349,14 @@ function openTab(tabName) {
 				<h2>Testimonials:</h2>
 				{% for tup in testimonial %}
 					<!-- loop code for testimonials will go here -->
+					<hr class="my_solid_hr">
+					<h5>Testimonial Name: {{ tup[0] }}</h5>
+					<img src="static/image_uploads/{{ tup[2] }}" 
+						alt="{{ tup[0] }} profile photo." 
+						style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
+					>
+					<p>Text 1: {{ tup[1] }}</p>
+					<p>Text 2: {{ tup[3] }}</p>
 				{% endfor %}
 			</div>
 			<hr/>

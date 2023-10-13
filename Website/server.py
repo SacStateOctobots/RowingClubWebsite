@@ -114,7 +114,7 @@ def about():
 #recruitment page
 @app.route("/join")
 def join():
-    test = db.get_testimonial
+    test = db.get_testimonial()
     
     return render_template("join.html",test=test)
 
@@ -277,31 +277,32 @@ def my_form_post():
 #######################################################
 # Testimonials form
 #######################################################
-	if "testimonial-delete-form" in request.form:
+	if "deletetestimonial" in request.form:
 		text = request.form['deletetestimonial']
 		db.delete_testimonial(text)
-	if "testimonial-add-form" in request.form:
-		nametext = request.form['testimonial-addname']
-		desc = request.form['testimonial-desc']
+	if "testimonial-name" in request.form:
+		nametext = request.form['testimonial-name']
+		text1 = request.form['testimonial-text1']
+		text2 = request.form['testimonial-text2']
 		# check if the post request has the file part
 		if 'testimonial-file' not in request.files:
 			print('No file part')
 			return redirect(request.url)
-		filetext = request.files['testimonial-file']
+		file = request.files['testimonial-file']
 		# If the user does not select a file, the browser submits an
 		# empty file without a filename.
-		if filetext.file == '':
+		if file.filename == '':
 			print('No file name')
 			return redirect(request.url)
-		if filetext and allowed_file(filetext.file):
+		if file and allowed_file(file.filename):
 			print('Success testimonial')
-			file = secure_filename(filetext.file)
-			print(os.path.join(app.config['UPLOAD_FOLDER'], file))
-			filetext.save(os.path.join(app.config['UPLOAD_FOLDER'], file))
+			filename = secure_filename(file.filename)
+			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		else:
 			print('File name not allowed')
 			return redirect(request.url)
-		db.insert_testimonial(nametext,desc,file)
+		db.insert_testimonial(nametext,text1,filename,text2)
 	
 	players = db.get_players()
 	#print(players)
