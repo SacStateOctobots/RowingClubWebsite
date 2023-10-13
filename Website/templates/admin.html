@@ -24,150 +24,184 @@
 			background-color: #c3b680;
 		}
 	</style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+
 <div class="jumbotron text-center">
 	<h1>Admin Page</h1>
 </div>
 
-<div class="container">
-	<hr/>
-	<div class="row">
-		<h2>Players:</h2>
-		{% for tup in players %}
-			<h5>{{ tup[0] }}</h5>
-			<img src="static/image_uploads/{{ tup[2] }}" 
-				alt="{{ tup[0] }} profile photo." 
-				style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
-			>
-			<p>{{ tup[1] }}</p>
-		{% endfor %}
-	</div>
-	<hr/>
-</div>
+
+<!-- Script for displaying tabs -->
+<!-- https://www.w3schools.com/w3css/w3css_tabulators.asp -->
+<script>
+function openTab(tabName) {
+  var i;
+  var x = document.getElementsByClassName("tab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  document.getElementById(tabName).style.display = "block";  
+}
+</script>
+
 <div class="container-fluid">
-	<div class="row row-cols-4 row-cols-sm-4 g-lg-1">
-		<div class="col-4">
-			<div class="card mb-2 green_back_gold_front">
-				<div class="row g-0">
-    <h4>Specify players to delete here: </h4>
-	<!-- form to delete players by name-->
-	<form method="POST">
-  		<label for="deleteplayer">Player Name:</label><br>
-    	<input name="deleteplayer" value ="Jane Doe" class="form-control"><br>
-    	<input type="submit" id='delete-form' name='delete-form' value="Delete Player" class="btn btn-outline-dark green_back_gold_front_lightened">
-	</form> 
-	<hr/>
-				</div>
-		</div>
+
+	<!--<div class="w3-bar w3-black">-->
+	<div class="w3-bar green_back_gold_front">
+  		<button class="w3-bar-item w3-button" onclick="openTab('Players')">Players</button>
+  		<button class="w3-bar-item w3-button" onclick="openTab('Alumni')">Alumni</button>
+  		<button class="w3-bar-item w3-button" onclick="openTab('TeamMembers')">Team Members</button>
+  		<button class="w3-bar-item w3-button" onclick="openTab('Officers')">Officers</button>
 	</div>
 
-
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
-	<h4>Specify players to add here: </h4>
-	<!-- form to add players -->
-	<form method="POST" id="add-form" name="add-form" enctype="multipart/form-data">
-  		<label for="addname">Player Name:</label><br>
-  		<input type="text" id="addname" name="addname" value="John Doe" class="form-control"><br>
-  		<label for="desc">Player Description:</label><br>
-  		<input type="text" id="desc" name="desc" value="... player description here ..." class="form-control"><br>
-  		<label for="file">Profile Picture:</label><br>
-  		<input type="file" id="file" name="file" class="form-control"><br>
-  		<input type="submit" id='add-form' name='add-form' value="Add Player" class="btn btn-outline-dark green_back_gold_front_lightened">
-	</form> 
-	<hr/>
-				</div>
-		</div>
-	</div>
-
-
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
-	<h4>Specify alumni to delete here: </h4>
-	<!-- form to delete players by name-->
-	<form method="POST">
-		<label for="delete">Player Name:</label><br>
-	  <input name="deletealumni" value ="Jane Doe" class="form-control"><br>
-	  <input type="submit" id='delete-form' name='alumni-delete-form' value="Delete Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
-    </form> 
-    <hr/>
-				</div>
-		</div>
-	</div>
-
-
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
-	<h4>Specify players to add to alumni: </h4>
-	<!-- form to add players -->
-	<form method="POST" id="add-form" name="alumni-add-form" enctype="multipart/form-data">
-  		<label for="addname">Alumni Name:</label><br>
-  		<input type="text" id="addname" name="alumni-addname" value="John Doe" class="form-control"><br>
-  		<label for="desc">Alumni Description:</label><br>
-  		<input type="text" id="desc" name="alumni-desc" value="... player description here ..." class="form-control"><br>
-  		<label for="file">Alumni Picture:</label><br>
-  		<input type="file" id="file" name="alumni-file" class="form-control"><br>
-  		<input type="submit" id='add-form' name='alumni-add-form' value="Add Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
-	</form> 
-				</div>
-		</div>
-	</div>
-
-	
+	<!-- Players tab -->
+	<div id="Players" class="w3-container tab">
+		<h2>Players</h2>
+		<div class="row row-cols-4 row-cols-sm-4 g-lg-1">
 			<div class="col-4">
 				<div class="card mb-2 green_back_gold_front">
 					<div class="row g-0">
+    					<h4>Specify players to delete here: </h4>
+						<!-- form to delete players by name-->
+						<form method="POST">
+  							<label for="deleteplayer">Player Name:</label><br>
+    						<input name="deleteplayer" value ="Jane Doe" class="form-control"><br>
+    						<input type="submit" id='delete-form' name='delete-form' value="Delete Player" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form> 
+						<hr/>
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="card mb-2 green_back_gold_front">
+					<div class="row g-0">
+						<h4>Specify players to add here: </h4>
+						<!-- form to add players -->
+						<form method="POST" id="add-form" name="add-form" enctype="multipart/form-data">
+  							<label for="addname">Player Name:</label><br>
+  							<input type="text" id="addname" name="addname" value="John Doe" class="form-control"><br>
+  							<label for="desc">Player Description:</label><br>
+  							<input type="text" id="desc" name="desc" value="... player description here ..." class="form-control"><br>
+  							<label for="file">Profile Picture:</label><br>
+  							<input type="file" id="file" name="file" class="form-control"><br>
+  							<input type="submit" id='add-form' name='add-form' value="Add Player" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form> 
+						<hr/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<hr/>
+			<div class="row">
+				<h2>Players:</h2>
+				{% for tup in players %}
+					<h5>{{ tup[0] }}</h5>
+					<img src="static/image_uploads/{{ tup[2] }}" 
+						alt="{{ tup[0] }} profile photo." 
+						style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
+					>
+					<p>{{ tup[1] }}</p>
+				{% endfor %}
+			</div>
+			<hr/>
+		</div>
+	</div>
+
+	<!-- Alumni Tab -->
+	<div id="Alumni" class="w3-container tab" style="display:none">
+		<h2>Alumni</h2>
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+					<h4>Specify alumni to delete here: </h4>
+					<!-- form to delete players by name-->
+					<form method="POST">
+						<label for="delete">Player Name:</label><br>
+	  					<input name="deletealumni" value ="Jane Doe" class="form-control"><br>
+	  					<input type="submit" id='delete-form' name='alumni-delete-form' value="Delete Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
+    				</form> 
+    				<hr/>
+				</div>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+					<h4>Specify players to add to alumni: </h4>
+					<!-- form to add players -->
+					<form method="POST" id="add-form" name="alumni-add-form" enctype="multipart/form-data">
+  						<label for="addname">Alumni Name:</label><br>
+  						<input type="text" id="addname" name="alumni-addname" value="John Doe" class="form-control"><br>
+  						<label for="desc">Alumni Description:</label><br>
+  						<input type="text" id="desc" name="alumni-desc" value="... player description here ..." class="form-control"><br>
+  						<label for="file">Alumni Picture:</label><br>
+  						<input type="file" id="file" name="alumni-file" class="form-control"><br>
+  						<input type="submit" id='add-form' name='alumni-add-form' value="Add Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
+					</form> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Team Members tab -->
+	<div id="TeamMembers" class="w3-container tab" style="display:none">
+		<h2>Team Members</h2>
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
 					<h4>Specify team members to delete here: </h4>
 					<!-- form to delete players by name-->
 					<form method="POST">
 						<label for="deleteteam">Player Name:</label><br>
-					<input name="deleteteam" value ="Jane Doe" class="form-control"><br>
-					<input type="submit" id='delete-form' name='team-delete-form' value="Delete Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
+						<input name="deleteteam" value ="Jane Doe" class="form-control"><br>
+						<input type="submit" id='delete-form' name='team-delete-form' value="Delete Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
 					</form> 
+				</div>
 			</div>
 		</div>
-	</div>
-	
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
-				<h4>Specify players to add to team members: </h4>
-				<!-- form to add players -->
-				<form method="POST" id="add-form" name="team-add-form" enctype="multipart/form-data">
-					<label for="addname">Team Member Name:</label><br>
-					<input type="text" id="addname" name="team-addname" value="John Doe" class="form-control"><br>
-					<label for="desc">Player Description:</label><br>
-					<input type="text" id="desc" name="team-desc" value="... player description here ..." class="form-control"><br>
-					<label for="desc">Role Description:</label><br>
-					<input type="text" id="desc" name="role-desc" value="... role description here ... ex.(role 1)" class="form-control"><br>
-					<label for="file">Team Member Picture:</label><br>
-					<input type="file" id="file" name="team-file" class="form-control"><br>
-					<input type="submit" id='add-form' name='team-add-form' value="Add Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
-				</form> 
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+					<h4>Specify players to add to team members: </h4>
+					<!-- form to add players -->
+					<form method="POST" id="add-form" name="team-add-form" enctype="multipart/form-data">
+						<label for="addname">Team Member Name:</label><br>
+						<input type="text" id="addname" name="team-addname" value="John Doe" class="form-control"><br>
+						<label for="desc">Player Description:</label><br>
+						<input type="text" id="desc" name="team-desc" value="... player description here ..." class="form-control"><br>
+						<label for="desc">Role Description:</label><br>
+						<input type="text" id="desc" name="role-desc" value="... role description here ... ex.(role 1)" class="form-control"><br>
+						<label for="file">Team Member Picture:</label><br>
+						<input type="file" id="file" name="team-file" class="form-control"><br>
+						<input type="submit" id='add-form' name='team-add-form' value="Add Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
+					</form> 
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
-	<h4>Specify officers to delete here: </h4>
-	<!-- form to delete officers by name-->
-						<form method="POST">
-							<label for="deleteofficers">Player Name:</label><br>
+
+	<!-- Officers tab -->
+	<div id="Officers" class="w3-container tab" style="display:none">
+		<h2>Officers</h2>
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+					<h4>Specify officers to delete here: </h4>
+					<!-- form to delete officers by name-->
+					<form method="POST">
+						<label for="deleteofficers">Player Name:</label><br>
 						<input name="deleteofficers" value ="Jane Doe" class="form-control"><br>
 						<input type="submit" id='delete-form' name='officers-delete-form' value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
 					</form> 
+				</div>
 			</div>
 		</div>
-	</div>
-	
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
 					<h4>Specify officers to add to about page: </h4>
 					<!-- form to add officers -->
 					<form method="POST" id="add-form" name="officers-add-form" enctype="multipart/form-data">
@@ -181,6 +215,7 @@
 						onclick="showTeamSuccess()">
 					</form> 
 					<hr/>
+				</div>
 			</div>
 		</div>
 	</div>
