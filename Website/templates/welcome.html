@@ -12,148 +12,236 @@ Welcome - Rowing Club
 <!-- We don't know if discord will continue to host this image or not. -->
 <!-- We should be storing a copy of this image in our static directory instead -->
 <!-- link card table events to db -->
-<style>
-	body {
-		background-image: url('https://cdn.discordapp.com/attachments/1014300694238482442/1092926714709016757/image.png');
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		background-size: 100% 100%;
-	}
-</style>
 
-<!--First Block for ContactUs video-->
+
 <!--First Block for Video introduction-->
+
 <section class="video-introduction">
 	<div>
-		<!--Video Introduction page for Desktop-->
-		<!--Video link: https://www.youtube.com/watch?v=sLiYTegsyxk-->
 		<video autoplay loop muted plays-inline class="back-video">
-			<source src="./static/video/welcome_video.mp4" type="video/mp4">
+			<source src="./static/video/video_introduction.mp4" type="video/mp4"> <!--test video from join page -->
 		</video>
 
 		<div class="video-introduction-content">
-			<h1 data-aos="fade-down" data-aos-duration="1000">Sacramento State Rowing Club</h1>
+			<h3 data-aos="fade-down" data-aos-duration="1000">Welcome to</h3>
+			<h1 data-aos="fade-down" data-aos-duration="1000" class="intro-desktop-text">Sacramento State</h1>
+			<h1 data-aos="fade-down" data-aos-duration="1000" class="intro-phone-text">Sac State</h1>
+			<h1 data-aos="fade-down" data-aos-duration="1000">Rowing Club</h1>
 		</div>
 	</div>
 </section>
+<!--END First Block for Video introduction-->
 
-<!--
-<div data-aos="zoom-in-up" data-aos-duration="1000" class="jumbotron text-center green_back_gold_front col-5 mx-auto">
-	<h1>Welcome To The Sacramento State Rowing Club Homepage</h1>
-</div>
--->
 
-<br>
-<br>
 
-<div class="card text-left green_back_gold_front col-7 mx-auto" data-aos="fade-left" data-aos-duration="1000">
-	<br>
-	<ul>
-		<h2>About Us</h2>
-		<ul class="list-group list-group-flush offset-md-1 fs-4">
-			<li>
-				<p>Website for everything Sacramento State Rowing related.</p>
-			</li>
-			<li>
-				<p>This website contains many of the ongoing events and current team member rosters.</p>
-			</li>
-			<li>
-				<p>Stingers up!</p>
-			</li>
-		</ul>
-	</ul>
-</div>
+<!--Block: About US -->
+<div style="background-color: #c3b680;">
+	<div class="container-xxl py-5">
+		<div class="text-heading" data-aos="fade-down" data-aos-duration="1000">
+			<div class="container-xxl py-5">
+				<div class="name-events"> About us</div>
+				<div class="name-phone"> About us</div>
+			</div>
 
-<br>
-<br>
-
-<div class="text-center container-xl" data-aos="fade-right" data-aos-duration="1000">
-	<img src="https://cdn.discordapp.com/attachments/1014300694238482442/1092929612880805949/image.png" 
-		class="img-fluid rounded" alt="">
-	<div class="card-img-overlay mx-auto">
-		<h1 class="offset-md-0" style="text-align: center;">Interested in joining?</h1>
-		<!--https://forms.gle/nNq3ySVYcjgHjMb27-->
-		<button onclick="document.location='https://forms.gle/nNq3ySVYcjgHjMb27'"
-			class="btn green_back_gold_front" data-aos="zoom-in-up"
-			data-aos-duration="1000">
-			<span style="font-size: 120%;">	Recruitment Form </span>
-		</button>
-<!-- style="height:22%; width:22%;"-->
+			<p data-aos="fade-down" data-aos-duration="1000">
+				Sacramento State Rowing Club exists to provide the development opportunity for collegiate rowers
+				to make the step from university rowing to Senior National Team competition.
+				Rowers from California State University, Sacramento and all across the U.S. are welcome to join the CRC
+				to develop technically and
+				physically with the goal of progressing into their respective national teams.
+			<div class="space15"></div>
+			<p data-aos="fade-down" data-aos-duration="1000">
+				Besides, Sac State Rowing Club's website contains many of the ongoing events and current team member
+				rosters and evrything Sacramento State Rowing related.
+			<p data-aos="fade-down" data-aos-duration="1000"> Stingers up!</p>
+		</div>
 	</div>
+	<div class="space80"></div>
 </div>
-	
-<br>
+<!-- END Block About US -->
 
-<!-- Example styling for fixed height cards with  -->
-<!-- scrollbar on overflow -->
-<!-- find out how to scale by resolution instead of hardcoded numbers -->
-</style>
-<div class="card green_back_gold_front mb-3 container-fluid" data-aos="fade-up" data-aos-duration="1000">
-	<div class="card-header">
-		<h1 class="offset-md-0" style="text-align: center;">Upcoming Events</h1>
-	</div>
+
+<!--Block Interested-->
+<div class="background-block" style="background-image: url(./static/img/rowing.jpeg); background-size: cover;">
 	<div class="space15"></div>
-	<div class="row row-cols-1 row-cols-md-2 g-4 my_row">
-		{% if next_events|length >=1 %}
-		<div class="col">
-			<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
-				<div class="card-body">
-					<h3 class="card-title">{{next_events[0][0]}}</h3>
-					<p class="card-text">Location: {{next_events[0][2]}}<br>Date:
-						{{next_events[0][3]}}<br>{{next_events[0][1]}}</p>
-				</div>
+	<div class="space80"></div>
+	<div class="row">
+		<div class="column" data-aos="fade-up" data-aos-duration="1000">
+			<h2>Are you interested</h2>
+			<h2>in joining?</h2>
+		</div>
+		<div class="column">
+			<div class="recruitment-button">
+				<a data-aos="fade-up" data-aos-duration="1000"
+					href="https://docs.google.com/forms/d/e/1FAIpQLSfZgOi84FUsV-uXBSIsJuTX3pKZdlFydBgsojzrhYNo09q4ZA/formResponse">Join us</a>
 			</div>
 		</div>
-		{%else%}
-		<!-- No event to emit here -->
-		{% endif %}
 
-		{% if next_events|length >=2 %}
-		<div class="col">
-			<div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
-				<div class="card-body">
-					<h3 class="card-title">{{next_events[1][0]}}</h3>
-					<p class="card-text">Location: {{next_events[1][2]}}<br>Date:
-						{{next_events[1][3]}}<br>{{next_events[1][1]}}</p>
+		<div class="space15"></div>
+		<div class="space80"></div>
+	</div>
+</div>
+<!--END Block interested-->
+
+
+<!--Events Block-->
+<div style="background-color: #c3b680;">
+	<div class="container-xxl py-5">
+		<div class="name-events"> Upcoming Events</div>
+		<div class="name-phone">Upcoming Events</div>
+	</div>
+
+	<div class="space15"></div>
+
+	<div class="central">
+		<div class="row row-cols-1 row-cols-md-2 g-4 my_row">
+			{% if next_events|length >=1 %}
+			<div class="col">
+				<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
+					<div class="card-body">
+						<h3 class="card-title">{{next_events[0][0]}}</h3>
+						<p class="card-text">Location: {{next_events[0][2]}}
+							<br>Date: {{next_events[0][3]}}
+							<br>Description: {{next_events[0][1]}}
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
-		{%else%}
-		<!-- No event to emit here -->
-		{% endif %}
+			{%else%}
+			<!-- No event to emit here -->
+			{% endif %}
 
-		{% if next_events|length >=3 %}
-		<div class="col">
-			<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
-				<div class="card-body">
-					<h3 class="card-title">{{next_events[2][0]}}</h3>
-					<p class="card-text">Location: {{next_events[2][2]}}<br>Date:
-						{{next_events[2][3]}}<br>{{next_events[2][1]}}</p>
+			{% if next_events|length >=2 %}
+			<div class="col">
+				<div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
+					<div class="card-body">
+						<h3 class="card-title">{{next_events[1][0]}}</h3>
+						<p class="card-text">Location: {{next_events[1][2]}}
+							<br>Date: {{next_events[1][3]}}
+							<br>Description: {{next_events[1][1]}}
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
-		{%else%}
-		<!-- No event to emit here -->
+			{%else%}
+			<!-- No event to emit here -->
+			{% endif %}
 
-		{% endif %}
+			{% if next_events|length >=3 %}
+			<div class="col">
+				<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
+					<div class="card-body">
+						<h3 class="card-title">{{next_events[2][0]}}</h3>
+						<p class="card-text">Location: {{next_events[2][2]}}
+							<br>Date: {{next_events[2][3]}}
+							<br>Description: {{next_events[2][1]}}
+						</p>
+					</div>
+				</div>
+			</div>
+			{%else%}
+			<!-- No event to emit here -->
 
-		{% if next_events|length >=4 %}
-		<div class="col">
-			<div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
-				<div class="card-body">
-					<h3 class="card-title">{{next_events[3][0]}}</h3>
-					<p class="card-text">Location: {{next_events[3][2]}}<br>Date:
-						{{next_events[3][3]}}<br>{{next_events[3][1]}}</p>
+			{% endif %}
+
+			{% if next_events|length >=4 %}
+			<div class="col">
+				<div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
+					<div class="card-body">
+						<h3 class="card-title">{{next_events[3][0]}}</h3>
+						<p class="card-text">Location: {{next_events[3][2]}}
+							<br>Date: {{next_events[3][3]}}
+							<br>Description: {{next_events[3][1]}}
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	{%else%}
 	<!-- No event to emit here -->
 	{% endif %}
-
-	<br>
+	<div class="space80"> </div>
 </div>
+<!--END Events Block-->
+
+
+<!--Block Contribution-->
+<div class="background-block1" style="background-image: url(./static/img/boat.jpg); background-size: cover;">
+	<div class="container" data-aos="fade-down" data-aos-duration="600">
+		<div style="padding-top: 120px;"></div>
+
+		<div class="col-responsive">
+			<h2 style="font-weight: 400; padding-top: 15px;">Contribute to the team 
+				<div class="space80"></div>
+
+				<div class="recruitment-button1">
+					<div>
+						<a data-aos="fade-up" data-aos-duration="1000"
+						href="#">Online Donation</a>
+					</div>					
+				</div>
+			</h2>
+
+			<div style="font-weight: 600;" class="online">Online
+				<div class="donate-button">
+					<div class="recruitment-button">
+						<a class="hello" href="#">Donation</a>
+					</div>
+				</div>
+			</div>
+
+			<div style="font-weight: 600;"class="check">By Cheque 
+				<div class="donate-button">
+					<p>Sacramento State Rowing Club
+					<br /> 1901 Hazel Ave,
+					<br /> Gold River, CA 95670</p>
+				</div>
+			</div>
+		</div>
+
+		<div style="padding-top: 60px;"></div>
+	</div>
+</div>
+<!--END Block contribution -->
+
+<!--Last Block for Social-->
+<div class="last-video-help-block">
+    <section class="video-help" style="background-color: #005440">
+       
+        <div class="video-help-content">
+            <br>
+            <p>Have any questions?</p>
+            <br>
+            <p>Email us at abcd@csus.com</p>
+            <div class="wrapper-social-icon">
+                <div class="button-social" data-aos="fade-down" data-aos-duration="1000">
+    
+                    <div class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <a href="https://facebook.com"><span>Facebook</span></a>
+                </div></a>
+                <div class="button-social" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <a href="https://instagram.com"><span>Instagram</span></a>
+                </div></a>
+                <div class="button-social" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <a href="https://youtube.com"><span>YouTube</span></a>
+                </div></a>
+                <div class="space80"></div>
+            </div>
+            <!--Social media-->
+        </div>
+    </section>
+</div>
+<!--End Last Block for Video introduction-->
 
 <!--Swiper Js-->
 <script src="./static/js/swiper-bundle.min.js"></script>
@@ -167,23 +255,4 @@ Welcome - Rowing Club
 	AOS.init();
 </script>
 
-<!--make pretty-->
-<!--<div class="card text-center text-white">
-	<img src="https://cdn.discordapp.com/attachments/890299818252042261/1087763475033509961/IMG_2944.jpg" class="card-img" alt="...">
-  	<div class="card-img-overlay">
-		<h5 class="card-title">Interested in joining?</h5>
-		<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		<button onclick="document.location='https://koralreef.carrd.co/'" class="btn py-3 green_back_gold_front btn-lg">Recruitment Form</button>
-	</div>
-</div>-->
-<!--
-<div class="container">
-	<div class="row green_back_gold_front">
-		{% for tup in players %}
-			<h3>{{ tup[0] }}</h3>
-			<p>{{ tup[1] }}</p>
-		{% endfor %}
-	</div>
-</div>
-</div>-->
 {% endblock %}
