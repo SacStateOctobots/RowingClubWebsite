@@ -18,6 +18,21 @@
 			
 		  alert ("Officer added!");
 		}
+		// THIS IS SOOOO BAD MAN
+		function playerSelect() {
+				let x = document.getElementById("mySelect").value;
+				document.getElementById('delete').value = x;
+			}	
+
+		function officerSelect() {
+			let x = document.getElementById("mySelect1").value;
+			document.getElementById('delete1').value = x;
+		}
+
+		function memberSelect() {
+			let x = document.getElementById("mySelect2").value;
+			document.getElementById('delete2').value = x;
+		}
 	</script>
 	<style>
 		body {
@@ -45,6 +60,51 @@ function openTab(tabName) {
 }
 </script>
 
+<div class="container">
+	<hr/>
+	<div class="row">
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+				<h4>Current Player List: </h4>
+				<select class="form-select-lg card mb-2 green_back_gold_front" size="10" aria-label="Size 10 select example">
+				{% for tup in players %}
+					<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+				{% endfor %}
+				</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+				<h4>Current Officer List: </h4>
+				<select class="form-select-lg card mb-2 green_back_gold_front" multiple aria-label="Multiple select example">
+				{% for tup in officers %}
+					<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+				{% endfor %}
+				</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+				<h4>Current Team Member List: </h4>
+				<select class="form-select-lg card mb-2 green_back_gold_front" size="10" aria-label="Size 10 select example">
+				{% for tup in member %}
+					<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+				{% endfor %}
+				</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr/>
+</div>
 <div class="container-fluid">
 
 	<!--<div class="w3-bar w3-black">-->
@@ -206,12 +266,12 @@ function openTab(tabName) {
 					<!-- form to add officers -->
 					<form method="POST" id="add-form" name="officers-add-form" enctype="multipart/form-data">
 						<label for="addname">Officer Name:</label><br>
-						<input type="text" id="addname" name="officers-addname" value="John Doe" class="form-control"><br>
+						<input type="text" id="addname" name="officers-addname" placeholder="John Doe" class="form-control"><br>
 						<label for="desc">Officer Description:</label><br>
-						<input type="text" id="desc" name="officers-desc" value="... officer description here ..." class="form-control"><br>
+						<input type="text" id="desc" name="officers-desc" placeholder="... officer description here ..." class="form-control"><br>
 						<label for="file">Officer Picture:</label><br>
 						<input type="file" id="file" name="officers-file" class="form-control"><br>
-						<input type="submit" id='add-form' name='officers-add-form' value="Add Officer" class="btn btn-outline-dark green_back_gold_front_lightened" 
+						<input type="submit" id='add-form' name='officers-add-form' placeholder="Add Officer" class="btn btn-outline-dark green_back_gold_front_lightened" 
 						onclick="showTeamSuccess()">
 					</form> 
 					<hr/>
@@ -220,6 +280,8 @@ function openTab(tabName) {
 		</div>
 	</div>
 
+	<hr/>
+	<hr/>
 <a href="logout" class="btn btn-outline-dark green_back_gold_front_lightened" role="button">Logout</a>
 </div>
 <br>
