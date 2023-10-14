@@ -143,7 +143,7 @@ def recruitment():
     return render_template("recruitment.html")
  
 
-@app.route('/login', methods=['GET'])
+@app.route('/login')
 def login():
     return render_template("login.html")
 
@@ -154,7 +154,7 @@ def login_form():
 		user = User()
 		user.id = email
 		flask_login.login_user(user)
-		return flask.redirect(flask.url_for('protected_get'))
+		return flask.redirect(flask.url_for('protected'))
 	return 'Bad login'
 	#return render_template("login.html")
 
@@ -165,6 +165,7 @@ def login_form():
 #	- email message needs to be secure, email text should be hidden from traffic sniffing
 @app.route('/verify', methods = ["POST"])
 def verify(): 
+    
 	#Creates OTP
 	final_otp = ''
 	for i in range(6):
@@ -179,25 +180,29 @@ def verify():
 	#Sets a session var to be referenced for validate page. 
 	#Might be removed after flask session is ended but not sure how this works with hosted website
 	session['final_otp'] = final_otp
+	#session['user_email'] = request.form['email_otp']
 	return render_template('login_otp.html') 
 
 @app.route('/validate',methods=["POST"])   
 def validate():      
     # OTP Entered by the User
     user_otp = request.form['otp'] 
-    print("User OTP : ", user_otp)
-     
-    if int(session['final_otp']) == int(user_otp):  
-        return flask.redirect(flask.url_for('protected_get'))
+    if int(session['final_otp']) == int(user_otp):
+        #User var setting done manually so session cookies can be generated to access page
+		#Will need to alter to change to authorized rowing club email when published
+        user = User()
+        user.id = 'foo@bar.tld'
+        flask_login.login_user(user)
+        return flask.redirect(flask.url_for('protected'))
     else:
         flash('Incorrect Passcode Entered, Try again')
         return render_template('login_otp.html')
 
 
 
-@app.route('/protected', methods=['GET'])
+@app.route('/protected')
 @flask_login.login_required
-def protected_get():
+def protected():
 	return render_template("admin.html", players=db.get_players());
 
 @app.route('/protected', methods=['POST'])
