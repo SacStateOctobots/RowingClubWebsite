@@ -1,11 +1,12 @@
 import flask
 import flask_login
 import os
-from flask import Flask, render_template, current_app, request, redirect
+from flask import Flask, flash, render_template, current_app, request, redirect, session
 from flask_mail import Mail, Message
 from werkzeug.utils import secure_filename
 import google_calendar_reader as cal
 import database_library as db
+import random
 
 app = flask.Flask(__name__)
 app.secret_key = 'super secret string'  # Change this!
@@ -39,6 +40,9 @@ app.config.update(
 	MAIL_PASSWORD = emailKey
 )
 mail = Mail(app)
+
+#Passcode for OTP
+global_final_otp = ''
 
 class User(flask_login.UserMixin):
     pass
@@ -140,21 +144,71 @@ def recruitment():
     return render_template("recruitment.html")
  
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login')
 def login():
-    if flask.request.method == 'GET':
-    	return render_template("login.html")
-    email = flask.request.form['email']
-    if flask.request.form['pw'] == users[email]['pw']:
+    return render_template("login.html")
+
+@app.route('/login', methods=['POST'])
+def login_form():
+	email = flask.request.form['email']
+	if flask.request.form['pw'] == users[email]['pw']:
+		user = User()
+		user.id = email
+		flask_login.login_user(user)
+		return flask.redirect(flask.url_for('protected'))
+	return 'Bad login'
+	#return render_template("login.html")
+
+##TO-DO:
+#	- find way to make sure code becomes invalid after a set amount of time
+#	- check email to make sure it is a valid email addr and that it matches set email
+#		-make sure email storage is done with hash value and to validate with hash match
+#	- email message needs to be secure, email text should be hidden from traffic sniffing
+@app.route('/verify', methods = ["POST"])
+def verify(): 
+    
+	#Creates OTP
+	final_otp = ''
+	for i in range(6):
+		final_otp = final_otp + str(random.randint(0,9))
+	#Sends message to email put in form
+	msg = Message(subject="Rowing Club Sign-in Passcode",
+				body="Passcode for log-in verification: "
+				+ str(final_otp),  
+				sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
+				recipients=[request.form['email_otp']])
+	mail.send(msg)
+	#Sets a session var to be referenced for validate page. 
+	#Might be removed after flask session is ended but not sure how this works with hosted website
+	session['final_otp'] = final_otp
+	#session['user_email'] = request.form['email_otp']
+	return render_template('login_otp.html') 
+
+@app.route('/validate',methods=["POST"])   
+def validate():      
+    # OTP Entered by the User
+    user_otp = request.form['otp'] 
+    if int(session['final_otp']) == int(user_otp):
+        #User var setting done manually so session cookies can be generated to access page
+		#Will need to alter to change to authorized rowing club email when published
         user = User()
-        user.id = email
+        user.id = 'foo@bar.tld'
         flask_login.login_user(user)
         return flask.redirect(flask.url_for('protected'))
-    return 'Bad login'
+    else:
+        flash('Incorrect Passcode Entered, Try again')
+        return render_template('login_otp.html')
+
+
+
+@app.route('/protected')
+@flask_login.login_required
+def protected():
+	return render_template("admin.html", players=db.get_players());
 
 @app.route('/protected', methods=['POST'])
 @flask_login.login_required
-def my_form_post():
+def protected_post():
 	print(request.form)
 	if "deleteplayer" in request.form:
 		text = request.form['deleteplayer']
@@ -183,7 +237,7 @@ def my_form_post():
 		db.insert_player(nametext,desc,filename)
             
 #######################################################
-# sample copy of a secondary add form
+# Alumni form -> needs to be changed to edit text. Alumni memebers not a part of page
 #######################################################
 
 	if "deletealumni" in request.form:
@@ -244,8 +298,9 @@ def my_form_post():
 		db.insert_team_members(nametext,desc,filename,role)
 
 #######################################################
-# officers form
+# Officer form
 #######################################################
+
 	if "deleteofficers" in request.form:
 		text = request.form['deleteofficers']
 		db.delete_about(text)
@@ -277,6 +332,7 @@ def my_form_post():
 #######################################################
 # Testimonials form
 #######################################################
+
 	if "deletetestimonial" in request.form:
 		text = request.form['deletetestimonial']
 		db.delete_testimonial(text)
