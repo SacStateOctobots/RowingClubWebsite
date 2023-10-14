@@ -166,7 +166,6 @@ def login_form():
 #	- email message needs to be secure, email text should be hidden from traffic sniffing
 @app.route('/verify', methods = ["POST"])
 def verify(): 
-    
 	#Creates OTP
 	final_otp = ''
 	for i in range(6):
@@ -199,12 +198,6 @@ def validate():
         flash('Incorrect Passcode Entered, Try again')
         return render_template('login_otp.html')
 
-
-
-@app.route('/protected')
-@flask_login.login_required
-def protected():
-	return render_template("admin.html", players=db.get_players());
 
 @app.route('/protected', methods=['POST'])
 @flask_login.login_required
