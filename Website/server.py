@@ -244,7 +244,7 @@ def my_form_post():
 		db.insert_team_members(nametext,desc,filename,role)
 
 #######################################################
-# team members form
+# officers form
 #######################################################
 	if "deleteofficers" in request.form:
 		text = request.form['deleteofficers']

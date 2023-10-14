@@ -1,10 +1,111 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Rowing Club Website Templates Demo
+Team Roster - Rowing Club
 {% endblock %}
 
 {% block body %}
-<p>WIP Donate Page</p>
 
+<head>
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+
+        .smashinglogo {
+            background-image: url(https://www.sacstateaquaticcenter.com/sites/main/files/imagecache/lightbox/main-images/2013_womens_crew_3.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 550px;
+        }
+    </style>
+</head>
+
+<!-- Banner-->
+<section id="first" class="story" data-speed="8" data-type="background">
+    <div class="smashinglogo" data-offsetY="100" data-Xposition="50%" data-speed="-2">
+        <div class="banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
+            <div style="padding-top: 200px;"></div>
+            <h1 class="team-member">Contribute</h1>
+        </div>
+    </div>
+</section>
+<!-- END Banner-->
+
+<!--Contribute Block-->
+<div class="background-block1">
+    <div class="container" data-aos="fade-down" data-aos-duration="600">
+        <div style="padding-top: 120px;"></div>
+
+        <div class="col-responsive">
+            <h3 style="font-weight: 500; padding-top: 15px; color: black;">Support the Sac State Rowing Club athletes in
+                their elite and olympic pursuits
+                <div class="space80"></div>
+
+                <div class="recruitment-button1">
+                    <div style="color: black;">
+                        <a data-aos="fade-up" data-aos-duration="1000" href="#">Donate</a>
+                    </div>
+                </div>
+            </h3>
+
+            <div style="color: black;" style="font-weight: 600;" class="online"> <strong>Online </strong>
+                <div class="donate-button">
+                    <div class="recruitment-button">
+                        <a class="hello" href="#">Donate</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="color: black;" style="font-weight: 600;" class="check"> <strong>By Cheque
+                    <div style="color: black;" class="donate-button">
+                        <p>Sacramento State Rowing Club
+                            <br /> 1901 Hazel Ave,
+                            <br /> Gold River, CA 95670
+                        </p>
+                </strong>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding-top: 60px;"></div>
+</div>
+</div>
+<!--END Block contribution -->
+
+
+<div class="space80"></div>
+<!--Block Interested-->
+<div class="background-block"
+    style="background-image: url(./static/img/rowing.jpeg); background-size: cover;  background-position: fixed;">
+    <div class="space15"></div>
+    <div class="space80"></div>
+    <div class="row">
+        <div class="column" data-aos="fade-up" data-aos-duration="1000">
+            <h2>Have questions?</h2>
+            <h2>please contact us</h2>
+        </div>
+        <div class="column">
+            <div class="recruitment-button">
+                <a data-aos="fade-up" data-aos-duration="1000" href="/contact">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="space15"></div>
+        <div class="space80"></div>
+    </div>
+</div>
+<!--END Block interested-->
+
+<!--Swiper Js-->
+<script src="./static/js/swiper-bundle.min.js"></script>
+
+<!--Javascript-->
+<script src="./static/js/script.js"></script>
+
+<!--Amination-->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 {% endblock %}
