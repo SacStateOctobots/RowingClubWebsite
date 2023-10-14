@@ -94,7 +94,8 @@ def members():
 
 @app.route("/alumni")
 def alumni():
-    return render_template("alumni.html", alumni=db.get_alumni())
+	print(db.get_alumni())
+	return render_template("alumni.html", alumni=db.get_alumni())
 
 @app.route("/calendar")
 def calendar():
@@ -113,7 +114,7 @@ def about():
 #recruitment page
 @app.route("/join")
 def join():
-    test = db.get_testimonial
+    test = db.get_testimonial()
     
     return render_template("join.html",test=test)
 
@@ -154,17 +155,18 @@ def login():
 @app.route('/protected', methods=['POST'])
 @flask_login.login_required
 def my_form_post():
-	if "delete-form" in request.form:
+	print(request.form)
+	if "deleteplayer" in request.form:
 		text = request.form['deleteplayer']
 		db.delete_player(text)
-	if "add-form" in request.form:
-		nametext = request.form['addname']
-		desc = request.form['desc']
+	if "player-name" in request.form:
+		nametext = request.form['player-name']
+		desc = request.form['player-desc']
 		# check if the post request has the file part
-		if 'file' not in request.files:
+		if 'player-file' not in request.files:
 			print('No file part')
 			return redirect(request.url)
-		file = request.files['file']
+		file = request.files['player-file']
 		# If the user does not select a file, the browser submits an
 		# empty file without a filename.
 		if file.filename == '':
@@ -184,11 +186,11 @@ def my_form_post():
 # sample copy of a secondary add form
 #######################################################
 
-	if "alumni-delete-form" in request.form:
+	if "deletealumni" in request.form:
 		text = request.form['deletealumni']
 		db.delete_alumni(text)
-	if "alumni-add-form" in request.form:
-		nametext = request.form['alumni-addname']
+	if "alumni-name" in request.form:
+		nametext = request.form['alumni-name']
 		desc = request.form['alumni-desc']
 		# check if the post request has the file part
 		if 'alumni-file' not in request.files:
@@ -201,7 +203,7 @@ def my_form_post():
 			print('No file name')
 			return redirect(request.url)
 		if file and allowed_file(file.filename):
-			print('Succes alumni')
+			print('Success alumni')
 			filename = secure_filename(file.filename)
 			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -214,13 +216,13 @@ def my_form_post():
 # team members form
 #######################################################
 
-	if "team-delete-form" in request.form:
+	if "deleteteam" in request.form:
 		text = request.form['deleteteam']
 		db.delete_team_members(text)
-	if "team-add-form" in request.form:
-		nametext = request.form['team-addname']
-		desc = request.form['team-desc']
-		role = request.form['role-desc']
+	if "team-name" in request.form:
+		nametext = request.form['team-name']
+		desc = request.form['team-player-desc']
+		role = request.form['team-role-desc']
 		# check if the post request has the file part
 		if 'team-file' not in request.files:
 			print('No file part')
@@ -244,12 +246,13 @@ def my_form_post():
 #######################################################
 # team members form
 #######################################################
-
-	if "officers-delete-form" in request.form:
+	if "deleteofficers" in request.form:
 		text = request.form['deleteofficers']
 		db.delete_about(text)
-	if "officers-add-form" in request.form:
-		nametext = request.form['officers-addname']
+	#if "officers-add-form" in request.form:
+	if "officers-name" in request.form:
+		print('Officers add form')
+		nametext = request.form['officers-name']
 		desc = request.form['officers-desc']
 		# check if the post request has the file part
 		if 'officers-file' not in request.files:
@@ -271,42 +274,72 @@ def my_form_post():
 			return redirect(request.url)
 		db.insert_about(nametext,desc,filename)
 
-
-		
-	return render_template("admin.html", players=db.get_players())
-
 #######################################################
-# testimonial
+# Testimonials form
 #######################################################
-@app.route('/protected')
-@flask_login.login_required
-def protected():
-	if "testimonial-delete-form" in request.form:
+	if "deletetestimonial" in request.form:
 		text = request.form['deletetestimonial']
 		db.delete_testimonial(text)
-	if "testimonial-add-form" in request.form:
-		nametext = request.form['testimonial-addname']
-		desc = request.form['testimonial-desc']
+	if "testimonial-name" in request.form:
+		nametext = request.form['testimonial-name']
+		text1 = request.form['testimonial-text1']
+		text2 = request.form['testimonial-text2']
 		# check if the post request has the file part
 		if 'testimonial-file' not in request.files:
 			print('No file part')
 			return redirect(request.url)
-		filetext = request.files['testimonial-file']
+		file = request.files['testimonial-file']
 		# If the user does not select a file, the browser submits an
 		# empty file without a filename.
-		if filetext.file == '':
+		if file.filename == '':
 			print('No file name')
 			return redirect(request.url)
-		if filetext and allowed_file(filetext.file):
+		if file and allowed_file(file.filename):
 			print('Success testimonial')
-			file = secure_filename(filetext.file)
-			print(os.path.join(app.config['UPLOAD_FOLDER'], file))
-			filetext.save(os.path.join(app.config['UPLOAD_FOLDER'], file))
+			filename = secure_filename(file.filename)
+			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		else:
 			print('File name not allowed')
 			return redirect(request.url)
-		db.insert_testimonial(nametext,desc,file)
-	return render_template("admin.html", players=db.get_players(), testimonial=db.get_testimonial())
+		db.insert_testimonial(nametext,text1,filename,text2)
+	
+	players = db.get_players()
+	#print(players)
+	alumni = db.get_alumni()
+	#print(alumni)
+	team_members = db.get_team_members()
+	#print(team_members)
+	officers = db.get_about()
+	#print(officers)
+	testimonial=db.get_testimonial()
+	#print(testimonial)
+	return render_template("admin.html", 
+							players=players, 
+							alumni=alumni, 
+							team_members=team_members, 
+							officers=officers, 
+							testimonial=testimonial)
+
+@app.route('/protected')
+@flask_login.login_required
+def protected():
+	players = db.get_players()
+	#print(players)
+	alumni = db.get_alumni()
+	#print(alumni)
+	team_members = db.get_team_members()
+	#print(team_members)
+	officers = db.get_about()
+	#print(officers)
+	testimonial=db.get_testimonial()
+	#print(testimonial)
+	return render_template("admin.html", 
+							players=players, 
+							alumni=alumni, 
+							team_members=team_members, 
+							officers=officers, 
+							testimonial=testimonial)
 
 @app.route('/logout')
 def logout():

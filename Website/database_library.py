@@ -67,7 +67,7 @@ def get_testimonial():
 	return query_db('select * from testimonials')
 def insert_testimonial(name, testimonial, imgfilename,job):
 	insert_to_db("testimonials","(name, testimonial, imgfilename,job)","(?,?,?,?)", (name, testimonial, imgfilename,job))
-def delete_testemonial(name):
+def delete_testimonial(name):
 	delete_from_db("testimonials","name",name)
 
 #######################################################
