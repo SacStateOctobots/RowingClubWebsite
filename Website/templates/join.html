@@ -146,7 +146,7 @@ Join Us - Rowing Club
     <section class="container-testi">
         <div class="testimonial mySwiper">
             <div class="testi-content swiper-wrapper" data-aos="zoom-in" data-aos-duration="1000">
-                <div class="slide swiper-slide">
+                <!--<div class="slide swiper-slide">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Spider-Man.jpg/1200px-Spider-Man.jpg"
                         alt="" class="image" />
                     <p style="font-size: 18px;">
@@ -160,18 +160,21 @@ Join Us - Rowing Club
                         <span class="name">Spiderman</span>
                         <span class="job">Student</span>
                     </div>
-                </div>
+                </div>-->
+				{% for tup in test %}
+
                 <div class="slide swiper-slide">
-                    <img src="static/image_uploads/{{ test[2] }}" alt="" class="image" />
+                    <img src="static/image_uploads/{{ tup[2] }}" alt="" class="image" />
                     <p style="font-size: 18px;">
-                        {{ test[1] }}
+                        {{ tup[1] }}
                     </p>
                     <i class="bx bxs-quote-alt-left quote-icon"></i>
                     <div class="details">
-                        <span class="name">{{ test[0] }}</span>
-                        <span class="job">{{ test[3] }}</span>
+                        <span class="name">{{ tup[0] }}</span>
+                        <span class="job">{{ tup[3] }}</span>
                     </div>
                 </div>
+				{% endfor %}
             </div>
             {% for item in tup %}
 
