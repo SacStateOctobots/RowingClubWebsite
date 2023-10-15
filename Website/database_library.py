@@ -73,14 +73,14 @@ def get_testimonial():
 	return query_db('select * from testimonials')
 def insert_testimonial(name, testimonial, imgfilename,job):
 	insert_to_db("testimonials","(name, testimonial, imgfilename,job)","(?,?,?,?)", (name, testimonial, imgfilename,job))
-def delete_testemonial(name):
+def delete_testimonial(name):
 	delete_from_db("testimonials","name",name)
 
 #######################################################
 # alumni table functions
 #######################################################
 def get_alumni():
-	return query_db('select * from alumni')
+	return query_db('select * from alumni\norder by name')
 def insert_alumni(name,desc,filename):
 	insert_to_db("alumni","(name,description,imgfilename)","(?,?,?)",(name,desc,filename))
 def delete_alumni(name):
@@ -90,7 +90,7 @@ def delete_alumni(name):
 # team_members table
 #######################################################
 def get_team_members():
-	return query_db('select * from team_members')
+	return query_db('select * from team_members\norder by name')
 def insert_team_members(name,desc,filename,role):
 	insert_to_db("team_members","(name,description,imgfilename,role)","(?,?,?,?)", (name,desc,filename,role))
 def delete_team_members(name):
@@ -100,7 +100,7 @@ def delete_team_members(name):
 # Officers table
 #######################################################	
 def get_about():
-	return query_db('select * from officers')
+	return query_db('select * from officers\norder by name')
 def insert_about(name,desc,filename):
 	insert_to_db("officers","(name,description,filename)","(?,?,?)", (name,desc,filename))
 def delete_about(name):

@@ -7,6 +7,7 @@ About - Rowing Club
 {% block body %}
 
 <!-- Background Color -->
+
 <head>
 	<style>
 		body {
@@ -37,29 +38,8 @@ About - Rowing Club
 
 <div class="container-xxl py-5">
 	<div class="container">
-
 		<div class="row g-4 align-items-center">
 			{{content[0][2] | safe}}
-
-		<!--<div class="row g-4" >
-			<div class="col-lg-6">
-				<p style="font-size: 22px;" data-aos="fade-right" data-aos-duration="1000"> 
-					&#x2022; Since 1984 the Sacramento State Men's Rowing team has competed
-					against universities
-					from all over the country. As part of the Western Intercollegiate Rowing Association, the
-					team has won multiple conference championships in the Varsity 8. They also have had
-					championship boats in several other events during the team’s history.
-				</p>
-				<p style="font-size: 22px;" data-aos="fade-left" data-aos-duration="1000"> &#x2022; The members of this
-					team throughout history pride themselves on hard work, dedication, and commitment to
-					a common goal. (Competition & Practice Schedules with be added soon) In 2021, the club
-					transitioned to become the Rowing Club, now offering both men’s and women’s rowing.
-				</p>
-			</div>
-			<div class="col-md-6" data-aos="fade-down" data-aos-duration="1000">
-				<img class="img-fluid rounded w-100" src="./static/img/p5.jpeg">
-			</div>-->
-
 		</div>
 	</div>
 </div>
@@ -71,49 +51,57 @@ About - Rowing Club
 <div class="text-heading mx-auto">
 	<h1>Meet The Officers!</h1>
 </div>
-
-<div class="container-fluid">
-	<div class="row row-cols-4 row-cols-sm-4 g-lg-1">
+<div class="space15"></div>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" />
+<div class="container">
+	<div class="row justify-content-center">
 		{% for tup in officers %}
-		<div class="col-4">
-			<div class="card mb-4 green_back_gold_front">
-				<div class="row g-0">
-					<div class="col-md-4">
-					<img src="static/image_uploads/{{ tup[2] }}" 
-						alt="{{ tup[0] }}'s profile photo." 
-						class ="img-fluid rounded-start"
-					/>
-					</div>
-					<div class="col-md-8">
-						<div class="card-body">
-							<h5 class="card-title">{{ tup[0] }}</h5>
-							<p class="card-text">{{ tup[1] }}.</p>
-							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-						</div>
-					</div>
+		<div class="col-md-6 col-lg-3 mb-30">
+			<div class="team-item" data-aos="fade-down" data-aos-duration="1000">
+				<div class="mb-30 position-relative d-flex align-items-center">
+					<span class="socials d-inline-block">
+						<a href="#" class="zmdi zmdi-facebook"></a>
+						<a href="#" class="zmdi zmdi-twitter"></a>
+						<a href="#" class="zmdi zmdi-instagram"></a>
+					</span>
+					<span class="img-holder d-inline-block">
+						<img src="static/image_uploads/{{ tup[2] }}" alt="Team">
+					</span>
+				</div>
+				<div class="team-content">
+					<h5 class="mb-2">{{ tup[0] }}</h5>
+					<p class="text-uppercase mb-0">{{ tup[1] }}</p>
+					<p class="text-uppercase mb-0">{{ tup[3] }}</p>
 				</div>
 			</div>
 		</div>
 		{% endfor %}
+	</div>
+</div>
 
-		<div class="col-4">
-			<div class="card mb-4 green_back_gold_front">
-				<div class="row g-0">
-					<div class="col-md-4">
-						<img src="https://cdn.discordapp.com/attachments/1069818501621088296/1093080715303854110/depositphotos_46562679-stock-photo-happy-man-with-white-teeth.jpg"
-							class="img-fluid rounded-start" alt="...">
-					</div>
-					<div class="col-md-8">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-								additional content. This content is a little bit longer.</p>
-							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-						</div>
-					</div>
-				</div>
+<!--Block Interested-->
+<div class="background-block" style="background-image: url(./static/img/rowing.jpeg); background-size: cover;  background-position: fixed;">
+	<div class="space15"></div>
+	<div class="space80"></div>
+	<div class="row">
+		<div class="column" data-aos="fade-up" data-aos-duration="1000">
+			<h2>Are you interested</h2>
+			<h2>in joining?</h2>
+		</div>
+		<div class="column">
+			<div class="recruitment-button">
+				<a data-aos="fade-up" data-aos-duration="1000"
+					href="https://docs.google.com/forms/d/e/1FAIpQLSfZgOi84FUsV-uXBSIsJuTX3pKZdlFydBgsojzrhYNo09q4ZA/formResponse">Join us</a>
 			</div>
 		</div>
+
+		<div class="space15"></div>
+		<div class="space80"></div>
+	</div>
+</div>
+<!--END Block interested-->
+
 <!--Amination-->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
