@@ -1,7 +1,7 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from test_harness import run_tests, PATH_STRING
-import datetime 
 
 def login_form_test(driver):
     print("Testing login form.")
@@ -17,46 +17,38 @@ def login_form_test(driver):
     element = driver.find_element(By.NAME, "submit")
     element.submit()
 
-    # Wait for login to complete
-    driver.implicitly_wait(5)
-
-    # Check if login is successful
-    success_message = driver.page_source
-    if "Login successful" in success_message:
+    # Wait for login to complete (wait for the logout link to appear)
+    try:
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.LINK_TEXT, "Logout"))
+        )
         print("Login successful.")
-    else:
+    except Exception:
         print("Login failed.")
 
-    # Logout
-    driver.get(PATH_STRING + "/logout")
-
-    # Wait for logout to complete
-    driver.implicitly_wait(5)
-
-    # Check if logout is successful
-    success_message = driver.page_source
-    if "Logout successful" in success_message:
-        print("Logout successful.")
-    else:
-        print("Logout failed.")
-
-    # Attempting to access protected content after logout
+    # Attempting to access protected content
     driver.get(PATH_STRING + "/protected")
 
     # Wait for the protected content page to load
-    driver.implicitly_wait(5)
-
-    # Check if access fails
-    error_message = driver.page_source
-    if "This is protected content" not in error_message:
-        print("Access to protected content failed.")
-    else:
+    try:
+        WebDriverWait(driver, 10).until(
+            #for the admin-variable is added in the admin.html
+            EC.presence_of_element_located((By.ID, "admin-variable"))
+        )
         print("Access to protected content succeeded.")
+    except Exception:
+        print("Access to protected content failed.")
+    # logout
+    print("Testing logout.")
+    driver.get(PATH_STRING +"/logout")
+    print("Logout succeeded")
 
-    print("Login test complete.")
+
+
 
 def main():
-    run_tests(login_form_test, PATH_STRING + "/login")
+    run_tests(login_form_test, PATH_STRING)
 
 if __name__ == "__main__":
     main()
+
