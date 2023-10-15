@@ -109,11 +109,11 @@ def calendar():
 
 @app.route("/instagram")
 def instagram():
-    return render_template("instagram.html")
+    return render_template("instagram.html",social=db.get_page("social"), contact=db.get_page("contact"))
 
 @app.route("/about")
 def about():
-    return render_template("about_us.html", officers=db.get_about())
+    return render_template("about_us.html", officers=db.get_about(), content=db.get_page("aboutus"))
 
 #recruitment page
 @app.route("/join")
@@ -124,7 +124,7 @@ def join():
 
 @app.route("/contact")
 def contact():
-    return render_template("contactus.html")
+    return render_template("contactus.html",social=db.get_page("social"),logo=db.get_page("contact_logo"))
 
 
 @app.route("/contact",methods=['POST'])
@@ -368,7 +368,8 @@ def protected_post():
 							alumni=alumni, 
 							team_members=team_members, 
 							officers=officers, 
-							testimonial=testimonial)
+							testimonial=testimonial,
+              blocks=db.get_pages())
 
 @app.route('/protected')
 @flask_login.login_required
@@ -388,7 +389,8 @@ def protected():
 							alumni=alumni, 
 							team_members=team_members, 
 							officers=officers, 
-							testimonial=testimonial)
+							testimonial=testimonial,
+              blocks=db.get_pages())
 
 @app.route('/logout')
 def logout():
@@ -403,3 +405,44 @@ def sql_debug():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/updatecontent', methods=['POST'])
+@flask_login.login_required
+def cmsPages():
+	if flask.request.method == 'POST':
+		json_data = flask.request.get_json()
+		db.update_page(json_data["slug"],json_data["content"])
+		return {
+			'data' : db.get_page(json_data["slug"]),
+			'message': "Updated!"
+		}
+	return render_template('admin.html')
+
+
+@app.route('/editpage', methods=['POST'])
+@flask_login.login_required
+def updatePage():
+	if flask.request.method == 'POST':
+		json_data = flask.request.get_json()
+		return {
+			'data' : db.get_page(json_data["slug"])
+		}
+	return render_template('admin.html')
+
+@app.route('/uploadimage', methods=['POST'])
+@flask_login.login_required
+def uploadImage():
+	if flask.request.method == 'POST':
+		if request.files.get("file"):
+			if allowed_file(request.files.get("file").filename):
+				file = secure_filename(request.files.get("file").filename)
+				request.files.get("file").save(os.path.join(app.config['UPLOAD_FOLDER'], file))
+	return {
+			'location' : os.path.join(app.config['UPLOAD_FOLDER'], file)
+		}
+			
+
+
+          
+	
+            

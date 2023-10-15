@@ -4,6 +4,7 @@ import sqlite3
 from flask import Flask
 from flask import g
 import shutil
+from datetime import datetime
 
 app = Flask(__name__)
 DATABASE = "./database.db"
@@ -38,6 +39,11 @@ def insert_to_db(table_str,column_str,valfmt_str,vals):
 	cur = sqlite3.connect(DATABASE)
 	cur.execute("INSERT OR IGNORE INTO "+table_str+" "+column_str+" VALUES "+valfmt_str,vals)
 	cur.commit()
+def update_to_db(query,args):
+	cur = sqlite3.connect(DATABASE)
+	cur.execute(query, args)
+	cur.commit()
+	cur.close()
 def delete_from_db(table_str,column_str,vals):
 	cur = sqlite3.connect(DATABASE)
 	cur.execute("DELETE FROM "+table_str+" WHERE "+column_str+"=(?)",(vals,))
@@ -104,3 +110,22 @@ def delete_about(name):
 	#mycursor = mydb.cursor()
 	#mycursor.execute("DROP TABLE IF EXISTS customers")
 	#mydb.commit()
+
+#######################################################
+# cms_pages table
+#######################################################
+def get_pages():
+	return query_db('select * from cmspages')
+def get_page(slug):
+	return query_db('select * from cmspages where slug = :val',{'val': slug})
+def insert_cmspage(slug, title, content,date):
+	insert_to_db("cmspages","(slug, title, content,date)","(?,?,?)", (slug, title, content,date))
+def update_page(slug, content):
+	query = "UPDATE cmspages SET content= :content , modifieddate= :date WHERE slug= :slug"
+	args = {'content': content, 'slug': slug, 'date': datetime.now()}
+	if(update_to_db(query, args)):
+		return query_db('select * from cmspages where slug = :val',{'val': slug})
+	else:
+		return None
+def delete_page(slug):
+	delete_from_db("cmspages","slug",slug)
