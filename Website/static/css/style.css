@@ -1152,11 +1152,29 @@ h1.hero-heading {
     }
     
     .recruitment-button1 a {
-        font-size: 0px;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        border-radius: 50px;
+        margin-top: 20px;
+        background-color: #005440;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
     }
 
     .recruitment-button1 a:hover {
-        font-size: 0px;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        border-radius: 50px;
+        margin-top: 20px;
+        background-color: #c3b680;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
     }
 
     .donate-button a:hover {
