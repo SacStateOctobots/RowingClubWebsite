@@ -321,11 +321,9 @@ def protected_post():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_about(nametext,desc,filename)
-
 #######################################################
 # Testimonials form
 #######################################################
-
 	if "deletetestimonial" in request.form:
 		text = request.form['deletetestimonial']
 		db.delete_testimonial(text)
