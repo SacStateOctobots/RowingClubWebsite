@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OTP Verification</title>
+</head>
+
+<body> 
+    <h4> OTP has been sent to the email id. Please check the email for the confirmation.</h4>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class=flashes>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <form action="/validate" method="POST">
+        Enter OTP(One-time password): <input type="text" name="otp">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

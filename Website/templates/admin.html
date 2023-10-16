@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
- 
 {% extends 'base.html' %}
 
 {% block title %}
@@ -18,175 +15,544 @@
 			
 		  alert ("Officer added!");
 		}
+		// THIS IS SOOOO BAD MAN
+		function playerSelect() {
+				let x = document.getElementById("mySelect").value;
+				document.getElementById('delete').value = x;
+			}	
+
+		function officerSelect() {
+			let x = document.getElementById("mySelect1").value;
+			document.getElementById('delete1').value = x;
+		}
+
+		function memberSelect() {
+			let x = document.getElementById("mySelect2").value;
+			document.getElementById('delete2').value = x;
+		}
 	</script>
 	<style>
 		body {
 			background-color: #c3b680;
 		}
+		
+		/* Solid border for dividers*/
+		hr.my_solid_hr {
+  			border-top: 5px solid #000;
+			border-color: black;
+			background-color: black;
+			color: black;
+		}
 	</style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+{% block custom_head %}
+<script type="text/javascript" src="../static/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+	tinymce.init({
+		selector: "#content",
+		plugins: ['link','image','code'],
+		toolbar: 'bold italic backcolor | alignleft aligncenter alignright alignjustify | code',
+		images_upload_url: '/uploadimage',
+		images_reuse_filename: false
+	});
+
+</script>
+{% endblock %}
 <div class="jumbotron text-center">
 	<h1>Admin Page</h1>
 </div>
 
+
+<!-- Script for displaying tabs -->
+<!-- https://www.w3schools.com/w3css/w3css_tabulators.asp -->
+<script>
+function openTab(tabName) {
+  var i;
+  var x = document.getElementsByClassName("tab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  document.getElementById(tabName).style.display = "block";  
+}
+</script>
+
 <div class="container">
 	<hr/>
 	<div class="row">
-		<h2>Players:</h2>
-		{% for tup in players %}
-			<h5>{{ tup[0] }}</h5>
-			<img src="static/image_uploads/{{ tup[2] }}" 
-				alt="{{ tup[0] }} profile photo." 
-				style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
-			>
-			<p>{{ tup[1] }}</p>
-		{% endfor %}
-	</div>
-	<hr/>
-</div>
-<div class="container-fluid">
-	<div class="row row-cols-4 row-cols-sm-4 g-lg-1">
 		<div class="col-4">
 			<div class="card mb-2 green_back_gold_front">
 				<div class="row g-0">
-    <h4>Specify players to delete here: </h4>
-	<!-- form to delete players by name-->
-	<form method="POST">
-  		<label for="deleteplayer">Player Name:</label><br>
-    	<input name="deleteplayer" value ="Jane Doe" class="form-control"><br>
-    	<input type="submit" id='delete-form' name='delete-form' value="Delete Player" class="btn btn-outline-dark green_back_gold_front_lightened">
-	</form> 
+				<h4>Current Player List: </h4>
+				<select class="form-select-lg card mb-2 green_back_gold_front" size="10" aria-label="Size 10 select example">
+				{% for tup in players %}
+					<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+				{% endfor %}
+				</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+				<h4>Current Officer List: </h4>
+				<select class="form-select-lg card mb-2 green_back_gold_front" multiple aria-label="Multiple select example">
+				{% for tup in officers %}
+					<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+				{% endfor %}
+				</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+				<h4>Current Team Member List: </h4>
+				<select class="form-select-lg card mb-2 green_back_gold_front" size="10" aria-label="Size 10 select example">
+				{% for tup in member %}
+					<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+				{% endfor %}
+				</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<hr/>
-				</div>
-		</div>
+</div>
+<div class="container-fluid">
+
+	<!--<div class="w3-bar w3-black">-->
+	<div class="w3-bar green_back_gold_front">
+  		<button class="w3-bar-item w3-button" id="players-tab" onclick="openTab('Players')">Players</button>
+  		<button class="w3-bar-item w3-button" id="alumni-tab"onclick="openTab('Alumni')">Alumni</button>
+  		<button class="w3-bar-item w3-button" id="team-tab" onclick="openTab('TeamMembers')">Team Members</button>
+  		<button class="w3-bar-item w3-button" id="officers-tab" onclick="openTab('Officers')">Officers</button>
+  		<button class="w3-bar-item w3-button" id="testimonials-tab" onclick="openTab('Testimonials')">Testimonials</button>
+      <button class="w3-bar-item w3-button" id="content-block-tab" onclick="openTab('Content')">Content Blocks</button>
 	</div>
 
-
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
-	<h4>Specify players to add here: </h4>
-	<!-- form to add players -->
-	<form method="POST" id="add-form" name="add-form" enctype="multipart/form-data">
-  		<label for="addname">Player Name:</label><br>
-  		<input type="text" id="addname" name="addname" value="John Doe" class="form-control"><br>
-  		<label for="desc">Player Description:</label><br>
-  		<input type="text" id="desc" name="desc" value="... player description here ..." class="form-control"><br>
-  		<label for="file">Profile Picture:</label><br>
-  		<input type="file" id="file" name="file" class="form-control"><br>
-  		<input type="submit" id='add-form' name='add-form' value="Add Player" class="btn btn-outline-dark green_back_gold_front_lightened">
-	</form> 
-	<hr/>
-				</div>
-		</div>
-	</div>
-
-
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
-	<h4>Specify alumni to delete here: </h4>
-	<!-- form to delete players by name-->
-	<form method="POST">
-		<label for="delete">Player Name:</label><br>
-	  <input name="deletealumni" value ="Jane Doe" class="form-control"><br>
-	  <input type="submit" id='delete-form' name='alumni-delete-form' value="Delete Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
-    </form> 
-    <hr/>
-				</div>
-		</div>
-	</div>
-
-
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
-	<h4>Specify players to add to alumni: </h4>
-	<!-- form to add players -->
-	<form method="POST" id="add-form" name="alumni-add-form" enctype="multipart/form-data">
-  		<label for="addname">Alumni Name:</label><br>
-  		<input type="text" id="addname" name="alumni-addname" value="John Doe" class="form-control"><br>
-  		<label for="desc">Alumni Description:</label><br>
-  		<input type="text" id="desc" name="alumni-desc" value="... player description here ..." class="form-control"><br>
-  		<label for="file">Alumni Picture:</label><br>
-  		<input type="file" id="file" name="alumni-file" class="form-control"><br>
-  		<input type="submit" id='add-form' name='alumni-add-form' value="Add Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
-	</form> 
-				</div>
-		</div>
-	</div>
-
-	
+	<!-- Players tab -->
+	<div id="Players" class="w3-container tab">
+		<h2>Players</h2>
+		<div class="row row-cols-4 row-cols-sm-4 g-lg-1">
 			<div class="col-4">
 				<div class="card mb-2 green_back_gold_front">
 					<div class="row g-0">
+    					<h4>Specify players to delete here: </h4>
+						<!-- form to delete players by name-->
+						<form method="POST">
+  							<label for="deleteplayer">Player Name:</label><br>
+							<select name="deleteplayer" id="deleteplayer-id" class="form-control">
+								{% for tup in players %}
+									<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+								{% endfor %}
+							</select><br>
+    						<input type="submit" id='delete-player-button-id' name='delete-player-button' value="Delete Player" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form> 
+						<hr/>
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="card mb-2 green_back_gold_front">
+					<div class="row g-0">
+						<h4>Specify players to add here: </h4>
+						<!-- form to add players -->
+						<form method="POST" id="player-add-form-id" name="player-add-form-name" enctype="multipart/form-data">
+  							<label for="addname">Player Name:</label><br>
+  							<input type="text" id="player-name-id" name="player-name" value="John Doe" class="form-control"><br>
+  							<label for="desc">Player Description:</label><br>
+  							<input type="text" id="player-desc-id" name="player-desc" value="... player description here ..." class="form-control"><br>
+  							<label for="file">Profile Picture:</label><br>
+  							<input type="file" id="player-file-id" name="player-file" class="form-control"><br>
+  							<input type="submit" id='player-button-id' name='player-button-name' value="Add Player" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form> 
+						<hr/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<hr/>
+			<div class="row">
+				<h2>Players:</h2>
+				{% for tup in players %}
+					<hr class="my_solid_hr">
+					<h5>{{ tup[0] }}</h5>
+					<img src="static/image_uploads/{{ tup[2] }}" 
+						alt="{{ tup[0] }} profile photo." 
+						style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
+					>
+					<p>{{ tup[1] }}</p>
+				{% endfor %}
+			</div>
+			<hr/>
+		</div>
+	</div>
+
+	<!-- Alumni Tab -->
+	<div id="Alumni" class="w3-container tab" style="display:none">
+		<h2>Alumni</h2>
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+					<h4>Specify alumni to delete here: </h4>
+					<!-- form to delete players by name-->
+					<form method="POST">
+						<label for="delete">Player Name:</label><br>
+						<select name="deletealumni" id="deletealumni-id" class="form-control">
+							{% for tup in alumni %}
+								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+							{% endfor %}
+						</select><br>
+	  					<input type="submit" id='delete-alumni-button-id' name='delete-alumni-button' value="Delete Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
+    				</form> 
+    				<hr/>
+				</div>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+					<h4>Specify players to add to alumni: </h4>
+					<!-- form to add players -->
+					<form method="POST" id="alumni-add-form-id" name="alumni-add-form-name" enctype="multipart/form-data">
+  						<label for="addname">Alumni Name:</label><br>
+  						<input type="text" id="alumni-name-id" name="alumni-name" value="John Doe" class="form-control"><br>
+  						<label for="desc">Alumni Description:</label><br>
+  						<input type="text" id="alumni-desc-id" name="alumni-desc" value="... player description here ..." class="form-control"><br>
+  						<label for="file">Alumni Picture:</label><br>
+  						<input type="file" id="alumni-file-id" name="alumni-file" class="form-control"><br>
+  						<input type="submit" id='alumni-button-id' name='alumni-button-name' value="Add Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
+					</form> 
+    				<hr/>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<hr/>
+			<div class="row">
+				<h2>Alumni:</h2>
+				{% for tup in alumni %}
+					<hr class="my_solid_hr">
+					<h5>{{ tup[0] }}</h5>
+					<img src="static/image_uploads/{{ tup[2] }}" 
+						alt="{{ tup[0] }} profile photo." 
+						style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
+					>
+					<p>{{ tup[1] }}</p>
+				{% endfor %}
+			</div>
+			<hr/>
+		</div>
+	</div>
+
+	<!-- Team Members tab -->
+	<div id="TeamMembers" class="w3-container tab" style="display:none">
+		<h2>Team Members</h2>
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
 					<h4>Specify team members to delete here: </h4>
 					<!-- form to delete players by name-->
 					<form method="POST">
 						<label for="deleteteam">Player Name:</label><br>
-					<input name="deleteteam" value ="Jane Doe" class="form-control"><br>
-					<input type="submit" id='delete-form' name='team-delete-form' value="Delete Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
+						<select name="deleteteam" id="deleteteam-id" class="form-control">
+							{% for tup in team_members %}
+								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+							{% endfor %}
+						</select><br>
+						<input type="submit" id='delete-team-button-id' name='delete-team-button' value="Delete Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
 					</form> 
+    				<hr/>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
-				<h4>Specify players to add to team members: </h4>
-				<!-- form to add players -->
-				<form method="POST" id="add-form" name="team-add-form" enctype="multipart/form-data">
-					<label for="addname">Team Member Name:</label><br>
-					<input type="text" id="addname" name="team-addname" value="John Doe" class="form-control"><br>
-					<label for="desc">Player Description:</label><br>
-					<input type="text" id="desc" name="team-desc" value="... player description here ..." class="form-control"><br>
-					<label for="desc">Role Description:</label><br>
-					<input type="text" id="desc" name="role-desc" value="... role description here ... ex.(role 1)" class="form-control"><br>
-					<label for="file">Team Member Picture:</label><br>
-					<input type="file" id="file" name="team-file" class="form-control"><br>
-					<input type="submit" id='add-form' name='team-add-form' value="Add Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
-				</form> 
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+					<h4>Specify players to add to team members: </h4>
+					<!-- form to add players -->
+					<form method="POST" id="team-add-form-id" name="team-add-form-id" enctype="multipart/form-data">
+						<label for="addname">Team Member Name:</label><br>
+						<input type="text" id="team-name-id" name="team-name" value="John Doe" class="form-control"><br>
+						<label for="desc">Player Description:</label><br>
+						<input type="text" id="team-player-desc-id" name="team-player-desc" value="... player description here ..." class="form-control"><br>
+						<label for="desc">Role Description:</label><br>
+						<input type="text" id="team-role-desc-id" name="team-role-desc" value="... role description here ... ex.(role 1)" class="form-control"><br>
+						<label for="file">Team Member Picture:</label><br>
+						<input type="file" id="team-file-id" name="team-file" class="form-control"><br>
+						<input type="submit" id='team-button-id' name='team-button' value="Add Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
+					</form> 
+    				<hr/>
+				</div>
 			</div>
+		</div>
+		<div class="container">
+			<hr/>
+			<div class="row">
+				<h2>Team Members:</h2>
+				{% for tup in team_members %}
+					<hr class="my_solid_hr">
+					<h5>{{ tup[0] }}</h5>
+					<img src="static/image_uploads/{{ tup[2] }}" 
+						alt="{{ tup[0] }} profile photo." 
+						style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
+					>
+					<p>{{ tup[1] }}</p>
+					<p>Role: {{ tup[3] }}</p>
+				{% endfor %}
+			</div>
+			<hr/>
 		</div>
 	</div>
 
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
-	<h4>Specify officers to delete here: </h4>
-	<!-- form to delete officers by name-->
-						<form method="POST">
-							<label for="deleteofficers">Player Name:</label><br>
-						<input name="deleteofficers" value ="Jane Doe" class="form-control"><br>
-						<input type="submit" id='delete-form' name='officers-delete-form' value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
+	<!-- Officers tab -->
+	<div id="Officers" class="w3-container tab" style="display:none">
+		<h2>Officers</h2>
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+					<h4>Specify officers to delete here: </h4>
+					<!-- form to delete officers by name-->
+					<form method="POST">
+						<label for="deleteofficers">Player Name:</label><br>
+						<select name="deleteofficers" id="deleteofficers-id" class="form-control">
+							{% for tup in officers %}
+								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+							{% endfor %}
+						</select><br>
+						<input type="submit" id='delete-officers-button-id' name='delete-officers-button' value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
 					</form> 
+    				<hr/>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-	<div class="col-4">
-		<div class="card mb-2 green_back_gold_front">
-			<div class="row g-0">
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
 					<h4>Specify officers to add to about page: </h4>
 					<!-- form to add officers -->
-					<form method="POST" id="add-form" name="officers-add-form" enctype="multipart/form-data">
+					<form method="POST" id="officers-add-form-id" name="officers-add-form-name" enctype="multipart/form-data">
 						<label for="addname">Officer Name:</label><br>
-						<input type="text" id="addname" name="officers-addname" value="John Doe" class="form-control"><br>
+						<input type="text" id="officers-name-id" name="officers-name" value="John Doe" class="form-control"><br>
 						<label for="desc">Officer Description:</label><br>
-						<input type="text" id="desc" name="officers-desc" value="... officer description here ..." class="form-control"><br>
+						<input type="text" id="officers-desc-id" name="officers-desc" value="... officer description here ..." class="form-control"><br>
 						<label for="file">Officer Picture:</label><br>
-						<input type="file" id="file" name="officers-file" class="form-control"><br>
-						<input type="submit" id='add-form' name='officers-add-form' value="Add Officer" class="btn btn-outline-dark green_back_gold_front_lightened" 
-						onclick="showTeamSuccess()">
+						<input type="file" id="officers-file-id" name="officers-file" class="form-control"><br>
+						<!--<input type="submit" id='officers-add-form-submit' name='officers-add-form-submit' value="Add Officer" class="btn btn-outline-dark green_back_gold_front_lightened" 
+						onclick="showTeamSuccess()">-->
+						<input type="submit" id='officers-button-id' name='officers-button' value="Add Officer" class="btn btn-outline-dark green_back_gold_front_lightened">
 					</form> 
 					<hr/>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<hr/>
+			<div class="row">
+				<h2>Officers:</h2>
+				{% for tup in officers %}
+					<hr class="my_solid_hr">
+					<h5>{{ tup[0] }}</h5>
+					<img src="static/image_uploads/{{ tup[2] }}" 
+						alt="{{ tup[0] }} profile photo." 
+						style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
+					>
+					<p>{{ tup[1] }}</p>
+				{% endfor %}
+			</div>
+			<hr/>
+		</div>
+	</div>
+
+	<!-- Content Block -->
+	<div id="Content" class="w3-container tab" style="display:none">
+		<h2>Content Blocks</h2>
+		<div class="alert alert-success" role="alert" style="display: none;">
+			Updated the content successfully!</div>
+		<div class="row">
+			<div class="col">
+				<hr/>
+				<div class="row">
+					<h2>Blocks</h2>
+					<table id="block_table" class="table table-hover table-striped table-bordered dataTable dtr-inline" role="grid" aria-describedby="example_info">
+						<thead>
+						<tr role="row">
+							<th  rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">Title</th>
+							<th  rowspan="1" colspan="1" style="width: 216.2px;" aria-label="Slug: activate to sort column ascending">Slug</th>
+							<th  rowspan="1" colspan="1" style="width: 100.2px;" aria-label="Modified Date: activate to sort column ascending">Modified Date</th>
+						</tr>
+						</thead>
+						<tbody>
+						{% for tup in blocks %}
+						<tr role="row" class="odd">
+							<td tabindex="0" class="sorting_1"><a class="editBlockAction" data-el="{{ tup[0] }}" href="#">{{ tup[1] }}</a></td>
+							<td>{{ tup[0] }}</td>
+							<td>{{ tup[3] }}</td>
+						</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<hr/>
+			</div>
+			<div class="col">
+					<div class="row g-0">		
+					<form method="POST" name="update-page" id="formContent">
+						<div id="currentSlug" style="display: none;"></div>
+						<textarea id="content"></textarea>
+						<button type="submit" id="btnUdpateContent" class="mb-2 mr-2 btn btn-outline-2x btn-outline-success"">Update</button>
+						<input id='tinymce-uploader' type='file' name='pic' accept='image/*'' style='display:none'>
+					</form>			
+				</div>
 			</div>
 		</div>
 	</div>
 
-<a href="logout" class="btn btn-outline-dark green_back_gold_front_lightened" role="button">Logout</a>
+	<!-- Testimonials tab -->
+	<div id="Testimonials" class="w3-container tab" style="display:none">
+		<h2>Testimonials</h2>
+		<div class="row row-cols-4 row-cols-sm-4 g-lg-1">
+			<div class="col-4">
+				<div class="card mb-2 green_back_gold_front">
+					<div class="row g-0">
+    					<h4>Specify testimonials to delete here: </h4>
+						<!-- form to delete testimonials -->
+						<form method="POST">
+							<!-- TESTIMONIAL DELETE FORM WILL GO HERE -->
+							<label for="deletetestimonial">Testimonial Name:</label><br>
+							<select name="deletetestimonial" id="deletetestimonial-id" class="form-control">
+								{% for tup in testimonial %}
+									<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+								{% endfor %}
+							</select><br>
+							<input type="submit" id='delete-testimonial-button-id' name='delete-testimonial-button' value="Delete Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form> 
+						<hr/>
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="card mb-2 green_back_gold_front">
+					<div class="row g-0">
+						<h4>Specify testimonials to add here: </h4>
+						<!-- form to add testimonials-->
+						<form method="POST" id="testimonials-add-form-id" name="testimonials-add-form-name" enctype="multipart/form-data">
+							<label for="addname">Testimonial Name:</label><br>
+							<input type="text" id="testimonial-name-id" name="testimonial-name" value="John Doe" class="form-control"><br>
+							<label for="desc">Testimonial Text 1:</label><br>
+							<input type="text" id="testimonial-text1-id" name="testimonial-text1" value="... testimonial text 1 here ..." class="form-control"><br>
+							<label for="desc">Testimonial Text 2:</label><br>
+							<input type="text" id="testimonial-text2-id" name="testimonial-text2" value="... testimonial text 2 here  ..." class="form-control"><br>
+							<label for="file">Testimonial Picture:</label><br>
+							<input type="file" id="testimonial-file-id" name="testimonial-file" class="form-control"><br>
+							<input type="submit" id='testimonial-button-id' name='testimonial-button' value="Add Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form> 
+						<hr/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<hr/>
+			<div class="row">
+				<h2>Testimonials:</h2>
+				{% for tup in testimonial %}
+					<!-- loop code for testimonials will go here -->
+					<hr class="my_solid_hr">
+					<h5>Testimonial Name: {{ tup[0] }}</h5>
+					<img src="static/image_uploads/{{ tup[2] }}" 
+						alt="{{ tup[0] }} profile photo." 
+						style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
+					>
+					<p>Text 1: {{ tup[1] }}</p>
+					<p>Text 2: {{ tup[3] }}</p>
+				{% endfor %}
+			</div>
+			<hr/>
+		</div>
+	</div>
+	<a href="logout" class="btn btn-outline-dark green_back_gold_front_lightened" role="button">Logout</a>
 </div>
 <br>
+<script type="text/javascript">
+	var editor = document.querySelector("#content");
+	var slug = document.querySelector("#currentSlug");
+	var btnEditBlock = document.querySelectorAll(".editBlockAction");
+	var btnUpdateBlock = document.querySelector("#btnUdpateContent");
+	var formContent = document.querySelector("#formContent");
+	var message = document.querySelector(".alert-success");
+	btnEditBlock.forEach((btnEdit) => {
+		btnEdit.addEventListener("click", function(e){
+			message.style.display = "none";
+		fetch('/editpage', {
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+			method : 'POST',
+			body : JSON.stringify( {
+				'slug' : e.target.getAttribute('data-el'),
+			})
+		})
+		.then(function (response){
+			if(response.ok) {
+				response.json()
+				.then(function(response) {
+					tinymce.activeEditor.setContent(response.data[0][2]);
+					slug.innerHTML = response.data[0][0];
+				});
+				
+			}
+			else {
+				throw Error('Error');
+			}
+		})
+			.catch(function(error) {
+			console.log(error);
+		});
+		});
+	});
 
+	formContent.addEventListener("submit", function(e){
+		fetch('/updatecontent', {
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+			method : 'POST',
+			body : JSON.stringify( {
+				'slug' : slug.textContent,
+				'content': tinymce.activeEditor.getContent()
+			})
+		})
+		.then(function (response){
+			if(response.ok) {
+				response.json()
+				.then(function(response) {
+					console.log(response);
+					tinymce.activeEditor.setContent(response.data[0][2]);
+					slug.innerHTML = response.data[0][0];
+					
+					message.innerHTML = response.message;
+					message.style.display = "block";
+				});
+				
+			}
+			else {
+				throw Error('Error');
+			}
+		})
+			.catch(function(error) {
+			console.log(error);
+		});
+		e.preventDefault();
+		return false;
+	});
+	
+
+
+</script>
 {% endblock %}

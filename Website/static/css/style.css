@@ -418,7 +418,7 @@ h1.hero-heading {
     background: #ff0000;
 }
 
-.wrapper-social-icon .button-social .social-icon i {
+.wrapper-social-icon .button-social .social-icon i, .wrapper-social-icon .button-social .social-icon em {
     font-size: 25px;
     line-height: 60px;
     transition: all 0.3s ease-out;
@@ -1152,29 +1152,11 @@ h1.hero-heading {
     }
     
     .recruitment-button1 a {
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: 600;
-        display: inline-block;
-        color: #ffffff;
-        padding: 14px 70px;
-        border-radius: 50px;
-        margin-top: 20px;
-        background-color: #005440;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+        font-size: 0px;
     }
 
     .recruitment-button1 a:hover {
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: 600;
-        display: inline-block;
-        color: #ffffff;
-        padding: 14px 70px;
-        border-radius: 50px;
-        margin-top: 20px;
-        background-color: #c3b680;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+        font-size: 0px;
     }
 
     .donate-button a:hover {

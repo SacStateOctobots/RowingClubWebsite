@@ -1,11 +1,12 @@
 import flask
 import flask_login
 import os
-from flask import Flask, render_template, current_app, request, redirect
+from flask import Flask, flash, render_template, current_app, request, redirect, session
 from flask_mail import Mail, Message
 from werkzeug.utils import secure_filename
 import google_calendar_reader as cal
 import database_library as db
+import random
 
 app = flask.Flask(__name__)
 app.secret_key = 'super secret string'  # Change this!
@@ -39,6 +40,9 @@ app.config.update(
 	MAIL_PASSWORD = emailKey
 )
 mail = Mail(app)
+
+#Passcode for OTP
+global_final_otp = ''
 
 class User(flask_login.UserMixin):
     pass
@@ -94,7 +98,8 @@ def members():
 
 @app.route("/alumni")
 def alumni():
-    return render_template("alumni.html", alumni=db.get_alumni())
+	print(db.get_alumni())
+	return render_template("alumni.html", alumni=db.get_alumni())
 
 @app.route("/calendar")
 def calendar():
@@ -104,22 +109,22 @@ def calendar():
 
 @app.route("/instagram")
 def instagram():
-    return render_template("instagram.html")
+    return render_template("instagram.html",social=db.get_page("social"), contact=db.get_page("contact"))
 
 @app.route("/about")
 def about():
-    return render_template("about_us.html", officers=db.get_about())
+    return render_template("about_us.html", officers=db.get_about(), content=db.get_page("aboutus"))
 
 #recruitment page
 @app.route("/join")
 def join():
-    test = db.get_testimonial
+    test = db.get_testimonial()
     
     return render_template("join.html",test=test)
 
 @app.route("/contact")
 def contact():
-    return render_template("contactus.html")
+    return render_template("contactus.html",social=db.get_page("social"),logo=db.get_page("contact_logo"))
 
 
 @app.route("/contact",methods=['POST'])
@@ -139,32 +144,76 @@ def recruitment():
     return render_template("recruitment.html")
  
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login')
 def login():
-    if flask.request.method == 'GET':
-    	return render_template("login.html")
-    email = flask.request.form['email']
-    if flask.request.form['pw'] == users[email]['pw']:
+    return render_template("login.html")
+
+@app.route('/login', methods=['POST'])
+def login_form():
+	email = flask.request.form['email']
+	if flask.request.form['pw'] == users[email]['pw']:
+		user = User()
+		user.id = email
+		flask_login.login_user(user)
+		return flask.redirect(flask.url_for('protected'))
+	return 'Bad login'
+	#return render_template("login.html")
+
+##TO-DO:
+#	- find way to make sure code becomes invalid after a set amount of time
+#	- check email to make sure it is a valid email addr and that it matches set email
+#		-make sure email storage is done with hash value and to validate with hash match
+#	- email message needs to be secure, email text should be hidden from traffic sniffing
+@app.route('/verify', methods = ["POST"])
+def verify(): 
+	#Creates OTP
+	final_otp = ''
+	for i in range(6):
+		final_otp = final_otp + str(random.randint(0,9))
+	#Sends message to email put in form
+	msg = Message(subject="Rowing Club Sign-in Passcode",
+				body="Passcode for log-in verification: "
+				+ str(final_otp),  
+				sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
+				recipients=[request.form['email_otp']])
+	mail.send(msg)
+	#Sets a session var to be referenced for validate page. 
+	#Might be removed after flask session is ended but not sure how this works with hosted website
+	session['final_otp'] = final_otp
+	#session['user_email'] = request.form['email_otp']
+	return render_template('login_otp.html') 
+
+@app.route('/validate',methods=["POST"])   
+def validate():      
+    # OTP Entered by the User
+    user_otp = request.form['otp'] 
+    if int(session['final_otp']) == int(user_otp):
+        #User var setting done manually so session cookies can be generated to access page
+		#Will need to alter to change to authorized rowing club email when published
         user = User()
-        user.id = email
+        user.id = 'foo@bar.tld'
         flask_login.login_user(user)
         return flask.redirect(flask.url_for('protected'))
-    return 'Bad login'
+    else:
+        flash('Incorrect Passcode Entered, Try again')
+        return render_template('login_otp.html')
+
 
 @app.route('/protected', methods=['POST'])
 @flask_login.login_required
-def my_form_post():
-	if "delete-form" in request.form:
+def protected_post():
+	print(request.form)
+	if "deleteplayer" in request.form:
 		text = request.form['deleteplayer']
 		db.delete_player(text)
-	if "add-form" in request.form:
-		nametext = request.form['addname']
-		desc = request.form['desc']
+	if "player-name" in request.form:
+		nametext = request.form['player-name']
+		desc = request.form['player-desc']
 		# check if the post request has the file part
-		if 'file' not in request.files:
+		if 'player-file' not in request.files:
 			print('No file part')
 			return redirect(request.url)
-		file = request.files['file']
+		file = request.files['player-file']
 		# If the user does not select a file, the browser submits an
 		# empty file without a filename.
 		if file.filename == '':
@@ -181,14 +230,14 @@ def my_form_post():
 		db.insert_player(nametext,desc,filename)
             
 #######################################################
-# sample copy of a secondary add form
+# Alumni form -> needs to be changed to edit text. Alumni memebers not a part of page
 #######################################################
 
-	if "alumni-delete-form" in request.form:
+	if "deletealumni" in request.form:
 		text = request.form['deletealumni']
 		db.delete_alumni(text)
-	if "alumni-add-form" in request.form:
-		nametext = request.form['alumni-addname']
+	if "alumni-name" in request.form:
+		nametext = request.form['alumni-name']
 		desc = request.form['alumni-desc']
 		# check if the post request has the file part
 		if 'alumni-file' not in request.files:
@@ -201,7 +250,7 @@ def my_form_post():
 			print('No file name')
 			return redirect(request.url)
 		if file and allowed_file(file.filename):
-			print('Succes alumni')
+			print('Success alumni')
 			filename = secure_filename(file.filename)
 			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -214,13 +263,13 @@ def my_form_post():
 # team members form
 #######################################################
 
-	if "team-delete-form" in request.form:
+	if "deleteteam" in request.form:
 		text = request.form['deleteteam']
 		db.delete_team_members(text)
-	if "team-add-form" in request.form:
-		nametext = request.form['team-addname']
-		desc = request.form['team-desc']
-		role = request.form['role-desc']
+	if "team-name" in request.form:
+		nametext = request.form['team-name']
+		desc = request.form['team-player-desc']
+		role = request.form['team-role-desc']
 		# check if the post request has the file part
 		if 'team-file' not in request.files:
 			print('No file part')
@@ -242,14 +291,16 @@ def my_form_post():
 		db.insert_team_members(nametext,desc,filename,role)
 
 #######################################################
-# team members form
+# Officer form
 #######################################################
 
-	if "officers-delete-form" in request.form:
+	if "deleteofficers" in request.form:
 		text = request.form['deleteofficers']
 		db.delete_about(text)
-	if "officers-add-form" in request.form:
-		nametext = request.form['officers-addname']
+	#if "officers-add-form" in request.form:
+	if "officers-name" in request.form:
+		print('Officers add form')
+		nametext = request.form['officers-name']
 		desc = request.form['officers-desc']
 		# check if the post request has the file part
 		if 'officers-file' not in request.files:
@@ -271,42 +322,75 @@ def my_form_post():
 			return redirect(request.url)
 		db.insert_about(nametext,desc,filename)
 
-
-		
-	return render_template("admin.html", players=db.get_players())
-
 #######################################################
-# testimonial
+# Testimonials form
 #######################################################
-@app.route('/protected')
-@flask_login.login_required
-def protected():
-	if "testimonial-delete-form" in request.form:
+
+	if "deletetestimonial" in request.form:
 		text = request.form['deletetestimonial']
 		db.delete_testimonial(text)
-	if "testimonial-add-form" in request.form:
-		nametext = request.form['testimonial-addname']
-		desc = request.form['testimonial-desc']
+	if "testimonial-name" in request.form:
+		nametext = request.form['testimonial-name']
+		text1 = request.form['testimonial-text1']
+		text2 = request.form['testimonial-text2']
 		# check if the post request has the file part
 		if 'testimonial-file' not in request.files:
 			print('No file part')
 			return redirect(request.url)
-		filetext = request.files['testimonial-file']
+		file = request.files['testimonial-file']
 		# If the user does not select a file, the browser submits an
 		# empty file without a filename.
-		if filetext.file == '':
+		if file.filename == '':
 			print('No file name')
 			return redirect(request.url)
-		if filetext and allowed_file(filetext.file):
+		if file and allowed_file(file.filename):
 			print('Success testimonial')
-			file = secure_filename(filetext.file)
-			print(os.path.join(app.config['UPLOAD_FOLDER'], file))
-			filetext.save(os.path.join(app.config['UPLOAD_FOLDER'], file))
+			filename = secure_filename(file.filename)
+			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		else:
 			print('File name not allowed')
 			return redirect(request.url)
-		db.insert_testimonial(nametext,desc,file)
-	return render_template("admin.html", players=db.get_players(), testimonial=db.get_testimonial())
+		db.insert_testimonial(nametext,text1,filename,text2)
+	
+	players = db.get_players()
+	#print(players)
+	alumni = db.get_alumni()
+	#print(alumni)
+	team_members = db.get_team_members()
+	#print(team_members)
+	officers = db.get_about()
+	#print(officers)
+	testimonial=db.get_testimonial()
+	#print(testimonial)
+	return render_template("admin.html", 
+							players=players, 
+							alumni=alumni, 
+							team_members=team_members, 
+							officers=officers, 
+							testimonial=testimonial,
+              blocks=db.get_pages())
+
+@app.route('/protected')
+@flask_login.login_required
+def protected():
+	players = db.get_players()
+	#print(players)
+	alumni = db.get_alumni()
+	#print(alumni)
+	team_members = db.get_team_members()
+	#print(team_members)
+	officers = db.get_about()
+	#print(officers)
+	testimonial=db.get_testimonial()
+	#print(testimonial)
+	return render_template("admin.html", 
+							players=players, 
+							alumni=alumni, 
+							team_members=team_members, 
+							officers=officers, 
+							testimonial=testimonial,
+              blocks=db.get_pages())
 
 @app.route('/logout')
 def logout():
@@ -321,3 +405,44 @@ def sql_debug():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/updatecontent', methods=['POST'])
+@flask_login.login_required
+def cmsPages():
+	if flask.request.method == 'POST':
+		json_data = flask.request.get_json()
+		db.update_page(json_data["slug"],json_data["content"])
+		return {
+			'data' : db.get_page(json_data["slug"]),
+			'message': "Updated!"
+		}
+	return render_template('admin.html')
+
+
+@app.route('/editpage', methods=['POST'])
+@flask_login.login_required
+def updatePage():
+	if flask.request.method == 'POST':
+		json_data = flask.request.get_json()
+		return {
+			'data' : db.get_page(json_data["slug"])
+		}
+	return render_template('admin.html')
+
+@app.route('/uploadimage', methods=['POST'])
+@flask_login.login_required
+def uploadImage():
+	if flask.request.method == 'POST':
+		if request.files.get("file"):
+			if allowed_file(request.files.get("file").filename):
+				file = secure_filename(request.files.get("file").filename)
+				request.files.get("file").save(os.path.join(app.config['UPLOAD_FOLDER'], file))
+	return {
+			'location' : os.path.join(app.config['UPLOAD_FOLDER'], file)
+		}
+			
+
+
+          
+	
+            
