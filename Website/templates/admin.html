@@ -382,9 +382,9 @@ function openTab(tabName) {
 					<table id="block_table" class="table table-hover table-striped table-bordered dataTable dtr-inline" role="grid" aria-describedby="example_info">
 						<thead>
 						<tr role="row">
-							<th  rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">Title</th>
-							<th  rowspan="1" colspan="1" style="width: 216.2px;" aria-label="Slug: activate to sort column ascending">Slug</th>
-							<th  rowspan="1" colspan="1" style="width: 100.2px;" aria-label="Modified Date: activate to sort column ascending">Modified Date</th>
+							<th  rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending" aria-label="Name">Title</th>
+							<th  rowspan="1" colspan="1" style="width: 216.2px;" aria-label="ID">Id</th>
+							<th  rowspan="1" colspan="1" style="width: 100.2px;" aria-label="Modified Date">Modified Date</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -403,7 +403,7 @@ function openTab(tabName) {
 			<div class="col">
 					<div class="row g-0">		
 					<form method="POST" name="update-page" id="formContent">
-						<div id="currentSlug" style="display: none;"></div>
+						<div id="currentId" style="display: none;"></div>
 						<textarea id="content"></textarea>
 						<button type="submit" id="btnUdpateContent" class="mb-2 mr-2 btn btn-outline-2x btn-outline-success"">Update</button>
 						<input id='tinymce-uploader' type='file' name='pic' accept='image/*'' style='display:none'>
@@ -481,7 +481,7 @@ function openTab(tabName) {
 <br>
 <script type="text/javascript">
 	var editor = document.querySelector("#content");
-	var slug = document.querySelector("#currentSlug");
+	var id = document.querySelector("#currentId");
 	var btnEditBlock = document.querySelectorAll(".editBlockAction");
 	var btnUpdateBlock = document.querySelector("#btnUdpateContent");
 	var formContent = document.querySelector("#formContent");
@@ -495,7 +495,7 @@ function openTab(tabName) {
 			},
 			method : 'POST',
 			body : JSON.stringify( {
-				'slug' : e.target.getAttribute('data-el'),
+				'id' : e.target.getAttribute('data-el'),
 			})
 		})
 		.then(function (response){
@@ -503,7 +503,7 @@ function openTab(tabName) {
 				response.json()
 				.then(function(response) {
 					tinymce.activeEditor.setContent(response.data[0][2]);
-					slug.innerHTML = response.data[0][0];
+					id.innerHTML = response.data[0][0];
 				});
 				
 			}
@@ -524,7 +524,7 @@ function openTab(tabName) {
 			},
 			method : 'POST',
 			body : JSON.stringify( {
-				'slug' : slug.textContent,
+				'id' : id.textContent,
 				'content': tinymce.activeEditor.getContent()
 			})
 		})
@@ -534,7 +534,7 @@ function openTab(tabName) {
 				.then(function(response) {
 					console.log(response);
 					tinymce.activeEditor.setContent(response.data[0][2]);
-					slug.innerHTML = response.data[0][0];
+					id.innerHTML = response.data[0][0];
 					
 					message.innerHTML = response.message;
 					message.style.display = "block";

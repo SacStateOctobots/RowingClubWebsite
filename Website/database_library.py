@@ -116,16 +116,16 @@ def delete_about(name):
 #######################################################
 def get_pages():
 	return query_db('select * from cmspages')
-def get_page(slug):
-	return query_db('select * from cmspages where slug = :val',{'val': slug})
-def insert_cmspage(slug, title, content,date):
-	insert_to_db("cmspages","(slug, title, content,date)","(?,?,?)", (slug, title, content,date))
-def update_page(slug, content):
-	query = "UPDATE cmspages SET content= :content , modifieddate= :date WHERE slug= :slug"
-	args = {'content': content, 'slug': slug, 'date': datetime.now()}
+def get_page(id):
+	return query_db('select * from cmspages where id = :val',{'val': id})
+def insert_cmspage(id, title, content,date):
+	insert_to_db("cmspages","(id, title, content,date)","(?,?,?)", (id, title, content,date))
+def update_page(id, content):
+	query = "UPDATE cmspages SET content= :content , modifieddate= :date WHERE id= :id"
+	args = {'content': content, 'id': id, 'date': datetime.now()}
 	if(update_to_db(query, args)):
-		return query_db('select * from cmspages where slug = :val',{'val': slug})
+		return query_db('select * from cmspages where id = :val',{'val': id})
 	else:
 		return None
-def delete_page(slug):
-	delete_from_db("cmspages","slug",slug)
+def delete_page(id):
+	delete_from_db("cmspages","id",id)

@@ -95,47 +95,14 @@ Alumni - Rowing Club
 <div class="container-xxl py-5">
 	<div class="container">
 		<div class="row g-4">
-			<div class="col-lg-6">
-				<p style="font-size: 22px;" data-aos="fade-right" data-aos-duration="1000"> 
-					&#x2022; This section will be a few paragraphs long and have info regarding what
-					the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
-					dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-					labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-				</p>
-				<p style="font-size: 22px;" data-aos="fade-left" data-aos-duration="1000"> &#x2022; This section will 
-					be a few paragraphs long and have info regarding what the Alumni Association is and what Alumni in
-					general have been doing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-				</p>
-			</div>
-			<div class="col-md-6" data-aos="fade-down" data-aos-duration="1000">
-				<img class="img-fluid rounded w-100" src="./static/img/p5.jpeg">
-			</div>
+			{{block1[0][2] | safe}}
 		</div>
 	</div>
 </div>
 
 <!-- Alumni Database and Text Boxes -->
 <div class="container">
-	<div class="text-heading mx-auto">
-		<h1>What Have Alumni Been Up To?</h1>
-	</div>
-	<div class="card text-left green_back_gold_front mx-auto">
-		<div class="card-body">
-			<p style="font-size: 22px;" data-aos="fade-right" data-aos-duration="1000"> 
-				This section will be a few paragraphs long and have info regarding what
-				the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
-				dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-			</p>
-			<p style="font-size: 22px;" data-aos="fade-left" data-aos-duration="1000"> 
-				This section will be a few paragraphs long and have info regarding what
-				the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
-				dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-			</p>
-		</div>
-	</div>
+	{{block2[0][2] | safe}}
 
 	<br>
 	<!--Fix button to not wrap text and have link open in new tab.-->
