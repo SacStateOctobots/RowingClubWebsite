@@ -1,129 +1,105 @@
-<style>
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    img {
-        max-width: 100%
-    }
-
-    .image {
-        flex-basis: 40%
-    }
-
-    .text {
-        font-size: 40px;
-        padding-left: 20px;
-    }
-
-    .grid-container {
-        display: grid;
-        column-gap: 50px;
-        row-gap: 50px;
-        grid-column-start: 1;
-        grid-column-end: 3;
-    }
-
-    col {
-        display: flex;
-        align-items: end;
-        justify-content: end;
-    }
-
-    h4 {
-        text-align: center;
-    }
-
-    .button {
-        background-color: #043927;
-        border: none;
-        color: #c4b581;
-        padding: 15px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 20px;
-        margin: 4px 2px;
-        cursor: pointer;
-    }
-    /* Team member styling displaying cleanly on multiple device form factors*/
-    /* CSS for team member cards */
-    .team-member-card {
-        padding: 20px;
-    }
-    
-    @media (min-width: 768px) {
-        /* For screens larger than 768px (tablets and desktops) */
-        .team-member-card {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Show 3 cards per row */
-            gap: 20px;
-        }
-    }
-    @media (max-width: 767px) {
-        /* For screens smaller than 768px (mobile devices) */
-        .team-member-card {
-            display: flex;
-            flex-direction: column;
-        }
-    }
-</style>
 {% extends 'base.html' %}
 
-    {% block title %}
-    Team Roster - Rowing Club
-    {% endblock %}
+{% block title %}
+Team Roster - Rowing Club
+{% endblock %}
 
 {% block body %}
 
-<br>
+<head>
+    <style>
+        body {
+            background-color: #c3b680;
+        }
 
-<div class="container-fluid bg-primary text-white text-center py-4">
-    <h1 class="display-4">Active Team Members</h1>
-</div>
+        .smashinglogo {
+            background-image: url(./static/img/TeamMember.jpeg);
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+        }
+    </style>
+</head>
 
-<br>
+<!-- Banner-->
+<section id="first" class="story" data-speed="8" data-type="background">
+    <div class="smashinglogo" data-offsetY="100" data-Xposition="50%" data-speed="-2">
+        <div class="banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
+            <div style="padding-top: 40px;"></div>
+            <h1 class="team-member">Team Members</h1>
+        </div>
+    </div>
+</section>
+<!-- END Banner-->
 
-<div class="container-fluid">
-    <div class="row row-cols-3 row-cols-sm-3 g-lg-1">
-        {% for tup in member %}
-        <div class="col-4">
-            <div class="card mb-3 green_back_gold_front">
-            <div class="row g-0">
-            <div class="col-md-4">
-                <div class="card-body">
-                <h5 class="card-title">{{ tup[0] }}</h5>
-                    <img src="static/image_uploads/{{ tup[2] }}"  
-                    class="img-fluid rounded-start" 
-                    alt="{{ tup[0] }}'s profile photo.">
-                    <p class="card-text">{{ tup[1] }}</p>
-                <p class="card-text text-muted">Role: {{ tup[3] }}</small></p>
+<div class="space80"></div>
+
+<!--Team Member-->
+<body>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"/>
+    <div class="container">
+        <div class="row justify-content-center">
+            {% for tup in member %}
+            <div class="col-md-6 col-lg-3 mb-30">
+                <div class="team-item" data-aos="fade-down" data-aos-duration="1000">
+                    <div class="mb-30 position-relative d-flex align-items-center">
+                        <span class="socials d-inline-block">
+                            <a href="#" class="zmdi zmdi-facebook"></a>
+                            <a href="#" class="zmdi zmdi-twitter"></a>
+                            <a href="#" class="zmdi zmdi-instagram"></a>
+                        </span>
+                        <span class="img-holder d-inline-block">
+                            <img src="static/image_uploads/{{ tup[2] }}" alt="Team">
+                        </span>
+                    </div>
+                    <div class="team-content">
+                        <h5 class="mb-2">{{ tup[0] }}</h5>
+                        <p class="text-uppercase mb-0">{{ tup[1] }}</p>
+                        <p class="text-uppercase mb-0">{{ tup[3] }}</p>
+                    </div>
                 </div>
             </div>
-            </div>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
+</body>
+<!--END Team-->
+
+<div class="space80"></div>
+
+<!--Block Interested-->
+<div class="background-block" style="background-image: url(./static/img/rowing.jpeg); background-size: cover;  background-position: fixed;">
+	<div class="space15"></div>
+	<div class="space80"></div>
+	<div class="row">
+		<div class="column" data-aos="fade-up" data-aos-duration="1000">
+			<h2>Are you interested</h2>
+			<h2>in joining?</h2>
+		</div>
+		<div class="column">
+			<div class="recruitment-button">
+				<a data-aos="fade-up" data-aos-duration="1000"
+					href="https://docs.google.com/forms/d/e/1FAIpQLSfZgOi84FUsV-uXBSIsJuTX3pKZdlFydBgsojzrhYNo09q4ZA/formResponse">Join us</a>
+			</div>
+		</div>
+
+		<div class="space15"></div>
+		<div class="space80"></div>
+	</div>
 </div>
+<!--END Block interested-->
 
-<div class="container-fluid text-center mt-5">
-    <h4 class="mb-4">Are you looking for Alumni?</h4>
-    <a href="/alumni" class="btn btn-success btn-lg">Alumni Page</a>
-</div>
-<br>
+<!--Swiper Js-->
+<script src="./static/js/swiper-bundle.min.js"></script>
 
-    <!--Swiper Js-->
-    <script src="./static/js/swiper-bundle.min.js"></script>
+<!--Javascript-->
+<script src="./static/js/script.js"></script>
 
-    <!--Javascript-->
-    <script src="./static/js/script.js"></script>
+<!--Amination-->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 
-    <!--Amination-->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
 {% endblock %}
