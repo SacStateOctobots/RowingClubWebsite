@@ -4,6 +4,11 @@ import datetime
 import dateutil.relativedelta
 from dateutil.parser import *
 from dateutil.rrule import *
+from dateutil.tz import UTC
+
+# Some debugging/error prevention notes:
+#	- Try to always compare dates by timestamps.
+#	- Try to always set things up to ignore timezone details.
 
 # get the next (at most) five google calendar events
 def get_next_five_events():
@@ -49,9 +54,11 @@ def get_next_five_events():
 		# if the event is recurring get the next five dates
 		# otherwise just get the next date
 		if "recurrence" in a.keys():
+			#now = datetime.datetime.now(UTC)
 			now = datetime.datetime.now()
 			for i in range(5):
-				now = rrulestr(a["recurrence"][0]).after(now)
+				#now = rrulestr(a["recurrence"][0]).after(now)
+				now = rrulestr(a["recurrence"][0],ignoretz=True).after(now)
 				date += str(now)
 				events.append((summary,description,location,date))
 				date=""
@@ -73,20 +80,23 @@ def get_next_five_events():
 			print("DEBUG: "+str(a))	
 
 	# sort events by date entry in format year-month-day hours:minutes:seconds
-	events = sorted(events,key=lambda x: datetime.datetime.strptime(x[3], "%Y-%m-%d %H:%M:%S"))
+	#events = sorted(events,key=lambda x: datetime.datetime.strptime(x[3], "%Y-%m-%d %H:%M:%S"))
+	events = sorted(events,key=lambda x: parse(x[3]))
 	cnt = 1
 	out = []
 	for i in events:
 		# we're only printing the next five upcoming events
-		if cnt > 4:
+		if cnt > 5:
 			break
 
 		# here we are just printing events, but this general structure can be used to build a list of the
 		# next five events or to do processing on the next five events.
-		eventDate = datetime.datetime.strptime(i[3], "%Y-%m-%d %H:%M:%S")
+		#eventDate = datetime.datetime.strptime(i[3], "%Y-%m-%d %H:%M:%S")
+		eventDate = parse(i[3])
 		# it might make sense to set this to another day so that events today remain on the website all day?
 		nowDate = datetime.datetime.now() 
-		if eventDate > nowDate: # only print events after the current date
+		#if eventDate > nowDate: # only print events after the current date
+		if eventDate.timestamp() > nowDate.timestamp(): # only print events after the current date
 			out.append(i)
 			cnt += 1 # increment the counter of events
 	return out
@@ -135,15 +145,18 @@ def get_last_five_events():
 		# if the event is recurring get the next five dates
 		# otherwise just get the next date
 		if "recurrence" in a.keys():
+			#now = datetime.datetime.now(UTC)
 			now = datetime.datetime.now()
 			last_month = now + dateutil.relativedelta.relativedelta(months=-1)
-			start = rrulestr(a["recurrence"][0],dtstart=last_month).after(last_month)
+			#start = rrulestr(a["recurrence"][0],dtstart=last_month).after(last_month)
+			start = rrulestr(a["recurrence"][0],dtstart=last_month,ignoretz=True).after(last_month)
 			for i in range(5):
-				if start < now:	# only include dates before the current date
+				if start.timestamp() < now.timestamp():	# only include dates before the current date
 					date += str(start).split(".")[0]
 					events.append((summary,description,location,date))
 					date=""
-					start = rrulestr(a["recurrence"][0],dtstart=last_month).after(start)
+					#start = rrulestr(a["recurrence"][0],dtstart=last_month).after(start)
+					start = rrulestr(a["recurrence"][0],dtstart=last_month,ignoretz=True).after(start)
 		elif a["start"] and "dateTime" in a["start"].keys(): # the date and time are present
 			date += a["start"]["dateTime"]	
 			# chop up the date into the required format for sorting
@@ -151,37 +164,44 @@ def get_last_five_events():
 			date2 = date.split("T")[1]
 			date2 = date2.split("-")[0]
 			date = date1+" "+date2
-			eventDate = datetime.datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
-			if eventDate < datetime.datetime.now(): # only include dates before the current date
+			#eventDate = datetime.datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
+			eventDate = parse(date)
+			if eventDate.timestamp() < datetime.datetime.now().timestamp(): # only include dates before the current date
 				events.append((summary,description,location,date))
 			date=""
 		elif a["start"] and "date" in a["start"].keys(): # just the date is present
 			date += a["start"]["date"]	
 			date += " 00:00:00" # a dummy time
-			eventDate = datetime.datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
-			if eventDate < datetime.datetime.now(): # only include dates before the current date
+			#eventDate = datetime.datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
+			eventDate = parse(date)
+			if eventDate.timestamp() < datetime.datetime.now().timestamp(): # only include dates before the current date
 				events.append((summary,description,location,date))
 			date=""
 		else: #in this case we cannot parse the event
 			print("DEBUG: "+str(a))	
 
 	# sort events by date entry in format year-month-day hours:minutes:seconds
-	events = sorted(events,key=lambda x: datetime.datetime.strptime(x[3], "%Y-%m-%d %H:%M:%S"))
+	#events = sorted(events,key=lambda x: datetime.datetime.strptime(x[3], "%Y-%m-%d %H:%M:%S"))
+	#events = sorted(events,key=lambda x: datetime.datetime.strptime(x[3], "%Y-%m-%d %H:%M:%S"))
+	events = sorted(events,key=lambda x: parse(x[3]).timestamp())
 	cnt = 1
 	out = []
 	
 	events.reverse() # we iterate across old events backwards
 	for i in events:
 		# we're only printing the next THREE past events
-		if cnt > 4:
+		if cnt > 5:
 			break
 
 		# here we are just printing events, but this general structure can be used to build a list of the
 		# next five events or to do processing on the next five events.
-		eventDate = datetime.datetime.strptime(i[3], "%Y-%m-%d %H:%M:%S")
+		#eventDate = datetime.datetime.strptime(i[3], "%Y-%m-%d %H:%M:%S")
+		eventDate = parse(i[3])
 		# it might make sense to set this to another day so that events today remain on the website all day?
 		nowDate = datetime.datetime.now() 
-		if eventDate < nowDate: # only print events after the current date
+		#if eventDate.timestamp() > nowDate.timestamp(): # only print events after the current date
+		#if eventDate < nowDate: # only print events after the current date
+		if eventDate.timestamp() < nowDate.timestamp(): # only print events after the current date
 			out.append(i)
 			cnt += 1 # increment the counter of events
 	return out
