@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Admin Page
+Admin Page
 {% endblock %}
 
 {% block body %}
@@ -22,12 +22,12 @@
 
 			const previewSplit = x.replaceAll(regex, '+');
 			const splitArray = x.split(regex);
-			const memberRole = splitArray[3].replace(middleRegex,'');
+			const memberRole = splitArray[3].replace(middleRegex, '');
 
-			document.getElementById("memberTitle").innerHTML = splitArray[0].replace(firstRegex,'');
-			document.getElementById("memberDesc").innerHTML = splitArray[1].replace(middleRegex,'');
-			document.getElementById("memberImage").src = "static/image_uploads/".concat(splitArray[2].replace(middleRegex,''));
-			document.getElementById("memberRole").innerHTML = "Role: ".concat(memberRole.substring(0, splitArray[3].length-5));
+			document.getElementById("memberTitle").innerHTML = splitArray[0].replace(firstRegex, '');
+			document.getElementById("memberDesc").innerHTML = splitArray[1].replace(middleRegex, '');
+			document.getElementById("memberImage").src = "static/image_uploads/".concat(splitArray[2].replace(middleRegex, ''));
+			document.getElementById("memberRole").innerHTML = "Role: ".concat(memberRole.substring(0, splitArray[3].length - 5));
 			//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
 		}
 
@@ -36,11 +36,11 @@
 
 			const previewSplit = x.replaceAll(regex, '+');
 			const splitArray = x.split(regex);
-			const officerImg = splitArray[2].replace(middleRegex,'');
+			const officerImg = splitArray[2].replace(middleRegex, '');
 
-			document.getElementById("officerTitle").innerHTML = splitArray[0].replace(firstRegex,'');
-			document.getElementById("officerDesc").innerHTML = splitArray[1].replace(middleRegex,'');
-			document.getElementById("officerImage").src = "static/image_uploads/".concat(officerImg.substring(0, splitArray[2].length-5));
+			document.getElementById("officerTitle").innerHTML = splitArray[0].replace(firstRegex, '');
+			document.getElementById("officerDesc").innerHTML = splitArray[1].replace(middleRegex, '');
+			document.getElementById("officerImage").src = "static/image_uploads/".concat(officerImg.substring(0, splitArray[2].length - 5));
 			//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
 		}
 
@@ -49,11 +49,11 @@
 
 			const previewSplit = x.replaceAll(regex, '+');
 			const splitArray = x.split(regex);
-			const alumniImg = splitArray[2].replace(middleRegex,'');
+			const alumniImg = splitArray[2].replace(middleRegex, '');
 
-			document.getElementById("alumniTitle").innerHTML = splitArray[0].replace(firstRegex,'');
-			document.getElementById("alumniDesc").innerHTML = splitArray[1].replace(middleRegex,'');
-			document.getElementById("alumniImage").src = "static/image_uploads/".concat(alumniImg.substring(0, splitArray[2].length-5));
+			document.getElementById("alumniTitle").innerHTML = splitArray[0].replace(firstRegex, '');
+			document.getElementById("alumniDesc").innerHTML = splitArray[1].replace(middleRegex, '');
+			document.getElementById("alumniImage").src = "static/image_uploads/".concat(alumniImg.substring(0, splitArray[2].length - 5));
 			//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
 		}
 
@@ -62,31 +62,31 @@
 
 			const previewSplit = x.replaceAll(regex, '+');
 			const splitArray = x.split(regex);
-			const cleanTestimonialBody = splitArray[1].replace(middleRegex,'');
-			const testimonialJob = splitArray[3].replace(middleRegex,'');
+			const cleanTestimonialBody = splitArray[1].replace(middleRegex, '');
+			const testimonialJob = splitArray[3].replace(middleRegex, '');
 
-			document.getElementById("testimonialTitle").innerHTML = splitArray[0].replace(firstRegex,'');
-			document.getElementById("testimonialBody").innerHTML = cleanTestimonialBody.replace(newlineRegex,'');
-			document.getElementById("testimonialImage").src = "static/image_uploads/".concat(splitArray[2].replace(middleRegex,''));
-			document.getElementById("testimonialJob").innerHTML = "Job: ".concat(testimonialJob.substring(0, splitArray[3].length-5));
+			document.getElementById("testimonialTitle").innerHTML = splitArray[0].replace(firstRegex, '');
+			document.getElementById("testimonialBody").innerHTML = cleanTestimonialBody.replace(newlineRegex, '');
+			document.getElementById("testimonialImage").src = "static/image_uploads/".concat(splitArray[2].replace(middleRegex, ''));
+			document.getElementById("testimonialJob").innerHTML = "Job: ".concat(testimonialJob.substring(0, splitArray[3].length - 5));
 			//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
 		}
 	</script>
-	
+
 	<style>
 		body {
 			background-color: #d8d2b8;
 		}
-		
+
 		/* Solid border for dividers*/
 		hr.my_solid_hr {
-  			border-top: 5px solid #000;
+			border-top: 5px solid #000;
 			border-color: black;
 			background-color: black;
 			color: black;
 		}
 	</style>
-	
+
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
@@ -96,7 +96,7 @@
 <script type="text/javascript">
 	tinymce.init({
 		selector: "#content",
-		plugins: ['link','image','code'],
+		plugins: ['link', 'image', 'code'],
 		toolbar: 'bold italic backcolor | alignleft aligncenter alignright alignjustify | code',
 		images_upload_url: '/uploadimage',
 		images_reuse_filename: false
@@ -112,32 +112,65 @@
 <!-- Script for displaying tabs -->
 <!-- https://www.w3schools.com/w3css/w3css_tabulators.asp -->
 <script>
-function openTab(tabName) {
-  var i;
-  var x = document.getElementsByClassName("tab");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  document.getElementById(tabName).style.display = "block";  
-}
+
+	window.onload = Loader;
+
+	//Selected Tab
+	function openTab(evt, tabName) {
+		var i, x, tabname;
+		x = document.getElementsByClassName("tabname");
+		for (i = 0; i < x.length; i++) {
+			x[i].style.display = "none";
+		}
+
+		tablinks = document.getElementsByClassName("tablink");
+
+		for (i = 0; i < x.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+		}
+
+		document.getElementById(tabName).style.display = "block";
+		localStorage.setItem('activeTab', tabName);
+	
+		evt.currentTarget.className += " w3-red";
+
+	} // End Selected Tab
+
+	function Loader() {
+		str = localStorage.getItem('activeTab');
+
+		switch (str) {
+			case 'Players':
+			case 'Alumni':
+			case 'TeamMembers':
+			case 'Officers':
+			case 'Testimonials':
+			case 'Content':
+				openTab(" w3-red", str);
+				break;
+			default:
+				alert("no value");
+		}
+
+	}
+
 </script>
 
+<div onload="Loader()"></div>
+
 <div class="container">
-	<hr/>
+	<hr />
 	<div class="row">
 		<div class="col-4">
 			<div class="card mb-2 green_back_gold_front">
 				<div class="row g-0">
-				<h4>Current Member List: </h4>
-				<select id="memberList" 
-						class="form-select-lg card mb-2 green_back_gold_front" 
-						onclick="memberSelect()" 
-						size="10" 
-						aria-label="Size 10 select example">
-				{% for tup in team_members %}
-					<option value="{{ team_members[loop.index - 1] }}">{{ tup[0] }}</option>
-				{% endfor %}
-				</select>
+					<h4>Current Member List: </h4>
+					<select id="memberList" class="form-select-lg card mb-2 green_back_gold_front"
+						onclick="memberSelect()" size="10" aria-label="Size 10 select example">
+						{% for tup in team_members %}
+						<option value="{{ team_members[loop.index - 1] }}">{{ tup[0] }}</option>
+						{% endfor %}
+					</select>
 				</div>
 			</div>
 		</div>
@@ -145,16 +178,13 @@ function openTab(tabName) {
 		<div class="col-4">
 			<div class="card mb-2 green_back_gold_front">
 				<div class="row g-0">
-				<h4>Current Officer List: </h4>
-				<select id="officerList" 
-						class="form-select-lg card mb-2 green_back_gold_front" 
-						onclick="officerSelect()";
-						size="10" 
-						multiple aria-label="Multiple select example">
-				{% for tup in officers %}
-					<option value="{{ officers[loop.index - 1] }}">{{ tup[0] }}</option>
-				{% endfor %}
-				</select>
+					<h4>Current Officer List: </h4>
+					<select id="officerList" class="form-select-lg card mb-2 green_back_gold_front"
+						onclick="officerSelect()" ; size="10" multiple aria-label="Multiple select example">
+						{% for tup in officers %}
+						<option value="{{ officers[loop.index - 1] }}">{{ tup[0] }}</option>
+						{% endfor %}
+					</select>
 				</div>
 			</div>
 		</div>
@@ -162,32 +192,35 @@ function openTab(tabName) {
 		<div class="col-4">
 			<div class="card mb-2 green_back_gold_front">
 				<div class="row g-0">
-				<h4>Current Testimonial List: </h4>
-				<select id="testimonialList" class="form-select-lg card mb-2 green_back_gold_front" 
-						size="10" 
-						onclick="testimonialSelect()";
-						aria-label="Size 10 select example">
-					{% for tup in testimonial %}
+					<h4>Current Testimonial List: </h4>
+					<select id="testimonialList" class="form-select-lg card mb-2 green_back_gold_front" size="10"
+						onclick="testimonialSelect()" ; aria-label="Size 10 select example">
+						{% for tup in testimonial %}
 						<option value="{{ testimonial[loop.index - 1] }}">{{ tup[0] }}</option>
-					{% endfor %}
-				</select>
+						{% endfor %}
+					</select>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<hr/>
+	<hr />
 </div>
 <div class="container-fluid">
 	<!--<div class="w3-bar w3-black">-->
 	<div class="w3-bar green_back_gold_front" style="font-size: 18px;">
-  		<button class="w3-bar-item w3-button tablink w3-red" id="players-tab" onclick="openTab(event,'Players')">Players</button>
-  		<button class="w3-bar-item w3-button tablink " id="alumni-tab"onclick="openTab(event,'Alumni')">Alumni</button>
-  		<button class="w3-bar-item w3-button tablink" id="team-tab" onclick="openTab(event,'TeamMembers')">Team Members</button>
-  		<button class="w3-bar-item w3-button tablink" id="officers-tab" onclick="openTab(event,'Officers')">Officers</button>
-  		<button class="w3-bar-item w3-button tablink" id="testimonials-tab" onclick="openTab(event,'Testimonials')">Testimonials</button>
-      	<button class="w3-bar-item w3-button tablink" id="content-block-tab" onclick="openTab(event,'Content')">Content Blocks</button>
-	  	<a href="logout" style="position: absolute; right: 14px; font-weight: 500; font-size: 20px;"
+		<button class="w3-bar-item w3-button tablink w3-red" id="players-tab"
+			onclick="openTab(event,'Players')">Players</button>
+		<button class="w3-bar-item w3-button tablink " id="alumni-tab" onclick="openTab(event,'Alumni')">Alumni</button>
+		<button class="w3-bar-item w3-button tablink" id="team-tab" onclick="openTab(event,'TeamMembers')">Team
+			Members</button>
+		<button class="w3-bar-item w3-button tablink" id="officers-tab"
+			onclick="openTab(event,'Officers')">Officers</button>
+		<button class="w3-bar-item w3-button tablink" id="testimonials-tab"
+			onclick="openTab(event,'Testimonials')">Testimonials</button>
+		<button class="w3-bar-item w3-button tablink" id="content-block-tab" onclick="openTab(event,'Content')">Content
+			Blocks</button>
+		<a href="logout" style="position: absolute; right: 14px; font-weight: 500; font-size: 20px;"
 			class="btn btn-outline-dark green_back_gold_front_lightened" role="button"> Logout </a>
 	</div>
 
@@ -199,18 +232,19 @@ function openTab(tabName) {
 			<div class="col-4">
 				<div class="card mb-2 green_back_gold_front">
 					<div class="row g-0">
-    					<h4>Specify players to delete here: </h4>
+						<h4>Specify players to delete here: </h4>
 						<!-- form to delete players by name-->
 						<form method="POST">
-  							<label for="deleteplayer">Player Name:</label><br>
+							<label for="deleteplayer">Player Name:</label><br>
 							<select name="deleteplayer" id="deleteplayer-id" class="form-control">
 								{% for tup in players %}
-									<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
 								{% endfor %}
 							</select><br>
-    						<input type="submit" id='delete-player-button-id' name='delete-player-button' value="Delete Player" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form> 
-						<hr/>
+							<input type="submit" id='delete-player-button-id' name='delete-player-button'
+								value="Delete Player" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form>
+						<hr />
 					</div>
 				</div>
 			</div>
@@ -219,15 +253,19 @@ function openTab(tabName) {
 					<div class="row g-0">
 						<h4>Specify players to add here: </h4>
 						<!-- form to add players -->
-						<form method="POST" id="player-add-form-id" name="player-add-form-name" enctype="multipart/form-data">
-  							<label for="addname">Player Name:</label><br>
-  							<input type="text" id="player-name-id" name="player-name" value="John Doe" class="form-control"><br>
-  							<label for="desc">Player Description:</label><br>
-  							<input type="text" id="player-desc-id" name="player-desc" value="... player description here ..." class="form-control"><br>
-  							<label for="file">Profile Picture:</label><br>
-  							<input type="file" id="player-file-id" name="player-file" class="form-control"><br>
-  							<input type="submit" id='player-button-id' name='player-button-name' value="Add Player" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form> 
+						<form method="POST" id="player-add-form-id" name="player-add-form-name"
+							enctype="multipart/form-data">
+							<label for="addname">Player Name:</label><br>
+							<input type="text" id="player-name-id" name="player-name" value="John Doe"
+								class="form-control"><br>
+							<label for="desc">Player Description:</label><br>
+							<input type="text" id="player-desc-id" name="player-desc"
+								value="... player description here ..." class="form-control"><br>
+							<label for="file">Profile Picture:</label><br>
+							<input type="file" id="player-file-id" name="player-file" class="form-control"><br>
+							<input type="submit" id='player-button-id' name='player-button-name' value="Add Player"
+								class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form>
 					</div>
 				</div>
 			</div>
@@ -249,40 +287,46 @@ function openTab(tabName) {
 							<label for="delete">Alumni's Name:</label><br>
 							<select name="deletealumni" id="deletealumni-id" class="form-control">
 								{% for tup in alumni %}
-									<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
 								{% endfor %}
 							</select>
 							<div class="space"></div>
-							<input type="submit" id='delete-alumni-button-id' name='delete-alumni-button' value="Delete Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form> 
+							<input type="submit" id='delete-alumni-button-id' name='delete-alumni-button'
+								value="Delete Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form>
 						<div class="space"></div>
 					</div>
 				</div>
 			</div>
-		<div class="col-4">
-			<div class="card mb-2 green_back_gold_front">
-				<div class="row g-0">
-					<h4>Specify players to add to alumni: </h4>
-					<div class="space15"></div>
-					<!-- form to add alumni -->
-					<form method="POST" id="alumni-add-form-id" name="alumni-add-form-name" enctype="multipart/form-data">
-  						<label for="addname">Alumni's Name:</label><br>
-  						<input type="text" id="alumni-name-id" name="alumni-name" value="John Doe" class="form-control"><br>
-  						<label for="desc">Alumni's Description:</label><br>
-  						<input type="text" id="alumni-desc-id" name="alumni-desc" value="... player description here ..." class="form-control"><br>
-  						<label for="file">Alumni's Picture:</label><br>
-  						<input type="file" id="alumni-file-id" name="alumni-file" class="form-control"><br>
-  						<input type="submit" id='alumni-button-id' name='alumni-button-name' value="Add Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
-					</form> 
-					<div class="space"></div>
+			<div class="col-4">
+				<div class="card mb-2 green_back_gold_front">
+					<div class="row g-0">
+						<h4>Specify players to add to alumni: </h4>
+						<div class="space15"></div>
+						<!-- form to add alumni -->
+						<form method="POST" id="alumni-add-form-id" name="alumni-add-form-name"
+							enctype="multipart/form-data">
+							<label for="addname">Alumni's Name:</label><br>
+							<input type="text" id="alumni-name-id" name="alumni-name" value="John Doe"
+								class="form-control"><br>
+							<label for="desc">Alumni's Description:</label><br>
+							<input type="text" id="alumni-desc-id" name="alumni-desc"
+								value="... player description here ..." class="form-control"><br>
+							<label for="file">Alumni's Picture:</label><br>
+							<input type="file" id="alumni-file-id" name="alumni-file" class="form-control"><br>
+							<input type="submit" id='alumni-button-id' name='alumni-button-name' value="Add Alumni"
+								class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form>
+						<div class="space"></div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="container">
-			<div class="col-16">
-				<div class="card mb-2 green_back_gold_front">
-					<h4 style="text-align: center;">Alumni Selected:</h4>
-					<img id=alumniImage src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top" alt="'s profile photo">
+			<div class="container">
+				<div class="col-16">
+					<div class="card mb-2 green_back_gold_front">
+						<h4 style="text-align: center;">Alumni Selected:</h4>
+						<img id=alumniImage src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top"
+							alt="'s profile photo">
 						<div class="card-body">
 							<h5 id="alumniTitle" class="card-title">Nothing selected!</h5>
 							<p id="alumniDesc" class="card-text">Choose an entry from the above dropdown menus.</p>
@@ -293,7 +337,7 @@ function openTab(tabName) {
 		</div>
 	</div>
 	<!-- END Players tab -->
-	
+
 	<!-- Team Members tab -->
 	<div id="TeamMembers" class="w3-container tab tabname" style="display:none">
 		<div class="space"></div>
@@ -306,19 +350,20 @@ function openTab(tabName) {
 						<!-- form to delete players by name-->
 						<form method="POST">
 							<label for="deleteteam">Member's Name:</label><br>
-							<select name="deleteteam" id="deleteteam-id" class="form-control" 	onclick="memberSelect()" >
+							<select name="deleteteam" id="deleteteam-id" class="form-control" onclick="memberSelect()">
 								{% for tup in team_members %}
-									<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
 								{% endfor %}
 							</select>
 							<div class="space"></div>
-							<input type="submit" id='delete-team-button-id' name='delete-team-button' value="Delete Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form> 
+							<input type="submit" id='delete-team-button-id' name='delete-team-button'
+								value="Delete Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form>
 						<div class="space"></div>
 					</div>
 				</div>
 			</div>
-		
+
 			<div class="col-4">
 				<div class="card mb-2 green_back_gold_front">
 					<div class="row g-0">
@@ -327,35 +372,40 @@ function openTab(tabName) {
 						<!-- form to add players -->
 						<form method="POST" id="team-add-form-id" name="team-add-form-id" enctype="multipart/form-data">
 							<label for="addname">Team Member's Name:</label><br>
-							<input type="text" id="team-name-id" name="team-name" placeholder="John Doe"  class="form-control"><br>
+							<input type="text" id="team-name-id" name="team-name" placeholder="John Doe"
+								class="form-control"><br>
 							<label for="desc">Member's Description:</label><br>
-							<input type="text" id="team-player-desc-id" name="team-player-desc" placeholder="... player description here ..." class="form-control"><br>
+							<input type="text" id="team-player-desc-id" name="team-player-desc"
+								placeholder="... player description here ..." class="form-control"><br>
 							<label for="desc">Role Description:</label><br>
-							<input type="text" id="team-role-desc-id" name="team-role-desc" placeholder="... role description here ... ex.(role 1)" class="form-control"><br>
+							<input type="text" id="team-role-desc-id" name="team-role-desc"
+								placeholder="... role description here ... ex.(role 1)" class="form-control"><br>
 							<label for="file">Team Member's Picture: (Best 300x450)</label><br>
 							<input type="file" id="team-file-id" name="team-file" class="form-control">
 							<div class="space"></div>
-							<input type="submit" id='team-button-id' name='team-button' value="Add Team Member" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form> 
+							<input type="submit" id='team-button-id' name='team-button' value="Add Team Member"
+								class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form>
 						<div class="space"></div>
 					</div>
 				</div>
 			</div>
-		
+
 			<div class="container">
 				<div class="col-16">
 					<div class="card mb-2 green_back_gold_front">
-					<h4 style="text-align: center;">Member Selected:</h4>
-						<img id="memberImage" src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top" alt="'s profile photo">
-							<div class="card-body">
-								<h5 id="memberTitle" class="card-title">Nothing selected!</h5>
-								<p id="memberDesc" class="card-text">Choose an entry from the above dropdown menus.</p>
-								<p id="memberRole" class="card-text"><small class="text-muted">Role name here.</small></p>
-							</div>
+						<h4 style="text-align: center;">Member Selected:</h4>
+						<img id="memberImage" src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top"
+							alt="'s profile photo">
+						<div class="card-body">
+							<h5 id="memberTitle" class="card-title">Nothing selected!</h5>
+							<p id="memberDesc" class="card-text">Choose an entry from the above dropdown menus.</p>
+							<p id="memberRole" class="card-text"><small class="text-muted">Role name here.</small></p>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 	</div>
 
 	<!-- Officers tab -->
@@ -372,42 +422,48 @@ function openTab(tabName) {
 							<label for="deleteofficers">Officer's Name:</label><br>
 							<select name="deleteofficers" id="deleteofficers-id" class="form-control">
 								{% for tup in officers %}
-									<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
 								{% endfor %}
 							</select>
 							<div class="space"></div>
-							<input type="submit" id='delete-officers-button-id' name='delete-officers-button' value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form> 
+							<input type="submit" id='delete-officers-button-id' name='delete-officers-button'
+								value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form>
 						<div class="space"></div>
 					</div>
 				</div>
 			</div>
-		<div class="col-4">
-			<div class="card mb-2 green_back_gold_front">
-				<div class="row g-0">
-					<h4>Specify officers to add to about page: </h4>
-					<div class="space15"></div>
-					<!-- form to add officers -->
-					<form method="POST" id="officers-add-form-id" name="officers-add-form-name" enctype="multipart/form-data">
-						<label for="addname">Officer's Name:</label><br>
-						<input type="text" id="officers-name-id" name="officers-name" value="John Doe" class="form-control"><br>
-						<label for="desc">Officer's Description:</label><br>
-						<input type="text" id="officers-desc-id" name="officers-desc" value="... officer description here ..." class="form-control"><br>
-						<label for="file">Officer's Picture:</label><br>
-						<input type="file" id="officers-file-id" name="officers-file" class="form-control"><br>
-						<!--<input type="submit" id='officers-add-form-submit' name='officers-add-form-submit' value="Add Officer" class="btn btn-outline-dark green_back_gold_front_lightened" 
+			<div class="col-4">
+				<div class="card mb-2 green_back_gold_front">
+					<div class="row g-0">
+						<h4>Specify officers to add to about page: </h4>
+						<div class="space15"></div>
+						<!-- form to add officers -->
+						<form method="POST" id="officers-add-form-id" name="officers-add-form-name"
+							enctype="multipart/form-data">
+							<label for="addname">Officer's Name:</label><br>
+							<input type="text" id="officers-name-id" name="officers-name" value="John Doe"
+								class="form-control"><br>
+							<label for="desc">Officer's Description:</label><br>
+							<input type="text" id="officers-desc-id" name="officers-desc"
+								value="... officer description here ..." class="form-control"><br>
+							<label for="file">Officer's Picture:</label><br>
+							<input type="file" id="officers-file-id" name="officers-file" class="form-control"><br>
+							<!--<input type="submit" id='officers-add-form-submit' name='officers-add-form-submit' value="Add Officer" class="btn btn-outline-dark green_back_gold_front_lightened" 
 						onclick="showTeamSuccess()">-->
-						<input type="submit" id='officers-button-id' name='officers-button' value="Add Officer" class="btn btn-outline-dark green_back_gold_front_lightened">
-					</form> 
-					<div class="space"></div>
+							<input type="submit" id='officers-button-id' name='officers-button' value="Add Officer"
+								class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form>
+						<div class="space"></div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="container">
-			<div class="col-16">
-				<div class="card mb-2 green_back_gold_front">
-				<h4 style="text-align: center;">Officer Selected:</h4>
-					<img id="officerImage" src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top" alt="'s profile photo">
+			<div class="container">
+				<div class="col-16">
+					<div class="card mb-2 green_back_gold_front">
+						<h4 style="text-align: center;">Officer Selected:</h4>
+						<img id="officerImage" src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top"
+							alt="'s profile photo">
 						<div class="card-body">
 							<h5 id="officerTitle" class="card-title">Nothing selected!</h5>
 							<p id="officerDesc" class="card-text">Choose an entry from the above dropdown menus.</p>
@@ -425,38 +481,45 @@ function openTab(tabName) {
 			Updated the content successfully!</div>
 		<div class="row">
 			<div class="col">
-				<hr/>
+				<hr />
 				<div class="row">
-					<table id="block_table" class="table table-hover table-striped table-bordered dataTable dtr-inline" role="grid" aria-describedby="example_info">
+					<table id="block_table" class="table table-hover table-striped table-bordered dataTable dtr-inline"
+						role="grid" aria-describedby="example_info">
 						<thead>
-						<tr role="row">
-							<th  rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">Title</th>
-							<th  rowspan="1" colspan="1" style="width: 216.2px;" aria-label="Slug: activate to sort column ascending">Slug</th>
-							<th  rowspan="1" colspan="1" style="width: 100.2px;" aria-label="Modified Date: activate to sort column ascending">Modified Date</th>
-						</tr>
+							<tr role="row">
+								<th rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending"
+									aria-label="Name: activate to sort column descending">Title</th>
+								<th rowspan="1" colspan="1" style="width: 216.2px;"
+									aria-label="Slug: activate to sort column ascending">Slug</th>
+								<th rowspan="1" colspan="1" style="width: 100.2px;"
+									aria-label="Modified Date: activate to sort column ascending">Modified Date</th>
+							</tr>
 						</thead>
 						<tbody>
-						{% for tup in blocks %}
-						<tr role="row" class="odd">
-							<td tabindex="0" class="sorting_1"><a class="editBlockAction" data-el="{{ tup[0] }}" href="#">{{ tup[1] }}</a></td>
-							<td>{{ tup[0] }}</td>
-							<td>{{ tup[3] }}</td>
-						</tr>
-						{% endfor %}
+							{% for tup in blocks %}
+							<tr role="row" class="odd">
+								<td tabindex="0" class="sorting_1"><a class="editBlockAction" data-el="{{ tup[0] }}"
+										href="#">{{ tup[1] }}</a></td>
+								<td>{{ tup[0] }}</td>
+								<td>{{ tup[3] }}</td>
+							</tr>
+							{% endfor %}
 						</tbody>
 					</table>
 				</div>
-				<hr/>
+				<hr />
 			</div>
 			<div class="col">
-					<div class="row g-0">		
+				<div class="row g-0">
 					<form method="POST" name="update-page" id="formContent">
 						<div id="currentSlug" style="display: none;"></div>
 						<textarea id="content"></textarea>
 						<div class="space15"></div>
-						<button type="submit" id="btnUdpateContent" class="mb-2 mr-2 btn btn-outline-2x btn-outline-success"> <strong> Update Now </strong></button>
+						<button type="submit" id="btnUdpateContent"
+							class="mb-2 mr-2 btn btn-outline-2x btn-outline-success"> <strong> Update Now
+							</strong></button>
 						<input id='tinymce-uploader' type='file' name='pic' accept='image/*' style='display:none'>
-					</form>			
+					</form>
 				</div>
 			</div>
 		</div>
@@ -469,7 +532,7 @@ function openTab(tabName) {
 			<div class="col-4">
 				<div class="card mb-2 green_back_gold_front">
 					<div class="row g-0">
-    					<h4>Specify testimonials to delete here: </h4>
+						<h4>Specify testimonials to delete here: </h4>
 						<div class="space"></div>
 						<!-- form to delete testimonials -->
 						<form method="POST">
@@ -477,12 +540,13 @@ function openTab(tabName) {
 							<label for="deletetestimonial">Testimonial Name:</label><br>
 							<select name="deletetestimonial" id="deletetestimonial-id" class="form-control">
 								{% for tup in testimonial %}
-									<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
 								{% endfor %}
 							</select>
 							<div class="space"></div>
-							<input type="submit" id='delete-testimonial-button-id' name='delete-testimonial-button' value="Delete Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form> 
+							<input type="submit" id='delete-testimonial-button-id' name='delete-testimonial-button'
+								value="Delete Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form>
 						<div class="space"></div>
 					</div>
 				</div>
@@ -492,39 +556,47 @@ function openTab(tabName) {
 					<div class="row g-0">
 						<h4>Specify testimonials to add here: </h4>
 						<!-- form to add testimonials-->
-						<form method="POST" id="testimonials-add-form-id" name="testimonials-add-form-name" enctype="multipart/form-data">
+						<form method="POST" id="testimonials-add-form-id" name="testimonials-add-form-name"
+							enctype="multipart/form-data">
 							<label for="addname">Testimonial Name:</label><br>
-							<input type="text" id="testimonial-name-id" name="testimonial-name" value="John Doe" class="form-control"><br>
+							<input type="text" id="testimonial-name-id" name="testimonial-name" value="John Doe"
+								class="form-control"><br>
 							<label for="desc">Testimonial Text:</label><br>
-							<input type="text" id="testimonial-text1-id" name="testimonial-text1" value="... testimonial text 1 here ..." class="form-control"><br>
+							<input type="text" id="testimonial-text1-id" name="testimonial-text1"
+								value="... testimonial text 1 here ..." class="form-control"><br>
 							<label for="desc">Company/ Position:</label><br>
-							<input type="text" id="testimonial-text2-id" name="testimonial-text2" value="... testimonial text 2 here  ..." class="form-control"><br>
+							<input type="text" id="testimonial-text2-id" name="testimonial-text2"
+								value="... testimonial text 2 here  ..." class="form-control"><br>
 							<label for="file">Testimonial Picture:</label><br>
-							<input type="file" id="testimonial-file-id" name="testimonial-file" class="form-control"><br>
-							<input type="submit" id='testimonial-button-id' name='testimonial-button' value="Add Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form> 
+							<input type="file" id="testimonial-file-id" name="testimonial-file"
+								class="form-control"><br>
+							<input type="submit" id='testimonial-button-id' name='testimonial-button'
+								value="Add Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
+						</form>
 						<div class="space"></div>
 					</div>
 				</div>
 			</div>
-		
+
 			<div class="container">
 				<div class="col-16">
 					<div class="card mb-2 green_back_gold_front">
 						<h4 style="text-align: center;">Testimonial Selected:</h4>
-							<img id=testimonialImage src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top" alt="'s profile photo">
-								<div class="card-body">
-									<h5 id="testimonialTitle" class="card-title">Nothing selected!</h5>
-									<p id="testimonialBody" class="card-text">Choose an entry from the above dropdown menus.</p>
-									<p id="testimonialJob" class="card-text"><small class="text-muted">Job name here.</small></p>
-								</div>
-							</div>
+						<img id=testimonialImage src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top"
+							alt="'s profile photo">
+						<div class="card-body">
+							<h5 id="testimonialTitle" class="card-title">Nothing selected!</h5>
+							<p id="testimonialBody" class="card-text">Choose an entry from the above dropdown menus.</p>
+							<p id="testimonialJob" class="card-text"><small class="text-muted">Job name here.</small>
+							</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
+</div>
 </div>
 <br>
 
@@ -536,87 +608,68 @@ function openTab(tabName) {
 	var formContent = document.querySelector("#formContent");
 	var message = document.querySelector(".alert-success");
 
-	//Selected Tab
-	function openTab(evt,tabName) {
-  		var i, x, tabname;
-  		x = document.getElementsByClassName("tabname");
-  		for (i = 0; i < x.length; i++) {
-    	x[i].style.display = "none";
-  	}
-  	
-	tablinks = document.getElementsByClassName("tablink");
-  	for (i = 0; i < x.length; i++) {
-    	tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-  	}
-  	
-	document.getElementById(tabName).style.display = "block";
-	evt.currentTarget.className += " w3-red";
-	
-	} // End Selected Tab
-
-
 	btnEditBlock.forEach((btnEdit) => {
-		btnEdit.addEventListener("click", function(e){
+		btnEdit.addEventListener("click", function (e) {
 			message.style.display = "none";
-		fetch('/editpage', {
-			headers : {
-				'Content-Type' : 'application/json'
-			},
-			method : 'POST',
-			body : JSON.stringify( {
-				'slug' : e.target.getAttribute('data-el'),
+			fetch('/editpage', {
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				method: 'POST',
+				body: JSON.stringify({
+					'slug': e.target.getAttribute('data-el'),
+				})
 			})
-		})
-		.then(function (response){
-			if(response.ok) {
-				response.json()
-				.then(function(response) {
-					tinymce.activeEditor.setContent(response.data[0][2]);
-					slug.innerHTML = response.data[0][0];
+				.then(function (response) {
+					if (response.ok) {
+						response.json()
+							.then(function (response) {
+								tinymce.activeEditor.setContent(response.data[0][2]);
+								slug.innerHTML = response.data[0][0];
+							});
+
+					}
+					else {
+						throw Error('Error');
+					}
+				})
+				.catch(function (error) {
+					console.log(error);
 				});
-				
-			}
-			else {
-				throw Error('Error');
-			}
-		})
-			.catch(function(error) {
-			console.log(error);
-		});
 		});
 	});
 
-	formContent.addEventListener("submit", function(e){
+	formContent.addEventListener("submit", function (e) {
 		fetch('/updatecontent', {
-			headers : {
-				'Content-Type' : 'application/json'
+			headers: {
+				'Content-Type': 'application/json'
 			},
-			method : 'POST',
-			body : JSON.stringify( {
-				'slug' : slug.textContent,
+			method: 'POST',
+			body: JSON.stringify({
+				'slug': slug.textContent,
 				'content': tinymce.activeEditor.getContent()
 			})
 		})
-		.then(function (response){
-			if(response.ok) {
-				response.json()
-				.then(function(response) {
-					console.log(response);
-					tinymce.activeEditor.setContent(response.data[0][2]);
-					slug.innerHTML = response.data[0][0];
-					
-					message.innerHTML = response.message;
-					message.style.display = "block";
-				});
-				
-			}
-			else {
-				throw Error('Error');
-			}
-		})
-			.catch(function(error) {
-			console.log(error);
-		});
+			.then(function (response) {
+				if (response.ok) {
+					response.json()
+						.then(function (response) {
+							console.log(response);
+							tinymce.activeEditor.setContent(response.data[0][2]);
+							slug.innerHTML = response.data[0][0];
+
+							message.innerHTML = response.message;
+							message.style.display = "block";
+						});
+
+				}
+				else {
+					throw Error('Error');
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 		e.preventDefault();
 		return false;
 	});
