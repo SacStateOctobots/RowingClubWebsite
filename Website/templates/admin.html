@@ -7,8 +7,7 @@
 {% block body %}
 
 <head>
-	<!--sample button event, maybe pull from latest table entry after adding?
-	something about checking what table and who is being added to where, and maybe 
+	<!--something about checking what table and who is being added to where, and maybe 
 	we can have a modular alert system -->
 	<script>
 		// just made it so awesome ngl
@@ -16,7 +15,7 @@
 		const middleRegex = /(, ')/gi;
 		const firstRegex = /[(']/gi;
 		const newlineRegex = /\r?\n|\r/gi;
-
+		// functions to clean from respective databases
 		function memberSelect() {
 			var x = document.getElementById("memberList").value
 
