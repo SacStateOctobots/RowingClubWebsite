@@ -60,6 +60,13 @@
 
 }
 
+/* Mobile responsive*/
+@media (max-width: 768px) {
+    .header {
+        width: 100%;
+    }
+}
+
 /*desktop responsive*/
 @media (min-width: 568px) {
     .video-introduction-content h1 {
