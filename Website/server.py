@@ -6,7 +6,9 @@ from flask_mail import Mail, Message
 from werkzeug.utils import secure_filename
 import google_calendar_reader as cal
 import database_library as db
+import datetime
 import random
+from random import randrange
 
 app = flask.Flask(__name__)
 app.secret_key = 'super secret string'  # Change this!
@@ -103,8 +105,8 @@ def alumni():
 
 @app.route("/calendar")
 def calendar():
-	oldEvents = cal.get_last_five_events()
-	newEvents = cal.get_next_five_events()
+	oldEvents = cal.get_last_five_events()[:4]
+	newEvents = cal.get_next_five_events()[:4]
 	return render_template("calendar.html",past_events = oldEvents,next_events = newEvents)
 
 @app.route("/instagram")
@@ -199,6 +201,22 @@ def validate():
         return render_template('login_otp.html')
 
 
+def file_allowed_handler(file):
+	fname_prefix = file.filename.split(".")[0]
+	fname_suffix = file.filename.split(".")[1]
+	fname = ""
+	fname = fname_prefix
+	fname += str(randrange(1000000))+"_"
+	fname += "{:%Y_%m_%d_%X}".format(datetime.datetime.now())
+	fname += "."
+	fname += fname_suffix
+	file.filename = fname
+	print(file.filename)
+	filename = secure_filename(file.filename)
+	print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+	file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+	return filename
+	
 @app.route('/protected', methods=['POST'])
 @flask_login.login_required
 def protected_post():
@@ -221,9 +239,7 @@ def protected_post():
 			return redirect(request.url)
 		if file and allowed_file(file.filename):
 			print('Success')
-			filename = secure_filename(file.filename)
-			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			filename = file_allowed_handler(file)
 		else:
 			print('File name not allowed')
 			return redirect(request.url)
@@ -251,9 +267,7 @@ def protected_post():
 			return redirect(request.url)
 		if file and allowed_file(file.filename):
 			print('Success alumni')
-			filename = secure_filename(file.filename)
-			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			filename = file_allowed_handler(file)
 		else:
 			print('File name not allowed')
 			return redirect(request.url)
@@ -282,9 +296,7 @@ def protected_post():
 			return redirect(request.url)
 		if file and allowed_file(file.filename):
 			print('Success team member')
-			filename = secure_filename(file.filename)
-			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			filename = file_allowed_handler(file)
 		else:
 			print('File name not allowed')
 			return redirect(request.url)
@@ -314,9 +326,7 @@ def protected_post():
 			return redirect(request.url)
 		if file and allowed_file(file.filename):
 			print('Success officer')
-			filename = secure_filename(file.filename)
-			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			filename = file_allowed_handler(file)
 		else:
 			print('File name not allowed')
 			return redirect(request.url)
@@ -343,9 +353,7 @@ def protected_post():
 			return redirect(request.url)
 		if file and allowed_file(file.filename):
 			print('Success testimonial')
-			filename = secure_filename(file.filename)
-			print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			filename = file_allowed_handler(file)
 		else:
 			print('File name not allowed')
 			return redirect(request.url)
