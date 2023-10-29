@@ -44,6 +44,19 @@
 			//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
 		}
 
+		function alumniSelect() {
+			var x = document.getElementById("alumniList").value
+
+			const previewSplit = x.replaceAll(regex, '+');
+			const splitArray = x.split(regex);
+			const alumniImg = splitArray[2].replace(middleRegex,'');
+
+			document.getElementById("alumniTitle").innerHTML = splitArray[0].replace(firstRegex,'');
+			document.getElementById("alumniDesc").innerHTML = splitArray[1].replace(middleRegex,'');
+			document.getElementById("alumniImage").src = "static/image_uploads/".concat(alumniImg.substring(0, splitArray[2].length-5));
+			//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
+		}
+
 		function testimonialSelect() {
 			var x = document.getElementById("testimonialList").value
 
@@ -107,7 +120,7 @@ function openTab(tabName) {
 
 <div class="container">
 	<hr/>
-	<div class="row">
+	<div class="row row-cols-md-4">
 		<div class="col-4">
 			<div class="card mb-2 green_back_gold_front">
 				<div class="row g-0">
@@ -119,6 +132,23 @@ function openTab(tabName) {
 						aria-label="Size 10 select example">
 				{% for tup in team_members %}
 					<option value="{{ team_members[loop.index - 1] }}">{{ tup[0] }}</option>
+				{% endfor %}
+				</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+				<h4>Current Alumni List: </h4>
+				<select id="alumniList" 
+						class="form-select-lg card mb-2 green_back_gold_front" 
+						onclick="alumniSelect()" 
+						size="10" 
+						aria-label="Size 10 select example">
+				{% for tup in alumni %}
+					<option value="{{ alumni[loop.index - 1] }}">{{ tup[0] }}</option>
 				{% endfor %}
 				</select>
 				</div>
@@ -219,6 +249,7 @@ function openTab(tabName) {
 	<!-- Alumni Tab -->
 	<div id="Alumni" class="w3-container tab" style="display:none">
 		<h2>Alumni</h2>
+		<div class="row row-cols-4 row-cols-sm-4 g-lg-1">
 		<div class="col-4">
 			<div class="card mb-2 green_back_gold_front">
 				<div class="row g-0">
@@ -251,25 +282,21 @@ function openTab(tabName) {
   						<input type="file" id="alumni-file-id" name="alumni-file" class="form-control"><br>
   						<input type="submit" id='alumni-button-id' name='alumni-button-name' value="Add Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
 					</form> 
-    				<hr/>
 				</div>
 			</div>
 		</div>
 		<div class="container">
-			<hr/>
-			<div class="row">
-				<h2>Alumni:</h2>
-				{% for tup in alumni %}
-					<hr class="my_solid_hr">
-					<h5>{{ tup[0] }}</h5>
-					<img src="static/image_uploads/{{ tup[2] }}" 
-						alt="{{ tup[0] }} profile photo." 
-						style="display:block; max-width:180px; max-height:180px; width:auto; height:auto;"
-					>
-					<p>{{ tup[1] }}</p>
-				{% endfor %}
+			<div class="col-16">
+				<div class="card mb-2 green_back_gold_front">
+				<h2>Selected:</h2>
+					<img id=alumniImage src="static/img/emptyImage.png" class="card-img-top" alt="'s profile photo">
+						<div class="card-body">
+							<h5 id="alumniTitle" class="card-title">Nothing selected!</h5>
+							<p id="alumniDesc" class="card-text">Choose an entry from the above dropdown menus.</p>
+						</div>
+					</div>
+				</div>
 			</div>
-			<hr/>
 		</div>
 	</div>
 
@@ -318,7 +345,7 @@ function openTab(tabName) {
 		<div class="col-16">
 			<div class="card mb-2 green_back_gold_front">
 			<h2>Selected:</h2>
-				<img id=memberImage src="https://cdn.discordapp.com/attachments/293555577991200770/1165469260416561212/9k.png?ex=6546f6d5&is=653481d5&hm=a04297e035d001ab8dfa9a9e2d0a151e4ab384ce7d5b2997e6f218a9d902eeac&" class="card-img-top" alt="'s profile photo">
+				<img id=memberImage src="static/img/emptyImage.png" class="card-img-top" alt="'s profile photo">
 					<div class="card-body">
 						<h5 id="memberTitle" class="card-title">Nothing selected!</h5>
 						<p id="memberDesc" class="card-text">Choose an entry from the above dropdown menus.</p>
@@ -374,7 +401,7 @@ function openTab(tabName) {
 			<div class="col-16">
 				<div class="card mb-2 green_back_gold_front">
 				<h2>Selected:</h2>
-					<img id=officerImage src="https://cdn.discordapp.com/attachments/293555577991200770/1165469260416561212/9k.png?ex=6546f6d5&is=653481d5&hm=a04297e035d001ab8dfa9a9e2d0a151e4ab384ce7d5b2997e6f218a9d902eeac&" class="card-img-top" alt="'s profile photo">
+					<img id=officerImage src="static/img/emptyImage.png" class="card-img-top" alt="'s profile photo">
 						<div class="card-body">
 							<h5 id="officerTitle" class="card-title">Nothing selected!</h5>
 							<p id="officerDesc" class="card-text">Choose an entry from the above dropdown menus.</p>
@@ -474,7 +501,7 @@ function openTab(tabName) {
 			<div class="col-16">
 				<div class="card mb-2 green_back_gold_front">
 					<h2>Selected:</h2>
-						<img id=testimonialImage src="https://cdn.discordapp.com/attachments/293555577991200770/1165469260416561212/9k.png?ex=6546f6d5&is=653481d5&hm=a04297e035d001ab8dfa9a9e2d0a151e4ab384ce7d5b2997e6f218a9d902eeac&" class="card-img-top" alt="'s profile photo">
+						<img id=testimonialImage src="static/img/emptyImage.png" class="card-img-top" alt="'s profile photo">
 							<div class="card-body">
 								<h5 id="testimonialTitle" class="card-title">Nothing selected!</h5>
 								<p id="testimonialBody" class="card-text">Choose an entry from the above dropdown menus.</p>
