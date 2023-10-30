@@ -40,62 +40,25 @@
 }
 
 
-/*phone responsive - still needs work*/
-body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-@media (max-width : 768px) {
-    .header {
-        width: 100%;
-    }
-    h1.intro-desktop-text {
-        display: none;
-    }
-    .card {
-        width: 100%;
-        margin: 0 auto;
-    }
+/*phone responsive*/
+@media (max-width : 567px) {
     .video-introduction-content h1 {
-        font-size: 24px;
+        font-size: 60px;
         color: #fff;
         font-weight: 600;
     }
+
     h1.intro-desktop-text {
         font-size: 0px;
     }
+
     .video-introduction-content h3 {
-        font-size: 18px;
-        color: #fff;
-        font-weight: 600;
-    }
-    .background-block {
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        background-size: cover;
-    }
-    background-block.column h2 {
         font-size: 30px;
         color: #fff;
         font-weight: 600;
     }
-    .banner-introduction-content{
-        text-align: center;
-    }
-    .banner-introduction-content h1 {
-            font-size: 50px;
-            color: #005440;
-            font-weight: 600;
-            text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-    .banner-introduction-content h1:hover {
-        -webkit-text-stroke: 2px #005440;
-        color: transparent;
-        text-shadow: 5px 5px 5px rgba(255, 255, 255, 0)
-    }
-    }
+
+}
 
 /*desktop responsive*/
 @media (min-width: 568px) {

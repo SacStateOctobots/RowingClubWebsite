@@ -34,11 +34,11 @@ CREATE TABLE IF NOT EXISTS team_members (
 
 -- Insert team member data
 INSERT INTO team_members (name, description, imgfilename, role) VALUES
-	('Team Member 1', 'Hello, I am Team Member 1.', 'Cat1.jpg', 'Role 1'),
-	('Team Member 2', 'Hello, I am Team Member 2.', 'Cat2.jpg', 'Role 2'),
-    ('Team Member 3', 'Hello, I am Team Member 3.', 'Cat3.jpg', 'Role 3'),
-	('Team Member 4', 'Hello, I am Team Member 4.', 'Cat4.jpg', 'Role 4'),
-    ('Team Member 5', 'Hello, I am Team Member 5.', 'Cat5.jpg', 'Role 5');
+	('Team Member 1', 'Hello, I am Team Member 1.', 'Amaka Okam.jpg', 'Role 1'),
+	('Team Member 2', 'Hello, I am Team Member 2.', 'Bryleigh Nixon.jpg', 'Role 2'),
+    ('Team Member 3', 'Hello, I am Team Member 3.', 'Daria Okhremtchuk.jpg', 'Role 3'),
+	('Team Member 4', 'Hello, I am Team Member 4.', 'Ella Holmes.jpg', 'Role 4'),
+    ('Team Member 5', 'Hello, I am Team Member 5.', 'Harper Waring.jpg', 'Role 5');
 
 CREATE TABLE IF NOT EXISTS alumni (
 	name VARCHAR(255) NOT NULL UNIQUE, 
@@ -55,11 +55,11 @@ CREATE TABLE IF NOT EXISTS officers (
 	filename VARCHAR(255) NOT NULL);
 
 INSERT INTO officers (name, description, filename) VALUES 
-('Officer1', 'This is test text for officer1.', 'Cat1.jpg'),
- ('Officer2', 'This is test text for officer2.', 'Cat2.jpg'),
- ('Officer3', 'This is test text for officer3.', 'Cat3.jpg'),
- ('Officer4', 'This is test text for officer4.', 'Cat4.jpg'),
- ('Officer5', 'This is test text for officer5.', 'Cat5.jpg');
+ ('Officer1', 'This is test text for officer1.', 'Kennedy Kolbeck.jpg'),
+ ('Officer2', 'This is test text for officer2.', 'Manindar VerBrugge.jpg'),
+ ('Officer3', 'This is test text for officer3.', 'Mike Connors.jpg'),
+ ('Officer4', 'This is test text for officer4.', 'Sarah Puddicombe.jpg'),
+ ('Officer5', 'This is test text for officer5.', 'Nieka Marais.jpg');
 
 
 -- sql table for cmspages (about page)
