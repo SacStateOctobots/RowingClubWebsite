@@ -1,28 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %}
-About - Rowing Club
-{% endblock %}
-
-{% block body %}
-
+{% block custom_head %}
 <!-- Background Color -->
-
-<head>
 	<style>
 		body {
 			background-color: #c3b680;
 		}
 
 		.smashinglogo {
-			background: url(https://cdn.discordapp.com/attachments/1069818501621088296/1098754543271022732/Banner2.jpg);
+			background: url(./static/img/Banner2.jpg);
 			background-size: cover;
 			background-position: center;
 			height: 400px;
 		}
 	</style>
-</head>
+{% endblock %}
 
+{% block title %}
+About - Rowing Club
+{% endblock %}
+
+{% block body %}
 
 <!--About US Introduction Banner-->
 <section id="first" class="story" data-speed="8" data-type="background">
@@ -54,31 +52,26 @@ About - Rowing Club
 <div class="space15"></div>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" />
-<div class="container">
-	<div class="row justify-content-center">
-		{% for tup in officers %}
-		<div class="col-md-6 col-lg-3 mb-30">
-			<div class="team-item" data-aos="fade-down" data-aos-duration="1000">
-				<div class="mb-30 position-relative d-flex align-items-center">
-					<span class="socials d-inline-block">
-						<a href="#" class="zmdi zmdi-facebook"></a>
-						<a href="#" class="zmdi zmdi-twitter"></a>
-						<a href="#" class="zmdi zmdi-instagram"></a>
-					</span>
-					<span class="img-holder d-inline-block">
-						<img src="static/image_uploads/{{ tup[2] }}" alt="Team">
-					</span>
-				</div>
-				<div class="team-content">
-					<h5 class="mb-2">{{ tup[0] }}</h5>
-					<p class="text-uppercase mb-0">{{ tup[1] }}</p>
-					<p class="text-uppercase mb-0">{{ tup[3] }}</p>
+	<div class="container">
+		<div class="row justify-content-center">
+			{% for tup in officers %}
+			<div class="col-md-6 col-lg-3 mb-30">
+				<div class="team-item" data-aos="fade-down" data-aos-duration="1000">
+					<div class="mb-30 position-relative d-flex align-items-center">
+						<span class="img-holder d-inline-block">
+							<img src="static/image_uploads/{{ tup[2] }}" alt="Team">
+						</span>
+					</div>
+					<div class="team-content">
+						<h5 class="mb-2">{{ tup[0] }}</h5>
+						<p class="text-uppercase mb-0"> <strong> {{ tup[1] }} </strong></p>
+						<p class="text-uppercase mb-0">{{ tup[3] }}</p>
+					</div>
 				</div>
 			</div>
+			{% endfor %}
 		</div>
-		{% endfor %}
 	</div>
-</div>
 
 <!--Block Interested-->
 <div class="background-block" style="background-image: url(./static/img/rowing.jpeg); background-size: cover;  background-position: fixed;">
