@@ -90,7 +90,7 @@ def unauthorized_handler():
 def welcome():
     #newEvents = cal.get_next_five_events()
     newEvents=[]
-    return render_template("welcome.html",next_events=newEvents)
+    return render_template("welcome.html",next_events=newEvents,block=db.get_page("homepage_about"))
 
 @app.route("/donate")
 def donate():
@@ -103,7 +103,7 @@ def members():
 @app.route("/alumni")
 def alumni():
 	print(db.get_alumni())
-	return render_template("alumni.html", alumni=db.get_alumni())
+	return render_template("alumni.html", alumni=db.get_alumni(), block1=db.get_page("alumni1"),block2=db.get_page("alumni2"))
 
 @app.route("/calendar")
 def calendar():
@@ -124,7 +124,7 @@ def about():
 def join():
     test = db.get_testimonial()
     
-    return render_template("join.html",test=test)
+    return render_template("join.html",test=test,block1=db.get_page("join_block1"),block2=db.get_page("join_block2"),block3=db.get_page("join_block3"))
 
 @app.route("/contact")
 def contact():
@@ -419,9 +419,9 @@ def allowed_file(filename):
 def cmsPages():
 	if flask.request.method == 'POST':
 		json_data = flask.request.get_json()
-		db.update_page(json_data["slug"],json_data["content"])
+		db.update_page(json_data["id"],json_data["content"])
 		return {
-			'data' : db.get_page(json_data["slug"]),
+			'data' : db.get_page(json_data["id"]),
 			'message': "Updated!"
 		}
 	return render_template('admin.html')
@@ -433,7 +433,7 @@ def updatePage():
 	if flask.request.method == 'POST':
 		json_data = flask.request.get_json()
 		return {
-			'data' : db.get_page(json_data["slug"])
+			'data' : db.get_page(json_data["id"])
 		}
 	return render_template('admin.html')
 
