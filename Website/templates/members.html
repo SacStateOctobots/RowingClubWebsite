@@ -6,7 +6,7 @@ Team Roster - Rowing Club
 
 {% block body %}
 
-<head>
+{% block custom_head %} 
     <style>
         body {
             background-color: #c3b680;
@@ -19,7 +19,7 @@ Team Roster - Rowing Club
             height: 600px;
         }
     </style>
-</head>
+{% endblock %}
 
 <!-- Banner-->
 <section id="first" class="story" data-speed="8" data-type="background">
@@ -38,24 +38,23 @@ Team Roster - Rowing Club
 <body>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"/>
-    <div class="container">
+    <div class="container" style="padding-left: 40px;">
         <div class="row justify-content-center">
             {% for tup in member %}
             <div class="col-md-6 col-lg-3 mb-30">
                 <div class="team-item" data-aos="fade-down" data-aos-duration="1000">
                     <div class="mb-30 position-relative d-flex align-items-center">
-                        <span class="socials d-inline-block">
-                            <a href="#" class="zmdi zmdi-facebook"></a>
-                            <a href="#" class="zmdi zmdi-twitter"></a>
-                            <a href="#" class="zmdi zmdi-instagram"></a>
-                        </span>
                         <span class="img-holder d-inline-block">
-                            <img src="static/image_uploads/{{ tup[2] }}" alt="Team">
+                            <img src="static/image_uploads/{{ tup[2] }}" alt="Team" style="object-fit:cover;
+                            object-position: center;
+                           width:200px;
+                           height:200px;
+                           border: solid 1px #CCC">
                         </span>
                     </div>
                     <div class="team-content">
                         <h5 class="mb-2">{{ tup[0] }}</h5>
-                        <p class="text-uppercase mb-0">{{ tup[1] }}</p>
+                        <p class="text-uppercase mb-0"> <strong> {{ tup[1] }} </strong></p>
                         <p class="text-uppercase mb-0">{{ tup[3] }}</p>
                     </div>
                 </div>
