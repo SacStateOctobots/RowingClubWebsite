@@ -22,6 +22,8 @@ login_manager.init_app(app)
 # We would also obviously not want to store username/login info in plain text like this.
 users = {'foo@bar.tld': {'pw': 'secret'}} #for user login info
 
+
+
 # see: https://flask.palletsprojects.com/en/2.2.x/patterns/fileuploads/
 # directory where uploaded images will be stored
 UPLOAD_FOLDER = 'static/image_uploads'
@@ -45,8 +47,9 @@ app.config.update(
 mail = Mail(app)
 
 #PyOTP TOTP instance
+validation_interval_min = 3
 secret =  pyotp.random_base32()
-totp = pyotp.TOTP(secret, interval = (60 * 1))
+totp = pyotp.TOTP(secret, interval = (60 * validation_interval_min))
 
 class User(flask_login.UserMixin):
     pass
@@ -165,8 +168,10 @@ def login_form():
 
 ##TO-DO:
 #	- check email to make sure it is a valid email addr and that it matches set email
-#		-see if email storage should be done with hash value and to validate with hash match
+#		- see if email storage should be done with hash value and to validate with hash match
 #	- email message needs to be secure, email text should be hidden from traffic sniffing -> for testing
+#	- not sure if valid code will work twice in a row if time limit is set long enough
+#	- figure out way to remove validation token to access protected page after a certain amount of time
 
 
 @app.route('/login_otp')
@@ -175,24 +180,18 @@ def login_otp():
 
 @app.route('/verify', methods = ["POST"])
 def verify():
-    #current_time = datetime.datetime.now()
-    generated_otp = totp.now()
-	#Creates OTP
-	#final_otp = ''
-	#for i in range(6):
-	#	final_otp = final_otp + str(random.randint(0,9))
+	#Generates OTP with PyOTP global var
+	generated_otp = totp.now()
 	#Sends message to email put in form
-    msg = Message(subject="Rowing Club Sign-in Passcode",
+	msg = Message(subject="Rowing Club Sign-in Passcode",
 				body="Passcode for log-in verification: "
-				+ str(generated_otp) + "\n Passcode will expire in 1 minute.",  
+				+ str(generated_otp) + "\n Passcode will expire in " + str(validation_interval_min) + " minute.",  
 				sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
 				recipients=[request.form['email_otp']])
-    mail.send(msg)
-	#Sets a session var to be referenced for validate page. 
-	#Might be removed after flask session is ended but not sure how this works with hosted website
-    session['generated_otp'] = generated_otp
-	#session['user_email'] = request.form['email_otp']
-    return render_template('login_otp_validate.html') 
+	mail.send(msg)
+	#Sets a session var to be referenced for validate page to test is code has expired. 
+	session['generated_otp'] = generated_otp
+	return render_template('login_otp_validate.html') 
 
 
 @app.route('/validate',methods=["POST"])

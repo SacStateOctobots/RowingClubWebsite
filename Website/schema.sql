@@ -146,3 +146,10 @@ INSERT INTO cmspages (slug, title, content, modifieddate) VALUES ('contact_logo'
                             <h4>rowing@abcd.csus.edu</h4>
                         </div>
                     </div>",datetime('now'));
+
+-- Table for OTP log-in email storage
+-- not currently implemented for use
+-- change to rowingclub email once site is ready for release
+CREATE TABLE IF NOT EXISTS loginEmail (
+	emailAddr VARCHAR(255) NOT NULL UNIQUE);
+INSERT INTO loginEmail (emailAddr) VALUES ('lynnjess.dev@gmail.com')
