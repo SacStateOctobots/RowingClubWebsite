@@ -6,7 +6,7 @@
 
 {% block body %}
 
-<head>
+{% block custom_head %}
 	<!--sample button event, maybe pull from latest table entry after adding?
 	something about checking what table and who is being added to where, and maybe 
 	we can have a modular alert system -->
@@ -45,8 +45,7 @@
 		}
 	</style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
-{% block custom_head %}
+
 <script type="text/javascript" src="../static/js/tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
 	tinymce.init({
@@ -59,6 +58,7 @@
 
 </script>
 {% endblock %}
+
 <div class="jumbotron text-center">
 	<h1>Admin Page</h1>
 </div>

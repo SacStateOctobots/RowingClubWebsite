@@ -6,7 +6,7 @@ Team Roster - Rowing Club
 
 {% block body %}
 
-<head>
+{% block custom_head %} 
     <style>
         body {
             background-color: #c3b680;
@@ -19,7 +19,7 @@ Team Roster - Rowing Club
             height: 600px;
         }
     </style>
-</head>
+{% endblock %}
 
 <!-- Banner-->
 <section id="first" class="story" data-speed="8" data-type="background">
@@ -50,7 +50,11 @@ Team Roster - Rowing Club
                             <a href="#" class="zmdi zmdi-instagram"></a>
                         </span>
                         <span class="img-holder d-inline-block">
-                            <img src="static/image_uploads/{{ tup[2] }}" alt="Team">
+                            <img src="static/image_uploads/{{ tup[2] }}" alt="Team" style="object-fit:cover;
+                            object-position: center;
+                           width:200px;
+                           height:200px;
+                           border: solid 1px #CCC">
                         </span>
                     </div>
                     <div class="team-content">

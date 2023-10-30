@@ -1,12 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Alumni - Rowing Club
-{% endblock %}
-
-{% block body %}
-<!--copied from the about us page-->
-<head>
+{% block custom_head %} 
 	<style>
 		body {
 			background-color: #c3b680;
@@ -51,7 +45,14 @@ Alumni - Rowing Club
 		}
 
 	</style>
-</head>
+{% endblock %}
+
+{% block title %}
+Alumni - Rowing Club
+{% endblock %}
+
+{% block body %}
+<!--copied from the about us page-->
 
 <body>
 <!--Alumni Introduction Banner-->
