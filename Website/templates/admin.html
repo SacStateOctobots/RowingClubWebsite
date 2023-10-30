@@ -109,10 +109,9 @@ Admin Page
 </div>
 
 
-<!-- Script for displaying tabs -->
-<!-- https://www.w3schools.com/w3css/w3css_tabulators.asp -->
+<!-- Script for displaying tabs and saving tab state -->
+<!-- https://www.w3schools.com/w3css/w3css_tabulators.asp-->
 <script>
-
 	window.onload = Loader;
 
 	//Selected Tab
@@ -154,6 +153,7 @@ Admin Page
 	}
 
 </script>
+<div onload="Loader()"></div>
 
 <div onload="Loader()"></div>
 
@@ -205,6 +205,7 @@ Admin Page
 
 	<hr />
 </div>
+
 <div class="container-fluid">
 	<!--<div class="w3-bar w3-black">-->
 	<div class="w3-bar green_back_gold_front" style="font-size: 18px;">
@@ -611,4 +612,12 @@ Admin Page
 </script>
 
 
+</script>
+
+<style>
+	/* Footer removal */
+	footer {
+			display: none;
+	}
+</style>
 {% endblock %}
