@@ -73,8 +73,7 @@ Welcome - Rowing Club
 		<div class="column">
 			<div class="recruitment-button">
 				<a data-aos="fade-up" data-aos-duration="1000"
-					href="https://docs.google.com/forms/d/e/1FAIpQLSfZgOi84FUsV-uXBSIsJuTX3pKZdlFydBgsojzrhYNo09q4ZA/formResponse">Join
-					us</a>
+					href="https://docs.google.com/forms/d/e/1FAIpQLSfZgOi84FUsV-uXBSIsJuTX3pKZdlFydBgsojzrhYNo09q4ZA/formResponse">Join us</a>
 			</div>
 		</div>
 
@@ -86,119 +85,118 @@ Welcome - Rowing Club
 
 
 <!--Events Block-->
-<section>
-	<div style="background-color: #c3b680;">
-		<div class="container-xxl py-5">
-			<div class="name-events"> Upcoming Events</div>
-			<div class="name-phone">Upcoming Events</div>
-		</div>
+<div style="background-color: #c3b680;">
+	<div class="container-xxl py-5">
+		<div class="name-events"> Upcoming Events</div>
+		<div class="name-phone">Upcoming Events</div>
+	</div>
 
-		<div class="space15"></div>
+	<div class="space15"></div>
 
-		<div class="central">
-			<div class="row row-cols-1 row-cols-md-2 g-4 my_row">
-				{% if next_events|length >=1 %}
-				<div class="col">
-					<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
-						<div class="card-body">
-							<h3 class="card-title">{{next_events[0][0]}}</h3>
-							<p class="card-text">Location: {{next_events[0][2]}}
-								<br>Date: {{next_events[0][3]}}
-								<br>Description: {{next_events[0][1]}}
-							</p>
-						</div>
+	<div class="central">
+		<div class="row row-cols-1 row-cols-md-2 g-4 my_row">
+			{% if next_events|length >=1 %}
+			<div class="col">
+				<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
+					<div class="card-body">
+						<h3 class="card-title">{{next_events[0][0]}}</h3>
+						<p class="card-text">Location: {{next_events[0][2]}}
+							<br>Date: {{next_events[0][3]}}
+							<br>Description: {{next_events[0][1]}}
+						</p>
 					</div>
 				</div>
-				{%else%}
-				<!-- No event to emit here -->
-				{% endif %}
+			</div>
+			{%else%}
+			<!-- No event to emit here -->
+			{% endif %}
 
-				{% if next_events|length >=2 %}
-				<div class="col">
-					<div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
-						<div class="card-body">
-							<h3 class="card-title">{{next_events[1][0]}}</h3>
-							<p class="card-text">Location: {{next_events[1][2]}}
-								<br>Date: {{next_events[1][3]}}
-								<br>Description: {{next_events[1][1]}}
-							</p>
-						</div>
+			{% if next_events|length >=2 %}
+			<div class="col">
+				<div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
+					<div class="card-body">
+						<h3 class="card-title">{{next_events[1][0]}}</h3>
+						<p class="card-text">Location: {{next_events[1][2]}}
+							<br>Date: {{next_events[1][3]}}
+							<br>Description: {{next_events[1][1]}}
+						</p>
 					</div>
 				</div>
-				{%else%}
-				<!-- No event to emit here -->
-				{% endif %}
+			</div>
+			{%else%}
+			<!-- No event to emit here -->
+			{% endif %}
 
-				{% if next_events|length >=3 %}
-				<div class="col">
-					<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
-						<div class="card-body">
-							<h3 class="card-title">{{next_events[2][0]}}</h3>
-							<p class="card-text">Location: {{next_events[2][2]}}
-								<br>Date: {{next_events[2][3]}}
-								<br>Description: {{next_events[2][1]}}
-							</p>
-						</div>
+			{% if next_events|length >=3 %}
+			<div class="col">
+				<div class="card col-9 offset-md-3" data-aos="fade-right" data-aos-duration="1000">
+					<div class="card-body">
+						<h3 class="card-title">{{next_events[2][0]}}</h3>
+						<p class="card-text">Location: {{next_events[2][2]}}
+							<br>Date: {{next_events[2][3]}}
+							<br>Description: {{next_events[2][1]}}
+						</p>
 					</div>
 				</div>
-				{%else%}
-				<!-- No event to emit here -->
+			</div>
+			{%else%}
+			<!-- No event to emit here -->
 
-				{% endif %}
+			{% endif %}
 
-				{% if next_events|length >=4 %}
-				<div class="col">
-					<div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
-						<div class="card-body">
-							<h3 class="card-title">{{next_events[3][0]}}</h3>
-							<p class="card-text">Location: {{next_events[3][2]}}
-								<br>Date: {{next_events[3][3]}}
-								<br>Description: {{next_events[3][1]}}
-							</p>
-						</div>
+			{% if next_events|length >=4 %}
+			<div class="col">
+				<div class="card col-9 offset-md-0" data-aos="fade-left" data-aos-duration="1000">
+					<div class="card-body">
+						<h3 class="card-title">{{next_events[3][0]}}</h3>
+						<p class="card-text">Location: {{next_events[3][2]}}
+							<br>Date: {{next_events[3][3]}}
+							<br>Description: {{next_events[3][1]}}
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		{%else%}
-		<!-- No event to emit here -->
-		{% endif %}
-		<div class="space80"> </div>
 	</div>
+
+	{%else%}
+	<!-- No event to emit here -->
+	{% endif %}
 	<div class="space80"> </div>
-</section>
+</div>
 <!--END Events Block-->
 
+
 <!--Block Contribution-->
-<div class="background-block1" style="background-image: url(./static/img/boat.jpg);">
+<div class="background-block1" style="background-image: url(./static/img/boat.jpg); background-size: cover;">
 	<div class="container" data-aos="fade-down" data-aos-duration="600">
 		<div style="padding-top: 120px;"></div>
 
 		<div class="col-responsive">
-			<h2 style="font-weight: 400; padding-top: 15px;">Contribute to the team
+			<h2 style="font-weight: 400; padding-top: 15px;">Contribute to the team 
 				<div class="space80"></div>
 
 				<div class="recruitment-button1">
-					<a class="online-button" data-aos="fade-up" data-aos-duration="1000" href="/donate">Online
-						Donation</a>
+					<div>
+						<a data-aos="fade-up" data-aos-duration="1000"
+						href="#">Online Donation</a>
+					</div>					
 				</div>
 			</h2>
 
 			<div style="font-weight: 600;" class="online">Online
 				<div class="donate-button">
 					<div class="recruitment-button">
-						<a class="hello" href="/donate">Donation</a>
+						<a class="hello" href="#">Donation</a>
 					</div>
 				</div>
 			</div>
 
-			<div style="font-weight: 600;" class="check">By Cheque
+			<div style="font-weight: 600;"class="check">By Cheque 
 				<div class="donate-button">
 					<p>Sacramento State Rowing Club
-						<br /> 1901 Hazel Ave,
-						<br /> Gold River, CA 95670
-					</p>
+					<br /> 1901 Hazel Ave,
+					<br /> Gold River, CA 95670</p>
 				</div>
 			</div>
 		</div>
@@ -208,6 +206,42 @@ Welcome - Rowing Club
 </div>
 <!--END Block contribution -->
 
+<!--Last Block for Social-->
+<div class="last-video-help-block">
+    <section class="video-help" style="background-color: #005440">
+       
+        <div class="video-help-content">
+            <br>
+            <p>Have any questions?</p>
+            <br>
+            <p>Email us at abcd@csus.com</p>
+            <div class="wrapper-social-icon">
+                <div class="button-social" data-aos="fade-down" data-aos-duration="1000">
+    
+                    <div class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <a href="https://facebook.com"><span>Facebook</span></a>
+                </div></a>
+                <div class="button-social" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <a href="https://instagram.com"><span>Instagram</span></a>
+                </div></a>
+                <div class="button-social" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <a href="https://youtube.com"><span>YouTube</span></a>
+                </div></a>
+                <div class="space80"></div>
+            </div>
+            <!--Social media-->
+        </div>
+    </section>
+</div>
+<!--End Last Block for Video introduction-->
 
 <!--Swiper Js-->
 <script src="./static/js/swiper-bundle.min.js"></script>

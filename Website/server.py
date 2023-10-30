@@ -85,10 +85,12 @@ def unauthorized_handler():
 #    else:
 #        return f'Hello {flask_login.current_user.id}'
 #        #return 'Hello user' 
+
 @app.route("/")
 def welcome():
-	newEvents = cal.get_next_five_events()
-	return render_template("welcome.html",next_events=newEvents)
+    #newEvents = cal.get_next_five_events()
+    newEvents=[]
+    return render_template("welcome.html",next_events=newEvents)
 
 @app.route("/donate")
 def donate():
