@@ -92,3 +92,10 @@ INSERT INTO cmspages (id, title, content, modifieddate) VALUES ('join_block2', '
 INSERT INTO cmspages (id, title, content, modifieddate) VALUES ('join_block3', 'Join Page - Third Block',
 "<div class='col-lg-6'><div class='text-heading'><h1 class='mb-4' data-aos='fade-right' data-aos-duration='1000'>Interested to Being a part of the Team?</h1></div><p style='text-align:center;font-size:22px' data-aos='zoom-in' data-aos-duration='1000'>All are welcome with<b>NO EXPERIENCE REQUIRED</b></p><div class='video-introduction-content-button'><a data-aos='fade-left' data-aos-duration='1000' href='https://docs.google.com/forms/d/e/1FAIpQLSfZgOi84FUsV-uXBSIsJuTX3pKZdlFydBgsojzrhYNo09q4ZA/formResponse'>Join us</a></div></div><div class='col-lg-6'><div class='row g-3'><div class='col-6 text-end'></div><div class='col-6 text-start'><img class='img-fluid rounded w-100' data-aos='zoom-in' data-aos-duration='1000' data-aos-delay='0' src='./static/img/p7.jpeg'></div><div class='col-6 text-end'><img class='img-fluid rounded w-100' data-aos='zoom-in' data-aos-duration='1000' data-aos-delay='200' src='./static/img/p8.jpeg' style='margin-top:-65%'></div><div class='col-6 text-start'><img class='img-fluid rounded w-75' data-aos='zoom-in' data-aos-duration='1000' data-aos-delay='400' src='./static/img/p6.jpeg'></div></div></div>",datetime('now'));
 
+-- Table for OTP log-in email storage
+-- not currently implemented for use
+-- change to rowingclub email once site is ready for release
+CREATE TABLE IF NOT EXISTS loginEmail (
+	emailAddr VARCHAR(255) NOT NULL UNIQUE);
+INSERT INTO loginEmail (emailAddr) VALUES ('lynnjess.dev@gmail.com')
+

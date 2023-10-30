@@ -1,3 +1,5 @@
+import datetime
+from time import sleep
 import flask
 import flask_login
 import os
@@ -6,9 +8,10 @@ from flask_mail import Mail, Message
 from werkzeug.utils import secure_filename
 import google_calendar_reader as cal
 import database_library as db
+import pyotp
 import datetime
-import random
 from random import randrange
+
 
 app = flask.Flask(__name__)
 app.secret_key = 'super secret string'  # Change this!
@@ -20,6 +23,8 @@ login_manager.init_app(app)
 # irl we should use an actual database for this.
 # We would also obviously not want to store username/login info in plain text like this.
 users = {'foo@bar.tld': {'pw': 'secret'}} #for user login info
+
+
 
 # see: https://flask.palletsprojects.com/en/2.2.x/patterns/fileuploads/
 # directory where uploaded images will be stored
@@ -43,8 +48,10 @@ app.config.update(
 )
 mail = Mail(app)
 
-#Passcode for OTP
-global_final_otp = ''
+#PyOTP TOTP instance
+validation_interval_min = 3
+secret =  pyotp.random_base32()
+totp = pyotp.TOTP(secret, interval = (60 * validation_interval_min))
 
 class User(flask_login.UserMixin):
     pass
@@ -164,43 +171,53 @@ def login_form():
 	#return render_template("login.html")
 
 ##TO-DO:
-#	- find way to make sure code becomes invalid after a set amount of time
 #	- check email to make sure it is a valid email addr and that it matches set email
-#		-make sure email storage is done with hash value and to validate with hash match
-#	- email message needs to be secure, email text should be hidden from traffic sniffing
+#		- see if email storage should be done with hash value and to validate with hash match
+#	- email message needs to be secure, email text should be hidden from traffic sniffing -> for testing
+#	- not sure if valid code will work twice in a row if time limit is set long enough
+#	- figure out way to remove validation token to access protected page after a certain amount of time
+
+
+@app.route('/login_otp')
+def login_otp():
+	return render_template('login_otp.html')
+
 @app.route('/verify', methods = ["POST"])
-def verify(): 
-	#Creates OTP
-	final_otp = ''
-	for i in range(6):
-		final_otp = final_otp + str(random.randint(0,9))
+def verify():
+	#Generates OTP with PyOTP global var
+	generated_otp = totp.now()
 	#Sends message to email put in form
 	msg = Message(subject="Rowing Club Sign-in Passcode",
 				body="Passcode for log-in verification: "
-				+ str(final_otp),  
+				+ str(generated_otp) + "\n Passcode will expire in " + str(validation_interval_min) + " minute.",  
 				sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
 				recipients=[request.form['email_otp']])
 	mail.send(msg)
-	#Sets a session var to be referenced for validate page. 
-	#Might be removed after flask session is ended but not sure how this works with hosted website
-	session['final_otp'] = final_otp
-	#session['user_email'] = request.form['email_otp']
-	return render_template('login_otp.html') 
+	#Sets a session var to be referenced for validate page to test is code has expired. 
+	session['generated_otp'] = generated_otp
+	return render_template('login_otp_validate.html') 
 
-@app.route('/validate',methods=["POST"])   
-def validate():      
-    # OTP Entered by the User
-    user_otp = request.form['otp'] 
-    if int(session['final_otp']) == int(user_otp):
-        #User var setting done manually so session cookies can be generated to access page
+
+@app.route('/validate',methods=["POST"])
+def validate():
+	# OTP Entered by the User
+	user_otp = request.form['otp'] 
+	if totp.verify(otp=str(user_otp)):
+		#User var setting done manually so session cookies can be generated to access page
 		#Will need to alter to change to authorized rowing club email when published
-        user = User()
-        user.id = 'foo@bar.tld'
-        flask_login.login_user(user)
-        return flask.redirect(flask.url_for('protected'))
-    else:
-        flash('Incorrect Passcode Entered, Try again')
-        return render_template('login_otp.html')
+		user = User()
+		user.id = 'foo@bar.tld'
+		flask_login.login_user(user)
+		return flask.redirect(flask.url_for('protected'))
+	else:
+		if totp.verify(session['generated_otp']):
+			flash('Incorrect Passcode Entered, Try again')
+			return render_template('login_otp_validate.html')
+		else:
+			flash('Passcode has timed out. Redirected to Login page.')
+			render_template('login_otp_validate.html')
+			sleep(10)
+			return render_template('login_otp.html')
 
 
 def file_allowed_handler(file):
