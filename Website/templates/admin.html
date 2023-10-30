@@ -7,8 +7,7 @@ Admin Page
 {% block body %}
 
 <head>
-	<!--sample button event, maybe pull from latest table entry after adding?
-	something about checking what table and who is being added to where, and maybe 
+	<!--something about checking what table and who is being added to where, and maybe 
 	we can have a modular alert system -->
 	<script>
 		// just made it so awesome ngl
@@ -17,6 +16,7 @@ Admin Page
 		const firstRegex = /[(']/gi;
 		const newlineRegex = /\r?\n|\r/gi;
 
+		// functions to clean from respective databases
 		function memberSelect() {
 			var x = document.getElementById("memberList").value
 
@@ -141,7 +141,6 @@ Admin Page
 
 		switch (str) {
 			case 'Players':
-			case 'Alumni':
 			case 'TeamMembers':
 			case 'Officers':
 			case 'Testimonials':
@@ -211,7 +210,6 @@ Admin Page
 	<div class="w3-bar green_back_gold_front" style="font-size: 18px;">
 		<button class="w3-bar-item w3-button tablink w3-red" id="players-tab"
 			onclick="openTab(event,'Players')">Players</button>
-		<button class="w3-bar-item w3-button tablink " id="alumni-tab" onclick="openTab(event,'Alumni')">Alumni</button>
 		<button class="w3-bar-item w3-button tablink" id="team-tab" onclick="openTab(event,'TeamMembers')">Team
 			Members</button>
 		<button class="w3-bar-item w3-button tablink" id="officers-tab"
@@ -273,70 +271,6 @@ Admin Page
 	</div>
 	<!-- END Players tab -->
 
-	<!-- Alumni Tab -->
-	<div id="Alumni" class="w3-container tab tabname" style="display:none">
-		<div class="space"></div>
-		<div class="row row-cols-4 row-cols-sm-3 g-lg-1">
-			<div class="col-4">
-				<div class="card mb-2 green_back_gold_front">
-					<div class="row g-0">
-						<h4>Specify Alumni to delete here: </h4>
-						<div class="space15"></div>
-						<!-- form to delete alumni by name-->
-						<form method="POST">
-							<label for="delete">Alumni's Name:</label><br>
-							<select name="deletealumni" id="deletealumni-id" class="form-control">
-								{% for tup in alumni %}
-								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
-								{% endfor %}
-							</select>
-							<div class="space"></div>
-							<input type="submit" id='delete-alumni-button-id' name='delete-alumni-button'
-								value="Delete Alumni" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form>
-						<div class="space"></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-4">
-				<div class="card mb-2 green_back_gold_front">
-					<div class="row g-0">
-						<h4>Specify players to add to alumni: </h4>
-						<div class="space15"></div>
-						<!-- form to add alumni -->
-						<form method="POST" id="alumni-add-form-id" name="alumni-add-form-name"
-							enctype="multipart/form-data">
-							<label for="addname">Alumni's Name:</label><br>
-							<input type="text" id="alumni-name-id" name="alumni-name" value="John Doe"
-								class="form-control"><br>
-							<label for="desc">Alumni's Description:</label><br>
-							<input type="text" id="alumni-desc-id" name="alumni-desc"
-								value="... player description here ..." class="form-control"><br>
-							<label for="file">Alumni's Picture:</label><br>
-							<input type="file" id="alumni-file-id" name="alumni-file" class="form-control"><br>
-							<input type="submit" id='alumni-button-id' name='alumni-button-name' value="Add Alumni"
-								class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form>
-						<div class="space"></div>
-					</div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="col-16">
-					<div class="card mb-2 green_back_gold_front">
-						<h4 style="text-align: center;">Alumni Selected:</h4>
-						<img id=alumniImage src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top"
-							alt="'s profile photo">
-						<div class="card-body">
-							<h5 id="alumniTitle" class="card-title">Nothing selected!</h5>
-							<p id="alumniDesc" class="card-text">Choose an entry from the above dropdown menus.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- END Players tab -->
 
 	<!-- Team Members tab -->
 	<div id="TeamMembers" class="w3-container tab tabname" style="display:none">
@@ -407,6 +341,7 @@ Admin Page
 			</div>
 		</div>
 	</div>
+</div>
 
 	<!-- Officers tab -->
 	<div id="Officers" class="w3-container tab tabname" style="display:none">
@@ -473,7 +408,7 @@ Admin Page
 			</div>
 		</div>
 	</div>
-
+</div>
 	<!-- Content Block -->
 	<div id="Content" class="w3-container tab tabname" style="display:none">
 		<div class="space15"></div>
