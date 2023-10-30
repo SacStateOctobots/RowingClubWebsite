@@ -418,7 +418,8 @@ h1.hero-heading {
     background: #ff0000;
 }
 
-.wrapper-social-icon .button-social .social-icon i, .wrapper-social-icon .button-social .social-icon em {
+.wrapper-social-icon .button-social .social-icon i,
+.wrapper-social-icon .button-social .social-icon em {
     font-size: 25px;
     line-height: 60px;
     transition: all 0.3s ease-out;
@@ -618,7 +619,7 @@ h1.hero-heading {
 
 /* Title Block*/
 
-@media (min-width: 568px) {
+@media (min-width: 1367px) {
     #block-title {
         height: 800px;
         width: 100%;
@@ -631,6 +632,25 @@ h1.hero-heading {
     #block-title1 {
         height: 600px;
         width: 100%;
+        border: 3px solid #000000;
+        position: relative;
+        padding-top: 50px;
+
+    }
+
+    #block-title2 {
+        height: 300px;
+        width: 135%;
+        border: 3px solid #000000;
+        position: relative;
+        padding-top: 50px;
+
+    }
+
+    #block-title3 {
+        height: 300px;
+        left: -160px;
+        width: 200%;
         border: 3px solid #000000;
         position: relative;
         padding-top: 50px;
@@ -679,12 +699,140 @@ h1.hero-heading {
         text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
     }
 
+    #title-label3 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 17%;
+        height: 40px;
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
 
+    #title-label4 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 28%;
+        height: 40px;
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
 
     div.name-phone {
         font-size: 0;
     }
 }
+
+
+
+@media screen and (min-device-width: 568px) and (max-device-width: 1366px) { 
+
+    #block-title2 {
+        height: 300px;
+        position: relative;
+        padding-top: 30px;
+        text-align: center;
+
+    }
+
+    #block-title3 {
+        height: 300px;
+     width: fit-content;
+        position: relative;
+        padding-top: 50px;
+        text-align: center;
+    }
+
+    #title-label {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 300px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label1 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label2 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 280px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label3 {
+        font-size: 35px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        position: absolute;
+        top: -30px;
+        left: 7%;
+        height: 40px;
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label4 {
+        font-size: 35px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        position: absolute;
+        top: -30px;
+        left: 10%;
+        height: 40px;
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    div.name-phone {
+        font-size: 0;
+    }
+
+    div.h3{
+        font-size: 100px;
+    }
+    
+}
+
+
 
 @media (max-width : 567px) {
     #block-title {
@@ -697,6 +845,10 @@ h1.hero-heading {
         padding-top: 10.25%;
     }
 
+    #block-title2 {
+        padding-top: 60px;
+
+    }
 
     div.name {
         font-size: 0;
@@ -711,6 +863,7 @@ h1.hero-heading {
         text-shadow: 1px 4px 4px rgba(116, 116, 116, 0.947);
     }
 }
+
 
 /* Event CSS*/
 
@@ -861,12 +1014,7 @@ h1.hero-heading {
 }
 
 /* background-block for Welcome page*/
-.background-block {
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-}
+
 
 .background-block1 {
     background-repeat: no-repeat;
@@ -895,6 +1043,13 @@ h1.hero-heading {
     h2 {
         font-size: 60px;
     }
+
+    .background-block {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+    }
 }
 
 @media (max-width: 567px) {
@@ -903,11 +1058,19 @@ h1.hero-heading {
         text-align: center;
         text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
     }
+
     h2 {
         font-size: 40px;
     }
-    div.recruitment-button{
+
+    div.recruitment-button {
         font-size: 30px;
+    }
+
+    .background-block1 {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
     }
 
 }
@@ -943,7 +1106,7 @@ h1.hero-heading {
 /* Title Block*/
 @media (min-width: 568px) {
     #block-title {
-        height:   950px;
+        height: 950px;
         width: 100%;
         position: relative;
         padding-top: 50px;
@@ -1008,7 +1171,7 @@ h1.hero-heading {
         overflow: hidden;
         padding-top: 10.25%;
         height: 500px;
-        }
+    }
 
 
 
@@ -1026,29 +1189,30 @@ h1.hero-heading {
     }
 
 }
+
 /*Events in homepage*/
 @media (min-width: 568px) {
-    div.name-events{
+    div.name-events {
         font-size: 50px;
         font-weight: 600;
     }
 
-    div.name-phone{
+    div.name-phone {
         font-size: 0px;
     }
 }
 
 @media (max-width: 567px) {
-    div.name-phone{
+    div.name-phone {
         font-size: 35px;
         font-weight: 600;
     }
 
-    div.name-events{
+    div.name-events {
         font-size: 0px;
     }
 
-    div.central{
+    div.central {
         width: 95%;
         align-items: center;
         text-align: center;
@@ -1057,18 +1221,18 @@ h1.hero-heading {
     }
 
     div.card {
-       width: 100%;
+        width: 100%;
     }
 }
 
 /*column responsive*/
 .col-responsive {
-    display:flex;
-    flex-wrap:wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.col-responsive > *{
-    padding:1rem;
+.col-responsive>* {
+    padding: 1rem;
 }
 
 
@@ -1081,13 +1245,13 @@ h1.hero-heading {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .col-responsive h2{
+    .col-responsive h2 {
         color: rgb(255, 255, 255);
         text-align: center;
         text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
     }
 
-    .col-responsive div{
+    .col-responsive div {
         color: #fff;
         text-align: center;
         font-size: 25px;
@@ -1105,26 +1269,37 @@ h1.hero-heading {
         text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
         align-items: center;
     }
-    
+
     .recruitment-button1 a {
         font-size: 0px;
     }
 
-    .recruitment-button1 a:hover {
-        font-size: 0px;
-    }
-
-    .donate-button a:hover {
+    .recruitment-button2 a {
         text-decoration: none;
-        font-size: 20px;
-        font-weight: 400;
+        font-size: 17px;
+        font-weight: 600;
         display: inline-block;
         color: #ffffff;
         padding: 14px 70px;
+        border-radius: 50px;
+        margin-top: 20px;
+        background-color: #005440;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+
+    .recruitment-button2 a:hover {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        border-radius: 50px;
         margin-top: 20px;
         background-color: #c3b680;
         text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
     }
+
 }
 
 @media (max-width: 567px) {
@@ -1139,30 +1314,34 @@ h1.hero-heading {
     }
 
     .recruitment-button a {
-      font-size: 20px;
-    }
-    
-    .recruitment-button a:hover {
-       font-size: 20px;
+        font-size: 20px;
     }
 
-    .col-responsive div.check{
+    .recruitment-button a:hover {
+        font-size: 20px;
+    }
+
+    .col-responsive div.check {
         color: #fff;
         text-align: center;
         font-size: 25px;
     }
 
-    .col-responsive div.online{
-      font-size: 0px;
+    .col-responsive div.online {
+        font-size: 0px;
     }
 
-    .recruitment-button a.hello{
+    .recruitment-button a.hello {
         opacity: 0;
+    }
+
+    .recruitment-button1 a.online-button {
+        opacity: 1;
     }
 
     .recruitment-button1 a {
         text-decoration: none;
-        font-size: 20px;
+        font-size: 17px;
         font-weight: 600;
         display: inline-block;
         color: #ffffff;
@@ -1172,8 +1351,34 @@ h1.hero-heading {
         background-color: #005440;
         text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
     }
-    
+
     .recruitment-button1 a:hover {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        border-radius: 50px;
+        margin-top: 20px;
+        background-color: #c3b680;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+
+    .recruitment-button2 a {
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 600;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        border-radius: 50px;
+        margin-top: 20px;
+        background-color: #005440;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+
+    .recruitment-button2 a:hover {
         text-decoration: none;
         font-size: 20px;
         font-weight: 600;
@@ -1188,7 +1393,7 @@ h1.hero-heading {
 }
 
 @media (min-width: 568px) {
-    h1.team-member{
+    h1.team-member {
         font-size: 120px;
         color: #fff;
         text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.947);
@@ -1196,7 +1401,7 @@ h1.hero-heading {
 }
 
 @media (max-width: 567px) {
-    h1.team-member{
+    h1.team-member {
         font-size: 60px;
         font-weight: 500;
         color: #fff;
@@ -1207,23 +1412,24 @@ h1.hero-heading {
 
 /*CSS Team Member*/
 .team-item {
-    padding: 35px;
-    padding-right: 0;
+    padding: 25px;
+    padding-right: 0px;
     position: relative;
     z-index: 0;
-  }
+    margin: 0 auto;
+}
 
-  .team-item:after,
-  .team-item:before {
+.team-item:after,
+.team-item:before {
     content: "";
     position: absolute;
     -webkit-box-shadow: 0 5px 30px 0 rgba(39, 39, 39, 0.15);
     box-shadow: 0 5px 30px 0 rgba(39, 39, 39, 0.15);
     border-radius: 10px;
     z-index: -1;
-  }
+}
 
-  .team-item:before {
+.team-item:before {
     height: 100%;
     background-color: #fff;
     left: 0;
@@ -1231,9 +1437,9 @@ h1.hero-heading {
     right: 30px;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
-  }
+}
 
-  .team-item:after {
+.team-item:after {
     height: 6px;
     width: calc(100% - 30px);
     background-color: #005440;
@@ -1241,84 +1447,84 @@ h1.hero-heading {
     bottom: 0;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
-  }
+}
 
-  .team-item:hover:after {
+.team-item:hover:after {
     height: 100%;
-  }
+}
 
-  .team-item .img-holder {
+.team-item .img-holder {
     -ms-flex-negative: 0;
     flex-shrink: 0;
     -webkit-box-shadow: 0 0 20px 0 rgba(51, 51, 51, 0.2);
     box-shadow: 0 0 20px 0 rgba(51, 51, 51, 0.2);
     border-radius: 10px;
     width: calc(100% - 70px);
-    margin-left: 70px;
+    height: auto;
     overflow: hidden;
-  }
+}
 
-  .team-item .img-holder img {
+.team-item .img-holder img {
     border-radius: 10px;
     width: 100%;
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
     -webkit-transition: all 0.6s ease;
     transition: all 0.6s ease;
-  }
+}
 
-  .team-item:hover .img-holder img {
+.team-item:hover .img-holder img {
     -webkit-transform: scale(1);
     transform: scale(1);
-  }
+}
 
-  .team-item .socials {
+.team-item .socials {
     position: absolute;
-  }
+}
 
-  .team-item .socials a {
+.team-item .socials a {
     display: block;
     margin-right: 0;
     margin-bottom: 15px;
     -webkit-box-shadow: 3px 3px 2px 0 rgb(0, 0, 0);
     box-shadow: 3px 3px 2px 0 rgb(0, 0, 0);
-  }
+}
 
-  .team-item .socials a:last-of-type {
+.team-item .socials a:last-of-type {
     margin-bottom: 0;
-  }
+}
 
-  .team-item .team-content {
+.team-item .team-content {
     margin-right: 70px;
     text-align: center;
-  }
+}
 
-  .team-item .team-content h5 {
+.team-item .team-content h5 {
     color: #005440;
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
-  }
+}
 
-  .team-item .team-content p {
+.team-item .team-content p {
     color: #005440;
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
     font-weight: 600;
     font-size: 14px;
-  }
+}
 
-  .team-item:hover .team-content h5,
-  .team-item:hover .team-content p {
+.team-item:hover .team-content h5,
+.team-item:hover .team-content p {
     color: #fff;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
-  }
+}
 
-  .d-inline-block {
+.d-inline-block {
     display: inline-block !important;
-  }
+}
 
-  .socials a {
+.socials a {
     width: 35px;
     height: 35px;
     background-color: #005440;
@@ -1332,121 +1538,129 @@ h1.hero-heading {
     margin-right: 10px;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
-  }
+}
 
-  .mb-2,
-  .my-2 {
+.mb-2,
+.my-2 {
     margin-bottom: .5rem !important;
-  }
+}
 
-  h5 {
+h5 {
     font-size: 21px;
-  }
+}
 
-  .mb-30 {
+.mb-30 {
     margin-bottom: 30px;
-  }
+}
 
-  /*CSS for Login page*/
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  a {
+/*CSS for Login page*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
     -ms-word-wrap: break-word;
     word-wrap: break-word;
     text-decoration: none;
-  }
-  
-  img {
+}
+
+img {
     border: none;
-  }
-  
-  *:focus {
+}
+
+*:focus {
     outline: none;
-  }
-  
-  .clearfix::after {
+}
+
+.clearfix::after {
     content: "";
     display: table;
     clear: both;
-  }
-  
-  .bg-illustration {
+}
+
+.bg-illustration {
     position: relative;
     height: 100vh;
     width: 1194px;
     background: url("https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/hornetsports.com/images/2023/5/4/23_Johnson_web.jpg") no-repeat center center scroll;
     background-size: cover;
-    float: left; 
+    float: left;
     -webkit-animation: bgslide 2.3s forwards;
-            animation: bgslide 2.3s forwards;
-  }
-  .bg-illustration img {
+    animation: bgslide 2.3s forwards;
+}
+
+.bg-illustration img {
     width: 248px;
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     height: auto;
     margin: 19px 0 0 25px;
-  }
-  
-  @-webkit-keyframes bgslide {
+}
+
+@-webkit-keyframes bgslide {
     from {
-      left: -100%;
-      width: 0;
-      opacity: 0;
+        left: -100%;
+        width: 0;
+        opacity: 0;
     }
+
     to {
-      left: 0;
-      width: 1194px;
-      opacity: 1;
+        left: 0;
+        width: 1194px;
+        opacity: 1;
     }
-  }
-  
-  @keyframes bgslide {
+}
+
+@keyframes bgslide {
     from {
-      left: -100%;
-      width: 0;
-      opacity: 0;
+        left: -100%;
+        width: 0;
+        opacity: 0;
     }
+
     to {
-      left: 0;
-      width: 1194px;
-      opacity: 1;
+        left: 0;
+        width: 1194px;
+        opacity: 1;
     }
-  }
-  
-  
-  .login {
+}
+
+
+.login {
     max-height: 100vh;
     overflow-Y: auto;
     float: left;
     margin: 0 auto;
     width: calc(100% - 1194px);
-  }
-  .login .container {
+}
+
+.login .container {
     width: 505px;
     margin: 0 auto;
     position: relative;
-  }
-  .login .container h1 {
+}
+
+.login .container h1 {
     margin-top: 100px;
     font-size: 35px;
     font-weight: bolder;
-  }
-  .login .container .login-form {
+}
+
+.login .container .login-form {
     margin-top: 112px;
-  }
-  .login .container .login-form form {
+}
+
+.login .container .login-form form {
     display: -ms-grid;
     display: grid;
-  }
-  .login .container .login-form form input {
+}
+
+.login .container .login-form form input {
     font-size: 16px;
     font-weight: normal;
     background: rgba(57, 57, 57, 0.07);
@@ -1455,10 +1669,11 @@ h1.hero-heading {
     border: none;
     padding: 0 30px;
     border-radius: 10px;
-  }
-  .login .container .login-form form button[type=submit] {
-    background: -webkit-linear-gradient(110deg,#005440 0%, #005440 100%);
-    background: -o-linear-gradient(110deg,#005440 0%, #005440 100%);
+}
+
+.login .container .login-form form button[type=submit] {
+    background: -webkit-linear-gradient(110deg, #005440 0%, #005440 100%);
+    background: -o-linear-gradient(110deg, #005440 0%, #005440 100%);
     background: linear-gradient(-20deg, #005440 0%, #005440 100%);
     border: none;
     margin-top: 124px;
@@ -1472,11 +1687,13 @@ h1.hero-heading {
     z-index: 2;
     font-weight: bold;
     font-size: 20px;
-  }
-  .login .container .login-form form button[type=submit]:hover::after {
+}
+
+.login .container .login-form form button[type=submit]:hover::after {
     opacity: 1;
-  }
-  .login .container .login-form form button[type=submit]::after {
+}
+
+.login .container .login-form form button[type=submit]::after {
     content: "";
     position: absolute;
     z-index: -1;
@@ -1493,34 +1710,40 @@ h1.hero-heading {
     background: -webkit-linear-gradient(bottom, #09203f 0%, #537895 100%);
     background: -o-linear-gradient(bottom, #09203f 0%, #537895 100%);
     background: linear-gradient(to top, #09203f 0%, #537895 100%);
-  }
-  .login .container .remember-form {
+}
+
+.login .container .remember-form {
     position: relative;
     margin-top: -30px;
-  }
-  .login .container .remember-form input[type=checkbox] {
+}
+
+.login .container .remember-form input[type=checkbox] {
     margin-top: 9px;
-  }
-  .login .container .remember-form span {
+}
+
+.login .container .remember-form span {
     font-size: 18px;
     font-weight: normal;
     position: absolute;
     top: 32px;
     color: #3B3B3B;
     margin-left: 15px;
-  }
-  .login .container .forget-pass {
+}
+
+.login .container .forget-pass {
     position: absolute;
     right: 0;
     margin-top: 189px;
-  }
-  .login .container .forget-pass a {
+}
+
+.login .container .forget-pass a {
     font-size: 16px;
     position: relative;
     font-weight: normal;
     color: #918F8F;
-  }
-  .login .container .forget-pass a::after {
+}
+
+.login .container .forget-pass a::after {
     content: "";
     position: absolute;
     height: 2px;
@@ -1536,136 +1759,194 @@ h1.hero-heading {
     transition: 0.3s;
     opacity: 0;
     right: 0;
-  }
-  .login .container .forget-pass a:hover::after {
+}
+
+.login .container .forget-pass a:hover::after {
     opacity: 1;
-  }
-  
-  @media only screen and (min-width: 1024px) and (max-width: 1680px) {
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1680px) {
     .bg-illustration {
-      width: 50%;
-      -webkit-animation: none;
-              animation: none;
+        width: 50%;
+        -webkit-animation: none;
+        animation: none;
     }
-  
+
     .login {
-      width: 50%;
+        width: 50%;
     }
-  }
-  /* Display 12", iPad PRO Portrait, iPad landscape */
-  @media only screen and (max-width: 1024px) {
+}
+
+/* Display 12", iPad PRO Portrait, iPad landscape */
+@media only screen and (max-width: 1024px) {
     body {
-      overflow-x: hidden;
+        overflow-x: hidden;
     }
-  
+
     @-webkit-keyframes slideIn {
-      from {
-        left: -100%;
-        opacity: 0;
-      }
-      to {
-        left: 0;
-        opacity: 1;
-      }
+        from {
+            left: -100%;
+            opacity: 0;
+        }
+
+        to {
+            left: 0;
+            opacity: 1;
+        }
     }
-  
+
     @keyframes slideIn {
-      from {
-        left: -100%;
-        opacity: 0;
-      }
-      to {
-        left: 0;
-        opacity: 1;
-      }
+        from {
+            left: -100%;
+            opacity: 0;
+        }
+
+        to {
+            left: 0;
+            opacity: 1;
+        }
     }
+
     .bg-illustration {
-      float: none;
-      background: url("https://hornetsports.com/images/2023/4/30/23_2V8_WIRA.jpg?width=1416&height=797&mode=crop&scale=both&format=jpg&quality=80") center center;
-      background-size: cover;
-      -webkit-animation: slideIn 0.8s ease-in-out forwards;
-              animation: slideIn 0.8s ease-in-out forwards;
-      width: 100%;
-      height: 190px;
-      text-align: center;
+        float: none;
+        background: url("https://hornetsports.com/images/2023/4/30/23_2V8_WIRA.jpg?width=1416&height=797&mode=crop&scale=both&format=jpg&quality=80") center center;
+        background-size: cover;
+        -webkit-animation: slideIn 0.8s ease-in-out forwards;
+        animation: slideIn 0.8s ease-in-out forwards;
+        width: 100%;
+        height: 190px;
+        text-align: center;
     }
+
     .bg-illustration img {
-      width: 100px;
-      height: auto;
-      margin: 20px auto !important;
-      text-align: center;
+        width: 100px;
+        height: auto;
+        margin: 20px auto !important;
+        text-align: center;
     }
-  
+
     .login {
-      float: none;
-      margin: 0 auto;
-      width: 100%;
+        float: none;
+        margin: 0 auto;
+        width: 100%;
     }
+
     .login .container {
-      -webkit-animation: slideIn 0.8s ease-in-out forwards;
-              animation: slideIn 0.8s ease-in-out forwards;
-      width: 85%;
-      float: none;
+        -webkit-animation: slideIn 0.8s ease-in-out forwards;
+        animation: slideIn 0.8s ease-in-out forwards;
+        width: 85%;
+        float: none;
     }
+
     .login .container h1 {
-      font-size: 25px;
-      margin-top: 40px;
+        font-size: 25px;
+        margin-top: 40px;
     }
+
     .login .container .login-form {
-      margin-top: 90px;
+        margin-top: 90px;
     }
+
     .login .container .login-form form input {
-      height: 45px;
+        height: 45px;
     }
+
     .login .container .login-form form button[type=submit] {
-      height: 45px;
-      margin-top: 100px;
+        height: 45px;
+        margin-top: 100px;
     }
+
     .login .container .login-form .remember-form {
-      position: relative;
-      margin-top: -14px;
+        position: relative;
+        margin-top: -14px;
     }
+
     .login .container .login-form .remember-form span {
-      font-size: 16px;
-      margin-top: 22px;
-      top: inherit;
+        font-size: 16px;
+        margin-top: 22px;
+        top: inherit;
     }
-  
+
     .forget-pass {
-      position: absolute;
-      right: inherit;
-      left: 0;
-      bottom: -40px;
-      margin: 0 !important;
-      text-align: center;
+        position: absolute;
+        right: inherit;
+        left: 0;
+        bottom: -40px;
+        margin: 0 !important;
+        text-align: center;
     }
+
     .forget-pass a {
-      font-size: 16px;
-      position: relative;
-      font-weight: normal;
-      color: #918F8F;
-      text-align: center;
+        font-size: 16px;
+        position: relative;
+        font-weight: normal;
+        color: #918F8F;
+        text-align: center;
     }
+
     .forget-pass a::after {
-      content: "";
-      position: absolute;
-      height: 2px;
-      width: 100%;
-      border-radius: 100px;
-      background: -webkit-linear-gradient(110deg, #005440 0%, #005440 100%);
-      background: -o-linear-gradient(110deg,#005440 0%, #005440 100%);
-      background: linear-gradient(-20deg,#005440 0%, #005440 100%);
-      bottom: -4px;
-      left: 0;
-      -webkit-transition: 0.3s;
-      -o-transition: 0.3s;
-      transition: 0.3s;
-      opacity: 0;
-      right: 0;
-      text-align: center;
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        border-radius: 100px;
+        background: -webkit-linear-gradient(110deg, #005440 0%, #005440 100%);
+        background: -o-linear-gradient(110deg, #005440 0%, #005440 100%);
+        background: linear-gradient(-20deg, #005440 0%, #005440 100%);
+        bottom: -4px;
+        left: 0;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+        opacity: 0;
+        right: 0;
+        text-align: center;
     }
+
     .forget-pass a:hover::after {
-      opacity: 1;
-      text-align: center;
+        opacity: 1;
+        text-align: center;
     }
-  }
+}
+
+
+/*CSS for Admin Portal*/
+.row label{
+    padding-left: 5px;
+    padding-bottom: 10px;
+    font-size: 18px;
+}
+.row h4{
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.row form{
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+/*Add narrow to dropdown list*/
+select.form-control { 
+    -webkit-appearance: menulist; 
+}
+
+.card img{
+    height: auto;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-top: 10px;
+    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
+    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
+    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
+    -khtml-box-shadow: 10px 10px 5px #3131315c;
+}
+
+.card-body{
+    text-align: center;
+}
