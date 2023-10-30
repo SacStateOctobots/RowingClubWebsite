@@ -64,18 +64,37 @@
 </div>
 
 
-<!-- Script for displaying tabs -->
-<!-- https://www.w3schools.com/w3css/w3css_tabulators.asp -->
+<!-- Script for displaying tabs and saving tab state -->
+<!-- https://www.w3schools.com/w3css/w3css_tabulators.asp-->
 <script>
+	window.onload = Loader;
 function openTab(tabName) {
   var i;
   var x = document.getElementsByClassName("tab");
   for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
+    x[i].style.display = "none";
   }
-  document.getElementById(tabName).style.display = "block";  
+  document.getElementById(tabName).style.display = "block";
+  localStorage.setItem('activeTab', tabName);
+}
+function Loader() {
+	str = localStorage.getItem('activeTab');
+	switch(str) {
+		case 'Players':
+		case 'Alumni':
+		case 'TeamMembers':
+		case 'Officers':
+		case 'Testimonials':
+		case 'Content':
+			openTab(str);
+			break;
+		default: 
+			alert("no value");
+	}
+	
 }
 </script>
+<div onload="Loader()"></div>
 
 <div class="container">
 	<hr/>
@@ -122,9 +141,8 @@ function openTab(tabName) {
 
 	<hr/>
 </div>
-<div class="container-fluid">
 
-	<!--<div class="w3-bar w3-black">-->
+<div class="container-fluid">
 	<div class="w3-bar green_back_gold_front">
   		<button class="w3-bar-item w3-button" id="players-tab" onclick="openTab('Players')">Players</button>
   		<button class="w3-bar-item w3-button" id="alumni-tab"onclick="openTab('Alumni')">Alumni</button>
@@ -195,7 +213,7 @@ function openTab(tabName) {
 	</div>
 
 	<!-- Alumni Tab -->
-	<div id="Alumni" class="w3-container tab" style="display:none">
+	<div id="Alumni" class="w3-container tab" style="Display:none">
 		<h2>Alumni</h2>
 		<div class="col-4">
 			<div class="card mb-2 green_back_gold_front">
@@ -556,4 +574,11 @@ function openTab(tabName) {
 
 
 </script>
+
+<style>
+	/* Footer removal */
+	footer {
+			display: none;
+	}
+</style>
 {% endblock %}
