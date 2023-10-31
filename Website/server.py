@@ -95,8 +95,8 @@ def unauthorized_handler():
 
 @app.route("/")
 def welcome():
-    #newEvents = cal.get_next_five_events()
-    newEvents=[]
+    newEvents = cal.get_next_five_events()
+    #newEvents=[]
     return render_template("welcome.html",next_events=newEvents,block=db.get_page("homepage_about"))
 
 @app.route("/donate")
