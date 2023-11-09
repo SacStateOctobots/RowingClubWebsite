@@ -5,6 +5,12 @@ Rowing Club Website Templates Demo
 {% endblock %}
 
 {% block body %}
+<style>
+	footer {
+		display: none;
+	}
+</style>
+
 <div class="parent clearfix">
 	<div class="bg-illustration">
 		<img src=".\static\img\Rowinglogo.svg" alt="logo">
@@ -31,13 +37,6 @@ Rowing Club Website Templates Demo
 			</div>
 		</div>
 	</div>
-</div>
-
-<div class = "container">
-	<form action = "verify" method = "POST">
-        Email address: <input type="email" name="email_otp" placeholder="Enter recepient's email address">  
-        <input type = "submit" value="Submit">  
-    </form> 
 </div>
 <br>
 <div class="space15"></div>
