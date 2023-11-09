@@ -8,25 +8,25 @@ Calender - Rowing Club
 
 <!-- Background Color -->
 
-{% block custom_head %} 
-	<style>
-		body {
-			background-color: hsl(0, 0%, 100%);
-		}
+{% block custom_head %}
+<style>
+	body {
+		background-color: hsl(0, 0%, 100%);
+	}
 
+	.smashinglogo {
+		background-image: url(./static/img/Banner2.jpg);
+		background-size: cover;
+		background-position: center;
+		height: 500px;
+	}
+
+	@media (max-width :768px) {
 		.smashinglogo {
-			background-image: url(./static/img/Banner2.jpg);
-			background-size: cover;
-			background-position: center;
-			height: 500px;
+			height: 400px;
 		}
-
-		@media (max-width :768px) {
-			.smashinglogo {
-				height: 300px;
-			}
-		}
-	</style>
+	}
+</style>
 {% endblock %}
 <!-- END Background Color -->
 
@@ -35,8 +35,7 @@ Calender - Rowing Club
 	<div class="smashinglogo" data-offsetY="100" data-Xposition="50%" data-speed="-2">
 		<div class="banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
 			<div class="space80"></div>
-			<h1 class="hero-heading">Events</h1>
-			<h1 class="hero-heading">Calendar</h1>
+			<h1 class="hero-heading">Events<br/>Calendar</h1>
 		</div>
 	</div>
 </section>
@@ -48,7 +47,9 @@ Calender - Rowing Club
 <div class="container">
 	<div class="container-fluid bg-2 text-center">
 		<div id="block-title1">
-			<div id="title-label1" class="name"> Upcoming Events</div>
+			<div class="title-label-block">
+				<div id="title-label1" class="name"> Upcoming Events</div>
+			</div>
 			<div class="name-phone">Upcoming Events</div>
 			<div class="space15"></div>
 			<div class="row">
@@ -87,16 +88,18 @@ Calender - Rowing Club
 <!--Calendar-->
 <div class="container">
 	<div class="container-fluid bg-2 text-center">
-		<div id="block-title">
-			<div id="title-label" class="name"> Full Calendar</div>
+		<div id="block-title1">
+			<div class="tittle-label-block">
+				<div id="title-label" class="name"> Full Calendar</div>
+			</div>
 			<div class="name-phone">Full Calendar</div>
 			<div class="space15">
 				<div class="googleCalendar">
 					<iframe
 						src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=YzVmZTA0NDdkMWEwZTRkOTQ0ZGYzMDE2ZmIzNzQzNjI3ZjIxZGJjY2FjZjRmNGI4YzM4YzE0NWVmZmJjNmU4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%237986CB&color=%23009688"
 						style="border:solid 0px #777" width="90%" height="600" frameborder="0" scrolling="yes"></iframe>
-						<div class="space80"></div>
-					</div>
+				</div>
+				<div class="space80"></div>
 			</div>
 		</div>
 	</div>
@@ -104,12 +107,13 @@ Calender - Rowing Club
 
 <div class="space80"> </div>
 
-
 <!--Past events-->
 <div class="container">
 	<div class="container-fluid bg-2 text-center">
 		<div id="block-title1">
-			<div id="title-label2" class="name"> Past Events</div>
+			<div class="title-label-block">
+				<div id="title-label2" class="name"> Past Events</div>
+			</div>
 			<div class="name-phone">Past Events</div>
 			<div class="space15"></div>
 			<div class="row">
@@ -141,46 +145,9 @@ Calender - Rowing Club
 		</div>
 	</div>
 </div>
-	<div class="space15"></div>
-</div>
 
-<div class="space80">
-<!--Last Block for Social-->
-<div class="last-video-help-block">
-    <section class="video-help" style="background-color: #005440">
-       
-        <div class="video-help-content">
-            <br>
-            <p>Have any questions?</p>
-            <br>
-            <p>Email us at so-rowingclub@csus.edu</p>
-            <div class="wrapper-social-icon">
-                <div class="button-social" data-aos="fade-down" data-aos-duration="1000">
-    
-                    <div class="social-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </div>
-                    <a href="https://www.facebook.com/profile.php?id=100032458406703"><span>Facebook</span></a>
-                </div></a>
-                <div class="button-social" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="social-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <a href="https://www.instagram.com/sacstaterowing/?utm_source=ig_embed&ig_rid=e3bcb0d8-a7ed-4db4-91de-788cbab2536c"><span>Instagram</span></a>
-                </div></a>
-                <div class="button-social" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="400">
-                    <div class="social-icon">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <a href="https://youtube.com"><span>YouTube</span></a>
-                </div></a>
-                <div class="space80"></div>
-            </div>
-            <!--Social media-->
-        </div>
-    </section>
-</div>
-<!--End Last Block for Video introduction-->
+<div class="space15"></div>
+<div class="space80"> </div>
 
 <!--Amination-->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
