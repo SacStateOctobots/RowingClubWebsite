@@ -22,7 +22,7 @@ login_manager.init_app(app)
 # Our mock databases.
 # irl we should use an actual database for this.
 # We would also obviously not want to store username/login info in plain text like this.
-users = {'foo@bar.tld': {'pw': 'secret'}} #for user login info
+users = {'foo@bar.tld': {'pw': 'secret'}, 'lynnjess.dev@gmail.com': {'pw': ''}}  #for user login info
 
 
 
@@ -85,13 +85,11 @@ def request_loader(request):
 def unauthorized_handler():
     return 'Unauthorized'
 
-#@app.route('/')
-#def index():
-#    if flask_login.current_user.is_anonymous:
-#        return 'Hello anonymous user'
-#    else:
-#        return f'Hello {flask_login.current_user.id}'
-#        #return 'Hello user' 
+#used to time out session token after a set ammount of time of inactivity
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
+    app.permanent_session_lifetime = datetime.timedelta(minutes=5)
 
 @app.route("/")
 def welcome():
@@ -154,11 +152,12 @@ def contact_post():
 def recruitment():
     return render_template("recruitment.html")
  
-
+#Remove before transfering to client
 @app.route('/login')
 def login():
     return render_template("login.html")
 
+#Remove before transfering to client
 @app.route('/login', methods=['POST'])
 def login_form():
 	email = flask.request.form['email']
@@ -171,10 +170,8 @@ def login_form():
 	#return render_template("login.html")
 
 ##TO-DO:
-#	- check email to make sure it is a valid email addr and that it matches set email
-#		- see if email storage should be done with hash value and to validate with hash match
+#	- see if email storage should be done with hash value and to validate with hash match
 #	- email message needs to be secure, email text should be hidden from traffic sniffing -> for testing
-#	- not sure if valid code will work twice in a row if time limit is set long enough
 #	- figure out way to remove validation token to access protected page after a certain amount of time
 
 
@@ -186,15 +183,24 @@ def login_otp():
 def verify():
 	#Generates OTP with PyOTP global var
 	generated_otp = totp.now()
+	email = request.form['email_otp']
+	#Validate if email entered is in the system
+	#assigns the OTP to the email as its key value pair if email is in dictionary
+	try:
+		users[str(email)]['pw'] = str(generated_otp)
+	except KeyError:
+		flash("Email entered is invalid. Please try again")
+		return render_template('login_otp.html')
 	#Sends message to email put in form
 	msg = Message(subject="Rowing Club Sign-in Passcode",
-				body="Passcode for log-in verification: "
-				+ str(generated_otp) + "\n Passcode will expire in " + str(validation_interval_min) + " minute.",  
-				sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
-				recipients=[request.form['email_otp']])
+				  body="Passcode for log-in verification: "
+				  + str(generated_otp) + "\n Passcode will expire in " + str(validation_interval_min) + " minute.",  
+				  sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
+				  recipients=[email])
 	mail.send(msg)
 	#Sets a session var to be referenced for validate page to test is code has expired. 
 	session['generated_otp'] = generated_otp
+	session['email'] = email
 	return render_template('login_otp_validate.html') 
 
 
@@ -206,8 +212,8 @@ def validate():
 		#User var setting done manually so session cookies can be generated to access page
 		#Will need to alter to change to authorized rowing club email when published
 		user = User()
-		user.id = 'foo@bar.tld'
-		flask_login.login_user(user)
+		user.id = str(session['email'])
+		flask_login.login_user(user, duration=datetime.timedelta(minutes=5))
 		return flask.redirect(flask.url_for('protected'))
 	else:
 		if totp.verify(session['generated_otp']):
