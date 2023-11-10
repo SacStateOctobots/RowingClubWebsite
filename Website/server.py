@@ -1,5 +1,3 @@
-import datetime
-from time import sleep
 import flask
 import flask_login
 import os
@@ -10,11 +8,12 @@ import google_calendar_reader as cal
 import database_library as db
 import pyotp
 import datetime
+import hashlib
 from random import randrange
 
 
 app = flask.Flask(__name__)
-app.secret_key = 'super secret string'  # Change this!
+app.secret_key = os.urandom(16).hex() # Random 16 character string
 
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
@@ -22,7 +21,10 @@ login_manager.init_app(app)
 # Our mock databases.
 # irl we should use an actual database for this.
 # We would also obviously not want to store username/login info in plain text like this.
-users = {'foo@bar.tld': {'pw': 'secret'}, 'lynnjess.dev@gmail.com': {'pw': ''}}  #for user login info
+users = {'foo@bar.tld': {'pw': 'secret'}, #for old login setup [Remove]
+		 '08efdf7f9d382f19802a6ccb1a39c7531be4b1e5aaebdc2a49395ee656df22ab': {'pw': ''}, #testing personal gmail hash
+		 '633f1794c55003374a30f8c046ed3022bae38f9ec9da834ce09c2e51b2e35e00': {'pw': ''}, #Club CSUS Email Hash
+		 'c875fee06a22feda7227845dcd9680c34efd134d8d51fff72baffc08ba5bdeb5': {'pw': ''}} #Club Gmail Hash
 
 
 
@@ -86,10 +88,11 @@ def unauthorized_handler():
     return 'Unauthorized'
 
 #used to time out session token after a set ammount of time of inactivity
+time_out_interval = 10;
 @app.before_request
 def make_session_permanent():
     session.permanent = True
-    app.permanent_session_lifetime = datetime.timedelta(minutes=5)
+    app.permanent_session_lifetime = datetime.timedelta(minutes=time_out_interval)
 
 @app.route("/")
 def welcome():
@@ -167,13 +170,6 @@ def login_form():
 		flask_login.login_user(user)
 		return flask.redirect(flask.url_for('protected'))
 	return 'Bad login'
-	#return render_template("login.html")
-
-##TO-DO:
-#	- see if email storage should be done with hash value and to validate with hash match
-#	- email message needs to be secure, email text should be hidden from traffic sniffing -> for testing
-#	- figure out way to remove validation token to access protected page after a certain amount of time
-
 
 @app.route('/login_otp')
 def login_otp():
@@ -183,24 +179,26 @@ def login_otp():
 def verify():
 	#Generates OTP with PyOTP global var
 	generated_otp = totp.now()
-	email = request.form['email_otp']
-	#Validate if email entered is in the system
+	#translates user inputed email to a hash value
+	email_hash = hashlib.sha256(bytes(str(request.form['email_otp']), 'utf-8')).hexdigest()
+	#Validate if email entered is in the system and
 	#assigns the OTP to the email as its key value pair if email is in dictionary
 	try:
-		users[str(email)]['pw'] = str(generated_otp)
+		users[email_hash]['pw'] = str(generated_otp)
 	except KeyError:
 		flash("Email entered is invalid. Please try again")
 		return render_template('login_otp.html')
 	#Sends message to email put in form
 	msg = Message(subject="Rowing Club Sign-in Passcode",
 				  body="Passcode for log-in verification: "
-				  + str(generated_otp) + "\n Passcode will expire in " + str(validation_interval_min) + " minute.",  
+				  + str(generated_otp) + "\nPasscode will expire in " + str(validation_interval_min) + " minute(s).",  
 				  sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
-				  recipients=[email])
+				  recipients=[request.form['email_otp']])
 	mail.send(msg)
-	#Sets a session var to be referenced for validate page to test is code has expired. 
+	#Sets a session var to be referenced for validate page to test if code has expired. 
 	session['generated_otp'] = generated_otp
-	session['email'] = email
+	#Session var to generate log-in token for Flask Login
+	session['email'] = email_hash
 	return render_template('login_otp_validate.html') 
 
 
@@ -209,20 +207,18 @@ def validate():
 	# OTP Entered by the User
 	user_otp = request.form['otp'] 
 	if totp.verify(otp=str(user_otp)):
-		#User var setting done manually so session cookies can be generated to access page
-		#Will need to alter to change to authorized rowing club email when published
+		#validates user with Flask Login and generates Log-in token
 		user = User()
 		user.id = str(session['email'])
-		flask_login.login_user(user, duration=datetime.timedelta(minutes=5))
+		flask_login.login_user(user, duration=datetime.timedelta(minutes=time_out_interval))
 		return flask.redirect(flask.url_for('protected'))
 	else:
+		#checks whether the entered OTP is incorrect or if the Passcode has expired
 		if totp.verify(session['generated_otp']):
 			flash('Incorrect Passcode Entered, Try again')
 			return render_template('login_otp_validate.html')
 		else:
 			flash('Passcode has timed out. Redirected to Login page.')
-			render_template('login_otp_validate.html')
-			sleep(10)
 			return render_template('login_otp.html')
 
 
