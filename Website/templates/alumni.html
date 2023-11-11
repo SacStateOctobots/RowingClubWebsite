@@ -1,12 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Alumni - Rowing Club
-{% endblock %}
-
-{% block body %}
-<!--copied from the about us page-->
-<head>
+{% block custom_head %} 
 	<style>
 		body {
 			background-color: #c3b680;
@@ -29,7 +23,7 @@ Alumni - Rowing Club
 
 		@media (max-width :567px) {
 			.carousel {
-				height: 300px;
+				height: 400px;
 			}
 		}
 
@@ -51,7 +45,14 @@ Alumni - Rowing Club
 		}
 
 	</style>
-</head>
+{% endblock %}
+
+{% block title %}
+Alumni - Rowing Club
+{% endblock %}
+
+{% block body %}
+<!--copied from the about us page-->
 
 <body>
 <!--Alumni Introduction Banner-->
@@ -71,13 +72,16 @@ Alumni - Rowing Club
 		<!-- Slider Images -->
 		<div class="carousel-inner">
 		  	<div class="carousel-item active">
-				<img src="./static/img/p9.jpg" class="mobile-item img-responsive w-100" alt="Alum1">
+				<img src="./static/img/p9.jpg" class="mobile-item img-responsive w-100" style="width: 1280px;
+				height: 840px;"  alt="Alum1">
 		  	</div>
 		 	 <div class="carousel-item">
-				<img src="./static/img/p10.jpg" class="mobile-item d-block img-responsive w-100" alt="Alum2">
+				<img src="./static/img/p10.jpg" class="mobile-item d-block img-responsive w-100" style="width: 1280px;
+				height: 840px;" alt="Alum2">
 			</div>
 			<div class="carousel-item">
-				<img src="./static/img/p11.png" class="mobile-item d-block img-responsive w-100" alt="Alum3">
+				<img src="./static/img/p7.jpeg" class="mobile-item d-block img-responsive w-100" style="width: 1280px;
+				height: 840px;" alt="Alum3">
 			</div>
 		</div>
 
@@ -95,22 +99,7 @@ Alumni - Rowing Club
 <div class="container-xxl py-5">
 	<div class="container">
 		<div class="row g-4">
-			<div class="col-lg-6">
-				<p style="font-size: 22px;" data-aos="fade-right" data-aos-duration="1000"> 
-					&#x2022; This section will be a few paragraphs long and have info regarding what
-					the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
-					dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-					labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-				</p>
-				<p style="font-size: 22px;" data-aos="fade-left" data-aos-duration="1000"> &#x2022; This section will 
-					be a few paragraphs long and have info regarding what the Alumni Association is and what Alumni in
-					general have been doing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-				</p>
-			</div>
-			<div class="col-md-6" data-aos="fade-down" data-aos-duration="1000">
-				<img class="img-fluid rounded w-100" src="./static/img/p5.jpeg">
-			</div>
+			{{block1[0][2] | safe}}
 		</div>
 	</div>
 </div>
@@ -124,25 +113,7 @@ Alumni - Rowing Club
 
 <!-- Alumni Database and Text Boxes -->
 <div class="container">
-	<div class="text-heading mx-auto">
-		<h1>What Have Alumni Been Up To?</h1>
-	</div>
-	<div class="card text-left green_back_gold_front mx-auto">
-		<div class="card-body">
-			<p style="font-size: 22px;" data-aos="fade-right" data-aos-duration="1000"> 
-				This section will be a few paragraphs long and have info regarding what
-				the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
-				dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-			</p>
-			<p style="font-size: 22px;" data-aos="fade-left" data-aos-duration="1000"> 
-				This section will be a few paragraphs long and have info regarding what
-				the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
-				dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-			</p>
-		</div>
-	</div>
+	{{block2[0][2] | safe}}
 
 	<br>
 	<!--Karl's version: verify which version Tyler wants-->
@@ -161,52 +132,5 @@ Alumni - Rowing Club
 	<br>
 	<hr/>
 </div>
-
-
-
 </body>
-
-
-<div class="space80">
-	<!--Last Block for Social-->
-	<div class="last-video-help-block">
-		<section class="video-help" style="background-color: #005440">
-		   
-			<div class="video-help-content">
-				<br>
-				<p>Have any questions?</p>
-				<br>
-				<p>Email us at abcd@csus.com</p>
-				<div class="wrapper-social-icon">
-					<div class="button-social" data-aos="fade-down" data-aos-duration="1000">
-		
-						<div class="social-icon">
-							<i class="fab fa-facebook-f"></i>
-						</div>
-						<a href="https://facebook.com"><span>Facebook</span></a>
-					</div></a>
-					<div class="button-social" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-						<div class="social-icon">
-							<i class="fab fa-instagram"></i>
-						</div>
-						<a href="https://instagram.com"><span>Instagram</span></a>
-					</div></a>
-					<div class="button-social" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="400">
-						<div class="social-icon">
-							<i class="fab fa-youtube"></i>
-						</div>
-						<a href="https://youtube.com"><span>YouTube</span></a>
-					</div></a>
-					<div class="space80"></div>
-				</div>
-				<!--Social media-->
-			</div>
-		</section>
-	</div>
-
-<!--Amination-->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-	AOS.init();
-</script>
 {% endblock %}

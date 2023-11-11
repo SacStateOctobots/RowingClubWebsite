@@ -8,14 +8,14 @@ Calender - Rowing Club
 
 <!-- Background Color -->
 
-<head>
+{% block custom_head %} 
 	<style>
 		body {
 			background-color: hsl(0, 0%, 100%);
 		}
 
 		.smashinglogo {
-			background-image: url(https://cdn.discordapp.com/attachments/1069818501621088296/1098754543271022732/Banner2.jpg);
+			background-image: url(./static/img/Banner2.jpg);
 			background-size: cover;
 			background-position: center;
 			height: 500px;
@@ -27,7 +27,7 @@ Calender - Rowing Club
 			}
 		}
 	</style>
-</head>
+{% endblock %}
 <!-- END Background Color -->
 
 <!--Calender Banner-->
