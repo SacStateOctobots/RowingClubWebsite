@@ -8,86 +8,86 @@ Admin Page
 
 
 {% block custom_head %}
-	<!--sample button event, maybe pull from latest table entry after adding?
+<!--sample button event, maybe pull from latest table entry after adding?
 	something about checking what table and who is being added to where, and maybe 
 	we can have a modular alert system -->
-	<script>
-		// just made it so awesome ngl
-		const regex = /'(?=,)/gi;
-		const middleRegex = /(, ')/gi;
-		const firstRegex = /[(']/gi;
-		const newlineRegex = /\r?\n|\r/gi;
+<script>
+	// just made it so awesome ngl
+	const regex = /'(?=,)/gi;
+	const middleRegex = /(, ')/gi;
+	const firstRegex = /[(']/gi;
+	const newlineRegex = /\r?\n|\r/gi;
 
-		// functions to clean from respective databases
-		function memberSelect() {
-			var x = document.getElementById("memberList").value
+	// functions to clean from respective databases
+	function memberSelect() {
+		var x = document.getElementById("memberList").value
 
-			const previewSplit = x.replaceAll(regex, '+');
-			const splitArray = x.split(regex);
-			const memberRole = splitArray[3].replace(middleRegex, '');
+		const previewSplit = x.replaceAll(regex, '+');
+		const splitArray = x.split(regex);
+		const memberRole = splitArray[3].replace(middleRegex, '');
 
-			document.getElementById("memberTitle").innerHTML = splitArray[0].replace(firstRegex, '');
-			document.getElementById("memberDesc").innerHTML = splitArray[1].replace(middleRegex, '');
-			document.getElementById("memberImage").src = "static/image_uploads/".concat(splitArray[2].replace(middleRegex, ''));
-			document.getElementById("memberRole").innerHTML = "Role: ".concat(memberRole.substring(0, splitArray[3].length - 5));
-			//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
-		}
+		document.getElementById("memberTitle").innerHTML = splitArray[0].replace(firstRegex, '');
+		document.getElementById("memberDesc").innerHTML = splitArray[1].replace(middleRegex, '');
+		document.getElementById("memberImage").src = "static/image_uploads/".concat(splitArray[2].replace(middleRegex, ''));
+		document.getElementById("memberRole").innerHTML = "Role: ".concat(memberRole.substring(0, splitArray[3].length - 5));
+		//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
+	}
 
-		function officerSelect() {
-			var x = document.getElementById("officerList").value
+	function officerSelect() {
+		var x = document.getElementById("officerList").value
 
-			const previewSplit = x.replaceAll(regex, '+');
-			const splitArray = x.split(regex);
-			const officerImg = splitArray[2].replace(middleRegex, '');
+		const previewSplit = x.replaceAll(regex, '+');
+		const splitArray = x.split(regex);
+		const officerImg = splitArray[2].replace(middleRegex, '');
 
-			document.getElementById("officerTitle").innerHTML = splitArray[0].replace(firstRegex, '');
-			document.getElementById("officerDesc").innerHTML = splitArray[1].replace(middleRegex, '');
-			document.getElementById("officerImage").src = "static/image_uploads/".concat(officerImg.substring(0, splitArray[2].length - 5));
-			//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
-		}
+		document.getElementById("officerTitle").innerHTML = splitArray[0].replace(firstRegex, '');
+		document.getElementById("officerDesc").innerHTML = splitArray[1].replace(middleRegex, '');
+		document.getElementById("officerImage").src = "static/image_uploads/".concat(officerImg.substring(0, splitArray[2].length - 5));
+		//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
+	}
 
-		function alumniSelect() {
-			var x = document.getElementById("alumniList").value
+	function alumniSelect() {
+		var x = document.getElementById("alumniList").value
 
-			const previewSplit = x.replaceAll(regex, '+');
-			const splitArray = x.split(regex);
-			const alumniImg = splitArray[2].replace(middleRegex, '');
+		const previewSplit = x.replaceAll(regex, '+');
+		const splitArray = x.split(regex);
+		const alumniImg = splitArray[2].replace(middleRegex, '');
 
-			document.getElementById("alumniTitle").innerHTML = splitArray[0].replace(firstRegex, '');
-			document.getElementById("alumniDesc").innerHTML = splitArray[1].replace(middleRegex, '');
-			document.getElementById("alumniImage").src = "static/image_uploads/".concat(alumniImg.substring(0, splitArray[2].length - 5));
-			//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
-		}
+		document.getElementById("alumniTitle").innerHTML = splitArray[0].replace(firstRegex, '');
+		document.getElementById("alumniDesc").innerHTML = splitArray[1].replace(middleRegex, '');
+		document.getElementById("alumniImage").src = "static/image_uploads/".concat(alumniImg.substring(0, splitArray[2].length - 5));
+		//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
+	}
 
-		function testimonialSelect() {
-			var x = document.getElementById("testimonialList").value
+	function testimonialSelect() {
+		var x = document.getElementById("testimonialList").value
 
-			const previewSplit = x.replaceAll(regex, '+');
-			const splitArray = x.split(regex);
-			const cleanTestimonialBody = splitArray[1].replace(middleRegex, '');
-			const testimonialJob = splitArray[3].replace(middleRegex, '');
+		const previewSplit = x.replaceAll(regex, '+');
+		const splitArray = x.split(regex);
+		const cleanTestimonialBody = splitArray[1].replace(middleRegex, '');
+		const testimonialJob = splitArray[3].replace(middleRegex, '');
 
-			document.getElementById("testimonialTitle").innerHTML = splitArray[0].replace(firstRegex, '');
-			document.getElementById("testimonialBody").innerHTML = cleanTestimonialBody.replace(newlineRegex, '');
-			document.getElementById("testimonialImage").src = "static/image_uploads/".concat(splitArray[2].replace(middleRegex, ''));
-			document.getElementById("testimonialJob").innerHTML = "Job: ".concat(testimonialJob.substring(0, splitArray[3].length - 5));
-			//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
-		}
-	</script>
+		document.getElementById("testimonialTitle").innerHTML = splitArray[0].replace(firstRegex, '');
+		document.getElementById("testimonialBody").innerHTML = cleanTestimonialBody.replace(newlineRegex, '');
+		document.getElementById("testimonialImage").src = "static/image_uploads/".concat(splitArray[2].replace(middleRegex, ''));
+		document.getElementById("testimonialJob").innerHTML = "Job: ".concat(testimonialJob.substring(0, splitArray[3].length - 5));
+		//alert(previewSplit); //use this to see where exactly im splitting the raw sql string			
+	}
+</script>
 
-	<style>
-		body {
-			background-color: #d8d2b8;
-		}
+<style>
+	body {
+		background-color: #d8d2b8;
+	}
 
-		/* Solid border for dividers*/
-		hr.my_solid_hr {
-			border-top: 5px solid #000;
-			border-color: black;
-			background-color: black;
-			color: black;
-		}
-	</style>
+	/* Solid border for dividers*/
+	hr.my_solid_hr {
+		border-top: 5px solid #000;
+		border-color: black;
+		background-color: black;
+		color: black;
+	}
+</style>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
@@ -113,45 +113,44 @@ Admin Page
 <!-- https://www.w3schools.com/w3css/w3css_tabulators.asp-->
 <script>
 	window.onload = Loader;
-
-	//Selected Tab
-	function openTab(evt, tabName) {
-		var i, x, tabname;
-		x = document.getElementsByClassName("tabname");
+	function openTab(tabName, btnID) {
+		var i;
+		var x = document.getElementsByClassName("tab");
+		
 		for (i = 0; i < x.length; i++) {
 			x[i].style.display = "none";
 		}
 
-		tablinks = document.getElementsByClassName("tablink");
-
+		var x = document.getElementsByClassName("w3-button");
 		for (i = 0; i < x.length; i++) {
-			tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+			x[i].style.background = "#043927";
 		}
 
 		document.getElementById(tabName).style.display = "block";
-		localStorage.setItem('activeTab', tabName);
-	
-		evt.currentTarget.className += " w3-red";
+		document.getElementById(btnID).style.background = "red";
 
-	} // End Selected Tab
+		localStorage.setItem('activeTab', tabName);
+		localStorage.setItem('activeBtn', btnID);
+	}
 
 	function Loader() {
 		str = localStorage.getItem('activeTab');
+		str2 = localStorage.getItem('activeBtn');
 
 		switch (str) {
 			case 'Players':
+			case 'Alumni':
 			case 'TeamMembers':
 			case 'Officers':
 			case 'Testimonials':
 			case 'Content':
-				openTab(" w3-red", str);
+				openTab(str,str2);
 				break;
 			default:
 				alert("no value");
 		}
 
 	}
-
 </script>
 <div onload="Loader()"></div>
 
@@ -200,23 +199,22 @@ Admin Page
 			</div>
 		</div>
 	</div>
-
 	<hr />
 </div>
 
 <div class="container-fluid">
 	<!--<div class="w3-bar w3-black">-->
 	<div class="w3-bar green_back_gold_front" style="font-size: 18px;">
-		<button class="w3-bar-item w3-button tablink w3-red" id="players-tab"
-			onclick="openTab(event,'Players')">Players</button>
-		<button class="w3-bar-item w3-button tablink" id="team-tab" onclick="openTab(event,'TeamMembers')">Team
-			Members</button>
-		<button class="w3-bar-item w3-button tablink" id="officers-tab"
-			onclick="openTab(event,'Officers')">Officers</button>
-		<button class="w3-bar-item w3-button tablink" id="testimonials-tab"
-			onclick="openTab(event,'Testimonials')">Testimonials</button>
-		<button class="w3-bar-item w3-button tablink" id="content-block-tab" onclick="openTab(event,'Content')">Content
-			Blocks</button>
+		<button class="w3-bar-item w3-button" id="players-tab"
+			onclick="openTab('Players','players-tab')">Players</button>
+		<button class="w3-bar-item w3-button" id="team-tab" onclick="openTab('TeamMembers','team-tab')">
+			Team Members</button>
+		<button class="w3-bar-item w3-button" id="officers-tab"
+			onclick="openTab('Officers','officers-tab')">Officers</button>
+		<button class="w3-bar-item w3-button" id="testimonials-tab"
+			onclick="openTab('Testimonials','testimonials-tab')">Testimonials</button>
+		<button class="w3-bar-item w3-button" id="content-block-tab" onclick="openTab('Content','content-block-tab')">
+			Content Blocks</button>
 		<a href="logout" style="position: absolute; right: 14px; font-weight: 500; font-size: 20px;"
 			class="btn btn-outline-dark green_back_gold_front_lightened" role="button"> Logout </a>
 	</div>
@@ -328,7 +326,7 @@ Admin Page
 				<div class="col-16">
 					<div class="card mb-2 green_back_gold_front">
 						<h4 style="text-align: center;">Member Selected:</h4>
-						<img id="memberImage" src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top"
+						<img id="memberImage" src="/static/image_uploads/No Photo.jpg" class="card-img-top"
 							alt="'s profile photo">
 						<div class="card-body">
 							<h5 id="memberTitle" class="card-title">Nothing selected!</h5>
@@ -342,190 +340,192 @@ Admin Page
 	</div>
 </div>
 
-	<!-- Officers tab -->
-	<div id="Officers" class="w3-container tab tabname" style="display:none">
-		<div class="space"></div>
-		<div class="row row-cols-4 row-cols-sm-3 g-lg-1">
-			<div class="col-4">
-				<div class="card mb-2 green_back_gold_front">
-					<div class="row g-0">
-						<h4>Specify officers to delete here: </h4>
-						<div class="space15"></div>
-						<!-- form to delete officers by name-->
-						<form method="POST">
-							<label for="deleteofficers">Officer's Name:</label><br>
-							<select name="deleteofficers" id="deleteofficers-id" class="form-control">
-								{% for tup in officers %}
-								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
-								{% endfor %}
-							</select>
-							<div class="space"></div>
-							<input type="submit" id='delete-officers-button-id' name='delete-officers-button'
-								value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form>
+<!-- Officers tab -->
+<div id="Officers" class="w3-container tab tabname" style="display:none">
+	<div class="space"></div>
+	<div class="row row-cols-4 row-cols-sm-3 g-lg-1">
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+					<h4>Specify officers to delete here: </h4>
+					<div class="space15"></div>
+					<!-- form to delete officers by name-->
+					<form method="POST">
+						<label for="deleteofficers">Officer's Name:</label><br>
+						<select name="deleteofficers" id="deleteofficers-id" class="form-control">
+							{% for tup in officers %}
+							<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+							{% endfor %}
+						</select>
 						<div class="space"></div>
-					</div>
+						<input type="submit" id='delete-officers-button-id' name='delete-officers-button'
+							value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
+					</form>
+					<div class="space"></div>
 				</div>
 			</div>
-			<div class="col-4">
-				<div class="card mb-2 green_back_gold_front">
-					<div class="row g-0">
-						<h4>Specify officers to add to about page: </h4>
-						<div class="space15"></div>
-						<!-- form to add officers -->
-						<form method="POST" id="officers-add-form-id" name="officers-add-form-name"
-							enctype="multipart/form-data">
-							<label for="addname">Officer's Name:</label><br>
-							<input type="text" id="officers-name-id" name="officers-name" value="John Doe"
-								class="form-control"><br>
-							<label for="desc">Officer's Description:</label><br>
-							<input type="text" id="officers-desc-id" name="officers-desc"
-								value="... officer description here ..." class="form-control"><br>
-							<label for="file">Officer's Picture:</label><br>
-							<input type="file" id="officers-file-id" name="officers-file" class="form-control"><br>
-							<!--<input type="submit" id='officers-add-form-submit' name='officers-add-form-submit' value="Add Officer" class="btn btn-outline-dark green_back_gold_front_lightened" 
+		</div>
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+					<h4>Specify officers to add to about page: </h4>
+					<div class="space15"></div>
+					<!-- form to add officers -->
+					<form method="POST" id="officers-add-form-id" name="officers-add-form-name"
+						enctype="multipart/form-data">
+						<label for="addname">Officer's Name:</label><br>
+						<input type="text" id="officers-name-id" name="officers-name" value="John Doe"
+							class="form-control"><br>
+						<label for="desc">Officer's Description:</label><br>
+						<input type="text" id="officers-desc-id" name="officers-desc"
+							value="... officer description here ..." class="form-control"><br>
+						<label for="file">Officer's Picture:</label><br>
+						<input type="file" id="officers-file-id" name="officers-file" class="form-control"><br>
+						<!--<input type="submit" id='officers-add-form-submit' name='officers-add-form-submit' value="Add Officer" class="btn btn-outline-dark green_back_gold_front_lightened" 
 						onclick="showTeamSuccess()">-->
-							<input type="submit" id='officers-button-id' name='officers-button' value="Add Officer"
-								class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form>
-						<div class="space"></div>
-					</div>
+						<input type="submit" id='officers-button-id' name='officers-button' value="Add Officer"
+							class="btn btn-outline-dark green_back_gold_front_lightened">
+					</form>
+					<div class="space"></div>
 				</div>
 			</div>
-			<div class="container">
-				<div class="col-16">
-					<div class="card mb-2 green_back_gold_front">
-						<h4 style="text-align: center;">Officer Selected:</h4>
-						<img id="officerImage" src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top"
-							alt="'s profile photo">
-						<div class="card-body">
-							<h5 id="officerTitle" class="card-title">Nothing selected!</h5>
-							<p id="officerDesc" class="card-text">Choose an entry from the above dropdown menus.</p>
-						</div>
+		</div>
+		<div class="container">
+			<div class="col-16">
+				<div class="card mb-2 green_back_gold_front">
+					<h4 style="text-align: center;">Officer Selected:</h4>
+					<img id="officerImage" src="/static/image_uploads/No Photo.jpg" class="card-img-top"
+						alt="'s profile photo">
+					<div class="card-body">
+						<h5 id="officerTitle" class="card-title">Nothing selected!</h5>
+						<p id="officerDesc" class="card-text">Choose an entry from the above dropdown menus.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-	<!-- Content Block -->
-	<div id="Content" class="w3-container tab tabname" style="display:none">
-		<div class="space15"></div>
-		<div class="alert alert-success" role="alert" style="display: none;">
-			Updated the content successfully!</div>
-		<div class="row">
-			<div class="col">
-				<hr />
-				<div class="row">
-					<table id="block_table" class="table table-hover table-striped table-bordered dataTable dtr-inline"
-						role="grid" aria-describedby="example_info">
-						<thead>
+</div>
+<!-- Content Block -->
+<div id="Content" class="w3-container tab tabname" style="display:none">
+	<div class="space15"></div>
+	<div class="alert alert-success" role="alert" style="display: none;">
+		Updated the content successfully!</div>
+	<div class="row">
+		<div class="col">
+			<hr />
+			<div class="row">
+				<table id="block_table" class="table table-hover table-striped table-bordered dataTable dtr-inline"
+					role="grid" aria-describedby="example_info">
+					<thead>
 						<tr role="row">
-							<th  rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending" aria-label="Name">Title</th>
-							<th  rowspan="1" colspan="1" style="width: 216.2px;" aria-label="ID">Id</th>
-							<th  rowspan="1" colspan="1" style="width: 100.2px;" aria-label="Modified Date">Modified Date</th>
+							<th rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending" aria-label="Name">
+								Title</th>
+							<th rowspan="1" colspan="1" style="width: 216.2px;" aria-label="ID">Id</th>
+							<th rowspan="1" colspan="1" style="width: 100.2px;" aria-label="Modified Date">Modified Date
+							</th>
 						</tr>
-						</thead>
-						<tbody>
-							{% for tup in blocks %}
-							<tr role="row" class="odd">
-								<td tabindex="0" class="sorting_1"><a class="editBlockAction" data-el="{{ tup[0] }}"
-										href="#">{{ tup[1] }}</a></td>
-								<td>{{ tup[0] }}</td>
-								<td>{{ tup[3] }}</td>
-							</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-				<hr />
+					</thead>
+					<tbody>
+						{% for tup in blocks %}
+						<tr role="row" class="odd">
+							<td tabindex="0" class="sorting_1"><a class="editBlockAction" data-el="{{ tup[0] }}"
+									href="#">{{ tup[1] }}</a></td>
+							<td>{{ tup[0] }}</td>
+							<td>{{ tup[3] }}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
 			</div>
-			<div class="col">
+			<hr />
+		</div>
+		<div class="col">
+			<div class="row g-0">
+				<form method="POST" name="update-page" id="formContent">
+					<div id="currentId" style="display: none;"></div>
+					<textarea id="content"></textarea>
+					<div class="space15"></div>
+					<button type="submit" id="btnUdpateContent"
+						class="mb-2 mr-2 btn btn-outline-2x btn-outline-success"> <strong> Update Now
+						</strong></button>
+					<input id='tinymce-uploader' type='file' name='pic' accept='image/*' style='display:none'>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Testimonials tab -->
+<div id="Testimonials" class="w3-container tab tabname" style="display:none">
+	<div class="space"></div>
+	<div class="row row-cols-4 row-cols-sm-3 g-lg-1">
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
 				<div class="row g-0">
-					<form method="POST" name="update-page" id="formContent">
-						<div id="currentId" style="display: none;"></div>
-						<textarea id="content"></textarea>
-						<div class="space15"></div>
-						<button type="submit" id="btnUdpateContent"
-							class="mb-2 mr-2 btn btn-outline-2x btn-outline-success"> <strong> Update Now
-							</strong></button>
-						<input id='tinymce-uploader' type='file' name='pic' accept='image/*' style='display:none'>
+					<h4>Specify testimonials to delete here: </h4>
+					<div class="space"></div>
+					<!-- form to delete testimonials -->
+					<form method="POST">
+						<!-- TESTIMONIAL DELETE FORM WILL GO HERE -->
+						<label for="deletetestimonial">Testimonial Name:</label><br>
+						<select name="deletetestimonial" id="deletetestimonial-id" class="form-control">
+							{% for tup in testimonial %}
+							<option value="{{ tup[0] }}">{{ tup[0] }}</option>
+							{% endfor %}
+						</select>
+						<div class="space"></div>
+						<input type="submit" id='delete-testimonial-button-id' name='delete-testimonial-button'
+							value="Delete Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
 					</form>
+					<div class="space"></div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<!-- Testimonials tab -->
-	<div id="Testimonials" class="w3-container tab tabname" style="display:none">
-		<div class="space"></div>
-		<div class="row row-cols-4 row-cols-sm-3 g-lg-1">
-			<div class="col-4">
-				<div class="card mb-2 green_back_gold_front">
-					<div class="row g-0">
-						<h4>Specify testimonials to delete here: </h4>
-						<div class="space"></div>
-						<!-- form to delete testimonials -->
-						<form method="POST">
-							<!-- TESTIMONIAL DELETE FORM WILL GO HERE -->
-							<label for="deletetestimonial">Testimonial Name:</label><br>
-							<select name="deletetestimonial" id="deletetestimonial-id" class="form-control">
-								{% for tup in testimonial %}
-								<option value="{{ tup[0] }}">{{ tup[0] }}</option>
-								{% endfor %}
-							</select>
-							<div class="space"></div>
-							<input type="submit" id='delete-testimonial-button-id' name='delete-testimonial-button'
-								value="Delete Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form>
-						<div class="space"></div>
-					</div>
+		<div class="col-4">
+			<div class="card mb-2 green_back_gold_front">
+				<div class="row g-0">
+					<h4>Specify testimonials to add here: </h4>
+					<div class="space15"></div>
+					<!-- form to add testimonials-->
+					<form method="POST" id="testimonials-add-form-id" name="testimonials-add-form-name"
+						enctype="multipart/form-data">
+						<label for="addname">Testimonial Name:</label><br>
+						<input type="text" id="testimonial-name-id" name="testimonial-name" value="John Doe"
+							class="form-control"><br>
+						<label for="desc">Testimonial Text:</label><br>
+						<input type="text" id="testimonial-text1-id" name="testimonial-text1"
+							value="... testimonial text 1 here ..." class="form-control"><br>
+						<label for="desc">Company/ Position:</label><br>
+						<input type="text" id="testimonial-text2-id" name="testimonial-text2"
+							value="... testimonial text 2 here  ..." class="form-control"><br>
+						<label for="file">Testimonial Picture:</label><br>
+						<input type="file" id="testimonial-file-id" name="testimonial-file" class="form-control"><br>
+						<input type="submit" id='testimonial-button-id' name='testimonial-button'
+							value="Add Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
+					</form>
+					<div class="space"></div>
 				</div>
 			</div>
-			<div class="col-4">
-				<div class="card mb-2 green_back_gold_front">
-					<div class="row g-0">
-						<h4>Specify testimonials to add here: </h4>
-						<!-- form to add testimonials-->
-						<form method="POST" id="testimonials-add-form-id" name="testimonials-add-form-name"
-							enctype="multipart/form-data">
-							<label for="addname">Testimonial Name:</label><br>
-							<input type="text" id="testimonial-name-id" name="testimonial-name" value="John Doe"
-								class="form-control"><br>
-							<label for="desc">Testimonial Text:</label><br>
-							<input type="text" id="testimonial-text1-id" name="testimonial-text1"
-								value="... testimonial text 1 here ..." class="form-control"><br>
-							<label for="desc">Company/ Position:</label><br>
-							<input type="text" id="testimonial-text2-id" name="testimonial-text2"
-								value="... testimonial text 2 here  ..." class="form-control"><br>
-							<label for="file">Testimonial Picture:</label><br>
-							<input type="file" id="testimonial-file-id" name="testimonial-file"
-								class="form-control"><br>
-							<input type="submit" id='testimonial-button-id' name='testimonial-button'
-								value="Add Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
-						</form>
-						<div class="space"></div>
-					</div>
-				</div>
-			</div>
+		</div>
 
-			<div class="container">
-				<div class="col-16">
-					<div class="card mb-2 green_back_gold_front">
-						<h4 style="text-align: center;">Testimonial Selected:</h4>
-						<img id=testimonialImage src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top"
-							alt="'s profile photo">
-						<div class="card-body">
-							<h5 id="testimonialTitle" class="card-title">Nothing selected!</h5>
-							<p id="testimonialBody" class="card-text">Choose an entry from the above dropdown menus.</p>
-							<p id="testimonialJob" class="card-text"><small class="text-muted">Job name here.</small>
-							</p>
-						</div>
+		<div class="container">
+			<div class="col-16">
+				<div class="card mb-2 green_back_gold_front">
+					<h4 style="text-align: center;">Testimonial Selected:</h4>
+					<img id=testimonialImage src="/static/image_uploads/No Photo.jpg" class="card-img-top"
+						alt="'s profile photo">
+					<div class="card-body">
+						<h5 id="testimonialTitle" class="card-title">Nothing selected!</h5>
+						<p id="testimonialBody" class="card-text">Choose an entry from the above dropdown menus.</p>
+						<p id="testimonialJob" class="card-text"><small class="text-muted">Job name here.</small>
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 </div>
 </div>
@@ -542,28 +542,28 @@ Admin Page
 	btnEditBlock.forEach((btnEdit) => {
 		btnEdit.addEventListener("click", function (e) {
 			message.style.display = "none";
-		fetch('/editpage', {
-			headers : {
-				'Content-Type' : 'application/json'
-			},
-			method : 'POST',
-			body : JSON.stringify( {
-				'id' : e.target.getAttribute('data-el'),
+			fetch('/editpage', {
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				method: 'POST',
+				body: JSON.stringify({
+					'id': e.target.getAttribute('data-el'),
+				})
 			})
-		})
-		.then(function (response){
-			if(response.ok) {
-				response.json()
-				.then(function(response) {
-					tinymce.activeEditor.setContent(response.data[0][2]);
-					id.innerHTML = response.data[0][0];
-					});
-			}
-			else {
-			  throw Error('Error');
-			}
+				.then(function (response) {
+					if (response.ok) {
+						response.json()
+							.then(function (response) {
+								tinymce.activeEditor.setContent(response.data[0][2]);
+								id.innerHTML = response.data[0][0];
+							});
+					}
+					else {
+						throw Error('Error');
+					}
+				});
 		});
-	});
 	}); // might have extra closing brackets?
 
 	formContent.addEventListener("submit", function (e) {
@@ -571,32 +571,32 @@ Admin Page
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			method : 'POST',
-			body : JSON.stringify( {
-				'id' : id.textContent,
+			method: 'POST',
+			body: JSON.stringify({
+				'id': id.textContent,
 				'content': tinymce.activeEditor.getContent()
 			})
 		})
-		.then(function (response){
-			if(response.ok) {
-				response.json()
-				.then(function(response) {
-					console.log(response);
-					tinymce.activeEditor.setContent(response.data[0][2]);
-					id.innerHTML = response.data[0][0];
-					
-					message.innerHTML = response.message;
-					message.style.display = "block";
-				});
-				
-			}
-			else {
-				throw Error('Error');
-			}
-		})
-			.catch(function(error) {
-			console.log(error);
-		});
+			.then(function (response) {
+				if (response.ok) {
+					response.json()
+						.then(function (response) {
+							console.log(response);
+							tinymce.activeEditor.setContent(response.data[0][2]);
+							id.innerHTML = response.data[0][0];
+
+							message.innerHTML = response.message;
+							message.style.display = "block";
+						});
+
+				}
+				else {
+					throw Error('Error');
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 		e.preventDefault();
 		return false;
 	});
@@ -608,7 +608,7 @@ Admin Page
 <style>
 	/* Footer removal */
 	footer {
-			display: none;
+		display: none;
 	}
 </style>
 {% endblock %}
