@@ -1,5 +1,4 @@
-/*===========================================*/
-/*CSS for Video introduction or Introduction*/
+/*=============== CSS for Video introduction or Introduction ========================*/
 .video-introduction {
     width: 100%;
     height: 100vh;
@@ -9,7 +8,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .banner-introduction-content {
@@ -38,6 +36,64 @@
     font-size: 120px;
     color: #fff;
     font-weight: 600;
+}
+
+
+/*phone responsive*/
+@media (max-width : 567px) {
+    .video-introduction-content h1 {
+        font-size: 50px;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    h1.intro-desktop-text {
+        font-size: 0px;
+    }
+
+    .video-introduction-content h3 {
+        font-size: 30px;
+        color: #fff;
+        font-weight: 600;
+    }
+}
+
+/*tablet responsive*/
+@media screen and (min-width: 568px) and (max-width: 1366px) {
+    .video-introduction-content h1 {
+        font-size: 80px;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    h1.intro-desktop-text {
+        font-size: 0px;
+    }
+
+    .video-introduction-content h3 {
+        font-size: 30px;
+        color: #fff;
+        font-weight: 600;
+    }
+}
+
+/*desktop responsive*/
+@media (min-width: 1367px) {
+    .video-introduction-content h1 {
+        font-size: 100px;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    h1.intro-phone-text {
+        font-size: 0;
+    }
+
+    .video-introduction-content h3 {
+        font-size: 50px;
+        color: #fff;
+        font-weight: 600;
+    }
 }
 
 .video-introduction-content h4 {
@@ -84,68 +140,7 @@
     -khtml-box-shadow: 10px 10px 5px #3131315c;
 }
 
-/* Phone responsive */
-@media (max-width : 567px) {
-    .video-introduction-content h1 {
-        font-size: 50px;
-        color: #fff;
-        font-weight: 600;
-    }
-
-    h1.intro-desktop-text {
-        font-size: 0px;
-    }
-
-    .video-introduction-content h3 {
-        font-size: 30px;
-        color: #fff;
-        font-weight: 600;
-    }
-
-}
-
-/* Tablet responsive */
-@media screen and (min-width: 568px) and (max-width: 1366px) {
-    .video-introduction-content h1 {
-        font-size: 80px;
-        color: #fff;
-        font-weight: 600;
-    }
-
-    h1.intro-desktop-text {
-        font-size: 0px;
-    }
-
-    .video-introduction-content h3 {
-        font-size: 30px;
-        color: #fff;
-        font-weight: 600;
-    }
-
-}
-
-/* Desktop responsive */
-@media (min-width: 1367px) {
-    .video-introduction-content h1 {
-        font-size: 100px;
-        color: #fff;
-        font-weight: 600;
-    }
-
-    h1.intro-phone-text {
-        font-size: 0;
-    }
-
-    .video-introduction-content h3 {
-        font-size: 50px;
-        color: #fff;
-        font-weight: 600;
-    }
-}
-
-
 .back-video {
-    /*Play back video for Join page*/
     position: absolute;
     right: 0;
     bottom: 0;
@@ -166,28 +161,7 @@
     }
 }
 
-/*Alumni*/
-.carousel {
-    background-size: cover;
-    height: fit-content;
-    overflow: hidden;
-}
-
-.overlay {
-    color: #fff;
-    position: absolute;
-    z-index: 12;
-    top: 0%;
-    left: 0;
-    width: 100%;
-    text-align: center;
-}
-
-/* End CSS for Video introduction or Introduction */
-/*===========================================*/
-
-/*===========================================*/
-/*CSS for Last Block - Footer*/
+/*CSS for Last Block - Video Help*/
 .video-help {
     width: 100%;
     height: auto;
@@ -222,12 +196,9 @@
     bottom: 0;
     z-index: -1;
 }
+/*=============== END CSS for Video introduction or Introduction (Last Block) ========================*/
 
-/* END CSS for Last Block - Footer*/
-/*===========================================*/
-
-/*===========================================*/
-/* Text banner responsive */
+/*===============  Text/Title banner responsive ========================*/
 .hold {
     align-items: center;
     justify-content: center;
@@ -236,6 +207,14 @@
 h1.hero-heading {
     font-size: 80px;
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+
+    h1.hero-heading {
+        font-size: 60px;
+        padding-top: 60px;
+    }
 }
 
 .text-heading-background {
@@ -252,7 +231,6 @@ h1.hero-heading {
     text-shadow: 5px 5px 10px rgba(77, 77, 77, 0.947);
 }
 
-/* Text responsive */
 @media (min-width: 568px) {
     .text-heading h2 {
         color: black;
@@ -281,33 +259,45 @@ h1.hero-heading {
     }
 }
 
-@media (max-width: 768px) {
-    h1.hero-heading {
-        font-size: 60px;
-        padding-top: 60px;
-    }
-}
-
-
 h1.hero-heading2 {
     color: #ffffff;
     text-align: center;
 }
 
+.carousel {
+    background-size: cover;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.overlay {
+    color: #fff;
+    position: absolute;
+    z-index: 12;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
 @media (min-width :800px) {
     .carousel {
-        height: 550px;
+        /*This for Alumni carousel*/
+        height: 500px;
+        
     }
 
     h1.hero-heading2 {
         font-size: 80px;
-        margin-top: 250px;
+        margin-top: 200px;
     }
 }
 
 @media (min-width :500px) and (max-width:799px) {
     .carousel {
+        /*This for Alumni carousel*/
         height: fit-content;
+        background-position: center center;
     }
 
     h1.hero-heading2 {
@@ -328,206 +318,20 @@ h1.hero-heading2 {
     }
 }
 
-/*===========================================*/
-/* END Text banner responsive */
+/*=============== END Text banner responsive ========================*/
 
+/*=============== Buton ========================*/
 
-/*===========================================*/
-/* CSS for Button */
-
-.form-group button {
-    text-decoration: none;
-    display: inline-block;
-    color: #005440;
-    font-size: 18px;
-    border: 2px solid #005440;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
+.col-responsive {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.form-group button:hover {
-    text-decoration: none;
-    display: inline-block;
-    color: #c3b680;
-    font-weight: 300;
-    font-size: 18px;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
-    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
-    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
-    -khtml-box-shadow: 10px 10px 5px #3131315c;
+.col-responsive>* {
+    padding: 1rem;
 }
 
-.video-introduction-content-button {
-    text-align: center;
-}
-
-.video-introduction-content-button a {
-    text-decoration: none;
-    font-size: 40px;
-    display: inline-block;
-    color: #ffffff;
-    font-size: 24px;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-}
-
-.video-introduction-content-button a:hover {
-    text-decoration: none;
-    display: inline-block;
-    color: #c3b680;
-    font-weight: 600;
-    font-size: 30px;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
-    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
-    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
-    -khtml-box-shadow: 10px 10px 5px #3131315c;
-}
-
-.recruitment-button a {
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: 600;
-    display: inline-block;
-    color: #ffffff;
-    padding: 14px 50px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-}
-
-.recruitment-button a:hover {
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: 600;
-    display: inline-block;
-    color: #ffffff;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #c3b680;
-    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-}
-
-/* swiper button css */
-.nav-btn {
-    height: 40px;
-    width: 40px;
-    border-radius: 40%;
-    transform: translateY(30px);
-    transition: 0.2s;
-    z-index: 10;
-}
-
-.nav-btn::after,
-.nav-btn::before {
-    font-size: 20px;
-    color: #005440;
-    z-index: 10;
-}
-
-.swiper-pagination-bullet {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.swiper-pagination-bullet-active {
-    background-color: #005440;
-}
-
-@media screen and (max-width: 768px) {
-    .slide p {
-        padding: 0 20px;
-    }
-
-    .nav-btn {
-        display: none;
-    }
-}
-
-.wrapper-social-icon .button-social {
-    display: inline-block;
-    height: 60px;
-    width: 60px;
-    margin: 0 5px;
-    overflow: hidden;
-    background: #fff;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-out;
-}
-
-.wrapper-social-icon .button-social:hover {
-    width: 250px;
-}
-
-.wrapper-social-icon .button-social .social-icon {
-    display: inline-block;
-    height: 60px;
-    width: 60px;
-    text-align: center;
-    border-radius: 50px;
-    box-sizing: border-box;
-    line-height: 60px;
-    transition: all 0.3s ease-out;
-}
-
-.wrapper-social-icon .button-social:nth-child(1):hover .social-icon {
-    background: #4267B2;
-}
-
-
-.wrapper-social-icon .button-social:nth-child(2):hover .social-icon {
-    background: #E1306C;
-}
-
-.wrapper-social-icon .button-social:nth-child(3):hover .social-icon {
-    background: #ff0000;
-}
-
-.wrapper-social-icon .button-social .social-icon i,
-.wrapper-social-icon .button-social .social-icon em {
-    font-size: 25px;
-    line-height: 60px;
-    transition: all 0.3s ease-out;
-}
-
-.wrapper-social-icon .button-social:hover .social-icon i {
-    color: #fff;
-}
-
-.wrapper-social-icon .button-social span {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 60px;
-    margin-left: 10px;
-    transition: all 0.3s ease-out;
-}
-
-.wrapper-social-icon .button-social:nth-child(1) span {
-    color: #4267B2;
-}
-
-.wrapper-social-icon .button-social:nth-child(2) span {
-    color: #E1306C;
-}
-
-.wrapper-social-icon .button-social:nth-child(3) span {
-    color: #ff0000;
-}
-
-/* Donate button */
+/*Donate button*/
 @media (min-width:568px) {
     .col-responsive {
         display: grid;
@@ -589,10 +393,29 @@ h1.hero-heading2 {
         background-color: #c3b680;
         text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
     }
-
 }
 
-@media (max-width: 567px) {
+@media (min-width: 1001px){
+    .contribue-block-home{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 429px) and (max-width: 1000px){
+    .col-responsive{
+        display: none;
+    }
+
+    .col-responsive h2, .col-responsive p{
+        color: #eee;
+    }
+}
+
+@media (max-width: 428px) {
+    .contribue-block-home{
+        display: none;
+    }
+    
     .col-responsive h2 {
         color: rgb(255, 255, 255);
         text-align: center;
@@ -682,11 +505,205 @@ h1.hero-heading2 {
     }
 }
 
-/* END CSS for Button */
-/*===========================================*/
+.recruitment-button a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    display: inline-block;
+    color: #ffffff;
+    padding: 14px 70px;
+    margin-top: 20px;
+    background-color: #005440;
+    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    align-items: center;
+    border-radius: 50px;
+}
 
-/*===========================================*/
-/* CSS for testimonial */
+.recruitment-button a:hover {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    display: inline-block;
+    color: #ffffff;
+    padding: 14px 70px;
+    margin-top: 20px;
+    background-color: #c3b680;
+    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    align-items: center;
+    border-radius: 50pxs;
+}
+
+.form-group button {
+    text-decoration: none;
+    display: inline-block;
+    color: #005440;
+    font-size: 18px;
+    border: 2px solid #005440;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.form-group button:hover {
+    text-decoration: none;
+    display: inline-block;
+    color: #c3b680;
+    font-weight: 300;
+    font-size: 18px;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: #005440;
+    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
+    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
+    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
+    -khtml-box-shadow: 10px 10px 5px #3131315c;
+}
+
+.video-introduction-content-button {
+    text-align: center;
+}
+
+.video-introduction-content-button a {
+    text-decoration: none;
+    font-size: 40px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 24px;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: #005440;
+}
+
+.video-introduction-content-button a:hover {
+    text-decoration: none;
+    font-size: 40px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 24px;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: #c3b680;
+    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
+    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
+    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
+    -khtml-box-shadow: 10px 10px 5px #3131315c;
+}
+
+/* swiper button Testonomial css */
+.nav-btn {
+    height: 40px;
+    width: 40px;
+    border-radius: 40%;
+    transform: translateY(30px);
+    transition: 0.2s;
+    z-index: 10;
+}
+
+.nav-btn::after,
+.nav-btn::before {
+    font-size: 20px;
+    color: #005440;
+    z-index: 10;
+}
+
+.swiper-pagination-bullet {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #005440;
+}
+
+@media screen and (max-width: 768px) {
+    .slide p {
+        padding: 0 20px;
+    }
+
+    .nav-btn {
+        display: none;
+    }
+}
+
+/* CSS for social media*/
+
+.wrapper-social-icon .button-social {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    margin: 0 5px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-social-icon .button-social:hover {
+    width: 250px;
+}
+
+.wrapper-social-icon .button-social .social-icon {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50px;
+    box-sizing: border-box;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-social-icon .button-social:nth-child(1):hover .social-icon {
+    background: #4267B2;
+}
+
+
+.wrapper-social-icon .button-social:nth-child(2):hover .social-icon {
+    background: #E1306C;
+}
+
+.wrapper-social-icon .button-social:nth-child(3):hover .social-icon {
+    background: #ff0000;
+}
+
+.wrapper-social-icon .button-social .social-icon i,
+.wrapper-social-icon .button-social .social-icon em {
+    font-size: 25px;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-social-icon .button-social:hover .social-icon i {
+    color: #fff;
+}
+
+.wrapper-social-icon .button-social span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    margin-left: 10px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-social-icon .button-social:nth-child(1) span {
+    color: #4267B2;
+}
+
+.wrapper-social-icon .button-social:nth-child(2) span {
+    color: #E1306C;
+}
+
+.wrapper-social-icon .button-social:nth-child(3) span {
+    color: #ff0000;
+}
+
+/*=============== END Buton ========================*/
+
+/*=============== CSS for testimonial ========================*/
 .container-testi {
     width: 100%;
     display: flex;
@@ -760,12 +777,9 @@ h1.hero-heading2 {
     z-index: 10;
 }
 
-/* END CSS for testimonial */
-/*===========================================*/
+/*=============== END CSS for testimonial ========================*/
 
-
-/*===========================================*/
-/*CSS for Image shadow*/
+/*=============== CSS for Image shadow ========================*/
 .img-fluid {
     border: 2px solid #fff;
     background: url(img/tiger.png) no-repeat;
@@ -774,11 +788,9 @@ h1.hero-heading2 {
     -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
     -khtml-box-shadow: 10px 10px 5px #3131315c;
 }
+/*=============== END CSS for Image shadow ========================*/
 
-/*===========================================*/
-
-/*===========================================*/
-/* Icon For Contact Page */
+/*=============== Icon For Contact Page ========================*/
 .icon {
     transition: width 0.1s, height 0.1s, transform 0.2s;
 }
@@ -834,12 +846,9 @@ h1.hero-heading2 {
     font-size: 25px;
     font-weight: 600;
 }
+/*=============== END Icon For Contact Page ========================*/
 
-/*===========================================*/
-/* End icon CSS */
-
-/*===========================================*/
-/* Space */
+/*=============== Type of spcaces ========================*/
 .space80 {
     padding-top: 80px;
 }
@@ -851,12 +860,9 @@ h1.hero-heading2 {
 .space15 {
     padding-top: 15px;
 }
+/*=============== END Type of spcaces ========================*/
 
-/* Space */
-/*===========================================*/
-
-/*===========================================*/
-/* Contact Form */
+/*=============== Contact ========================*/
 .contact-container {
     position: relative;
     width: 100%;
@@ -874,23 +880,17 @@ h1.hero-heading2 {
     padding-top: 25px;
     text-shadow: 5px 5px 5px rgba(160, 160, 160, 0.947);
 }
+/*=============== END Contact ========================*/
 
-/*===========================================*/
-/* END Contact Form */
-
-/*===========================================*/
-/* Map */
+/*=============== MAP ========================*/
 .map {
     width: 100%;
     align-items: center;
     justify-content: center;
 }
+/*=============== MAP ========================*/
 
-/*===========================================*/
-/* END Map */
-
-/*===========================================*/
-/* Google Calendar */
+/*=============== Google Calendar ========================*/
 .googleCalendar {
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -941,15 +941,12 @@ h1.hero-heading2 {
         left: 0;
     }
 }
+/*=============== END Google Calendar ========================*/
 
-/* END Google Calendar */
-/*===========================================*/
 
-/*===========================================*/
-/* Title Block */
-/* Desktop version */
+/*======================== Title Block ========================*/
+/*Desktop version*/
 @media (min-width: 1367px) {
-
     /*--------------------Calendar page-------------------------*/
     #block-title,
     #block-title1 {
@@ -1214,12 +1211,54 @@ h1.hero-heading2 {
         text-shadow: 1px 4px 4px rgba(116, 116, 116, 0.947);
     }
 }
+/*======================== END Title Block ========================*/
 
-/*===========================================*/
-/* END Title Block */
+/*========================  Event CSS ========================*/
+/*---------Events in homepage-------------*/
+/*Event in home page*/
+@media (min-width :565px) and (max-width:771px) {
+    .col{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+}
 
-/*===========================================*/
-/* Event CSS */
+@media (min-width: 568px) {
+    div.name-events {
+        font-size: 50px;
+        font-weight: 600;
+    }
+
+    div.name-phone {
+        font-size: 0px;
+    }
+}
+
+@media (max-width: 567px) {
+    div.name-phone {
+        font-size: 35px;
+        font-weight: 600;
+    }
+
+    div.name-events {
+        font-size: 0px;
+    }
+
+    div.central {
+        width: 95%;
+        align-items: center;
+        text-align: center;
+        margin-left: 10px;
+        box-shadow: gray;
+    }
+
+    div.card {
+        width: 100%;
+    }
+}
+/*---------END Events in homepage-------------*/
+
 .event-container {
     font-family: "Roboto", sans-serif;
     max-width: 500px;
@@ -1262,7 +1301,6 @@ h1.hero-heading2 {
 .event .event-left .date {
     font-size: 20px;
 }
-
 
 .event .event-right {
     display: flex;
@@ -1334,47 +1372,9 @@ h1.hero-heading2 {
         padding: 3px 0;
     }
 }
+/*======================== END Event CSS ========================*/
 
-/*Events in homepage*/
-@media (min-width: 568px) {
-    div.name-events {
-        font-size: 50px;
-        font-weight: 600;
-    }
-
-    div.name-phone {
-        font-size: 0px;
-    }
-}
-
-@media (max-width: 567px) {
-    div.name-phone {
-        font-size: 35px;
-        font-weight: 600;
-    }
-
-    div.name-events {
-        font-size: 0px;
-    }
-
-    div.central {
-        width: 95%;
-        align-items: center;
-        text-align: center;
-        margin-left: 10px;
-        box-shadow: gray;
-    }
-
-    div.card {
-        width: 100%;
-    }
-}
-
-/* End event CSS */
-/*===========================================*/
-
-/*===========================================*/
-/* background-block for Welcome page*/
+/*======================== background-block for Welcome page ========================*/
 .background-block1 {
     background-repeat: no-repeat;
     background-position: center;
@@ -1431,27 +1431,50 @@ h1.hero-heading2 {
         background-position: center;
         background-size: cover;
     }
+}
+/*======================== END background-block for Welcome page ========================*/
 
+/*======================== Team member ========================*/
+@media (min-width: 1367px) {
+    h1.team-member-desktop {
+        font-size: 100px;
+        color: #fff;
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.947);
+        padding-top: 40px;
+    }
+
+    h1.team-member-phone {
+        font-size: 0;
+    }
 }
 
-/* END background-block for Welcome page*/
-/*===========================================*/
+@media screen and (min-width: 568px) and (max-width: 1366px) {
+    h1.team-member-desktop {
+        font-size: 70px;
+        color: #fff;
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.947);
+        padding-top: 40px;
+    }
 
-/*===========================================*/
-/*column responsive*/
-.col-responsive {
-    display: flex;
-    flex-wrap: wrap;
+    h1.team-member-phone {
+        font-size: 0;
+    }
 }
 
-.col-responsive>* {
-    padding: 1rem;
+@media (max-width: 567px) {
+    h1.team-member-phone {
+        font-size: 50px;
+        font-weight: 500;
+        color: #fff;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.947);
+        padding-top: 20px;
+    }
+
+    h1.team-member-desktop {
+        font-size: 0;
+    }
 }
 
-/*===========================================*/
-
-/*===========================================*/
-/* CSS Team Member */
 .team-item {
     padding: 35px;
     padding-right: 0px;
@@ -1562,52 +1585,9 @@ h5 {
 .mb-30 {
     margin-bottom: 30px;
 }
+/*======================== END Team member ========================*/
 
-@media (min-width: 1367px) {
-    h1.team-member-desktop {
-        font-size: 100px;
-        color: #fff;
-        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.947);
-        padding-top: 40px;
-    }
-
-    h1.team-member-phone {
-        font-size: 0;
-    }
-}
-
-@media screen and (min-width: 568px) and (max-width: 1366px) {
-    h1.team-member-desktop {
-        font-size: 70px;
-        color: #fff;
-        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.947);
-        padding-top: 40px;
-    }
-
-    h1.team-member-phone {
-        font-size: 0;
-    }
-}
-
-@media (max-width: 567px) {
-    h1.team-member-phone {
-        font-size: 50px;
-        font-weight: 500;
-        color: #fff;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.947);
-        padding-top: 20px;
-    }
-
-    h1.team-member-desktop {
-        font-size: 0;
-    }
-}
-
-/* END NAME TAG of Team Member */
-/*===========================================*/
-
-/*===========================================*/
-/* CSS for Login page */
+/*======================== Login page ========================*/
 h1,
 h2,
 h3,
@@ -1962,12 +1942,9 @@ img {
         text-align: center;
     }
 }
+/*======================== END Login page ========================*/
 
-/* End Login page */
-/*===========================================*/
-
-/*===========================================*/
-/*CSS for Admin Portal*/
+/*======================== ADmin PORTAL ========================*/
 .row label {
     padding-left: 5px;
     padding-bottom: 10px;
@@ -1984,6 +1961,11 @@ img {
 .row form {
     padding-right: 20px;
     padding-left: 20px;
+}
+
+/*Add narrow to dropdown list*/
+select.form-control {
+    -webkit-appearance: menulist;
 }
 
 .card img {
@@ -2003,17 +1985,9 @@ img {
 .card-body {
     text-align: center;
 }
+/*======================== END ADmin PORTAL ========================*/
 
-/* Add narrow to dropdown list in Admin Portal*/
-select.form-control {
-    -webkit-appearance: menulist;
-}
-
-/* END CSS for Admin Portal*/
-/*===========================================*/
-
-/*===========================================*/
-/*Social media page responsive*/
+/*======================== Social media page* ========================*/
 h3.title-social {
     color: white;
     text-align: center;
@@ -2086,6 +2060,4 @@ img.img-flickr {
         font-size: 18px;
     }
 }
-
-/* END Social media page responsive */
-/*===========================================*/
+/*======================== END Social media page* ========================*/
