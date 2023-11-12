@@ -41,67 +41,49 @@
 
 
 /*phone responsive*/
-@media (max-width : 768px) {
-    .header {
-        width: 100%;
-    }
-    /* Video below for welcome, contactus, and join pages*/
-    h1.intro-desktop-text {
-        display: none;
-    }
-    .card {
-        width: 100%;
-        margin: 0 auto;
-    }
-    .video-introduction video.back-video {
-        width: 100%;
-        height: auto;
-      }
+@media (max-width : 567px) {
     .video-introduction-content h1 {
-        font-size: 24px;
+        font-size: 50px;
         color: #fff;
         font-weight: 600;
     }
+
     h1.intro-desktop-text {
         font-size: 0px;
     }
+
     .video-introduction-content h3 {
-        font-size: 18px;
-        color: #fff;
-        font-weight: 600;
-    }
-    /* Banner below for welcome, team members, aboutus, and donate pages*/
-    .background-block {
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        background-size: cover;
-    }
-    background-block.column h2 {
         font-size: 30px;
         color: #fff;
         font-weight: 600;
     }
-    .banner-introduction-content{
-        text-align: center;
-    }
-    .banner-introduction-content h1 {
-            font-size: 50px;
-            color: #005440;
-            font-weight: 600;
-            text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-    .banner-introduction-content h1:hover {
-        -webkit-text-stroke: 2px #005440;
-        color: transparent;
-        text-shadow: 5px 5px 5px rgba(255, 255, 255, 0)
-    }
+
+}
+
+/*tablet responsive*/
+@media screen and (min-width: 568px) and (max-width: 1366px)  {
+    .video-introduction-content h1 {
+        font-size: 80px;
+        color: #fff;
+        font-weight: 600;
     }
 
+    h1.intro-desktop-text {
+        font-size: 0px;
+    }
+
+    .video-introduction-content h3 {
+        font-size: 30px;
+        color: #fff;
+        font-weight: 600;
+    }
+
+}
+
 /*desktop responsive*/
-@media (min-width: 568px) {
+@media (min-width: 1367px) {
     .video-introduction-content h1 {
-        font-size: 120px;
+        font-size: 100px;
         color: #fff;
         font-weight: 600;
     }
@@ -118,15 +100,23 @@
 }
 
 /* Text banner responsive */
+.hold{
+    align-items: center;
+    justify-content: center;
+}
+
 h1.hero-heading {
-    font-size: 120px;
+    font-size: 80px;
     font-weight: bold;
 }
 
 @media (max-width: 768px) {
+   
     h1.hero-heading {
         font-size: 60px;
+        padding-top: 60px;
     }
+
 }
 
 .video-introduction-content h4 {
@@ -289,19 +279,6 @@ h1.hero-heading {
     z-index: -1;
 }
 
-@media (min-width: 1080px) {
-    .video-last-block {
-        width: 100%;
-        height: auto;
-    }
-}
-
-@media (min-width: 568px) {
-    .video-last-block {
-        width: 100%;
-        height: auto;
-    }
-}
 
 
 /*CSS for testimonial*/
@@ -624,7 +601,7 @@ h1.hero-heading {
     justify-content: center;
 }
 
-/* Google Calendar */
+/*--------------------Google Calendar-------------------------*/
 .googleCalendar {
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -633,7 +610,6 @@ h1.hero-heading {
     position: relative;
     height: 100%;
     width: 100%;
-    padding-bottom: 54%;
 }
 
 .googleCalendar iframe {
@@ -647,237 +623,199 @@ h1.hero-heading {
 }
 
 @media (max-width: 567px) {
+    .googleCalendar {
+        right: 20px;
+        padding-bottom: 42%;
+    }
+
     .googleCalendar iframe {
         top: 0;
-        left: 0;
         width: 110%;
         height: 180%;
+
     }
 }
 
-/* Title Block*/
+@media screen and (min-width: 568px) and (max-width: 1366px) {
+    .googleCalendar {
+        padding-bottom: 55%;
+    }
+}
 
 @media (min-width: 1367px) {
-    #block-title {
-        height: 800px;
+    .googleCalendar {
+        padding-bottom: 55%;
+    }
+
+    .googleCalendar iframe {
+        top: 0;
+        left: 0;
+    }
+}
+
+
+
+
+
+/*--------------------End Google Calendar-------------------------*/
+
+/*--------------------Title Block---------------------------------*/
+/*Desktop version*/
+@media (min-width: 1367px) {
+
+    /*--------------------Calendar page-------------------------*/
+    #block-title,
+    #block-title1 {
         width: 100%;
         border: 3px solid #005440;
         position: relative;
         padding-top: 50px;
+    }
 
+    #title-label-block {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+        text-align: left;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label-block.title-label {
+        /*Calendar*/
+        width: 300px;
+    }
+
+    #title-label-block.title-label1 {
+        /*Next Evevnt*/
+        width: 400px;
+    }
+
+    #title-label-block.title-label2 {
+        /*Past event*/
+        width: 280px;
+    }
+
+    div.name-phone {
+        font-size: 0;
+    }
+
+    /*--------------------End Calendar page-------------------------*/
+    /*--------------------Start Donate page-------------------------*/
+    
+    #block-title3 { /*Additional information*/
+        width: 80%;
+        border: 3px solid #000000;
+        position: relative;
+        margin: auto;
+        padding-top: 50px;
+
+    }
+
+    #title-label4 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 22%;
+        height: 40px;
+        width: 600px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    .extra-info{
+        display: none;
+    }
+}
+
+
+/*Tablet version*/
+@media screen and (min-width: 568px) and (max-width: 1366px) {
+
+    /*--------------------Start Calendar page-------------------------*/
+    #block-title {
+        width: 100%;
+        border: 2px solid #005440;
+        position: relative;
+        padding-top: 20px;
     }
 
     #block-title1 {
-        height: 600px;
         width: 100%;
-        border: 3px solid #000000;
+        border: 2px solid #000000;
         position: relative;
-        padding-top: 50px;
+        padding-top: 20px;
 
     }
 
-    #block-title2 {
-        height: 300px;
-        width: 135%;
-        border: 3px solid #000000;
-        position: relative;
-        padding-top: 50px;
-
-    }
-
-    #block-title3 {
-        height: 300px;
-        left: -160px;
-        width: 200%;
-        border: 3px solid #000000;
-        position: relative;
-        padding-top: 50px;
-
-    }
-
-    #title-label {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 300px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label1 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label2 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 280px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label3 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 17%;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label4 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 28%;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    div.name-phone {
-        font-size: 0;
-    }
-}
-
-
-
-@media screen and (min-device-width: 568px) and (max-device-width: 1366px) { 
-
-    #block-title2 {
-        height: 300px;
-        position: relative;
-        padding-top: 30px;
-        text-align: center;
-
-    }
-
-    #block-title3 {
-        height: 300px;
-     width: fit-content;
-        position: relative;
-        padding-top: 50px;
-        text-align: center;
-    }
-
-    #title-label {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 300px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label1 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label2 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 280px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label3 {
+    #title-label-block {
         font-size: 35px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 500;
+        font-weight: 480;
         position: absolute;
         top: -30px;
-        left: 7%;
+        left: 20px;
         height: 40px;
-        width: 400px;
         background-color: rgb(255, 255, 255);
-        text-align: center;
+        text-align: left;
         text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
     }
 
-    #title-label4 {
-        font-size: 35px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 500;
-        position: absolute;
-        top: -30px;
-        left: 10%;
-        height: 40px;
+    #title-label-block.title-label {
+        /*Calendar*/
+        width: 300px;
+    }
+
+    #title-label-block.title-label1 {
+        /*Next Evevnt*/
         width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label-block.title-label2 {
+        /*Past event*/
+        width: 280px;
     }
 
     div.name-phone {
         font-size: 0;
     }
 
-    div.h3{
+    div.h3 {
         font-size: 100px;
     }
-    
+
+    /*--------------------End Calendar page-------------------------*/
+
+    #block-title3 { /*Additional information*/
+        width: 80%;
+        border: 3px solid #000000;
+        position: relative;
+        margin: auto;
+        padding-top: 50px;
+
+    }
+
+    #title-label4 {
+        display: none;
+    }
+
+    .extra-info{
+        padding-bottom: 25px;
+    }
 }
 
-
-
+/*Mobile version*/
 @media (max-width : 567px) {
     #block-title {
         font-family: "Roboto", sans-serif;
         max-width: 100%;
         margin: 0 auto;
-
         position: relative;
         overflow: hidden;
         padding-top: 10.25%;
@@ -900,6 +838,10 @@ h1.hero-heading {
         border-width: 1px;
         text-shadow: 1px 4px 4px rgba(116, 116, 116, 0.947);
     }
+
+    .extra-info {
+        display: none;
+     }
 }
 
 
@@ -1120,7 +1062,7 @@ h1.hero-heading {
     font-weight: 600;
     display: inline-block;
     color: #ffffff;
-    padding: 14px 70px;
+    padding: 14px 50px;
     border-radius: 50px;
     margin-top: 20px;
     background-color: #005440;
@@ -1430,31 +1372,53 @@ h1.hero-heading {
     }
 }
 
-@media (min-width: 568px) {
-    h1.team-member {
-        font-size: 120px;
+@media (min-width: 1367px) {
+    h1.team-member-desktop {
+        font-size: 100px;
         color: #fff;
         text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.947);
+        padding-top: 40px;
+    }
+
+    h1.team-member-phone{
+        font-size: 0;
+    }
+}
+
+@media screen and (min-width: 568px) and (max-width: 1366px){
+    h1.team-member-desktop {
+        font-size: 70px;
+        color: #fff;
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.947);
+        padding-top: 40px;
+    }
+
+    h1.team-member-phone{
+        font-size: 0;
     }
 }
 
 @media (max-width: 567px) {
-    h1.team-member {
-        font-size: 60px;
+    h1.team-member-phone {
+        font-size: 50px;
         font-weight: 500;
         color: #fff;
-        text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.947);
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.947);
         padding-top: 20px;
+    }
+
+    h1.team-member-desktop{
+        font-size: 0;
     }
 }
 
 /*CSS Team Member*/
 .team-item {
-    padding: 25px;
+    padding: 35px;
     padding-right: 0px;
     position: relative;
     z-index: 0;
-    margin: 0 auto;
+
 }
 
 .team-item:after,
@@ -1516,21 +1480,6 @@ h1.hero-heading {
     transform: scale(1);
 }
 
-.team-item .socials {
-    position: absolute;
-}
-
-.team-item .socials a {
-    display: block;
-    margin-right: 0;
-    margin-bottom: 15px;
-    -webkit-box-shadow: 3px 3px 2px 0 rgb(0, 0, 0);
-    box-shadow: 3px 3px 2px 0 rgb(0, 0, 0);
-}
-
-.team-item .socials a:last-of-type {
-    margin-bottom: 0;
-}
 
 .team-item .team-content {
     margin-right: 70px;
@@ -1560,22 +1509,6 @@ h1.hero-heading {
 
 .d-inline-block {
     display: inline-block !important;
-}
-
-.socials a {
-    width: 35px;
-    height: 35px;
-    background-color: #005440;
-    border-radius: 50%;
-    -webkit-box-shadow: 0 3px 2px 0 #414141;
-    box-shadow: 0 3px 2px 0 #424242;
-    text-align: center;
-    color: #fff;
-    padding-top: 10px;
-    font-size: 16px;
-    margin-right: 10px;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
 }
 
 .mb-2,
@@ -1949,29 +1882,30 @@ img {
 
 
 /*CSS for Admin Portal*/
-.row label{
+.row label {
     padding-left: 5px;
     padding-bottom: 10px;
     font-size: 18px;
 }
-.row h4{
+
+.row h4 {
     padding-top: 10px;
     padding-left: 10px;
     font-size: 22px;
     font-weight: 500;
 }
 
-.row form{
+.row form {
     padding-right: 20px;
     padding-left: 20px;
 }
 
 /*Add narrow to dropdown list*/
-select.form-control { 
-    -webkit-appearance: menulist; 
+select.form-control {
+    -webkit-appearance: menulist;
 }
 
-.card img{
+.card img {
     height: auto;
     width: auto;
     display: block;
@@ -1985,6 +1919,136 @@ select.form-control {
     -khtml-box-shadow: 10px 10px 5px #3131315c;
 }
 
-.card-body{
+.card-body {
     text-align: center;
+}
+
+/*Social media responsive*/
+h3.title-social {
+    color: white;
+    text-align: center;
+    text-shadow: 5px 5px 5px rgba(51, 51, 51, 0.947);
+}
+
+.columnss {
+    display: grid;
+    place-items: center;
+}
+
+img.img-flickr {
+    margin: 1px;
+    padding: 0;
+    width: 90%;
+    width: -webkit-calc(100% - 2px);
+    width: calc(100% - 2px)
+}
+
+@media (min-width: 1367px) {
+    .columns {
+        align-items: center;
+    }
+
+    .columnss {
+        grid-template-columns: 50% 50%;
+    }
+
+    h3.title-social {
+        font-weight: 700;
+        font-size: 40px;
+    }
+
+    img.img-flickr {
+        max-width: 1000px;
+        min-width: 600px;
+    }
+
+
+}
+
+@media screen and (min-width: 568px) and (max-width: 1366px) {
+    h3.title-social {
+        font-weight: 700;
+        font-size: 35px;
+    }
+
+    img.img-flickr {
+        max-width: 600px;
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 567px) {
+    h3.title-social {
+        font-weight: 700;
+        font-size: 30px;
+    }
+
+    img.img-flickr {
+        max-width:350px;
+        min-width: 200px;
+    }
+
+
+    .video-help-content p {
+        text-decoration: none;
+        display: inline-block;
+        color: #fff;
+        font-size: 18px;
+    }
+}
+
+/*Alumni*/
+.carousel {
+    background-size: cover;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.overlay {
+    color: #fff;
+    position: absolute;
+    z-index: 12;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+h1.hero-heading2 {
+    color: #ffffff;
+    text-align: center;
+}
+
+@media (min-width :800px) {
+    .carousel {
+       height: 550px;
+    }
+    h1.hero-heading2{
+        font-size: 80px;
+        margin-top: 250px;
+    }
+}
+
+@media (min-width :500px) and (max-width:799px) {
+    .carousel {
+       height: fit-content;
+    }
+
+    h1.hero-heading2 {
+        font-size: 70px;
+        margin-top: 200px;
+      
+    }
+}
+
+@media (max-width :499px) {
+    .carousel {
+       height: fit-content;
+    }
+
+    h1.hero-heading2 {
+        font-size: 50px;
+        margin: 100px;
+    }
 }
