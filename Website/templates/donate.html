@@ -54,7 +54,7 @@ Donate - Rowing Club
                         </div>
 					<div class="donate-button">
 						<div class="recruitment-button2">
-							<a class="hello" href="#">Donate</a>
+							<a class="hello" href="{{donateLink[0][2]}}">Donate</a>
 						</div>
 					</div>
 				</div>
@@ -72,7 +72,7 @@ Donate - Rowing Club
                         </div>
 					<div class="donate-button">
 						<div class="recruitment-button2">
-							<a class="hello" href="#">Donate</a>
+							<a class="hello" href="{{donateAffiliateLink[0][2]}}">Donate</a>
 						</div>
 					</div>
 				</div>
@@ -84,20 +84,7 @@ Donate - Rowing Club
  <!-- Additional Information Block -->
  <div class="event-container">
     <div class="container-fluid bg-2 text-center"> 
-        <div id="block-title3">
-            <div id="title-label4" class="name"> Donate to Affiliates</div>
-            <div class="name-phone">Donate to Affiliates</div>
-            <div style="color: black;" style="font-weight: 600;" class="check"> 
-                <h3><strong>Additional Information
-                    Support the Sacramento State Rowing Club athletes in their elite and olympic pursuits. 
-                    <br/>The money will help fund activities such as: (activities list here)
-                </div>
-                <h4 style="color: #005440;"><strong>If you would like to donate via Check: <br/>
-                    Sacramento State Rowing Club <br/>
-                    1901 Hazel Ave, <br/>
-                    Gold River, CA 95670 <br/>
-                </div>
-        </div>
+        {{donate_block[0][2] | safe}}
     </div>
 </div>
         <div style="padding-top: 60px;"></div>

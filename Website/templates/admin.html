@@ -99,7 +99,8 @@ Admin Page
 		plugins: ['link', 'image', 'code'],
 		toolbar: 'bold italic backcolor | alignleft aligncenter alignright alignjustify | code',
 		images_upload_url: '/uploadimage',
-		images_reuse_filename: false
+		images_reuse_filename: false,
+		extended_valid_elements : 'i[class],strong,br'
 	});
 
 </script>
@@ -112,7 +113,7 @@ Admin Page
 <!-- Script for displaying tabs and saving tab state -->
 <!-- https://www.w3schools.com/w3css/w3css_tabulators.asp-->
 <script>
-	window.onload = Loader;
+	//window.onload = Loader;
 
 	//Selected Tab
 	function openTab(evt, tabName) {
@@ -153,9 +154,9 @@ Admin Page
 	}
 
 </script>
-<div onload="Loader()"></div>
+<!--<div onload="Loader()"></div>
 
-<div onload="Loader()"></div>
+<div onload="Loader()"></div>-->
 
 <div class="container">
 	<hr />
@@ -219,6 +220,7 @@ Admin Page
 			onclick="openTab(event,'Testimonials')">Testimonials</button>
 		<button class="w3-bar-item w3-button tablink" id="content-block-tab" onclick="openTab(event,'Content')">Content
 			Blocks</button>
+			<button class="w3-bar-item w3-button tablink" id="content-block-tab" onclick="openTab(event,'Links')">Social Links</button>
 		<a href="logout" style="position: absolute; right: 14px; font-weight: 500; font-size: 20px;"
 			class="btn btn-outline-dark green_back_gold_front_lightened" role="button"> Logout </a>
 	</div>
@@ -528,6 +530,42 @@ Admin Page
 			</div>
 		</div>
 	</div>
+
+	<!-- Social Links Tab -->
+	<div id="Links" class="w3-container tab tabname" style="display:none">
+		<div class="space15"></div>
+		<div class="alert alert-success-links" role="alert" style="display: none;">
+			Updated changes!</div>
+		<div class="row">
+			<div class="col">
+				<hr />
+				<div class="row">
+					<form method="POST" name="formlinks" id="formLinks">
+					<table class="form-table" role="presentation">
+						<tbody>
+							{% for tup in links %}
+							<tr>
+								<th scope="row">
+								  <label for="{{tup[0]}}">{{tup[1]}}</label>
+								</th>
+								<td>
+								  <input name="{{tup[0]}}" type="text" id="{{tup[0]}}" value="{{tup[2]}}">
+								</td>
+							  </tr>
+							{% endfor %}
+						
+						 
+						</tbody>
+					  </table>
+					  <button type="submit" id="btnUdpateLink"
+							class="mb-2 mr-2 btn btn-outline-2x btn-outline-success"> <strong> Save Changes
+							</strong></button>
+						</form>
+				</div>
+				<hr />
+			</div>
+		</div>
+	</div>
 </div>
 </div>
 </div>
@@ -540,9 +578,10 @@ Admin Page
 	var btnUpdateBlock = document.querySelector("#btnUdpateContent");
 	var formContent = document.querySelector("#formContent");
 	var message = document.querySelector(".alert-success");
-
+	
 	btnEditBlock.forEach((btnEdit) => {
 		btnEdit.addEventListener("click", function (e) {
+			document.querySelector("#formContent").focus();
 			message.style.display = "none";
 		fetch('/editpage', {
 			headers : {
@@ -602,9 +641,50 @@ Admin Page
 		e.preventDefault();
 		return false;
 	});
-</script>
-
-
+	// for updating links 
+	
+	var updateLinkMessage = document.querySelector(".alert-success-links");
+	var formLinks = document.querySelector("#formLinks");
+	formLinks.addEventListener("submit", function (e) {
+		var formLinksData = {
+			joinusform : document.querySelector("#joinusform").value,
+			//instagram : document.querySelector("#instagram").value,
+			//facebook : document.querySelector("#facebook").value,
+			//youtube : document.querySelector("#youtube").value,
+			flickr : document.querySelector("#flickr").value,
+			mailform : document.querySelector("#mailingform").value,
+			donate : document.querySelector("#donate").value,
+			donateaff : document.querySelector("#donateaff").value,
+		}
+		console.log(formLinksData);
+		fetch('/updatelinks', {
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			method : 'POST',
+			body : JSON.stringify( {
+				'data': formLinksData
+			})
+		})
+		.then(function (response){
+			if(response.ok) {
+				response.json()
+				.then(function(response) {
+					updateLinkMessage.innerHTML = response.message;
+					updateLinkMessage.style.display = "block";
+				});
+				
+			}
+			else {
+				throw Error('Error');
+			}
+		})
+			.catch(function(error) {
+			console.log(error);
+		});
+		e.preventDefault();
+		return false;
+	});
 </script>
 
 <style>
