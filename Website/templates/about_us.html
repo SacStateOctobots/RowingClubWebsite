@@ -13,19 +13,6 @@
 			background-position: center;
 			height: 400px;
 		}
-		/* Media query for screens smaller than 768px (typical tablets) */
-        @media only screen and (max-width: 768px) {
-            .smashinglogo {
-                height: 300px; /* Adjust the height for smaller screens */
-            }
-        }
-
-        /* Media query for screens smaller than 480px (typical smartphones) */
-        @media only screen and (max-width: 480px) {
-            .smashinglogo {
-                height: 200px; /* Adjust the height for even smaller screens */
-            }
-        }
 	</style>
 {% endblock %}
 
@@ -92,8 +79,8 @@ About - Rowing Club
 	<div class="space80"></div>
 	<div class="row">
 		<div class="column" data-aos="fade-up" data-aos-duration="1000">
-			<h2>Are you interested</h2>
-			<h2>in joining?</h2>
+			<h2>Are you interested
+			<br/>in joining?</h2>
 		</div>
 		<div class="column">
 			<div class="recruitment-button">
@@ -101,10 +88,9 @@ About - Rowing Club
 					href="https://docs.google.com/forms/d/e/1FAIpQLSfZgOi84FUsV-uXBSIsJuTX3pKZdlFydBgsojzrhYNo09q4ZA/formResponse">Join us</a>
 			</div>
 		</div>
-
-		<div class="space15"></div>
-		<div class="space80"></div>
+		<div style="padding-bottom: 110px;"></div>
 	</div>
+	<div class="space15"></div>
 </div>
 <!--END Block interested-->
 
