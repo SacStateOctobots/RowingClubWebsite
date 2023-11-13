@@ -6,95 +6,71 @@ Donate - Rowing Club
 
 {% block body %}
 
-<head>
-    <style>
-        body {
-            background-color: #ffffff;
-        }
+<!--First Block for Video introduction-->
+<section class="video-introduction">
+    <div>
+        <!--Video Introduction page for Desktop-->
+        <!--Video link: -->
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="./static/video/handshake.mp4" type="video/mp4">
+        </video>
 
-        .smashinglogo {
-            background-image: url(https://www.sacstateaquaticcenter.com/sites/main/files/imagecache/lightbox/main-images/2013_womens_crew_3.jpg);
-            background-size: cover;
-            background-position: center;
-            height: 550px;
-        }
-
-        .container {
-            padding-right: 75px;
-        }
-    </style>
-</head>
-
-<!-- Banner-->
-<section id="donateBanner" class="story" data-speed="8" data-type="background">
-    <div class="smashinglogo" data-offsetY="100" data-Xposition="50%" data-speed="-2">
-        <div class="banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
-            <div style="padding-top: 200px;"></div>
-            <h1 class="team-member">Contribute</h1>
+        <div class="video-introduction-content">
+            <h1 data-aos="fade-up" data-aos-duration="1000" class="hero-heading">Contribute</h1>
+            <a data-aos="fade-down" data-aos-duration="1000" href="/contact">More information</a>
         </div>
     </div>
 </section>
-<!-- END Banner-->
-
-<!--Contribute Block-->
-<div class="space80"></div>
-<div class="container-lg">
- <!-- Make a Donation Block -->    
-	<div class="row justify-content-center">
-		<div class="event-container">
-			<div class="container-fluid bg-2 text-center">
-				<div id="block-title2">
-					<div id="title-label3" class="name"> Make a Donation</div>
-					<div class="name-phone">Make a Donation</div> 
-                        <div style="color: black;" style="font-weight: 600;" class="check"> 
-                            <strong><h3>
-                            You can help the Rowing Club by donating on
-                            our official donation page!
-                            </strong>
+<!--End First Block for Video introduction-->
+<div class="tm-page-wrap mx-auto">
+    <section class="p-5 tm-container-outer tm-bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+                    <h2 class="text-uppercase mb-4" style="font-size: 40px;">Make A <strong>Donation</strong></h2>
+                    <p style="font-size: 22px;" class="mb-4">You can help the Rowing Club by donating on our official
+                        donation page! <br />
+                        After clicking the link below, <strong> at Fund Designation: choose "Rowing Club." </strong></p>
+                    <div class="donate-button">
+                        <div class="recruitment-button2">
+                            <a class="hello" href="https://swarmfunding.csus.edu/project/36577/donate">Click here</a>
                         </div>
-					<div class="donate-button">
-						<div class="recruitment-button2">
-							<a class="hello" href="{{donateLink[0][2]}}">Donate</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-        
- <!-- Donate to Affiliates Block -->        
-		<div class="event-container">
-			<div class="container-fluid bg-2 text-center"> 
-				<div id="block-title2">
-					<div id="title-label3" class="name"> Donate to Affiliates</div>
-					<div class="name-phone">Donate to Affiliates</div>
-                    <div style="color: black;" style="font-weight: 600;" class="check"> 
-                        <h3><strong>This page is run by Sac State Alumni to help current club members!
-                        </div>
-					<div class="donate-button">
-						<div class="recruitment-button2">
-							<a class="hello" href="{{donateAffiliateLink[0][2]}}">Donate</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                        <div class="space"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="space80"></div>
+    <div class="space"></div>
 
- <!-- Additional Information Block -->
- <div class="event-container">
-    <div class="container-fluid bg-2 text-center"> 
-        {{donate_block[0][2] | safe}}
-    </div>
-</div>
-        <div style="padding-top: 60px;"></div>
-    </div>
+    <div class="container-fluid">
+        <div class="container-fluid bg-2 text-center"> 
+            <div id="block-title3">
+                <div id="title-label4" class="name"> Additional Information</div>
+                <h2 class="extra-info" style="font-size: 40px;">Additional <strong>Info</strong></h2>
+                <div class="name-phone">Additional Information</div>
+                
+                <div style="color: black;" style="font-weight: 600;" class="check"> 
+                    <h3><strong>
+                        Support the Sacramento State Rowing Club athletes in their journey to WIRAs. 
+                        <br/> <em>The money will help fund activities such as: </strong>
+                        <br/> New Equipment, Team Gear, Scholarships, Team Travel, 
+                        <br/> Regatta Entry Fees, Coxswain Training.</em>
+                    </div>
+                    <h4 style="color: #005440;"> <br/><strong>If you would like to donate via Check
+                        <br/> <em>Sac State Rowing Club
+                        <br/> 6000 J Street,
+                        <br/>Sacramento, CA 95819 </em></strong>
+                        <div class="space80"></div>
+                    </h4>
+            </div>
+        </div>
+    </div>  
+    <div class="space80"></div>
 </div>
 
-<!--END Block contribution -->
-
-
-<div class="space80"></div>
+<div class="space"></div>
 <!--Block Interested-->
 <div class="background-block"
     style="background-image: url(./static/img/rowing.jpeg); background-size: cover;  background-position: fixed;">

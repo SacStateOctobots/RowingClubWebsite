@@ -6,12 +6,14 @@ from flask_mail import Mail, Message
 from werkzeug.utils import secure_filename
 import google_calendar_reader as cal
 import database_library as db
+import pyotp
 import datetime
-import random
+import hashlib
 from random import randrange
 
+
 app = flask.Flask(__name__)
-app.secret_key = 'super secret string'  # Change this!
+app.secret_key = os.urandom(16).hex() # Random 16 character string
 
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
@@ -19,7 +21,12 @@ login_manager.init_app(app)
 # Our mock databases.
 # irl we should use an actual database for this.
 # We would also obviously not want to store username/login info in plain text like this.
-users = {'foo@bar.tld': {'pw': 'secret'}} #for user login info
+users = {'foo@bar.tld': {'pw': 'secret'}, #for old login setup [Remove]
+		 '367fbced0d4ca012a42984bca8cb07fc7fbd09675bd6b91a356da296f75bc596': {'pw': ''}, #testing personal gmail hash, use https://tools.keycdn.com/sha256-online-generator and insert email
+		 '633f1794c55003374a30f8c046ed3022bae38f9ec9da834ce09c2e51b2e35e00': {'pw': ''}, #Club CSUS Email Hash
+		 'c875fee06a22feda7227845dcd9680c34efd134d8d51fff72baffc08ba5bdeb5': {'pw': ''}} #Club Gmail Hash
+
+
 
 # see: https://flask.palletsprojects.com/en/2.2.x/patterns/fileuploads/
 # directory where uploaded images will be stored
@@ -43,8 +50,10 @@ app.config.update(
 )
 mail = Mail(app)
 
-#Passcode for OTP
-global_final_otp = ''
+#PyOTP TOTP instance
+validation_interval_min = 3
+secret =  pyotp.random_base32()
+totp = pyotp.TOTP(secret, interval = (60 * validation_interval_min))
 
 
 class User(flask_login.UserMixin):
@@ -79,22 +88,21 @@ def request_loader(request):
 def unauthorized_handler():
     return 'Unauthorized'
 
-#@app.route('/')
-#def index():
-#    if flask_login.current_user.is_anonymous:
-#        return 'Hello anonymous user'
-#    else:
-#        return f'Hello {flask_login.current_user.id}'
-#        #return 'Hello user' 
+#used to time out session token after a set ammount of time of inactivity
+time_out_interval = 10;
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
+    app.permanent_session_lifetime = datetime.timedelta(minutes=time_out_interval)
 
 @app.route("/")
 def welcome():
-    #newEvents = cal.get_next_five_events()
-    newEvents=[]
-    app.config["social"]=db.get_page("social")
+    newEvents = cal.get_next_five_events()
+    #newEvents=[]
     return render_template("welcome.html",next_events=newEvents,block=db.get_page("homepage_about"),
 			   joinusLink=db.get_link("joinusform"),donateLink=db.get_link("donate"),
 			   social=db.get_page("social"))
+
 
 @app.route("/donate")
 def donate():
@@ -155,17 +163,18 @@ def contact_post():
 				sender=request.form['email'],
 				recipients=[emailAddress.rstrip()])
 	mail.send(msg)
-	return render_template("contactus.html",social=db.get_page("social"))
+	return render_template("contactus.html",logo=db.get_page("contact"),social=db.get_page("social"))
 
 @app.route("/recruitment")
 def recruitment():
     return render_template("recruitment.html")
  
-
+#Remove before transfering to client
 @app.route('/login')
 def login():
     return render_template("login.html",social=db.get_page("social"))
 
+#Remove before transfering to client
 @app.route('/login', methods=['POST'])
 def login_form():
 	email = flask.request.form['email']
@@ -175,46 +184,56 @@ def login_form():
 		flask_login.login_user(user)
 		return flask.redirect(flask.url_for('protected'))
 	return 'Bad login'
-	#return render_template("login.html")
 
-##TO-DO:
-#	- find way to make sure code becomes invalid after a set amount of time
-#	- check email to make sure it is a valid email addr and that it matches set email
-#		-make sure email storage is done with hash value and to validate with hash match
-#	- email message needs to be secure, email text should be hidden from traffic sniffing
+@app.route('/login_otp')
+def login_otp():
+	return render_template('login_otp.html')
+
 @app.route('/verify', methods = ["POST"])
-def verify(): 
-	#Creates OTP
-	final_otp = ''
-	for i in range(6):
-		final_otp = final_otp + str(random.randint(0,9))
+def verify():
+	#Generates OTP with PyOTP global var
+	generated_otp = totp.now()
+	#translates user inputed email to a hash value
+	email_hash = hashlib.sha256(bytes(str(request.form['email_otp']), 'utf-8')).hexdigest()
+	#Validate if email entered is in the system and
+	#assigns the OTP to the email as its key value pair if email is in dictionary
+	try:
+		users[email_hash]['pw'] = str(generated_otp)
+	except KeyError:
+		flash("Email entered is invalid. Please try again")
+		return render_template('login_otp.html')
 	#Sends message to email put in form
 	msg = Message(subject="Rowing Club Sign-in Passcode",
-				body="Passcode for log-in verification: "
-				+ str(final_otp),  
-				sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
-				recipients=[request.form['email_otp']])
+				  body="Passcode for log-in verification: "
+				  + str(generated_otp) + "\nPasscode will expire in " + str(validation_interval_min) + " minute(s).",  
+				  sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
+				  recipients=[request.form['email_otp']])
 	mail.send(msg)
-	#Sets a session var to be referenced for validate page. 
-	#Might be removed after flask session is ended but not sure how this works with hosted website
-	session['final_otp'] = final_otp
-	#session['user_email'] = request.form['email_otp']
-	return render_template('login_otp.html') 
+	#Sets a session var to be referenced for validate page to test if code has expired. 
+	session['generated_otp'] = generated_otp
+	#Session var to generate log-in token for Flask Login
+	session['email'] = email_hash
+	return render_template('login_otp_validate.html') 
 
-@app.route('/validate',methods=["POST"])   
-def validate():      
-    # OTP Entered by the User
-    user_otp = request.form['otp'] 
-    if int(session['final_otp']) == int(user_otp):
-        #User var setting done manually so session cookies can be generated to access page
-		#Will need to alter to change to authorized rowing club email when published
-        user = User()
-        user.id = 'foo@bar.tld'
-        flask_login.login_user(user)
-        return flask.redirect(flask.url_for('protected'))
-    else:
-        flash('Incorrect Passcode Entered, Try again')
-        return render_template('login_otp.html')
+
+@app.route('/validate',methods=["POST"])
+def validate():
+	# OTP Entered by the User
+	user_otp = request.form['otp'] 
+	if totp.verify(otp=str(user_otp)):
+		#validates user with Flask Login and generates Log-in token
+		user = User()
+		user.id = str(session['email'])
+		flask_login.login_user(user, duration=datetime.timedelta(minutes=time_out_interval))
+		return flask.redirect(flask.url_for('protected'))
+	else:
+		#checks whether the entered OTP is incorrect or if the Passcode has expired
+		if totp.verify(session['generated_otp']):
+			flash('Incorrect Passcode Entered, Try again')
+			return render_template('login_otp_validate.html')
+		else:
+			flash('Passcode has timed out. Redirected to Login page.')
+			return render_template('login_otp.html')
 
 
 def file_allowed_handler(file):

@@ -15,7 +15,6 @@ Welcome - Rowing Club
 
 
 <!--First Block for Video introduction-->
-
 <section class="video-introduction">
 	<div>
 		<video autoplay loop muted plays-inline class="back-video">
@@ -32,13 +31,13 @@ Welcome - Rowing Club
 </section>
 <!--END First Block for Video introduction-->
 
-
-
 <!--Block: About US -->
 <div style="background-color: #c3b680;">
 	<div class="container-xxl py-5">
-		<div class="text-heading" data-aos="fade-down" data-aos-duration="1000">
-			{{block[0][2] | safe}}
+		<div id="homepage_about">
+			<div class="text-heading" data-aos="fade-down" data-aos-duration="1000">
+				{{block[0][2] | safe}}
+			</div>
 		</div>
 	</div>
 	<div class="space80"></div>
@@ -56,9 +55,9 @@ Welcome - Rowing Club
 			<h2>in joining?</h2>
 		</div>
 		<div class="column">
-			<div class="recruitment-button">
+			<div class="recruitment-button" id="recruitment-button">
 				<a data-aos="fade-up" data-aos-duration="1000"
-					href="{{joinusLink[0][2]}}">Join us</a>
+					href="/join">Join us</a>
 			</div>
 		</div>
 
@@ -67,7 +66,6 @@ Welcome - Rowing Club
 	</div>
 </div>
 <!--END Block interested-->
-
 
 <!--Events Block-->
 <div style="background-color: #c3b680;">
@@ -157,31 +155,47 @@ Welcome - Rowing Club
 	<div class="container" data-aos="fade-down" data-aos-duration="600">
 		<div style="padding-top: 120px;"></div>
 
+		<div class="contribue-block-home">
+			<div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+				<h2 style="font-size: 40px; color: white;"><strong>Contribute to the Team</strong></h2>
+				<div class="space"></div>
+				<p style="font-size: 20px; color: white;" class="mb-4">You can help the Rowing Club by donating on our official
+					donation page! <br /> </strong></p>
+				<div class="donate-button">
+					<div class="recruitment-button">
+						<a class="hello" href="/donate">Donate</a>
+					</div>
+					<div class="space"></div>
+				</div>
+			</div>
+		</div>
+
 		<div class="col-responsive">
-			<h2 style="font-weight: 400; padding-top: 15px;">Contribute to the team 
+			<h2 style="font-weight: 400; padding-top: 15px;">Contribute to the team
 				<div class="space80"></div>
 
 				<div class="recruitment-button1">
 					<div>
-						<a data-aos="fade-up" data-aos-duration="1000"
-						href="#">Online Donation</a>
-					</div>					
+						<a data-aos="fade-up" data-aos-duration="1000" href="/donate">Online Donation</a>
+					</div>
 				</div>
 			</h2>
 
 			<div style="font-weight: 600;" class="online">Online
 				<div class="donate-button">
 					<div class="recruitment-button">
-						<a class="hello" href="{{donateLink[0][2]}}">Donation</a>
+						<a class="hello" href="/donate">Donation</a>
+
 					</div>
 				</div>
 			</div>
 
-			<div style="font-weight: 600;"class="check">By Cheque 
+			<div style="font-weight: 600;" class="check">By Cheque
 				<div class="donate-button">
 					<p>Sacramento State Rowing Club
-					<br /> 1901 Hazel Ave,
-					<br /> Gold River, CA 95670</p>
+						<br /> 6000 J Street,
+						<br /> Sacramento, CA 95819
+					</p>
 				</div>
 			</div>
 		</div>
