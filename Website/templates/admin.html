@@ -23,10 +23,10 @@ Admin Page
 		});
 	</script>
 
-	<style>
-		body {
-			background-color: #d8d2b8;
-		}
+<style>
+	body {
+		background-color: #d8d2b8;
+	}
 
 		/* Solid border for dividers*/
 		hr.my_solid_hr {
@@ -173,7 +173,7 @@ Admin Page
 				<div class="col-16">
 					<div class="card mb-2 green_back_gold_front">
 						<h4 style="text-align: center;">Member Selected:</h4>
-						<img id="memberImage" src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top"
+						<img id="memberImage" src="/static/image_uploads/No Photo.jpg" class="card-img-top"
 							alt="'s profile photo">
 						<div class="card-body">
 							<h5 id="memberTitle" class="card-title">Nothing selected!</h5>
@@ -186,7 +186,6 @@ Admin Page
 		</div>
 	</div>
 </div>
-
 	<!-- Officers tab -->
 	<div id="Officers" class="w3-container tab tabname" style="display:none">
 		<div class="space"></div>
@@ -210,7 +209,10 @@ Admin Page
 								value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
 						</form>
 						<div class="space"></div>
-					</div>
+						<input type="submit" id='delete-officers-button-id' name='delete-officers-button'
+							value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
+					</form>
+					<div class="space"></div>
 				</div>
 			</div>
 
@@ -269,40 +271,42 @@ Admin Page
 						role="grid" aria-describedby="example_info">
 						<thead>
 						<tr role="row">
-							<th  rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending" aria-label="Name">Title</th>
-							<th  rowspan="1" colspan="1" style="width: 216.2px;" aria-label="ID">Id</th>
-							<th  rowspan="1" colspan="1" style="width: 100.2px;" aria-label="Modified Date">Modified Date</th>
+							<th rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending" aria-label="Name">
+								Title</th>
+							<th rowspan="1" colspan="1" style="width: 216.2px;" aria-label="ID">Id</th>
+							<th rowspan="1" colspan="1" style="width: 100.2px;" aria-label="Modified Date">Modified Date
+							</th>
 						</tr>
-						</thead>
-						<tbody>
-							{% for tup in blocks %}
-							<tr role="row" class="odd">
-								<td tabindex="0" class="sorting_1"><a class="editBlockAction" data-el="{{ tup[0] }}"
-										href="#">{{ tup[1] }}</a></td>
-								<td>{{ tup[0] }}</td>
-								<td>{{ tup[3] }}</td>
-							</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-				<hr />
+					</thead>
+					<tbody>
+						{% for tup in blocks %}
+						<tr role="row" class="odd">
+							<td tabindex="0" class="sorting_1"><a class="editBlockAction" data-el="{{ tup[0] }}"
+									href="#">{{ tup[1] }}</a></td>
+							<td>{{ tup[0] }}</td>
+							<td>{{ tup[3] }}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
 			</div>
-			<div class="col">
-				<div class="row g-0">
-					<form method="POST" name="update-page" id="formContent">
-						<div id="currentId" style="display: none;"></div>
-						<textarea id="content"></textarea>
-						<div class="space15"></div>
-						<button type="submit" id="btnUdpateContent"
-							class="mb-2 mr-2 btn btn-outline-2x btn-outline-success"> <strong> Update Now
-							</strong></button>
-						<input id='tinymce-uploader' type='file' name='pic' accept='image/*' style='display:none'>
-					</form>
-				</div>
+			<hr />
+		</div>
+		<div class="col">
+			<div class="row g-0">
+				<form method="POST" name="update-page" id="formContent">
+					<div id="currentId" style="display: none;"></div>
+					<textarea id="content"></textarea>
+					<div class="space15"></div>
+					<button type="submit" id="btnUdpateContent"
+						class="mb-2 mr-2 btn btn-outline-2x btn-outline-success"> <strong> Update Now
+						</strong></button>
+					<input id='tinymce-uploader' type='file' name='pic' accept='image/*' style='display:none'>
+				</form>
 			</div>
 		</div>
 	</div>
+</div>
 
 	<!-- Testimonials tab -->
 	<div id="Testimonials" class="w3-container tab tabname" style="display:none">
@@ -327,7 +331,10 @@ Admin Page
 								value="Delete Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
 						</form>
 						<div class="space"></div>
-					</div>
+						<input type="submit" id='delete-testimonial-button-id' name='delete-testimonial-button'
+							value="Delete Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
+					</form>
+					<div class="space"></div>
 				</div>
 			</div>
 			
@@ -379,6 +386,7 @@ Admin Page
 </div>
 </div>
 </div>
+</div>
 <br>
 
 <!--inline js for content block editing-->
@@ -393,28 +401,28 @@ Admin Page
 	btnEditBlock.forEach((btnEdit) => {
 		btnEdit.addEventListener("click", function (e) {
 			message.style.display = "none";
-		fetch('/editpage', {
-			headers : {
-				'Content-Type' : 'application/json'
-			},
-			method : 'POST',
-			body : JSON.stringify( {
-				'id' : e.target.getAttribute('data-el'),
+			fetch('/editpage', {
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				method: 'POST',
+				body: JSON.stringify({
+					'id': e.target.getAttribute('data-el'),
+				})
 			})
-		})
-		.then(function (response){
-			if(response.ok) {
-				response.json()
-				.then(function(response) {
-					tinymce.activeEditor.setContent(response.data[0][2]);
-					id.innerHTML = response.data[0][0];
-					});
-			}
-			else {
-			  throw Error('Error');
-			}
+				.then(function (response) {
+					if (response.ok) {
+						response.json()
+							.then(function (response) {
+								tinymce.activeEditor.setContent(response.data[0][2]);
+								id.innerHTML = response.data[0][0];
+							});
+					}
+					else {
+						throw Error('Error');
+					}
+				});
 		});
-	});
 	}); // might have extra closing brackets?
 
 	formContent.addEventListener("submit", function (e) {
@@ -422,35 +430,34 @@ Admin Page
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			method : 'POST',
-			body : JSON.stringify( {
-				'id' : id.textContent,
+			method: 'POST',
+			body: JSON.stringify({
+				'id': id.textContent,
 				'content': tinymce.activeEditor.getContent()
 			})
 		})
-		.then(function (response){
-			if(response.ok) {
-				response.json()
-				.then(function(response) {
-					console.log(response);
-					tinymce.activeEditor.setContent(response.data[0][2]);
-					id.innerHTML = response.data[0][0];
-					
-					message.innerHTML = response.message;
-					message.style.display = "block";
-				});
-				
-			}
-			else {
-				throw Error('Error');
-			}
-		})
-			.catch(function(error) {
-			console.log(error);
-		});
+			.then(function (response) {
+				if (response.ok) {
+					response.json()
+						.then(function (response) {
+							console.log(response);
+							tinymce.activeEditor.setContent(response.data[0][2]);
+							id.innerHTML = response.data[0][0];
+
+							message.innerHTML = response.message;
+							message.style.display = "block";
+						});
+
+				}
+				else {
+					throw Error('Error');
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 		e.preventDefault();
 		return false;
 	});
 </script>
-
 {% endblock %}

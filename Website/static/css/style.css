@@ -1,4 +1,4 @@
-/*CSS for Video introduction or Introduction*/
+/*=============== CSS for Video introduction or Introduction ========================*/
 .video-introduction {
     width: 100%;
     height: 100vh;
@@ -8,7 +8,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .banner-introduction-content {
@@ -57,11 +56,10 @@
         color: #fff;
         font-weight: 600;
     }
-
 }
 
 /*tablet responsive*/
-@media screen and (min-width: 568px) and (max-width: 1366px)  {
+@media screen and (min-width: 568px) and (max-width: 1366px) {
     .video-introduction-content h1 {
         font-size: 80px;
         color: #fff;
@@ -77,7 +75,6 @@
         color: #fff;
         font-weight: 600;
     }
-
 }
 
 /*desktop responsive*/
@@ -97,26 +94,6 @@
         color: #fff;
         font-weight: 600;
     }
-}
-
-/* Text banner responsive */
-.hold{
-    align-items: center;
-    justify-content: center;
-}
-
-h1.hero-heading {
-    font-size: 80px;
-    font-weight: bold;
-}
-
-@media (max-width: 768px) {
-   
-    h1.hero-heading {
-        font-size: 60px;
-        padding-top: 60px;
-    }
-
 }
 
 .video-introduction-content h4 {
@@ -153,65 +130,6 @@ h1.hero-heading {
     color: #c3b680;
     font-weight: 600;
     font-size: 24px;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
-    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
-    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
-    -khtml-box-shadow: 10px 10px 5px #3131315c;
-}
-
-.form-group button {
-    text-decoration: none;
-    display: inline-block;
-    color: #005440;
-    font-size: 18px;
-    border: 2px solid #005440;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-}
-
-.form-group button:hover {
-    text-decoration: none;
-    display: inline-block;
-    color: #c3b680;
-    font-weight: 300;
-    font-size: 18px;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
-    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
-    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
-    -khtml-box-shadow: 10px 10px 5px #3131315c;
-}
-
-.video-introduction-content-button {
-    text-align: center;
-}
-
-.video-introduction-content-button a {
-    text-decoration: none;
-    font-size: 40px;
-    display: inline-block;
-    color: #ffffff;
-    font-size: 24px;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-}
-
-.video-introduction-content-button a:hover {
-    text-decoration: none;
-    display: inline-block;
-    color: #c3b680;
-    font-weight: 600;
-    font-size: 30px;
     padding: 14px 70px;
     border-radius: 50px;
     margin-top: 20px;
@@ -278,84 +196,403 @@ h1.hero-heading {
     bottom: 0;
     z-index: -1;
 }
+/*=============== END CSS for Video introduction or Introduction (Last Block) ========================*/
 
-
-
-/*CSS for testimonial*/
-.container-testi {
-    width: 100%;
-    display: flex;
+/*===============  Text/Title banner responsive ========================*/
+.hold {
     align-items: center;
     justify-content: center;
-    z-index: 10;
-    background-color: #fff;
 }
 
-.testimonial {
-    position: relative;
-    max-width: 900px;
-    width: 100%;
-    padding: 50px 0;
-    overflow: hidden;
-    z-index: 10;
+h1.hero-heading {
+    font-size: 80px;
+    font-weight: bold;
 }
 
-.testimonial .image {
-    height: 150px;
-    width: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    z-index: 10;
+@media (max-width: 768px) {
+
+    h1.hero-heading {
+        font-size: 60px;
+        padding-top: 60px;
+    }
 }
 
-.testimonial .slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    row-gap: 30px;
-    height: 100%;
-    width: 100%;
-    z-index: 10;
+.text-heading-background {
+    background-color: white;
 }
 
-.slide p {
+.text-heading h1 {
+    margin-top: 40px;
+    font-size: 60px;
+    font-weight: bold;
+    color: #005440;
     text-align: center;
-    padding: 0 160px;
-    font-size: 18px;
-    font-weight: 400;
-    color: #005440;
-    z-index: 10;
+    letter-spacing: 5px;
+    text-shadow: 5px 5px 10px rgba(77, 77, 77, 0.947);
 }
 
-.slide .quote-icon {
-    font-size: 30px;
-    color: #005440;
-    z-index: 10;
+@media (min-width: 568px) {
+    .text-heading h2 {
+        color: black;
+    }
+
+    h2.title {
+        font-size: 50px;
+    }
+
+    .text-heading p {
+        font-size: 30px;
+    }
 }
 
-.slide .details {
+@media (max-width: 567px) {
+    .text-heading h2 {
+        color: black;
+    }
+
+    h2.title {
+        font-size: 40px;
+    }
+
+    .text-heading p {
+        font-size: 20px;
+    }
+}
+
+h1.hero-heading2 {
+    color: #ffffff;
+    text-align: center;
+}
+
+.carousel {
+    background-size: cover;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.overlay {
+    color: #fff;
+    position: absolute;
+    z-index: 12;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+@media (min-width :800px) {
+    .carousel {
+        /*This for Alumni carousel*/
+        height: 500px;
+        
+    }
+
+    h1.hero-heading2 {
+        font-size: 80px;
+        margin-top: 200px;
+    }
+}
+
+@media (min-width :500px) and (max-width:799px) {
+    .carousel {
+        /*This for Alumni carousel*/
+        height: fit-content;
+        background-position: center center;
+    }
+
+    h1.hero-heading2 {
+        font-size: 70px;
+        margin-top: 200px;
+
+    }
+}
+
+@media (max-width :499px) {
+    .carousel {
+        height: fit-content;
+    }
+
+    h1.hero-heading2 {
+        font-size: 50px;
+        margin: 100px;
+    }
+}
+
+/*=============== END Text banner responsive ========================*/
+
+/*=============== Buton ========================*/
+
+.col-responsive {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 10;
+    flex-wrap: wrap;
 }
 
-.details .name {
-    font-size: 18px;
-    font-weight: 600;
-    color: #005440;
-    z-index: 10;
+.col-responsive>* {
+    padding: 1rem;
 }
 
-.details .job {
-    font-size: 14px;
+/*Donate button*/
+@media (min-width:568px) {
+    .col-responsive {
+        display: grid;
+        grid-auto-rows: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .col-responsive h2 {
+        color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+
+    .col-responsive div {
+        color: #fff;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .donate-button a {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 400;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        margin-top: 20px;
+        background-color: #005440;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+        align-items: center;
+    }
+
+    .recruitment-button1 a {
+        font-size: 0px;
+    }
+
+    .recruitment-button2 a {
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 600;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        border-radius: 50px;
+        margin-top: 20px;
+        background-color: #005440;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+
+    .recruitment-button2 a:hover {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        border-radius: 50px;
+        margin-top: 20px;
+        background-color: #c3b680;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+}
+
+@media (min-width: 1001px){
+    .contribue-block-home{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 429px) and (max-width: 1000px){
+    .col-responsive{
+        display: none;
+    }
+
+    .col-responsive h2, .col-responsive p{
+        color: #eee;
+    }
+}
+
+@media (max-width: 428px) {
+    .contribue-block-home{
+        display: none;
+    }
+    
+    .col-responsive h2 {
+        color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+
+    h2 {
+        font-size: 40px;
+    }
+
+    .recruitment-button a {
+        font-size: 20px;
+    }
+
+    .recruitment-button a:hover {
+        font-size: 20px;
+    }
+
+    .col-responsive div.check {
+        color: #fff;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .col-responsive div.online {
+        font-size: 0px;
+    }
+
+    .recruitment-button a.hello {
+        opacity: 0;
+    }
+
+    .recruitment-button1 a.online-button {
+        opacity: 1;
+    }
+
+    .recruitment-button1 a {
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 600;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        border-radius: 50px;
+        margin-top: 20px;
+        background-color: #005440;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+
+    .recruitment-button1 a:hover {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        border-radius: 50px;
+        margin-top: 20px;
+        background-color: #c3b680;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+
+    .recruitment-button2 a {
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 600;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        border-radius: 50px;
+        margin-top: 20px;
+        background-color: #005440;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+
+    .recruitment-button2 a:hover {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        display: inline-block;
+        color: #ffffff;
+        padding: 14px 70px;
+        border-radius: 50px;
+        margin-top: 20px;
+        background-color: #c3b680;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+}
+
+.recruitment-button a {
+    text-decoration: none;
+    font-size: 20px;
     font-weight: 400;
-    color: red;
-    z-index: 10;
+    display: inline-block;
+    color: #ffffff;
+    padding: 14px 70px;
+    margin-top: 20px;
+    background-color: #005440;
+    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    align-items: center;
+    border-radius: 50px;
 }
 
-/* swiper button css */
+.recruitment-button a:hover {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    display: inline-block;
+    color: #ffffff;
+    padding: 14px 70px;
+    margin-top: 20px;
+    background-color: #c3b680;
+    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    align-items: center;
+    border-radius: 50pxs;
+}
+
+.form-group button {
+    text-decoration: none;
+    display: inline-block;
+    color: #005440;
+    font-size: 18px;
+    border: 2px solid #005440;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.form-group button:hover {
+    text-decoration: none;
+    display: inline-block;
+    color: #c3b680;
+    font-weight: 300;
+    font-size: 18px;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: #005440;
+    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
+    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
+    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
+    -khtml-box-shadow: 10px 10px 5px #3131315c;
+}
+
+.video-introduction-content-button {
+    text-align: center;
+}
+
+.video-introduction-content-button a {
+    text-decoration: none;
+    font-size: 40px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 24px;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: #005440;
+}
+
+.video-introduction-content-button a:hover {
+    text-decoration: none;
+    font-size: 40px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 24px;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: #c3b680;
+    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
+    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
+    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
+    -khtml-box-shadow: 10px 10px 5px #3131315c;
+}
+
+/* swiper button Testonomial css */
 .nav-btn {
     height: 40px;
     width: 40px;
@@ -464,24 +701,85 @@ h1.hero-heading {
     color: #ff0000;
 }
 
+/*=============== END Buton ========================*/
 
-/*CSS for text heading*/
-.text-heading-background {
-    background-color: white;
+/*=============== CSS for testimonial ========================*/
+.container-testi {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background-color: #fff;
 }
 
-.text-heading h1 {
-    margin-top: 40px;
-    font-size: 60px;
-    font-weight: bold;
-    color: #005440;
+.testimonial {
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    padding: 50px 0;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.testimonial .image {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.testimonial .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 30px;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+
+.slide p {
     text-align: center;
-    letter-spacing: 5px;
-    text-shadow: 5px 5px 10px rgba(77, 77, 77, 0.947);
+    padding: 0 160px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #005440;
+    z-index: 10;
 }
 
+.slide .quote-icon {
+    font-size: 30px;
+    color: #005440;
+    z-index: 10;
+}
 
-/*CSS for Image shadow*/
+.slide .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.details .name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #005440;
+    z-index: 10;
+}
+
+.details .job {
+    font-size: 14px;
+    font-weight: 400;
+    color: red;
+    z-index: 10;
+}
+
+/*=============== END CSS for testimonial ========================*/
+
+/*=============== CSS for Image shadow ========================*/
 .img-fluid {
     border: 2px solid #fff;
     background: url(img/tiger.png) no-repeat;
@@ -490,22 +788,9 @@ h1.hero-heading {
     -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
     -khtml-box-shadow: 10px 10px 5px #3131315c;
 }
+/*=============== END CSS for Image shadow ========================*/
 
-/*Amination*/
-/*
-@keyframes slide-up {
-    0% {
-        transform: translateY(250px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-}
-*/
-
-/*Icon For Contact Page*/
-
+/*=============== Icon For Contact Page ========================*/
 .icon {
     transition: width 0.1s, height 0.1s, transform 0.2s;
 }
@@ -561,9 +846,9 @@ h1.hero-heading {
     font-size: 25px;
     font-weight: 600;
 }
+/*=============== END Icon For Contact Page ========================*/
 
-/*Contact Form*/
-
+/*=============== Type of spcaces ========================*/
 .space80 {
     padding-top: 80px;
 }
@@ -575,7 +860,9 @@ h1.hero-heading {
 .space15 {
     padding-top: 15px;
 }
+/*=============== END Type of spcaces ========================*/
 
+/*=============== Contact ========================*/
 .contact-container {
     position: relative;
     width: 100%;
@@ -593,15 +880,17 @@ h1.hero-heading {
     padding-top: 25px;
     text-shadow: 5px 5px 5px rgba(160, 160, 160, 0.947);
 }
+/*=============== END Contact ========================*/
 
-/* Map */
+/*=============== MAP ========================*/
 .map {
     width: 100%;
     align-items: center;
     justify-content: center;
 }
+/*=============== MAP ========================*/
 
-/*--------------------Google Calendar-------------------------*/
+/*=============== Google Calendar ========================*/
 .googleCalendar {
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -652,17 +941,12 @@ h1.hero-heading {
         left: 0;
     }
 }
+/*=============== END Google Calendar ========================*/
 
 
-
-
-
-/*--------------------End Google Calendar-------------------------*/
-
-/*--------------------Title Block---------------------------------*/
+/*======================== Title Block ========================*/
 /*Desktop version*/
 @media (min-width: 1367px) {
-
     /*--------------------Calendar page-------------------------*/
     #block-title,
     #block-title1 {
@@ -706,8 +990,9 @@ h1.hero-heading {
 
     /*--------------------End Calendar page-------------------------*/
     /*--------------------Start Donate page-------------------------*/
-    
-    #block-title3 { /*Additional information*/
+
+    #block-title3 {
+        /*Additional information*/
         width: 80%;
         border: 3px solid #000000;
         position: relative;
@@ -730,7 +1015,7 @@ h1.hero-heading {
         text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
     }
 
-    .extra-info{
+    .extra-info {
         display: none;
     }
 }
@@ -792,7 +1077,8 @@ h1.hero-heading {
 
     /*--------------------End Calendar page-------------------------*/
 
-    #block-title3 { /*Additional information*/
+    #block-title3 {
+        /*Additional information*/
         width: 80%;
         border: 3px solid #000000;
         position: relative;
@@ -805,7 +1091,7 @@ h1.hero-heading {
         display: none;
     }
 
-    .extra-info{
+    .extra-info {
         padding-bottom: 25px;
     }
 }
@@ -841,11 +1127,137 @@ h1.hero-heading {
 
     .extra-info {
         display: none;
-     }
+    }
 }
 
+/*Up coming event at Homepage*/
+/* Title Block*/
+@media (min-width: 568px) {
+    #block-title {
+        height: 950px;
+        width: 100%;
+        position: relative;
+        padding-top: 50px;
+    }
 
-/* Event CSS*/
+    #title-label {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 300px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label1 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label2 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 280px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    div.name-phone {
+        font-size: 0;
+    }
+}
+
+@media (max-width : 567px) {
+    #block-title {
+        font-family: "Roboto", sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        padding-top: 10.25%;
+        height: 500px;
+    }
+
+    div.name {
+        font-size: 0;
+    }
+
+    div.name-phone {
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+        border-bottom: 1px solid #000000;
+        border-width: 1px;
+        text-shadow: 1px 4px 4px rgba(116, 116, 116, 0.947);
+    }
+}
+/*======================== END Title Block ========================*/
+
+/*========================  Event CSS ========================*/
+/*---------Events in homepage-------------*/
+/*Event in home page*/
+@media (min-width :565px) and (max-width:771px) {
+    .col{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+}
+
+@media (min-width: 568px) {
+    div.name-events {
+        font-size: 50px;
+        font-weight: 600;
+    }
+
+    div.name-phone {
+        font-size: 0px;
+    }
+}
+
+@media (max-width: 567px) {
+    div.name-phone {
+        font-size: 35px;
+        font-weight: 600;
+    }
+
+    div.name-events {
+        font-size: 0px;
+    }
+
+    div.central {
+        width: 95%;
+        align-items: center;
+        text-align: center;
+        margin-left: 10px;
+        box-shadow: gray;
+    }
+
+    div.card {
+        width: 100%;
+    }
+}
+/*---------END Events in homepage-------------*/
 
 .event-container {
     font-family: "Roboto", sans-serif;
@@ -889,7 +1301,6 @@ h1.hero-heading {
 .event .event-left .date {
     font-size: 20px;
 }
-
 
 .event .event-right {
     display: flex;
@@ -961,41 +1372,9 @@ h1.hero-heading {
         padding: 3px 0;
     }
 }
+/*======================== END Event CSS ========================*/
 
-/* End event CSS */
-
-/*text responsive*/
-@media (min-width: 568px) {
-    .text-heading h2 {
-        color: black;
-    }
-
-    h2.title {
-        font-size: 50px;
-    }
-
-    .text-heading p {
-        font-size: 30px;
-    }
-}
-
-@media (max-width: 567px) {
-    .text-heading h2 {
-        color: black;
-    }
-
-    h2.title {
-        font-size: 40px;
-    }
-
-    .text-heading p {
-        font-size: 20px;
-    }
-}
-
-/* background-block for Welcome page*/
-
-
+/*======================== background-block for Welcome page ========================*/
 .background-block1 {
     background-repeat: no-repeat;
     background-position: center;
@@ -1052,326 +1431,10 @@ h1.hero-heading {
         background-position: center;
         background-size: cover;
     }
-
 }
+/*======================== END background-block for Welcome page ========================*/
 
-/*button*/
-.recruitment-button a {
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: 600;
-    display: inline-block;
-    color: #ffffff;
-    padding: 14px 50px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-}
-
-.recruitment-button a:hover {
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: 600;
-    display: inline-block;
-    color: #ffffff;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #c3b680;
-    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-}
-
-/*Up coming event at Homepage*/
-/* Title Block*/
-@media (min-width: 568px) {
-    #block-title {
-        height: 950px;
-        width: 100%;
-        position: relative;
-        padding-top: 50px;
-
-    }
-
-    #title-label {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 300px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label1 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label2 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 280px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-
-
-    div.name-phone {
-        font-size: 0;
-    }
-}
-
-@media (max-width : 567px) {
-    #block-title {
-        font-family: "Roboto", sans-serif;
-        max-width: 100%;
-        margin: 0 auto;
-        position: relative;
-        overflow: hidden;
-        padding-top: 10.25%;
-        height: 500px;
-    }
-
-
-
-    div.name {
-        font-size: 0;
-    }
-
-    div.name-phone {
-        font-size: 30px;
-        font-weight: 600;
-        text-align: center;
-        border-bottom: 1px solid #000000;
-        border-width: 1px;
-        text-shadow: 1px 4px 4px rgba(116, 116, 116, 0.947);
-    }
-
-}
-
-/*Events in homepage*/
-@media (min-width: 568px) {
-    div.name-events {
-        font-size: 50px;
-        font-weight: 600;
-    }
-
-    div.name-phone {
-        font-size: 0px;
-    }
-}
-
-@media (max-width: 567px) {
-    div.name-phone {
-        font-size: 35px;
-        font-weight: 600;
-    }
-
-    div.name-events {
-        font-size: 0px;
-    }
-
-    div.central {
-        width: 95%;
-        align-items: center;
-        text-align: center;
-        margin-left: 10px;
-        box-shadow: gray;
-    }
-
-    div.card {
-        width: 100%;
-    }
-}
-
-/*column responsive*/
-.col-responsive {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.col-responsive>* {
-    padding: 1rem;
-}
-
-
-/*Donate button*/
-
-@media (min-width:568px) {
-    .col-responsive {
-        display: grid;
-        grid-auto-rows: 1fr;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .col-responsive h2 {
-        color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-
-    .col-responsive div {
-        color: #fff;
-        text-align: center;
-        font-size: 25px;
-    }
-
-    .donate-button a {
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: 400;
-        display: inline-block;
-        color: #ffffff;
-        padding: 14px 70px;
-        margin-top: 20px;
-        background-color: #005440;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-        align-items: center;
-    }
-
-    .recruitment-button1 a {
-        font-size: 0px;
-    }
-
-    .recruitment-button2 a {
-        text-decoration: none;
-        font-size: 17px;
-        font-weight: 600;
-        display: inline-block;
-        color: #ffffff;
-        padding: 14px 70px;
-        border-radius: 50px;
-        margin-top: 20px;
-        background-color: #005440;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-
-    .recruitment-button2 a:hover {
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: 600;
-        display: inline-block;
-        color: #ffffff;
-        padding: 14px 70px;
-        border-radius: 50px;
-        margin-top: 20px;
-        background-color: #c3b680;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-
-}
-
-@media (max-width: 567px) {
-    .col-responsive h2 {
-        color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-
-    h2 {
-        font-size: 40px;
-    }
-
-    .recruitment-button a {
-        font-size: 20px;
-    }
-
-    .recruitment-button a:hover {
-        font-size: 20px;
-    }
-
-    .col-responsive div.check {
-        color: #fff;
-        text-align: center;
-        font-size: 25px;
-    }
-
-    .col-responsive div.online {
-        font-size: 0px;
-    }
-
-    .recruitment-button a.hello {
-        opacity: 0;
-    }
-
-    .recruitment-button1 a.online-button {
-        opacity: 1;
-    }
-
-    .recruitment-button1 a {
-        text-decoration: none;
-        font-size: 17px;
-        font-weight: 600;
-        display: inline-block;
-        color: #ffffff;
-        padding: 14px 70px;
-        border-radius: 50px;
-        margin-top: 20px;
-        background-color: #005440;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-
-    .recruitment-button1 a:hover {
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: 600;
-        display: inline-block;
-        color: #ffffff;
-        padding: 14px 70px;
-        border-radius: 50px;
-        margin-top: 20px;
-        background-color: #c3b680;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-
-    .recruitment-button2 a {
-        text-decoration: none;
-        font-size: 17px;
-        font-weight: 600;
-        display: inline-block;
-        color: #ffffff;
-        padding: 14px 70px;
-        border-radius: 50px;
-        margin-top: 20px;
-        background-color: #005440;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-
-    .recruitment-button2 a:hover {
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: 600;
-        display: inline-block;
-        color: #ffffff;
-        padding: 14px 70px;
-        border-radius: 50px;
-        margin-top: 20px;
-        background-color: #c3b680;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-}
-
+/*======================== Team member ========================*/
 @media (min-width: 1367px) {
     h1.team-member-desktop {
         font-size: 100px;
@@ -1380,12 +1443,12 @@ h1.hero-heading {
         padding-top: 40px;
     }
 
-    h1.team-member-phone{
+    h1.team-member-phone {
         font-size: 0;
     }
 }
 
-@media screen and (min-width: 568px) and (max-width: 1366px){
+@media screen and (min-width: 568px) and (max-width: 1366px) {
     h1.team-member-desktop {
         font-size: 70px;
         color: #fff;
@@ -1393,7 +1456,7 @@ h1.hero-heading {
         padding-top: 40px;
     }
 
-    h1.team-member-phone{
+    h1.team-member-phone {
         font-size: 0;
     }
 }
@@ -1407,12 +1470,11 @@ h1.hero-heading {
         padding-top: 20px;
     }
 
-    h1.team-member-desktop{
+    h1.team-member-desktop {
         font-size: 0;
     }
 }
 
-/*CSS Team Member*/
 .team-item {
     padding: 35px;
     padding-right: 0px;
@@ -1523,8 +1585,9 @@ h5 {
 .mb-30 {
     margin-bottom: 30px;
 }
+/*======================== END Team member ========================*/
 
-/*CSS for Login page*/
+/*======================== Login page ========================*/
 h1,
 h2,
 h3,
@@ -1879,9 +1942,9 @@ img {
         text-align: center;
     }
 }
+/*======================== END Login page ========================*/
 
-
-/*CSS for Admin Portal*/
+/*======================== ADmin PORTAL ========================*/
 .row label {
     padding-left: 5px;
     padding-bottom: 10px;
@@ -1922,8 +1985,9 @@ select.form-control {
 .card-body {
     text-align: center;
 }
+/*======================== END ADmin PORTAL ========================*/
 
-/*Social media responsive*/
+/*======================== Social media page* ========================*/
 h3.title-social {
     color: white;
     text-align: center;
@@ -1984,7 +2048,7 @@ img.img-flickr {
     }
 
     img.img-flickr {
-        max-width:350px;
+        max-width: 350px;
         min-width: 200px;
     }
 
@@ -1996,59 +2060,4 @@ img.img-flickr {
         font-size: 18px;
     }
 }
-
-/*Alumni*/
-.carousel {
-    background-size: cover;
-    height: fit-content;
-    overflow: hidden;
-}
-
-.overlay {
-    color: #fff;
-    position: absolute;
-    z-index: 12;
-    top: 0%;
-    left: 0;
-    width: 100%;
-    text-align: center;
-}
-
-
-h1.hero-heading2 {
-    color: #ffffff;
-    text-align: center;
-}
-
-@media (min-width :800px) {
-    .carousel {
-       height: 550px;
-    }
-    h1.hero-heading2{
-        font-size: 80px;
-        margin-top: 250px;
-    }
-}
-
-@media (min-width :500px) and (max-width:799px) {
-    .carousel {
-       height: fit-content;
-    }
-
-    h1.hero-heading2 {
-        font-size: 70px;
-        margin-top: 200px;
-      
-    }
-}
-
-@media (max-width :499px) {
-    .carousel {
-       height: fit-content;
-    }
-
-    h1.hero-heading2 {
-        font-size: 50px;
-        margin: 100px;
-    }
-}
+/*======================== END Social media page* ========================*/
