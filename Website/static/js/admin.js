@@ -62,9 +62,6 @@ function testimonialSelect() {
 }
 
 //selected tab js
-//selected tab js
-//selected tab js
-
 //Script for displaying tabs and saving tab state 
 //https://www.w3schools.com/w3css/w3css_tabulators.asp
 window.onload = Loader;

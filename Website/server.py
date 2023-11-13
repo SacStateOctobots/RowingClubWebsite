@@ -22,7 +22,7 @@ login_manager.init_app(app)
 # irl we should use an actual database for this.
 # We would also obviously not want to store username/login info in plain text like this.
 users = {'foo@bar.tld': {'pw': 'secret'}, #for old login setup [Remove]
-		 '08efdf7f9d382f19802a6ccb1a39c7531be4b1e5aaebdc2a49395ee656df22ab': {'pw': ''}, #testing personal gmail hash
+		 '367fbced0d4ca012a42984bca8cb07fc7fbd09675bd6b91a356da296f75bc596': {'pw': ''}, #testing personal gmail hash, use https://tools.keycdn.com/sha256-online-generator and insert email
 		 '633f1794c55003374a30f8c046ed3022bae38f9ec9da834ce09c2e51b2e35e00': {'pw': ''}, #Club CSUS Email Hash
 		 'c875fee06a22feda7227845dcd9680c34efd134d8d51fff72baffc08ba5bdeb5': {'pw': ''}} #Club Gmail Hash
 
@@ -54,6 +54,7 @@ mail = Mail(app)
 validation_interval_min = 3
 secret =  pyotp.random_base32()
 totp = pyotp.TOTP(secret, interval = (60 * validation_interval_min))
+
 
 class User(flask_login.UserMixin):
     pass
@@ -98,45 +99,58 @@ def make_session_permanent():
 def welcome():
     newEvents = cal.get_next_five_events()
     #newEvents=[]
-    return render_template("welcome.html",next_events=newEvents,block=db.get_page("homepage_about"))
+    return render_template("welcome.html",next_events=newEvents,block=db.get_page("homepage_about"),
+			   joinusLink=db.get_link("joinusform"),donateLink=db.get_link("donate"),
+			   social=db.get_page("social"))
+
 
 @app.route("/donate")
 def donate():
-    return render_template("donate.html")
+    return render_template("donate.html", donateLink=db.get_link("donate"), donateAffiliateLink = db.get_link("donateaff"),
+			   social=db.get_page("social"), donate_block=db.get_page("donateaffiliate"))
 
 @app.route("/members")
 def members():
-    return render_template("members.html", member=db.get_team_members())
+    return render_template("members.html", member=db.get_team_members(),joinusLink=db.get_link("joinusform"),
+	social=db.get_page("social"))
 
 @app.route("/alumni")
 def alumni():
 	print(db.get_alumni())
-	return render_template("alumni.html", alumni=db.get_alumni(), block1=db.get_page("alumni1"),block2=db.get_page("alumni2"))
+	return render_template("alumni.html", alumni=db.get_alumni(), 
+			block1=db.get_page("alumni1"),block2=db.get_page("alumni2"),
+			mailingFormLink = db.get_link("mailingform"),
+			social=db.get_page("social"))
 
 @app.route("/calendar")
 def calendar():
 	oldEvents = cal.get_last_five_events()[:4]
 	newEvents = cal.get_next_five_events()[:4]
-	return render_template("calendar.html",past_events = oldEvents,next_events = newEvents)
+	return render_template("calendar.html",past_events = oldEvents,next_events = newEvents,social=db.get_page("social"))
 
 @app.route("/instagram")
 def instagram():
-    return render_template("instagram.html",social=db.get_page("social"), contact=db.get_page("contact"))
+    return render_template("instagram.html",
+			   instagramLink = db.get_link("instagram"), flickrLink = db.get_link("flickr"),social=db.get_page("social"))
 
 @app.route("/about")
 def about():
-    return render_template("about_us.html", officers=db.get_about(), content=db.get_page("aboutus"))
+    return render_template("about_us.html", officers=db.get_about(), content=db.get_page("aboutus"), 
+			   joinusLink=db.get_link("joinusform"),social=db.get_page("social"))
 
 #recruitment page
 @app.route("/join")
 def join():
     test = db.get_testimonial()
     
-    return render_template("join.html",test=test,block1=db.get_page("join_block1"),block2=db.get_page("join_block2"),block3=db.get_page("join_block3"))
+    return render_template("join.html",test=test,
+			   block1=db.get_page("join_block1"),block2=db.get_page("join_block2"),block3=db.get_page("join_block3"),
+			   joinusLink = db.get_link("joinusform"),social=db.get_page("social"))
 
 @app.route("/contact")
 def contact():
-    return render_template("contactus.html",social=db.get_page("social"),logo=db.get_page("contact_logo"))
+    return render_template("contactus.html",social=db.get_page("social"),logo=db.get_page("contact_logo"),
+			   mailingFormLink = db.get_link("mailingform"))
 
 
 @app.route("/contact",methods=['POST'])
@@ -149,7 +163,7 @@ def contact_post():
 				sender=request.form['email'],
 				recipients=[emailAddress.rstrip()])
 	mail.send(msg)
-	return render_template("contactus.html")
+	return render_template("contactus.html",logo=db.get_page("contact"),social=db.get_page("social"))
 
 @app.route("/recruitment")
 def recruitment():
@@ -158,7 +172,7 @@ def recruitment():
 #Remove before transfering to client
 @app.route('/login')
 def login():
-    return render_template("login.html")
+    return render_template("login.html",social=db.get_page("social"))
 
 #Remove before transfering to client
 @app.route('/login', methods=['POST'])
@@ -396,7 +410,9 @@ def protected_post():
 							team_members=team_members, 
 							officers=officers, 
 							testimonial=testimonial,
-              blocks=db.get_pages())
+              blocks=db.get_pages(),
+			  links =db.get_links(),
+			  social=db.get_page("social"))
 
 @app.route('/protected')
 @flask_login.login_required
@@ -417,7 +433,9 @@ def protected():
 							team_members=team_members, 
 							officers=officers, 
 							testimonial=testimonial,
-              blocks=db.get_pages())
+              blocks=db.get_pages(),
+			  links =db.get_links(),
+			  social=db.get_page("social"))
 
 @app.route('/logout')
 def logout():
@@ -441,9 +459,8 @@ def cmsPages():
 		db.update_page(json_data["id"],json_data["content"])
 		return {
 			'data' : db.get_page(json_data["id"]),
-			'message': "Updated!"
+			'message': "Updated Content!"
 		}
-	return render_template('admin.html')
 
 
 @app.route('/editpage', methods=['POST'])
@@ -454,7 +471,6 @@ def updatePage():
 		return {
 			'data' : db.get_page(json_data["id"])
 		}
-	return render_template('admin.html')
 
 @app.route('/uploadimage', methods=['POST'])
 @flask_login.login_required
@@ -467,7 +483,19 @@ def uploadImage():
 	return {
 			'location' : os.path.join(app.config['UPLOAD_FOLDER'], file)
 		}
-			
+
+@app.route('/updatelinks', methods=['POST'])
+@flask_login.login_required
+def updateLinks():
+	if flask.request.method == 'POST':
+		json_data = flask.request.get_json()
+		for object in json_data["data"]:
+			db.update_link(object,json_data["data"][object])
+		return {
+			'data' : db.get_links(),
+			'message': "Saved Changes"
+		}
+
 
 
           

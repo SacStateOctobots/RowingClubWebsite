@@ -129,3 +129,18 @@ def update_page(id, content):
 		return None
 def delete_page(id):
 	delete_from_db("cmspages","id",id)
+
+#######################################################
+# links table
+#######################################################
+def get_links():
+	return query_db('select * from links')
+def update_link(id, url):
+	query = "UPDATE links SET url= :url WHERE id= :id"
+	args = {'url': url, 'id': id}
+	if(update_to_db(query, args)):
+		return True
+	else:
+		return False
+def get_link(id):
+	return query_db('select * from links where id = :val',{'val': id})
