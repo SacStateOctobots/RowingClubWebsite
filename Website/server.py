@@ -22,7 +22,7 @@ login_manager.init_app(app)
 # irl we should use an actual database for this.
 # We would also obviously not want to store username/login info in plain text like this.
 users = {'foo@bar.tld': {'pw': 'secret'}, #for old login setup [Remove]
-		 '367fbced0d4ca012a42984bca8cb07fc7fbd09675bd6b91a356da296f75bc596': {'pw': ''}, #testing personal gmail hash, use https://tools.keycdn.com/sha256-online-generator and insert email
+		 '08efdf7f9d382f19802a6ccb1a39c7531be4b1e5aaebdc2a49395ee656df22ab': {'pw': ''}, #testing personal gmail hash, use https://tools.keycdn.com/sha256-online-generator and insert email
 		 '633f1794c55003374a30f8c046ed3022bae38f9ec9da834ce09c2e51b2e35e00': {'pw': ''}, #Club CSUS Email Hash
 		 'c875fee06a22feda7227845dcd9680c34efd134d8d51fff72baffc08ba5bdeb5': {'pw': ''}} #Club Gmail Hash
 
@@ -188,7 +188,7 @@ def login_form():
 
 @app.route('/login_otp')
 def login_otp():
-	return render_template('login_otp.html')
+	return render_template('login_otp.html', social=db.get_page("social") )
 
 @app.route('/verify', methods = ["POST"])
 def verify():
@@ -202,7 +202,7 @@ def verify():
 		users[email_hash]['pw'] = str(generated_otp)
 	except KeyError:
 		flash("Email entered is invalid. Please try again")
-		return render_template('login_otp.html')
+		return render_template('login_otp.html', social=db.get_page("social") )
 	#Sends message to email put in form
 	msg = Message(subject="Rowing Club Sign-in Passcode",
 				  body="Passcode for log-in verification: "
@@ -214,7 +214,7 @@ def verify():
 	session['generated_otp'] = generated_otp
 	#Session var to generate log-in token for Flask Login
 	session['email'] = email_hash
-	return render_template('login_otp_validate.html') 
+	return render_template('login_otp_validate.html', social=db.get_page("social") ) 
 
 
 @app.route('/validate',methods=["POST"])
@@ -233,8 +233,8 @@ def validate():
 			flash('Incorrect Passcode Entered, Try again')
 			return render_template('login_otp_validate.html')
 		else:
-			flash('Passcode has timed out. Redirected to Login page.')
-			return render_template('login_otp.html')
+			flash('Passcode has timed out. Redirected to Login page.', social=db.get_page("social") )
+			return render_template('login_otp.html', social=db.get_page("social") )
 
 
 def file_allowed_handler(file):
@@ -394,11 +394,7 @@ def protected_post():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_testimonial(nametext,text1,filename,text2)
-	
-	players = db.get_players()
-	#print(players)
-	alumni = db.get_alumni()
-	#print(alumni)
+
 	team_members = db.get_team_members()
 	#print(team_members)
 	officers = db.get_about()
@@ -406,8 +402,6 @@ def protected_post():
 	testimonial=db.get_testimonial()
 	#print(testimonial)
 	return render_template("admin.html", 
-							players=players, 
-							alumni=alumni, 
 							team_members=team_members, 
 							officers=officers, 
 							testimonial=testimonial,
@@ -418,19 +412,13 @@ def protected_post():
 @app.route('/protected')
 @flask_login.login_required
 def protected():
-	players = db.get_players()
-	#print(players)
-	alumni = db.get_alumni()
-	#print(alumni)
 	team_members = db.get_team_members()
 	#print(team_members)
 	officers = db.get_about()
 	#print(officers)
 	testimonial=db.get_testimonial()
 	#print(testimonial)
-	return render_template("admin.html", 
-							players=players, 
-							alumni=alumni, 
+	return render_template("admin.html",
 							team_members=team_members, 
 							officers=officers, 
 							testimonial=testimonial,

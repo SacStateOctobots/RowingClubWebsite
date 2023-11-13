@@ -25,17 +25,7 @@ INSERT INTO team_members (name, description, imgfilename, role) VALUES
 	('Team Member 2', 'Hello, I am Team Member 2.', 'Bryleigh Nixon.jpg', 'Role 2'),
     ('Team Member 3', 'Hello, I am Team Member 3.', 'Daria Okhremtchuk.jpg', 'Role 3'),
 	('Team Member 4', 'Hello, I am Team Member 4.', 'Ella Holmes.jpg', 'Role 4'),
-    ('Team Member 5', 'Hello, I am Team Member 5.', 'Harper Waring.jpg', 'Role 5');
-
---team members table and data
-CREATE TABLE IF NOT EXISTS alumni (
-	name VARCHAR(255) NOT NULL UNIQUE, 
-	description VARCHAR(255) NOT NULL, 
-	imgfilename VARCHAR(255) NOT NULL);	
-
-INSERT INTO alumni (name, description, imgfilename) VALUES 
-	('Alumni1', 'Hello, my name is Alumni1.','Cat1.jpg'),
-	('Alumni2', 'Hello, my name is Alumni2.','Cat2.jpg');	
+    ('Team Member 5', 'Hello, I am Team Member 5.', 'Harper Waring.jpg', 'Role 5');	
 
 --officers table and data (about page)
 CREATE TABLE IF NOT EXISTS officers (
