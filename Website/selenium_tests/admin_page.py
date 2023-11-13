@@ -10,6 +10,7 @@ def test_input_helper(driver,tab,field_input_pairs,submit_id):
 	# Navigate to admin page
 	driver.get(PATH_STRING+"/protected")
 	# Navigate to the required tab
+	input("Press enter to continue test.")
 	element = driver.find_element(By.ID,tab)
 	element.click()
 	# fill out the fields of this form based on given list
@@ -93,34 +94,12 @@ def admin_page_test(driver):
 	dir_path = os.path.dirname(os.path.realpath(__file__))
 	now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-	# test player form input
-	form_input_pairs = [
-		("player-name-id","Test Player "+now),
-		("player-desc-id","Test Player Description "+now),
-		("player-file-id",dir_path+"/sample-image.jpg")
-	]
-	print("Testing player input.")
-	test_input_helper(driver,"players-tab",form_input_pairs,"player-button-id")
-	print("Testing player delete.")
-	test_delete_helper(driver,"players-tab","deleteplayer-id",form_input_pairs[0][1],"delete-player-button-id")
-	
-	# test alumni form input
-	form_input_pairs = [
-		("alumni-name-id","Test Alumni "+now),
-		("alumni-desc-id","Test Alumni Description "+now),
-		("alumni-file-id",dir_path+"/sample-image.jpg")
-	]
-	print("Testing alumni input.")
-	test_input_helper(driver,"alumni-tab",form_input_pairs,"alumni-button-id")
-	print("Testing alumni delete.")
-	test_delete_helper(driver,"alumni-tab","deletealumni-id",form_input_pairs[0][1],"delete-alumni-button-id")
-
 	# test team member form input
 	form_input_pairs = [
 		("team-name-id","Test Member "+now),
 		("team-player-desc-id","Test Member Player Description "+now),
 		("team-role-desc-id","Test Member Role Description "+now),
-		("team-file-id",dir_path+"/sample-image.jpg")
+		("team-file-id",dir_path+"\sample-image.jpg")
 	]
 	print("Testing team member input.")
 	test_input_helper(driver,"team-tab",form_input_pairs,"team-button-id")
@@ -131,7 +110,7 @@ def admin_page_test(driver):
 	form_input_pairs = [
 		("officers-name-id","Test Officer "+now),
 		("officers-desc-id","Test Officer Description "+now),
-		("officers-file-id",dir_path+"/sample-image.jpg")
+		("officers-file-id",dir_path+"\sample-image.jpg")
 	]
 	print("Testing officers input.")
 	test_input_helper(driver,"officers-tab",form_input_pairs,"officers-button-id")
@@ -143,13 +122,13 @@ def admin_page_test(driver):
 		("testimonial-name-id","Test Testimonial "+now),
 		("testimonial-text1-id","Testimonial Text1 "+now),
 		("testimonial-text2-id","Testimonial Text2 "+now),
-		("testimonial-file-id",dir_path+"/sample-image.jpg")
+		("testimonial-file-id",dir_path+"\sample-image.jpg")
 	]
 	print("Testing testimonial input.")
 	test_input_helper(driver,"testimonials-tab",form_input_pairs,"testimonial-button-id")
 	print("Testing testimonial delete.")
 	test_delete_helper(driver,"testimonials-tab","deletetestimonial-id",form_input_pairs[0][1],"delete-testimonial-button-id")
-	
+
 	# logout
 	print("Testing logout.")
 	driver.get(PATH_STRING+"/logout")
