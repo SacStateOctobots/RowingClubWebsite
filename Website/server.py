@@ -1,40 +1,23 @@
-import flask
-import flask_login
-import os
-from flask import Flask, flash, render_template, current_app, request, redirect, session
-from flask_mail import Mail, Message
-from werkzeug.utils import secure_filename
-import google_calendar_reader as cal
 import database_library as db
+import google_calendar_reader as cal
 import pyotp
-import datetime
-import hashlib
+from datetime import datetime, timedelta
+from flask import Flask, flash, render_template, current_app, request, redirect, session, url_for
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
+from flask_mail import Mail, Message
+from hashlib import sha256
+from os import urandom, path
 from random import randrange
+from werkzeug.utils import secure_filename
+
+#Flask app initialization
+app = Flask(__name__)
+app.secret_key = urandom(16).hex() # Random 16 character string
 
 
-app = flask.Flask(__name__)
-app.secret_key = os.urandom(16).hex() # Random 16 character string
-
-login_manager = flask_login.LoginManager()
-login_manager.init_app(app)
-
-# Our mock databases.
-# irl we should use an actual database for this.
-# We would also obviously not want to store username/login info in plain text like this.
-users = {'foo@bar.tld': {'pw': 'secret'}, #for old login setup [Remove]
-		 '08efdf7f9d382f19802a6ccb1a39c7531be4b1e5aaebdc2a49395ee656df22ab': {'pw': ''}, #testing personal gmail hash
-		 '633f1794c55003374a30f8c046ed3022bae38f9ec9da834ce09c2e51b2e35e00': {'pw': ''}, #Club CSUS Email Hash
-		 'c875fee06a22feda7227845dcd9680c34efd134d8d51fff72baffc08ba5bdeb5': {'pw': ''}} #Club Gmail Hash
-
-
-
-# see: https://flask.palletsprojects.com/en/2.2.x/patterns/fileuploads/
-# directory where uploaded images will be stored
-UPLOAD_FOLDER = 'static/image_uploads'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-# set up the mail instance
+#---------------------------#
+# Flask Mail instance setup #
+#---------------------------#
 keyFile = open("EMAIL_KEY", "r")
 emailKey = keyFile.read()
 keyFile.close()
@@ -50,12 +33,24 @@ app.config.update(
 )
 mail = Mail(app)
 
+
+#------------------------------#
+# Flask Login and PyOTP set up #
+#------------------------------#
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+# Dictionary of login emails (in SHA256 hash format)
+users = {'08efdf7f9d382f19802a6ccb1a39c7531be4b1e5aaebdc2a49395ee656df22ab': {'pw': ''}, #testing personal gmail hash [Remove at launch]
+		 '633f1794c55003374a30f8c046ed3022bae38f9ec9da834ce09c2e51b2e35e00': {'pw': ''}, #Club CSUS Email Hash
+		 'c875fee06a22feda7227845dcd9680c34efd134d8d51fff72baffc08ba5bdeb5': {'pw': ''}} #Club Gmail Hash
+
 #PyOTP TOTP instance
 validation_interval_min = 3
 secret =  pyotp.random_base32()
 totp = pyotp.TOTP(secret, interval = (60 * validation_interval_min))
 
-class User(flask_login.UserMixin):
+class User(UserMixin):
     pass
 
 @login_manager.user_loader
@@ -82,63 +77,104 @@ def request_loader(request):
 
     return user
 
-
 @login_manager.unauthorized_handler
 def unauthorized_handler():
     return 'Unauthorized'
+
+
+#------------------#
+# Admin Page setup #
+#------------------#
+# see: https://flask.palletsprojects.com/en/2.2.x/patterns/fileuploads/
+# directory where uploaded images through the admin page will be stored
+UPLOAD_FOLDER = 'static/image_uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #used to time out session token after a set ammount of time of inactivity
 time_out_interval = 10;
 @app.before_request
 def make_session_permanent():
     session.permanent = True
-    app.permanent_session_lifetime = datetime.timedelta(minutes=time_out_interval)
+    app.permanent_session_lifetime = timedelta(minutes=time_out_interval)
 
+def file_allowed_handler(file):
+	fname_prefix = file.filename.split(".")[0]
+	fname_suffix = file.filename.split(".")[1]
+	fname = ""
+	fname = fname_prefix
+	fname += str(randrange(1000000))+"_"
+	fname += "{:%Y_%m_%d_%X}".format(datetime.now())
+	fname += "."
+	fname += fname_suffix
+	file.filename = fname
+	print(file.filename)
+	filename = secure_filename(file.filename)
+	print(path.join(app.config['UPLOAD_FOLDER'], filename))
+	file.save(path.join(app.config['UPLOAD_FOLDER'], filename))
+	return filename
+
+# checks if file with filename is allowed to be uploaded
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+#---------------------------#
+# Site page route functions #
+#---------------------------#
+#Home Page
 @app.route("/")
 def welcome():
     newEvents = cal.get_next_five_events()
     #newEvents=[]
     return render_template("welcome.html",next_events=newEvents,block=db.get_page("homepage_about"))
 
-@app.route("/donate")
-def donate():
-    return render_template("donate.html")
-
-@app.route("/members")
-def members():
-    return render_template("members.html", member=db.get_team_members())
-
+#Alumni Page
 @app.route("/alumni")
 def alumni():
 	print(db.get_alumni())
 	return render_template("alumni.html", alumni=db.get_alumni(), block1=db.get_page("alumni1"),block2=db.get_page("alumni2"))
+#Donate Page
+@app.route("/donate")
+def donate():
+    return render_template("donate.html")
 
+#Club Members page
+@app.route("/members")
+def members():
+    return render_template("members.html", member=db.get_team_members())
+
+#Calender Page
 @app.route("/calendar")
 def calendar():
 	oldEvents = cal.get_last_five_events()[:4]
 	newEvents = cal.get_next_five_events()[:4]
 	return render_template("calendar.html",past_events = oldEvents,next_events = newEvents)
 
+#Social Media Page
 @app.route("/instagram")
 def instagram():
     return render_template("instagram.html",social=db.get_page("social"), contact=db.get_page("contact"))
 
+#About Us Page
 @app.route("/about")
 def about():
     return render_template("about_us.html", officers=db.get_about(), content=db.get_page("aboutus"))
 
-#recruitment page
+#Recruitment page
 @app.route("/join")
 def join():
     test = db.get_testimonial()
     
     return render_template("join.html",test=test,block1=db.get_page("join_block1"),block2=db.get_page("join_block2"),block3=db.get_page("join_block3"))
 
+#Contact Us Page
 @app.route("/contact")
 def contact():
     return render_template("contactus.html",social=db.get_page("social"),logo=db.get_page("contact_logo"))
 
-
+#Contact Us Page: Email Form Handeler
 @app.route("/contact",methods=['POST'])
 def contact_post():
 	msg = Message(subject=request.form['subject'],
@@ -150,27 +186,7 @@ def contact_post():
 				recipients=[emailAddress.rstrip()])
 	mail.send(msg)
 	return render_template("contactus.html")
-
-@app.route("/recruitment")
-def recruitment():
-    return render_template("recruitment.html")
  
-#Remove before transfering to client
-@app.route('/login')
-def login():
-    return render_template("login.html")
-
-#Remove before transfering to client
-@app.route('/login', methods=['POST'])
-def login_form():
-	email = flask.request.form['email']
-	if flask.request.form['pw'] == users[email]['pw']:
-		user = User()
-		user.id = email
-		flask_login.login_user(user)
-		return flask.redirect(flask.url_for('protected'))
-	return 'Bad login'
-
 @app.route('/login_otp')
 def login_otp():
 	return render_template('login_otp.html')
@@ -180,7 +196,7 @@ def verify():
 	#Generates OTP with PyOTP global var
 	generated_otp = totp.now()
 	#translates user inputed email to a hash value
-	email_hash = hashlib.sha256(bytes(str(request.form['email_otp']), 'utf-8')).hexdigest()
+	email_hash = sha256(bytes(str(request.form['email_otp']), 'utf-8')).hexdigest()
 	#Validate if email entered is in the system and
 	#assigns the OTP to the email as its key value pair if email is in dictionary
 	try:
@@ -201,7 +217,6 @@ def verify():
 	session['email'] = email_hash
 	return render_template('login_otp_validate.html') 
 
-
 @app.route('/validate',methods=["POST"])
 def validate():
 	# OTP Entered by the User
@@ -210,8 +225,8 @@ def validate():
 		#validates user with Flask Login and generates Log-in token
 		user = User()
 		user.id = str(session['email'])
-		flask_login.login_user(user, duration=datetime.timedelta(minutes=time_out_interval))
-		return flask.redirect(flask.url_for('protected'))
+		login_user(user, duration=timedelta(minutes=time_out_interval))
+		return redirect(url_for('protected'))
 	else:
 		#checks whether the entered OTP is incorrect or if the Passcode has expired
 		if totp.verify(session['generated_otp']):
@@ -221,83 +236,36 @@ def validate():
 			flash('Passcode has timed out. Redirected to Login page.')
 			return render_template('login_otp.html')
 
+# Admin Page
+@app.route('/protected')
+@login_required
+def protected():
+	team_members = db.get_team_members()
+	#print(team_members)
+	officers = db.get_about()
+	#print(officers)
+	testimonial=db.get_testimonial()
+	#print(testimonial)
+	blocks = db.get_pages()
+	#print(blocks)
+	return render_template("admin.html", 
+							team_members=team_members, 
+							officers=officers, 
+							testimonial=testimonial,
+							blocks=blocks)
 
-def file_allowed_handler(file):
-	fname_prefix = file.filename.split(".")[0]
-	fname_suffix = file.filename.split(".")[1]
-	fname = ""
-	fname = fname_prefix
-	fname += str(randrange(1000000))+"_"
-	fname += "{:%Y_%m_%d_%X}".format(datetime.datetime.now())
-	fname += "."
-	fname += fname_suffix
-	file.filename = fname
-	print(file.filename)
-	filename = secure_filename(file.filename)
-	print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-	file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-	return filename
-	
+#Admin Page: Form and Content Block handelers
 @app.route('/protected', methods=['POST'])
-@flask_login.login_required
+@login_required
 def protected_post():
+	team_members = db.get_team_members()
+	officers = db.get_about()
+	testimonial=db.get_testimonial()
+	blocks = db.get_pages()
 	print(request.form)
-	if "deleteplayer" in request.form:
-		text = request.form['deleteplayer']
-		db.delete_player(text)
-	if "player-name" in request.form:
-		nametext = request.form['player-name']
-		desc = request.form['player-desc']
-		# check if the post request has the file part
-		if 'player-file' not in request.files:
-			print('No file part')
-			return redirect(request.url)
-		file = request.files['player-file']
-		# If the user does not select a file, the browser submits an
-		# empty file without a filename.
-		if file.filename == '':
-			print('No file name')
-			return redirect(request.url)
-		if file and allowed_file(file.filename):
-			print('Success')
-			filename = file_allowed_handler(file)
-		else:
-			print('File name not allowed')
-			return redirect(request.url)
-		db.insert_player(nametext,desc,filename)
-            
-#######################################################
-# Alumni form -> needs to be changed to edit text. Alumni memebers not a part of page
-#######################################################
-
-	if "deletealumni" in request.form:
-		text = request.form['deletealumni']
-		db.delete_alumni(text)
-	if "alumni-name" in request.form:
-		nametext = request.form['alumni-name']
-		desc = request.form['alumni-desc']
-		# check if the post request has the file part
-		if 'alumni-file' not in request.files:
-			print('No file part')
-			return redirect(request.url)
-		file = request.files['alumni-file']
-		# If the user does not select a file, the browser submits an
-		# empty file without a filename.
-		if file.filename == '':
-			print('No file name')
-			return redirect(request.url)
-		if file and allowed_file(file.filename):
-			print('Success alumni')
-			filename = file_allowed_handler(file)
-		else:
-			print('File name not allowed')
-			return redirect(request.url)
-		db.insert_alumni(nametext,desc,filename)
-
-#######################################################
-# team members form
-#######################################################
-
+	#------------------------------#
+	# Team Members Add/Delete Form #
+	#------------------------------#
 	if "deleteteam" in request.form:
 		text = request.form['deleteteam']
 		db.delete_team_members(text)
@@ -322,11 +290,9 @@ def protected_post():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_team_members(nametext,desc,filename,role)
-
-#######################################################
-# Officer form
-#######################################################
-
+	#--------------------------#
+	# Officers Add/Delete Form #
+	#--------------------------#
 	if "deleteofficers" in request.form:
 		text = request.form['deleteofficers']
 		db.delete_about(text)
@@ -352,9 +318,9 @@ def protected_post():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_about(nametext,desc,filename)
-#######################################################
-# Testimonials form
-#######################################################
+	#-----------------------------#
+	# Testamonial Add/Delete Form #
+	#-----------------------------#
 	if "deletetestimonial" in request.form:
 		text = request.form['deletetestimonial']
 		db.delete_testimonial(text)
@@ -379,65 +345,29 @@ def protected_post():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_testimonial(nametext,text1,filename,text2)
-	
-	players = db.get_players()
-	#print(players)
-	alumni = db.get_alumni()
-	#print(alumni)
-	team_members = db.get_team_members()
-	#print(team_members)
-	officers = db.get_about()
-	#print(officers)
-	testimonial=db.get_testimonial()
-	#print(testimonial)
+
 	return render_template("admin.html", 
-							players=players, 
-							alumni=alumni, 
 							team_members=team_members, 
 							officers=officers, 
 							testimonial=testimonial,
-              blocks=db.get_pages())
+							blocks=blocks)
 
-@app.route('/protected')
-@flask_login.login_required
-def protected():
-	players = db.get_players()
-	#print(players)
-	alumni = db.get_alumni()
-	#print(alumni)
-	team_members = db.get_team_members()
-	#print(team_members)
-	officers = db.get_about()
-	#print(officers)
-	testimonial=db.get_testimonial()
-	#print(testimonial)
-	return render_template("admin.html", 
-							players=players, 
-							alumni=alumni, 
-							team_members=team_members, 
-							officers=officers, 
-							testimonial=testimonial,
-              blocks=db.get_pages())
-
+# Admin Page: Log out Button
 @app.route('/logout')
 def logout():
-	flask_login.logout_user()
+	logout_user()
 	return redirect('/')
 
 @app.route('/sql_debug')
 def sql_debug():
-	return render_template("sql_debug.html", players=db.get_players())
+	return render_template("sql_debug.html")
 
-# checks if file with filename is allowed to be uploaded
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
+# Admin Page: Content Block
 @app.route('/updatecontent', methods=['POST'])
-@flask_login.login_required
+@login_required
 def cmsPages():
-	if flask.request.method == 'POST':
-		json_data = flask.request.get_json()
+	if request.method == 'POST':
+		json_data = request.get_json()
 		db.update_page(json_data["id"],json_data["content"])
 		return {
 			'data' : db.get_page(json_data["id"]),
@@ -445,31 +375,24 @@ def cmsPages():
 		}
 	return render_template('admin.html')
 
-
+# Admin Page: Content Block
 @app.route('/editpage', methods=['POST'])
-@flask_login.login_required
+@login_required
 def updatePage():
-	if flask.request.method == 'POST':
-		json_data = flask.request.get_json()
+	if request.method == 'POST':
+		json_data = request.get_json()
 		return {
 			'data' : db.get_page(json_data["id"])
 		}
 	return render_template('admin.html')
 
+# Admin Page: Content Block
 @app.route('/uploadimage', methods=['POST'])
-@flask_login.login_required
+@login_required
 def uploadImage():
-	if flask.request.method == 'POST':
+	if request.method == 'POST':
 		if request.files.get("file"):
 			if allowed_file(request.files.get("file").filename):
 				file = secure_filename(request.files.get("file").filename)
-				request.files.get("file").save(os.path.join(app.config['UPLOAD_FOLDER'], file))
-	return {
-			'location' : os.path.join(app.config['UPLOAD_FOLDER'], file)
-		}
-			
-
-
-          
-	
-            
+				request.files.get("file").save(path.join(app.config['UPLOAD_FOLDER'], file))
+	return {'location' : path.join(app.config['UPLOAD_FOLDER'], file)}
