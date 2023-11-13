@@ -34,8 +34,10 @@ Welcome - Rowing Club
 <!--Block: About US -->
 <div style="background-color: #c3b680;">
 	<div class="container-xxl py-5">
-		<div class="text-heading" data-aos="fade-down" data-aos-duration="1000">
-			{{block[0][2] | safe}}
+		<div id="homepage_about">
+			<div class="text-heading" data-aos="fade-down" data-aos-duration="1000">
+				{{block[0][2] | safe}}
+			</div>
 		</div>
 	</div>
 	<div class="space80"></div>
@@ -53,7 +55,7 @@ Welcome - Rowing Club
 			<h2>in joining?</h2>
 		</div>
 		<div class="column">
-			<div class="recruitment-button">
+			<div class="recruitment-button" id="recruitment-button">
 				<a data-aos="fade-up" data-aos-duration="1000"
 					href="/join">Join us</a>
 			</div>
@@ -64,7 +66,6 @@ Welcome - Rowing Club
 	</div>
 </div>
 <!--END Block interested-->
-
 
 <!--Events Block-->
 <div style="background-color: #c3b680;">

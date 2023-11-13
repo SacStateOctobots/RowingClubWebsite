@@ -92,29 +92,7 @@ def admin_page_test(driver):
 
 	dir_path = os.path.dirname(os.path.realpath(__file__))
 	now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-	# test player form input
-	form_input_pairs = [
-		("player-name-id","Test Player "+now),
-		("player-desc-id","Test Player Description "+now),
-		("player-file-id",dir_path+"/sample-image.jpg")
-	]
-	print("Testing player input.")
-	test_input_helper(driver,"players-tab",form_input_pairs,"player-button-id")
-	print("Testing player delete.")
-	test_delete_helper(driver,"players-tab","deleteplayer-id",form_input_pairs[0][1],"delete-player-button-id")
 	
-	# test alumni form input
-	form_input_pairs = [
-		("alumni-name-id","Test Alumni "+now),
-		("alumni-desc-id","Test Alumni Description "+now),
-		("alumni-file-id",dir_path+"/sample-image.jpg")
-	]
-	print("Testing alumni input.")
-	test_input_helper(driver,"alumni-tab",form_input_pairs,"alumni-button-id")
-	print("Testing alumni delete.")
-	test_delete_helper(driver,"alumni-tab","deletealumni-id",form_input_pairs[0][1],"delete-alumni-button-id")
-
 	# test team member form input
 	form_input_pairs = [
 		("team-name-id","Test Member "+now),

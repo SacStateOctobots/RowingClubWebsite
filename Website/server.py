@@ -22,7 +22,7 @@ login_manager.init_app(app)
 # irl we should use an actual database for this.
 # We would also obviously not want to store username/login info in plain text like this.
 users = {'foo@bar.tld': {'pw': 'secret'}, #for old login setup [Remove]
-		 '08efdf7f9d382f19802a6ccb1a39c7531be4b1e5aaebdc2a49395ee656df22ab': {'pw': ''}, #testing personal gmail hash
+		 '367fbced0d4ca012a42984bca8cb07fc7fbd09675bd6b91a356da296f75bc596': {'pw': ''}, #testing personal gmail hash, use https://tools.keycdn.com/sha256-online-generator and insert email
 		 '633f1794c55003374a30f8c046ed3022bae38f9ec9da834ce09c2e51b2e35e00': {'pw': ''}, #Club CSUS Email Hash
 		 'c875fee06a22feda7227845dcd9680c34efd134d8d51fff72baffc08ba5bdeb5': {'pw': ''}} #Club Gmail Hash
 
@@ -149,7 +149,7 @@ def contact_post():
 				sender=request.form['email'],
 				recipients=[emailAddress.rstrip()])
 	mail.send(msg)
-	return render_template("contactus.html")
+	return render_template("contactus.html",logo=db.get_page("contact"))
 
 @app.route("/recruitment")
 def recruitment():
