@@ -1,4 +1,4 @@
-/*CSS for Video introduction or Introduction*/
+/*=============== CSS for Video introduction or Introduction ========================*/
 .video-introduction {
     width: 100%;
     height: 100vh;
@@ -8,7 +8,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .banner-introduction-content {
@@ -43,7 +42,7 @@
 /*phone responsive*/
 @media (max-width : 567px) {
     .video-introduction-content h1 {
-        font-size: 60px;
+        font-size: 50px;
         color: #fff;
         font-weight: 600;
     }
@@ -57,13 +56,31 @@
         color: #fff;
         font-weight: 600;
     }
+}
 
+/*tablet responsive*/
+@media screen and (min-width: 568px) and (max-width: 1366px) {
+    .video-introduction-content h1 {
+        font-size: 80px;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    h1.intro-desktop-text {
+        font-size: 0px;
+    }
+
+    .video-introduction-content h3 {
+        font-size: 30px;
+        color: #fff;
+        font-weight: 600;
+    }
 }
 
 /*desktop responsive*/
-@media (min-width: 568px) {
+@media (min-width: 1367px) {
     .video-introduction-content h1 {
-        font-size: 120px;
+        font-size: 100px;
         color: #fff;
         font-weight: 600;
     }
@@ -79,17 +96,6 @@
     }
 }
 
-/* Text banner responsive */
-h1.hero-heading {
-    font-size: 120px;
-    font-weight: bold;
-}
-
-@media (max-width: 768px) {
-    h1.hero-heading {
-        font-size: 60px;
-    }
-}
 
 .video-introduction-content h4 {
     font-size: 30px;
@@ -125,65 +131,6 @@ h1.hero-heading {
     color: #c3b680;
     font-weight: 600;
     font-size: 24px;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
-    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
-    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
-    -khtml-box-shadow: 10px 10px 5px #3131315c;
-}
-
-.form-group button {
-    text-decoration: none;
-    display: inline-block;
-    color: #005440;
-    font-size: 18px;
-    border: 2px solid #005440;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-}
-
-.form-group button:hover {
-    text-decoration: none;
-    display: inline-block;
-    color: #c3b680;
-    font-weight: 300;
-    font-size: 18px;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
-    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
-    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
-    -khtml-box-shadow: 10px 10px 5px #3131315c;
-}
-
-.video-introduction-content-button {
-    text-align: center;
-}
-
-.video-introduction-content-button a {
-    text-decoration: none;
-    font-size: 40px;
-    display: inline-block;
-    color: #ffffff;
-    font-size: 24px;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-}
-
-.video-introduction-content-button a:hover {
-    text-decoration: none;
-    display: inline-block;
-    color: #c3b680;
-    font-weight: 600;
-    font-size: 30px;
     padding: 14px 70px;
     border-radius: 50px;
     margin-top: 20px;
@@ -250,207 +197,29 @@ h1.hero-heading {
     bottom: 0;
     z-index: -1;
 }
-
-@media (min-width: 1080px) {
-    .video-last-block {
-        width: 100%;
-        height: auto;
-    }
-}
-
-@media (min-width: 568px) {
-    .video-last-block {
-        width: 100%;
-        height: auto;
-    }
-}
+/*=============== END CSS for Video introduction or Introduction (Last Block) ========================*/
 
 
-/*CSS for testimonial*/
-.container-testi {
-    width: 100%;
-    display: flex;
+/*===============  Text/Title banner responsive ========================*/
+.hold {
+
     align-items: center;
     justify-content: center;
-    z-index: 10;
-    background-color: #fff;
 }
 
-.testimonial {
-    position: relative;
-    max-width: 900px;
-    width: 100%;
-    padding: 50px 0;
-    overflow: hidden;
-    z-index: 10;
+h1.hero-heading {
+    font-size: 80px;
+    font-weight: bold;
 }
 
-.testimonial .image {
-    height: 150px;
-    width: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    z-index: 10;
-}
+@media (max-width: 768px) {
 
-.testimonial .slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    row-gap: 30px;
-    height: 100%;
-    width: 100%;
-    z-index: 10;
-}
-
-.slide p {
-    text-align: center;
-    padding: 0 160px;
-    font-size: 18px;
-    font-weight: 400;
-    color: #005440;
-    z-index: 10;
-}
-
-.slide .quote-icon {
-    font-size: 30px;
-    color: #005440;
-    z-index: 10;
-}
-
-.slide .details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 10;
-}
-
-.details .name {
-    font-size: 18px;
-    font-weight: 600;
-    color: #005440;
-    z-index: 10;
-}
-
-.details .job {
-    font-size: 14px;
-    font-weight: 400;
-    color: red;
-    z-index: 10;
-}
-
-/* swiper button css */
-.nav-btn {
-    height: 40px;
-    width: 40px;
-    border-radius: 40%;
-    transform: translateY(30px);
-    transition: 0.2s;
-    z-index: 10;
-}
-
-.nav-btn::after,
-.nav-btn::before {
-    font-size: 20px;
-    color: #005440;
-    z-index: 10;
-}
-
-.swiper-pagination-bullet {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.swiper-pagination-bullet-active {
-    background-color: #005440;
-}
-
-@media screen and (max-width: 768px) {
-    .slide p {
-        padding: 0 20px;
-    }
-
-    .nav-btn {
-        display: none;
+    h1.hero-heading {
+        font-size: 60px;
+        padding-top: 60px;
     }
 }
 
-/* CSS for social media*/
-
-.wrapper-social-icon .button-social {
-    display: inline-block;
-    height: 60px;
-    width: 60px;
-    margin: 0 5px;
-    overflow: hidden;
-    background: #fff;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-out;
-}
-
-.wrapper-social-icon .button-social:hover {
-    width: 250px;
-}
-
-.wrapper-social-icon .button-social .social-icon {
-    display: inline-block;
-    height: 60px;
-    width: 60px;
-    text-align: center;
-    border-radius: 50px;
-    box-sizing: border-box;
-    line-height: 60px;
-    transition: all 0.3s ease-out;
-}
-
-.wrapper-social-icon .button-social:nth-child(1):hover .social-icon {
-    background: #4267B2;
-}
-
-
-.wrapper-social-icon .button-social:nth-child(2):hover .social-icon {
-    background: #E1306C;
-}
-
-.wrapper-social-icon .button-social:nth-child(3):hover .social-icon {
-    background: #ff0000;
-}
-
-.wrapper-social-icon .button-social .social-icon i,
-.wrapper-social-icon .button-social .social-icon em {
-    font-size: 25px;
-    line-height: 60px;
-    transition: all 0.3s ease-out;
-}
-
-.wrapper-social-icon .button-social:hover .social-icon i {
-    color: #fff;
-}
-
-.wrapper-social-icon .button-social span {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 60px;
-    margin-left: 10px;
-    transition: all 0.3s ease-out;
-}
-
-.wrapper-social-icon .button-social:nth-child(1) span {
-    color: #4267B2;
-}
-
-.wrapper-social-icon .button-social:nth-child(2) span {
-    color: #E1306C;
-}
-
-.wrapper-social-icon .button-social:nth-child(3) span {
-    color: #ff0000;
-}
-
-
-/*CSS for text heading*/
 .text-heading-background {
     background-color: white;
 }
@@ -465,767 +234,97 @@ h1.hero-heading {
     text-shadow: 5px 5px 10px rgba(77, 77, 77, 0.947);
 }
 
-
-/*CSS for Image shadow*/
-.img-fluid {
-    border: 2px solid #fff;
-    background: url(img/tiger.png) no-repeat;
-    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
-    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
-    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
-    -khtml-box-shadow: 10px 10px 5px #3131315c;
-}
-
-/*Amination*/
-/*
-@keyframes slide-up {
-    0% {
-        transform: translateY(250px);
+@media (min-width: 568px) {
+    .text-heading h2 {
+        color: black;
     }
 
-    100% {
-        transform: translateY(0px);
+    h2.title {
+        font-size: 50px;
+    }
+
+    .text-heading p {
+        font-size: 30px;
     }
 }
-*/
 
-/*Icon For Contact Page*/
+@media (max-width: 567px) {
+    .text-heading h2 {
+        color: black;
+    }
 
-.icon {
-    transition: width 0.1s, height 0.1s, transform 0.2s;
+    h2.title {
+        font-size: 40px;
+    }
+
+    .text-heading p {
+        font-size: 20px;
+    }
 }
 
-.icon :hover {
-    padding-top: 30px;
-    font-size: 130px;
+h1.hero-heading2 {
+    color: #ffffff;
+    text-align: center;
 }
 
-.fa-home {
-    color: #005440;
-    font-size: 100px;
-    padding-top: 25px;
+.carousel {
+    background-size: cover;
+    height: fit-content;
+    overflow: hidden;
 }
 
-.fa-home :hover {
-    transform: rotate(5deg);
-}
-
-.fa-phone {
-    color: #005440;
-    font-size: 100px;
-    padding-top: 25px;
-}
-
-.fa-envelope {
-    color: #005440;
-    font-size: 100px;
-    padding-top: 25px;
-}
-
-.contact-icon h3 {
-    color: #005440;
-    font-size: 25px;
-    font-weight: 600;
-    padding-top: 25px;
-}
-
-.contact-icon p {
-    color: black;
-    font-size: 20PX;
-    font-weight: 400;
-}
-
-.contact-icon h4 {
-    color: #005440;
-    font-size: 22px;
-    font-weight: 300;
-}
-
-.contact-icon h4:hover {
-    color: #c3b680;
-    font-size: 25px;
-    font-weight: 600;
-}
-
-/*Contact Form*/
-
-.space80 {
-    padding-top: 80px;
-}
-
-.space {
-    padding-top: 30px;
-}
-
-.space15 {
-    padding-top: 15px;
-}
-
-.contact-container {
-    position: relative;
-    width: 100%;
-
-    box-shadow: 15px 15px 20px rgba(44, 44, 44, 0.195);
-    -moz-box-shadow: 10px 10px 10px rgba(51, 51, 51, 0)949;
-    -webkit-box-shadow: 10px 10px 10px #2c2c2c78;
-    -khtml-box-shadow: 10px 10px 10px #3131315c;
-}
-
-.contact-wrap h3 {
-    color: #005440;
-    font-size: 35px;
-    font-weight: 600;
-    padding-top: 25px;
-    text-shadow: 5px 5px 5px rgba(160, 160, 160, 0.947);
-}
-
-/* Map */
-.map {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Google Calendar */
-.googleCalendar {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    padding-bottom: 54%;
-}
-
-.googleCalendar iframe {
+.overlay {
+    color: #fff;
     position: absolute;
-    top: 0;
+    z-index: 12;
+    top: 0%;
     left: 0;
     width: 100%;
-    height: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-@media (max-width: 567px) {
-    .googleCalendar iframe {
-        top: 0;
-        left: 0;
-        width: 110%;
-        height: 180%;
-    }
-}
-
-/* Title Block*/
-
-@media (min-width: 1367px) {
-    #block-title {
-        height: 800px;
-        width: 100%;
-        border: 3px solid #005440;
-        position: relative;
-        padding-top: 50px;
-
-    }
-
-    #block-title1 {
-        height: 600px;
-        width: 100%;
-        border: 3px solid #000000;
-        position: relative;
-        padding-top: 50px;
-
-    }
-
-    #block-title2 {
-        height: 300px;
-        width: 135%;
-        border: 3px solid #000000;
-        position: relative;
-        padding-top: 50px;
-
-    }
-
-    #block-title3 {
-        height: 300px;
-        left: -160px;
-        width: 200%;
-        border: 3px solid #000000;
-        position: relative;
-        padding-top: 50px;
-
-    }
-
-    #title-label {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 300px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label1 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label2 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 280px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label3 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 17%;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label4 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 28%;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    div.name-phone {
-        font-size: 0;
-    }
-}
-
-
-
-@media screen and (min-device-width: 568px) and (max-device-width: 1366px) { 
-
-    #block-title2 {
-        height: 300px;
-        position: relative;
-        padding-top: 30px;
-        text-align: center;
-
-    }
-
-    #block-title3 {
-        height: 300px;
-     width: fit-content;
-        position: relative;
-        padding-top: 50px;
-        text-align: center;
-    }
-
-    #title-label {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 300px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label1 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label2 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 280px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label3 {
-        font-size: 35px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 500;
-        position: absolute;
-        top: -30px;
-        left: 7%;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label4 {
-        font-size: 35px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 500;
-        position: absolute;
-        top: -30px;
-        left: 10%;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    div.name-phone {
-        font-size: 0;
-    }
-
-    div.h3{
-        font-size: 100px;
-    }
-    
-}
-
-
-
-@media (max-width : 567px) {
-    #block-title {
-        font-family: "Roboto", sans-serif;
-        max-width: 100%;
-        margin: 0 auto;
-
-        position: relative;
-        overflow: hidden;
-        padding-top: 10.25%;
-    }
-
-    #block-title2 {
-        padding-top: 60px;
-
-    }
-
-    div.name {
-        font-size: 0;
-    }
-
-    div.name-phone {
-        font-size: 30px;
-        font-weight: 600;
-        text-align: center;
-        border-bottom: 1px solid #000000;
-        border-width: 1px;
-        text-shadow: 1px 4px 4px rgba(116, 116, 116, 0.947);
-    }
-}
-
-
-/* Event CSS*/
-
-.event-container {
-    font-family: "Roboto", sans-serif;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.event-container .event {
-    box-shadow: 15px 15px 20px -10px rgba(12, 12, 12, 0.4);
-    display: flex;
-    border-radius: 20px;
-    margin: 32px 0;
-}
-
-.event .event-left {
-    background: #005440;
-    min-width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #eee;
-    padding: 8px 10px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 8px 0 0 8px;
-}
-
-.event .event-left-past {
-    background: #c3b680;
-    min-width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #eee;
-    padding: 8px 10px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 8px 0 0 8px;
-}
-
-.event .event-left .date {
-    font-size: 20px;
-}
-
-
-.event .event-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 24px;
-    padding-bottom: 10px;
-
-}
-
-.event .event-right h3.event-title {
-    font-weight: 600;
-    font-size: 24px;
-    margin: 24px 0 10px 0;
-    color: #005440;
-    text-transform: uppercase;
-}
-
-.event .event-right .event-timing {
-    background: #fff8ba;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    padding: 8px;
-    border-radius: 16px;
-    margin: 24px 0;
-    font-size: 14px;
-}
-
-.event .event-right .event-timing img {
-    height: 20px;
-    padding-right: 8px;
-}
-
-@media (max-width: 550px) {
-    .event {
-        flex-direction: column;
-    }
-
-    .event-container .event-right {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .event .event-right h3.event-title {
-        font-weight: 600;
-        font-size: 20px;
-        margin: 10px 0 5px 0;
-        color: #005440;
-        text-transform: uppercase;
-    }
-
-    .event .event-left {
-        border-radius: 8px 8px 0 0;
-    }
-
-    .event .event-left-past {
-        border-radius: 8px 8px 0 0;
-    }
-
-    .event .event-left .event-date .date,
-    .event .event-left .event-date .month {
-        display: inline-block;
-        font-size: 18px;
-    }
-
-    .event .event-left .event-date {
-        padding: 3px 0;
-    }
-}
-
-/* End event CSS */
-
-/*text responsive*/
-@media (min-width: 568px) {
-    .text-heading h2 {
-        color: black;
-    }
-
-    h2.title {
-        font-size: 50px;
-    }
-
-    .text-heading p {
-        font-size: 30px;
-    }
-}
-
-@media (max-width: 567px) {
-    .text-heading h2 {
-        color: black;
-    }
-
-    h2.title {
-        font-size: 40px;
-    }
-
-    .text-heading p {
-        font-size: 20px;
-    }
-}
-
-/* background-block for Welcome page*/
-
-
-.background-block1 {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.row {
-    display: flex;
-}
-
-.column {
-    flex: 50%;
-    padding: 10px;
-    height: 150px;
     text-align: center;
 }
 
-@media (min-width: 568px) {
-    .column h2 {
-        color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-
-    h2 {
-        font-size: 60px;
-    }
-
-    .background-block {
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        background-size: cover;
-    }
-}
-
-@media (max-width: 567px) {
-    .column h2 {
-        color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-    }
-
-    h2 {
-        font-size: 40px;
-    }
-
-    div.recruitment-button {
-        font-size: 30px;
-    }
-
-    .background-block1 {
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-    }
-
-}
-
-/*button*/
-.recruitment-button a {
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: 600;
-    display: inline-block;
-    color: #ffffff;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #005440;
-    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-}
-
-.recruitment-button a:hover {
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: 600;
-    display: inline-block;
-    color: #ffffff;
-    padding: 14px 70px;
-    border-radius: 50px;
-    margin-top: 20px;
-    background-color: #c3b680;
-    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
-}
-
-/*Up coming event at Homepage*/
-/* Title Block*/
-@media (min-width: 568px) {
-    #block-title {
-        height: 950px;
-        width: 100%;
-        position: relative;
-        padding-top: 50px;
-
-    }
-
-    #title-label {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 300px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label1 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 400px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-    #title-label2 {
-        font-size: 40px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 520;
-        position: absolute;
-        top: -30px;
-        left: 20px;
-        height: 40px;
-        width: 280px;
-        background-color: rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
-    }
-
-
-
-    div.name-phone {
-        font-size: 0;
-    }
-}
-
-@media (max-width : 567px) {
-    #block-title {
-        font-family: "Roboto", sans-serif;
-        max-width: 100%;
-        margin: 0 auto;
-        position: relative;
-        overflow: hidden;
-        padding-top: 10.25%;
+@media (min-width :800px) {
+    .carousel {
+        /*This for Alumni carousel*/
         height: 500px;
+        
     }
 
-
-
-    div.name {
-        font-size: 0;
+    h1.hero-heading2 {
+        font-size: 80px;
+        margin-top: 200px;
     }
-
-    div.name-phone {
-        font-size: 30px;
-        font-weight: 600;
-        text-align: center;
-        border-bottom: 1px solid #000000;
-        border-width: 1px;
-        text-shadow: 1px 4px 4px rgba(116, 116, 116, 0.947);
-    }
-
 }
 
-/*Events in homepage*/
-@media (min-width: 568px) {
-    div.name-events {
+@media (min-width :500px) and (max-width:799px) {
+    .carousel {
+        /*This for Alumni carousel*/
+        height: fit-content;
+        background-position: center center;
+    }
+
+    h1.hero-heading2 {
+        font-size: 70px;
+        margin-top: 200px;
+
+    }
+}
+
+@media (max-width :499px) {
+    .carousel {
+        height: fit-content;
+    }
+
+    h1.hero-heading2 {
         font-size: 50px;
-        font-weight: 600;
-    }
-
-    div.name-phone {
-        font-size: 0px;
+        margin: 100px;
     }
 }
 
-@media (max-width: 567px) {
-    div.name-phone {
-        font-size: 35px;
-        font-weight: 600;
-    }
+/*=============== END Text banner responsive ========================*/
 
-    div.name-events {
-        font-size: 0px;
-    }
+/*=============== Buton ========================*/
 
-    div.central {
-        width: 95%;
-        align-items: center;
-        text-align: center;
-        margin-left: 10px;
-        box-shadow: gray;
-    }
-
-    div.card {
-        width: 100%;
-    }
-}
-
-/*column responsive*/
 .col-responsive {
     display: flex;
     flex-wrap: wrap;
@@ -1235,9 +334,7 @@ h1.hero-heading {
     padding: 1rem;
 }
 
-
 /*Donate button*/
-
 @media (min-width:568px) {
     .col-responsive {
         display: grid;
@@ -1299,10 +396,29 @@ h1.hero-heading {
         background-color: #c3b680;
         text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
     }
-
 }
 
-@media (max-width: 567px) {
+@media (min-width: 1001px){
+    .contribue-block-home{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 429px) and (max-width: 1000px){
+    .col-responsive{
+        display: none;
+    }
+
+    .col-responsive h2, .col-responsive p{
+        color: #eee;
+    }
+}
+
+@media (max-width: 428px) {
+    .contribue-block-home{
+        display: none;
+    }
+    
     .col-responsive h2 {
         color: rgb(255, 255, 255);
         text-align: center;
@@ -1392,31 +508,1000 @@ h1.hero-heading {
     }
 }
 
+.recruitment-button a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    display: inline-block;
+    color: #ffffff;
+    padding: 14px 70px;
+    margin-top: 20px;
+    background-color: #005440;
+    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    align-items: center;
+    border-radius: 50px;
+}
+
+.recruitment-button a:hover {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    display: inline-block;
+    color: #ffffff;
+    padding: 14px 70px;
+    margin-top: 20px;
+    background-color: #c3b680;
+    text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    align-items: center;
+    border-radius: 50pxs;
+}
+
+.form-group button {
+    text-decoration: none;
+    display: inline-block;
+    color: #005440;
+    font-size: 18px;
+    border: 2px solid #005440;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.form-group button:hover {
+    text-decoration: none;
+    display: inline-block;
+    color: #c3b680;
+    font-weight: 300;
+    font-size: 18px;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: #005440;
+    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
+    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
+    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
+    -khtml-box-shadow: 10px 10px 5px #3131315c;
+}
+
+.video-introduction-content-button {
+    text-align: center;
+}
+
+.video-introduction-content-button a {
+    text-decoration: none;
+    font-size: 40px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 24px;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: #005440;
+}
+
+.video-introduction-content-button a:hover {
+    text-decoration: none;
+    font-size: 40px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 24px;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: #c3b680;
+    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
+    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
+    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
+    -khtml-box-shadow: 10px 10px 5px #3131315c;
+}
+
+/* swiper button Testonomial css */
+.nav-btn {
+    height: 40px;
+    width: 40px;
+    border-radius: 40%;
+    transform: translateY(30px);
+    transition: 0.2s;
+    z-index: 10;
+}
+
+.nav-btn::after,
+.nav-btn::before {
+    font-size: 20px;
+    color: #005440;
+    z-index: 10;
+}
+
+.swiper-pagination-bullet {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+.swiper-pagination-bullet-active {
+    background-color: #005440;
+
+}
+
+@media screen and (max-width: 768px) {
+    .slide p {
+        padding: 0 20px;
+    }
+
+
+    .nav-btn {
+        display: none;
+    }
+}
+
+/* CSS for social media*/
+
+.wrapper-social-icon .button-social {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    margin: 0 5px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-social-icon .button-social:hover {
+    width: 250px;
+}
+
+.wrapper-social-icon .button-social .social-icon {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50px;
+    box-sizing: border-box;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-social-icon .button-social:nth-child(1):hover .social-icon {
+    background: #4267B2;
+}
+
+
+.wrapper-social-icon .button-social:nth-child(2):hover .social-icon {
+    background: #E1306C;
+}
+
+.wrapper-social-icon .button-social:nth-child(3):hover .social-icon {
+    background: #ff0000;
+}
+
+.wrapper-social-icon .button-social .social-icon i,
+.wrapper-social-icon .button-social .social-icon em {
+    font-size: 25px;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-social-icon .button-social:hover .social-icon i {
+    color: #fff;
+}
+
+.wrapper-social-icon .button-social span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    margin-left: 10px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-social-icon .button-social:nth-child(1) span {
+    color: #4267B2;
+}
+
+.wrapper-social-icon .button-social:nth-child(2) span {
+    color: #E1306C;
+}
+
+.wrapper-social-icon .button-social:nth-child(3) span {
+    color: #ff0000;
+
+}
+
+/*=============== END Buton ========================*/
+
+
+/*=============== CSS for testimonial ========================*/
+.container-testi {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background-color: #fff;
+}
+
+.testimonial {
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    padding: 50px 0;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.testimonial .image {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.testimonial .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 30px;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+
+.slide p {
+    text-align: center;
+    padding: 0 160px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #005440;
+    z-index: 10;
+}
+
+.slide .quote-icon {
+    font-size: 30px;
+    color: #005440;
+    z-index: 10;
+}
+
+.slide .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.details .name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #005440;
+    z-index: 10;
+}
+
+.details .job {
+    font-size: 14px;
+    font-weight: 400;
+    color: red;
+    z-index: 10;
+}
+
+/*=============== END CSS for testimonial ========================*/
+
+/*=============== CSS for Image shadow ========================*/
+.img-fluid {
+    border: 2px solid #fff;
+    background: url(img/tiger.png) no-repeat;
+    box-shadow: 10px 10px 5px rgba(44, 44, 44, 0.195);
+    -moz-box-shadow: 10px 10px 5px rgba(51, 51, 51, 0)949;
+    -webkit-box-shadow: 10px 10px 5px #2c2c2c78;
+    -khtml-box-shadow: 10px 10px 5px #3131315c;
+}
+/*=============== END CSS for Image shadow ========================*/
+
+
+/*=============== Icon For Contact Page ========================*/
+.icon {
+    transition: width 0.1s, height 0.1s, transform 0.2s;
+}
+
+
+.icon :hover {
+    padding-top: 30px;
+    font-size: 130px;
+}
+
+.fa-home {
+    color: #005440;
+    font-size: 100px;
+    padding-top: 25px;
+}
+
+.fa-home :hover {
+    transform: rotate(5deg);
+}
+
+.fa-phone {
+    color: #005440;
+    font-size: 100px;
+    padding-top: 25px;
+}
+
+.fa-envelope {
+    color: #005440;
+    font-size: 100px;
+    padding-top: 25px;
+}
+
+
+.contact-icon h3 {
+    color: #005440;
+    font-size: 25px;
+    font-weight: 600;
+    padding-top: 25px;
+}
+
+.contact-icon p {
+    color: black;
+    font-size: 20PX;
+    font-weight: 400;
+}
+
+.contact-icon h4 {
+    color: #005440;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+
+.contact-icon h4:hover {
+    color: #c3b680;
+    font-size: 25px;
+    font-weight: 600;
+}
+/*=============== END Icon For Contact Page ========================*/
+
+/*=============== Type of spcaces ========================*/
+.space80 {
+    padding-top: 80px;
+}
+
+.space {
+    padding-top: 30px;
+
+}
+
+.space15 {
+    padding-top: 15px;
+}
+/*=============== END Type of spcaces ========================*/
+
+/*=============== Contact ========================*/
+.contact-container {
+    position: relative;
+    width: 100%;
+
+    box-shadow: 15px 15px 20px rgba(44, 44, 44, 0.195);
+    -moz-box-shadow: 10px 10px 10px rgba(51, 51, 51, 0)949;
+    -webkit-box-shadow: 10px 10px 10px #2c2c2c78;
+    -khtml-box-shadow: 10px 10px 10px #3131315c;
+}
+
+.contact-wrap h3 {
+    color: #005440;
+    font-size: 35px;
+    font-weight: 600;
+    padding-top: 25px;
+    text-shadow: 5px 5px 5px rgba(160, 160, 160, 0.947);
+}
+/*=============== END Contact ========================*/
+
+/*=============== MAP ========================*/
+.map {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+/*=============== MAP ========================*/
+
+/*=============== Google Calendar ========================*/
+.googleCalendar {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.googleCalendar iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media (max-width: 567px) {
+    .googleCalendar {
+        right: 20px;
+        padding-bottom: 42%;
+    }
+
+    .googleCalendar iframe {
+        top: 0;
+        width: 110%;
+        height: 180%;
+
+    }
+}
+
+@media screen and (min-width: 568px) and (max-width: 1366px) {
+    .googleCalendar {
+        padding-bottom: 55%;
+    }
+}
+
+@media (min-width: 1367px) {
+    .googleCalendar {
+        padding-bottom: 55%;
+    }
+
+    .googleCalendar iframe {
+        top: 0;
+        left: 0;
+    }
+}
+/*=============== END Google Calendar ========================*/
+
+
+/*======================== Title Block ========================*/
+/*Desktop version*/
+@media (min-width: 1367px) {
+    /*--------------------Calendar page-------------------------*/
+    #block-title,
+    #block-title1 {
+        width: 100%;
+        border: 3px solid #005440;
+        position: relative;
+        padding-top: 50px;
+    }
+
+    #title-label-block {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+        text-align: left;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label-block.title-label {
+        /*Calendar*/
+        width: 300px;
+    }
+
+    #title-label-block.title-label1 {
+        /*Next Evevnt*/
+        width: 400px;
+    }
+
+    #title-label-block.title-label2 {
+        /*Past event*/
+        width: 280px;
+    }
+
+    div.name-phone {
+        font-size: 0;
+    }
+
+    /*--------------------End Calendar page-------------------------*/
+    /*--------------------Start Donate page-------------------------*/
+
+    #block-title3 {
+        /*Additional information*/
+        width: 80%;
+        border: 3px solid #000000;
+        position: relative;
+        margin: auto;
+        padding-top: 50px;
+
+    }
+
+    #title-label4 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 22%;
+        height: 40px;
+        width: 600px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    .extra-info {
+        display: none;
+    }
+}
+
+
+/*Tablet version*/
+@media screen and (min-width: 568px) and (max-width: 1366px) {
+
+    /*--------------------Start Calendar page-------------------------*/
+    #block-title {
+        width: 100%;
+        border: 2px solid #005440;
+        position: relative;
+        padding-top: 20px;
+    }
+
+    #block-title1 {
+        width: 100%;
+        border: 2px solid #000000;
+        position: relative;
+        padding-top: 20px;
+
+    }
+
+    #title-label-block {
+        font-size: 35px;
+        font-weight: 480;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+        text-align: left;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label-block.title-label {
+        /*Calendar*/
+        width: 300px;
+    }
+
+    #title-label-block.title-label1 {
+        /*Next Evevnt*/
+        width: 400px;
+    }
+
+    #title-label-block.title-label2 {
+        /*Past event*/
+        width: 280px;
+    }
+
+    div.name-phone {
+        font-size: 0;
+    }
+
+    div.h3 {
+        font-size: 100px;
+    }
+
+    /*--------------------End Calendar page-------------------------*/
+
+    #block-title3 {
+        /*Additional information*/
+        width: 80%;
+        border: 3px solid #000000;
+        position: relative;
+        margin: auto;
+        padding-top: 50px;
+
+    }
+
+    #title-label4 {
+        display: none;
+    }
+
+    .extra-info {
+        padding-bottom: 25px;
+    }
+}
+
+/*Mobile version*/
+@media (max-width : 567px) {
+    #block-title {
+        font-family: "Roboto", sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        padding-top: 10.25%;
+    }
+
+    #block-title2 {
+        padding-top: 60px;
+
+    }
+
+    div.name {
+        font-size: 0;
+    }
+
+
+    div.name-phone {
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+        border-bottom: 1px solid #000000;
+        border-width: 1px;
+        text-shadow: 1px 4px 4px rgba(116, 116, 116, 0.947);
+    }
+
+
+    .extra-info {
+        display: none;
+    }
+}
+
+/*Up coming event at Homepage*/
+/* Title Block*/
 @media (min-width: 568px) {
-    h1.team-member {
-        font-size: 120px;
-        color: #fff;
-        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.947);
+    #block-title {
+        height: 950px;
+        width: 100%;
+        position: relative;
+        padding-top: 50px;
+    }
+
+    #title-label {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 300px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label1 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    #title-label2 {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 520;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 40px;
+        width: 280px;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 3px 4px 4px rgba(129, 129, 129, 0.947);
+    }
+
+    div.name-phone {
+        font-size: 0;
+    }
+}
+
+@media (max-width : 567px) {
+    #block-title {
+        font-family: "Roboto", sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        padding-top: 10.25%;
+        height: 500px;
+    }
+
+    div.name {
+        font-size: 0;
+    }
+
+    div.name-phone {
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+        border-bottom: 1px solid #000000;
+        border-width: 1px;
+        text-shadow: 1px 4px 4px rgba(116, 116, 116, 0.947);
+    }
+}
+/*======================== END Title Block ========================*/
+
+/*========================  Event CSS ========================*/
+/*---------Events in homepage-------------*/
+/*Event in home page*/
+@media (min-width :565px) and (max-width:771px) {
+    .col{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+}
+
+@media (min-width: 568px) {
+    div.name-events {
+        font-size: 50px;
+        font-weight: 600;
+    }
+
+    div.name-phone {
+        font-size: 0px;
     }
 }
 
 @media (max-width: 567px) {
-    h1.team-member {
+    div.name-phone {
+        font-size: 35px;
+        font-weight: 600;
+    }
+
+    div.name-events {
+        font-size: 0px;
+    }
+
+    div.central {
+        width: 95%;
+        align-items: center;
+        text-align: center;
+        margin-left: 10px;
+        box-shadow: gray;
+    }
+
+    div.card {
+        width: 100%;
+    }
+}
+/*---------END Events in homepage-------------*/
+
+.event-container {
+    font-family: "Roboto", sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.event-container .event {
+    box-shadow: 15px 15px 20px -10px rgba(12, 12, 12, 0.4);
+    display: flex;
+    border-radius: 20px;
+    margin: 32px 0;
+}
+
+.event .event-left {
+    background: #005440;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+    padding: 8px 10px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+}
+
+.event .event-left-past {
+    background: #c3b680;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+    padding: 8px 10px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+}
+
+.event .event-left .date {
+    font-size: 20px;
+}
+
+.event .event-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 24px;
+    padding-bottom: 10px;
+
+}
+
+.event .event-right h3.event-title {
+    font-weight: 600;
+    font-size: 24px;
+    margin: 24px 0 10px 0;
+    color: #005440;
+    text-transform: uppercase;
+}
+
+.event .event-right .event-timing {
+    background: #fff8ba;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    padding: 8px;
+    border-radius: 16px;
+    margin: 24px 0;
+    font-size: 14px;
+}
+
+.event .event-right .event-timing img {
+    height: 20px;
+    padding-right: 8px;
+}
+
+@media (max-width: 550px) {
+    .event {
+        flex-direction: column;
+    }
+
+    .event-container .event-right {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .event .event-right h3.event-title {
+        font-weight: 600;
+        font-size: 20px;
+        margin: 10px 0 5px 0;
+        color: #005440;
+        text-transform: uppercase;
+    }
+
+    .event .event-left {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .event .event-left-past {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .event .event-left .event-date .date,
+    .event .event-left .event-date .month {
+        display: inline-block;
+        font-size: 18px;
+    }
+
+    .event .event-left .event-date {
+        padding: 3px 0;
+    }
+}
+/*======================== END Event CSS ========================*/
+
+/*======================== background-block for Welcome page ========================*/
+.background-block1 {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+    padding: 10px;
+    height: 150px;
+    text-align: center;
+}
+
+@media (min-width: 568px) {
+    .column h2 {
+        color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+
+    h2 {
         font-size: 60px;
-        font-weight: 500;
-        color: #fff;
-        text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.947);
-        padding-top: 20px;
+    }
+
+    .background-block {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
     }
 }
 
-/*CSS Team Member*/
+@media (max-width: 567px) {
+    .column h2 {
+        color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 5px 5px 5px rgba(12, 12, 12, 0.947);
+    }
+
+    h2 {
+        font-size: 40px;
+    }
+
+    div.recruitment-button {
+        font-size: 30px;
+    }
+
+    .background-block1 {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+}
+/*======================== END background-block for Welcome page ========================*/
+
+/*======================== Team member ========================*/
+@media (min-width: 1367px) {
+    h1.team-member-desktop {
+        font-size: 100px;
+        color: #fff;
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.947);
+        padding-top: 40px;
+    }
+
+    h1.team-member-phone {
+        font-size: 0;
+    }
+}
+
+
+@media screen and (min-width: 568px) and (max-width: 1366px) {
+    h1.team-member-desktop {
+        font-size: 70px;
+
+        color: #fff;
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.947);
+        padding-top: 40px;
+    }
+
+
+    h1.team-member-phone {
+
+        font-size: 0;
+    }
+}
+
+@media (max-width: 567px) {
+    h1.team-member-phone {
+        font-size: 50px;
+        font-weight: 500;
+        color: #fff;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.947);
+        padding-top: 20px;
+    }
+
+
+    h1.team-member-desktop {
+
+        font-size: 0;
+    }
+}
+
 .team-item {
-    padding: 25px;
+    padding: 35px;
     padding-right: 0px;
     position: relative;
     z-index: 0;
-    margin: 0 auto;
+
 }
 
 .team-item:after,
@@ -1478,21 +1563,6 @@ h1.hero-heading {
     transform: scale(1);
 }
 
-.team-item .socials {
-    position: absolute;
-}
-
-.team-item .socials a {
-    display: block;
-    margin-right: 0;
-    margin-bottom: 15px;
-    -webkit-box-shadow: 3px 3px 2px 0 rgb(0, 0, 0);
-    box-shadow: 3px 3px 2px 0 rgb(0, 0, 0);
-}
-
-.team-item .socials a:last-of-type {
-    margin-bottom: 0;
-}
 
 .team-item .team-content {
     margin-right: 70px;
@@ -1524,22 +1594,6 @@ h1.hero-heading {
     display: inline-block !important;
 }
 
-.socials a {
-    width: 35px;
-    height: 35px;
-    background-color: #005440;
-    border-radius: 50%;
-    -webkit-box-shadow: 0 3px 2px 0 #414141;
-    box-shadow: 0 3px 2px 0 #424242;
-    text-align: center;
-    color: #fff;
-    padding-top: 10px;
-    font-size: 16px;
-    margin-right: 10px;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
-
 .mb-2,
 .my-2 {
     margin-bottom: .5rem !important;
@@ -1552,8 +1606,9 @@ h5 {
 .mb-30 {
     margin-bottom: 30px;
 }
+/*======================== END Team member ========================*/
 
-/*CSS for Login page*/
+/*======================== Login page ========================*/
 h1,
 h2,
 h3,
@@ -1908,32 +1963,35 @@ img {
         text-align: center;
     }
 }
+/*======================== END Login page ========================*/
 
 
-/*CSS for Admin Portal*/
-.row label{
+/*======================== ADmin PORTAL ========================*/
+
+.row label {
     padding-left: 5px;
     padding-bottom: 10px;
     font-size: 18px;
 }
-.row h4{
+
+.row h4 {
     padding-top: 10px;
     padding-left: 10px;
     font-size: 22px;
     font-weight: 500;
 }
 
-.row form{
+.row form {
     padding-right: 20px;
     padding-left: 20px;
 }
 
 /*Add narrow to dropdown list*/
-select.form-control { 
-    -webkit-appearance: menulist; 
+select.form-control {
+    -webkit-appearance: menulist;
 }
 
-.card img{
+.card img {
     height: auto;
     width: auto;
     display: block;
@@ -1947,6 +2005,86 @@ select.form-control {
     -khtml-box-shadow: 10px 10px 5px #3131315c;
 }
 
-.card-body{
+.card-body {
     text-align: center;
 }
+
+/*======================== END ADmin PORTAL ========================*/
+
+/*======================== Social media page* ========================*/
+h3.title-social {
+    color: white;
+
+    text-align: center;
+    text-shadow: 5px 5px 5px rgba(51, 51, 51, 0.947);
+}
+
+.columnss {
+    display: grid;
+    place-items: center;
+}
+
+img.img-flickr {
+    margin: 1px;
+    padding: 0;
+    width: 90%;
+    width: -webkit-calc(100% - 2px);
+    width: calc(100% - 2px)
+}
+
+@media (min-width: 1367px) {
+    .columns {
+        align-items: center;
+    }
+
+    .columnss {
+        grid-template-columns: 50% 50%;
+    }
+
+    h3.title-social {
+        font-weight: 700;
+        font-size: 40px;
+    }
+
+    img.img-flickr {
+        max-width: 1000px;
+        min-width: 600px;
+    }
+
+
+}
+
+@media screen and (min-width: 568px) and (max-width: 1366px) {
+    h3.title-social {
+        font-weight: 700;
+        font-size: 35px;
+    }
+
+    img.img-flickr {
+        max-width: 600px;
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 567px) {
+    h3.title-social {
+        font-weight: 700;
+        font-size: 30px;
+    }
+
+    img.img-flickr {
+        max-width: 350px;
+        min-width: 200px;
+    }
+
+
+    .video-help-content p {
+        text-decoration: none;
+        display: inline-block;
+        color: #fff;
+        font-size: 18px;
+    }
+}
+
+/*======================== END Social media page* ========================*/
+
