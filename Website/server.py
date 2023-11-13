@@ -107,7 +107,8 @@ def welcome():
 @app.route("/donate")
 def donate():
     return render_template("donate.html", donateLink=db.get_link("donate"), donateAffiliateLink = db.get_link("donateaff"),
-			   social=db.get_page("social"), donate_block=db.get_page("donateaffiliate"))
+			   social=db.get_page("social"), additional_donate_block=db.get_page("additional_info_donate"),
+			   makedonation=db.get_page("make_a_donation"))
 
 @app.route("/members")
 def members():
