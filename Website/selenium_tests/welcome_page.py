@@ -53,7 +53,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-=======
+
 # import webdriver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
