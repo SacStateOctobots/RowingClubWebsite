@@ -80,8 +80,10 @@ INSERT INTO cmspages (id, title, content, modifieddate) VALUES ('join_block2', '
 "<div class='col-lg-6'><p style='font-size:22px' data-aos='fade-right' data-aos-duration='1000'>&#x2022; You'll meet new people through the practice of rowing. The goal of the team is to build a close-knit environment where all members are dedicated to achieving success. We encourage a competitive environment and strive to improve the members' performance.</p><p style='font-size:22px' data-aos='fade-left' data-aos-duration='1000'>&#x2022; The goal of the program is to provide a challenging environment that pushes the members' physical and mental limits. Through the program, you'll have the opportunity to travel across the state and compete against other club teams across the country as well.</p></div><div class='col-md-6'><img class='img-fluid rounded w-100' data-aos='fade-down' data-aos-easing='ease-out-cubic' data-aos-duration='1000' src='./static/img/p15.png'></div>",datetime('now'));
 INSERT INTO cmspages (id, title, content, modifieddate) VALUES ('join_block3', 'Join Page - Third Block',
 "<div class='col-lg-6'><div class='text-heading'><h1 class='mb-4' data-aos='fade-right' data-aos-duration='1000'>Interested to Being a part of the Team?</h1></div><p style='text-align:center;font-size:22px' data-aos='zoom-in' data-aos-duration='1000'>All are welcome with<b>NO EXPERIENCE REQUIRED</b></p><div class='video-introduction-content-button'><a data-aos='fade-left' data-aos-duration='1000' href='https://docs.google.com/forms/d/e/1FAIpQLSfZgOi84FUsV-uXBSIsJuTX3pKZdlFydBgsojzrhYNo09q4ZA/formResponse'>Join us</a></div></div><div class='col-lg-6'><div class='row g-3'><div class='col-6 text-end'></div><div class='col-6 text-start'><img class='img-fluid rounded w-100' data-aos='zoom-in' data-aos-duration='1000' data-aos-delay='0' src='./static/img/p7.jpeg'></div><div class='col-6 text-end'><img class='img-fluid rounded w-100' data-aos='zoom-in' data-aos-duration='1000' data-aos-delay='200' src='./static/img/p8.jpeg' style='margin-top:-65%'></div><div class='col-6 text-start'><img class='img-fluid rounded w-75' data-aos='zoom-in' data-aos-duration='1000' data-aos-delay='400' src='./static/img/p6.jpeg'></div></div></div>",datetime('now'));
-INSERT INTO cmspages (id, title, content, modifieddate) VALUES ('donateaffiliate', 'Donate to Affiliates', 
-"<div id='block-title3'><div id='title-label4' class='name'>Donate to Affiliates</div><div class='name-phone'>Donate to Affiliates</div><div style='color:#000' style='font-weight:600' class='check'><h3><strong>Additional Information Support the Sacramento State Rowing Club athletes in their elite and olympic pursuits.<br>The money will help fund activities such as: (activities list here)</div><h4 style='color:#005440'><strong>If you would like to donate via Check:<br>Sacramento State Rowing Club<br>1901 Hazel Ave,<br>Gold River, CA 95670<br></div>",datetime('now'));
+INSERT INTO cmspages (id, title, content, modifieddate) VALUES ('additional_info_donate', 'Additional Infomation Donation', 
+"<div id='title-label4' class='name'>Additional Information</div><h2 class='extra-info' style='font-size:40px'>Additional<strong>Info</strong></h2><div class='name-phone'>Additional Information</div><div style='color:#000' style='font-weight:600' class='check'><h3><strong>Support the Sacramento State Rowing Club athletes in their journey to WIRAs.<br><em>The money will help fund activities such as:</strong><br>New Equipment, Team Gear, Scholarships, Team Travel,<br>Regatta Entry Fees, Coxswain Training.</div><h4 style='color:#005440'><br><strong>If you would like to donate via Check<br><em>Sac State Rowing Club<br>6000 J Street,<br>Sacramento, CA 95819</em></strong><div class='space80'></div></h4>",datetime('now'));
+INSERT INTO cmspages (id, title, content, modifieddate) VALUES ('make_a_donation', 'Make A Donation', 
+"<h2 class='text-uppercase mb-4' style='font-size:40px'>Make A<strong>Donation</strong></h2><p style='font-size:22px' class='mb-4'>You can help the Rowing Club by donating on our official donation page!<br>After clicking the link below,<strong>at Fund Designation: choose 'Rowing Club.'</strong></p>",datetime('now'));
 
 
 -- Table for OTP log-in email storage
@@ -91,7 +93,7 @@ CREATE TABLE IF NOT EXISTS loginEmail (
 	emailAddr VARCHAR(255) NOT NULL UNIQUE);
 
 
-INSERT INTO loginEmail (emailAddr) VALUES ('tbcclv@gmail.com')
+INSERT INTO loginEmail (emailAddr) VALUES ('tbcclv@gmail.com');
 
 
 -- sql table for links (social media links)
@@ -104,5 +106,5 @@ INSERT INTO links (id, title, url) VALUES ('joinusform', 'Join Us Form', 'https:
 INSERT INTO links (id, title, url) VALUES ('instagram', 'Instagram', 'https://www.instagram.com/sacstaterowing/?utm_source=ig_embed&ig_rid=e3bcb0d8-a7ed-4db4-91de-788cbab2536c');
 INSERT INTO links (id, title, url) VALUES ('flickr', 'Flickr', 'https://www.flickr.com/photos/199260406@N02/albums/72177720311662792');
 INSERT INTO links (id, title, url) VALUES ('mailingform', 'Mailing List Form', 'https://forms.gle/4r7Mjue4fTxdWX716');
-INSERT INTO links (id, title, url) VALUES ('donate', 'Donate','#');
+INSERT INTO links (id, title, url) VALUES ('donate', 'Donate','https://swarmfunding.csus.edu/project/36577/donate');
 INSERT INTO links (id, title, url) VALUES ('donateaff', 'Donate to Affiliates','#');

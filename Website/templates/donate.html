@@ -27,13 +27,10 @@ Donate - Rowing Club
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
-                    <h2 class="text-uppercase mb-4" style="font-size: 40px;">Make A <strong>Donation</strong></h2>
-                    <p style="font-size: 22px;" class="mb-4">You can help the Rowing Club by donating on our official
-                        donation page! <br />
-                        After clicking the link below, <strong> at Fund Designation: choose "Rowing Club." </strong></p>
+                    {{makedonation[0][2] | safe}}
                     <div class="donate-button">
                         <div class="recruitment-button2">
-                            <a class="hello" href="https://swarmfunding.csus.edu/project/36577/donate">Click here</a>
+                            <a class="hello" href="{{donateLink[0][2]}}">Click here</a>
                         </div>
                         <div class="space"></div>
                     </div>
@@ -47,23 +44,7 @@ Donate - Rowing Club
     <div class="container-fluid">
         <div class="container-fluid bg-2 text-center"> 
             <div id="block-title3">
-                <div id="title-label4" class="name"> Additional Information</div>
-                <h2 class="extra-info" style="font-size: 40px;">Additional <strong>Info</strong></h2>
-                <div class="name-phone">Additional Information</div>
-                
-                <div style="color: black;" style="font-weight: 600;" class="check"> 
-                    <h3><strong>
-                        Support the Sacramento State Rowing Club athletes in their journey to WIRAs. 
-                        <br/> <em>The money will help fund activities such as: </strong>
-                        <br/> New Equipment, Team Gear, Scholarships, Team Travel, 
-                        <br/> Regatta Entry Fees, Coxswain Training.</em>
-                    </div>
-                    <h4 style="color: #005440;"> <br/><strong>If you would like to donate via Check
-                        <br/> <em>Sac State Rowing Club
-                        <br/> 6000 J Street,
-                        <br/>Sacramento, CA 95819 </em></strong>
-                        <div class="space80"></div>
-                    </h4>
+                {{additional_donate_block[0][2] | safe}}
             </div>
         </div>
     </div>  
