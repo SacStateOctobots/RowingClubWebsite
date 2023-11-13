@@ -12,13 +12,21 @@ Team Roster - Rowing Club
         background-color: #c3b680;
     }
 
-    .smashinglogo {
-        background-image: url(./static/img/TeamMember.jpeg);
-        background-size: cover;
-        background-position: center;
-        height: 600px;
-    }
-</style>
+
+        .smashinglogo {
+            background-image: url(./static/img/team_member.png);
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+        }
+        
+        @media only screen and (max-width: 600px) {
+        .smashinglogo {
+            height: 300px;
+            }
+        }
+    </style>
+
 {% endblock %}
 
 <!-- Banner-->
@@ -26,8 +34,10 @@ Team Roster - Rowing Club
     <div class="smashinglogo" data-offsetY="100" data-Xposition="50%" data-speed="-2">
         <div class="banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
             <div style="padding-top: 40px;"></div>
+
             <h1 class="team-member-desktop">Current Roster</h1>
             <h1 class="team-member-phone">Current <br/> Roster</h1>
+
         </div>
     </div>
 </section>

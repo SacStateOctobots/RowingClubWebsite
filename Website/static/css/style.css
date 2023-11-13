@@ -96,6 +96,7 @@
     }
 }
 
+
 .video-introduction-content h4 {
     font-size: 30px;
     color: #fff;
@@ -198,8 +199,10 @@
 }
 /*=============== END CSS for Video introduction or Introduction (Last Block) ========================*/
 
+
 /*===============  Text/Title banner responsive ========================*/
 .hold {
+
     align-items: center;
     justify-content: center;
 }
@@ -613,14 +616,17 @@ h1.hero-heading2 {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+
 .swiper-pagination-bullet-active {
     background-color: #005440;
+
 }
 
 @media screen and (max-width: 768px) {
     .slide p {
         padding: 0 20px;
     }
+
 
     .nav-btn {
         display: none;
@@ -699,9 +705,11 @@ h1.hero-heading2 {
 
 .wrapper-social-icon .button-social:nth-child(3) span {
     color: #ff0000;
+
 }
 
 /*=============== END Buton ========================*/
+
 
 /*=============== CSS for testimonial ========================*/
 .container-testi {
@@ -790,10 +798,12 @@ h1.hero-heading2 {
 }
 /*=============== END CSS for Image shadow ========================*/
 
+
 /*=============== Icon For Contact Page ========================*/
 .icon {
     transition: width 0.1s, height 0.1s, transform 0.2s;
 }
+
 
 .icon :hover {
     padding-top: 30px;
@@ -822,6 +832,7 @@ h1.hero-heading2 {
     padding-top: 25px;
 }
 
+
 .contact-icon h3 {
     color: #005440;
     font-size: 25px;
@@ -841,6 +852,7 @@ h1.hero-heading2 {
     font-weight: 300;
 }
 
+
 .contact-icon h4:hover {
     color: #c3b680;
     font-size: 25px;
@@ -855,6 +867,7 @@ h1.hero-heading2 {
 
 .space {
     padding-top: 30px;
+
 }
 
 .space15 {
@@ -1116,6 +1129,7 @@ h1.hero-heading2 {
         font-size: 0;
     }
 
+
     div.name-phone {
         font-size: 30px;
         font-weight: 600;
@@ -1124,6 +1138,7 @@ h1.hero-heading2 {
         border-width: 1px;
         text-shadow: 1px 4px 4px rgba(116, 116, 116, 0.947);
     }
+
 
     .extra-info {
         display: none;
@@ -1448,15 +1463,19 @@ h1.hero-heading2 {
     }
 }
 
+
 @media screen and (min-width: 568px) and (max-width: 1366px) {
     h1.team-member-desktop {
         font-size: 70px;
+
         color: #fff;
         text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.947);
         padding-top: 40px;
     }
 
+
     h1.team-member-phone {
+
         font-size: 0;
     }
 }
@@ -1470,7 +1489,9 @@ h1.hero-heading2 {
         padding-top: 20px;
     }
 
+
     h1.team-member-desktop {
+
         font-size: 0;
     }
 }
@@ -1944,7 +1965,9 @@ img {
 }
 /*======================== END Login page ========================*/
 
+
 /*======================== ADmin PORTAL ========================*/
+
 .row label {
     padding-left: 5px;
     padding-bottom: 10px;
@@ -1985,11 +2008,13 @@ select.form-control {
 .card-body {
     text-align: center;
 }
+
 /*======================== END ADmin PORTAL ========================*/
 
 /*======================== Social media page* ========================*/
 h3.title-social {
     color: white;
+
     text-align: center;
     text-shadow: 5px 5px 5px rgba(51, 51, 51, 0.947);
 }
@@ -2060,4 +2085,6 @@ img.img-flickr {
         font-size: 18px;
     }
 }
+
 /*======================== END Social media page* ========================*/
+
