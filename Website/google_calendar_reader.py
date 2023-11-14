@@ -79,8 +79,19 @@ def get_next_five_events():
 		else: #in this case we cannot parse the event
 			print("DEBUG: "+str(a))	
 
+	# Replace all nonpareseable event date/time strings with the unix epoch
+	tmp = []
+	for i in events:
+		newEvent = []
+		newEvent = list(i)
+		try: 
+			parse(newEvent[3])
+		except:
+			newEvent[3] = "1970-01-01 00:00:00"
+		tmp.append(newEvent)
+	events = tmp
+
 	# sort events by date entry in format year-month-day hours:minutes:seconds
-	#events = sorted(events,key=lambda x: datetime.datetime.strptime(x[3], "%Y-%m-%d %H:%M:%S"))
 	events = sorted(events,key=lambda x: parse(x[3]))
 	cnt = 1
 	out = []
@@ -180,9 +191,19 @@ def get_last_five_events():
 		else: #in this case we cannot parse the event
 			print("DEBUG: "+str(a))	
 
+	# Replace all nonpareseable event date/time strings with the unix epoch
+	tmp = []
+	for i in events:
+		newEvent = []
+		newEvent = list(i)
+		try: 
+			parse(newEvent[3])
+		except:
+			newEvent[3] = "1970-01-01 00:00:00"
+		tmp.append(newEvent)
+	events = tmp
+
 	# sort events by date entry in format year-month-day hours:minutes:seconds
-	#events = sorted(events,key=lambda x: datetime.datetime.strptime(x[3], "%Y-%m-%d %H:%M:%S"))
-	#events = sorted(events,key=lambda x: datetime.datetime.strptime(x[3], "%Y-%m-%d %H:%M:%S"))
 	events = sorted(events,key=lambda x: parse(x[3]).timestamp())
 	cnt = 1
 	out = []
