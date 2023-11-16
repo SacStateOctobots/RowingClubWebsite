@@ -18,6 +18,7 @@
 **/API_KEY
 **/EMAIL_KEY
 **/EMAIL_ADDRESS
+**/LOGIN_HASH
 
 __pycache__/
 # compiled output
