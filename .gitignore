@@ -18,6 +18,8 @@
 **/API_KEY
 **/EMAIL_KEY
 **/EMAIL_ADDRESS
+
+#Login hash storage file
 **/LOGIN_HASH
 
 __pycache__/
