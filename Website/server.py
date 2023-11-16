@@ -21,12 +21,19 @@ login_manager.init_app(app)
 # Our mock databases.
 # irl we should use an actual database for this.
 # We would also obviously not want to store username/login info in plain text like this.
-users = {'foo@bar.tld': {'pw': 'secret'}, #for old login setup [Remove]
-		 '08efdf7f9d382f19802a6ccb1a39c7531be4b1e5aaebdc2a49395ee656df22ab': {'pw': ''}, #testing personal gmail hash, use https://tools.keycdn.com/sha256-online-generator and insert email
-		 '633f1794c55003374a30f8c046ed3022bae38f9ec9da834ce09c2e51b2e35e00': {'pw': ''}, #Club CSUS Email Hash
-		 'c875fee06a22feda7227845dcd9680c34efd134d8d51fff72baffc08ba5bdeb5': {'pw': ''}} #Club Gmail Hash
+#users = {'foo@bar.tld': {'pw': 'secret'}, #for old login setup [Remove]
+#		 '08efdf7f9d382f19802a6ccb1a39c7531be4b1e5aaebdc2a49395ee656df22ab': {'pw': ''}, #testing personal gmail hash, use https://tools.keycdn.com/sha256-online-generator and insert email
+#		 '633f1794c55003374a30f8c046ed3022bae38f9ec9da834ce09c2e51b2e35e00': {'pw': ''}, #Club CSUS Email Hash
+#		 'c875fee06a22feda7227845dcd9680c34efd134d8d51fff72baffc08ba5bdeb5': {'pw': ''}} #Club Gmail Hash
 current_user = {'email': ''} #will be updated in verify() to house hash of user inputed email for referance in validate()
 
+#Set up valid login dictionary
+users = dict()
+with open('LOGIN_HASH') as fp:
+	Hashs = fp.readlines()
+	for line in Hashs:
+		users.update({line.strip(): {'pw': ''}})
+#print(users)
 
 # see: https://flask.palletsprojects.com/en/2.2.x/patterns/fileuploads/
 # directory where uploaded images will be stored
