@@ -25,7 +25,7 @@ users = {'foo@bar.tld': {'pw': 'secret'}, #for old login setup [Remove]
 		 '08efdf7f9d382f19802a6ccb1a39c7531be4b1e5aaebdc2a49395ee656df22ab': {'pw': ''}, #testing personal gmail hash, use https://tools.keycdn.com/sha256-online-generator and insert email
 		 '633f1794c55003374a30f8c046ed3022bae38f9ec9da834ce09c2e51b2e35e00': {'pw': ''}, #Club CSUS Email Hash
 		 'c875fee06a22feda7227845dcd9680c34efd134d8d51fff72baffc08ba5bdeb5': {'pw': ''}} #Club Gmail Hash
-
+current_user = {'email': ''} #will be updated in verify() to house hash of user inputed email for referance in validate()
 
 
 # see: https://flask.palletsprojects.com/en/2.2.x/patterns/fileuploads/
@@ -55,6 +55,10 @@ validation_interval_min = 3
 secret =  pyotp.random_base32()
 totp = pyotp.TOTP(secret, interval = (60 * validation_interval_min))
 
+def clear_dict():
+	users[current_user['email']]['pw'] = ''
+	current_user['email'] = ''
+	return
 
 class User(flask_login.UserMixin):
     pass
@@ -210,10 +214,8 @@ def verify():
 				  sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
 				  recipients=[request.form['email_otp']])
 	mail.send(msg)
-	#Sets a session var to be referenced for validate page to test if code has expired. 
-	session['generated_otp'] = generated_otp
-	#Session var to generate log-in token for Flask Login
-	session['email'] = email_hash
+	#Saves email hash for referance when validating user with flask login in validate(). 
+	current_user['email'] = email_hash
 	return render_template('login_otp_validate.html', social=db.get_page("social") ) 
 
 
@@ -224,16 +226,18 @@ def validate():
 	if totp.verify(otp=str(user_otp)):
 		#validates user with Flask Login and generates Log-in token
 		user = User()
-		user.id = str(session['email'])
+		user.id = str(current_user['email'])
 		flask_login.login_user(user, duration=datetime.timedelta(minutes=time_out_interval))
+		clear_dict()
 		return flask.redirect(flask.url_for('protected'))
 	else:
 		#checks whether the entered OTP is incorrect or if the Passcode has expired
-		if totp.verify(session['generated_otp']):
+		if  totp.verify(otp=users[current_user['email']]['pw']):
 			flash('Incorrect Passcode Entered, Try again')
-			return render_template('login_otp_validate.html')
+			return render_template('login_otp_validate.html', social=db.get_page("social") )
 		else:
-			flash('Passcode has timed out. Redirected to Login page.', social=db.get_page("social") )
+			flash('Passcode has timed out. Redirected to Login page.')
+			clear_dict()
 			return render_template('login_otp.html', social=db.get_page("social") )
 
 
