@@ -107,7 +107,7 @@ def donate():
 def members():
     return render_template("members.html", member=db.get_team_members())
 
-@app.route("/alumni")
+@app.route("/alumni")	
 def alumni():
 	print(db.get_alumni())
 	return render_template("alumni.html", alumni=db.get_alumni(), block1=db.get_page("alumni1"),block2=db.get_page("alumni2"))
