@@ -80,10 +80,11 @@ INSERT INTO cmspages (id, title, content, modifieddate) VALUES ('make_a_donation
 -- not currently implemented for use
 -- change to rowingclub email once site is ready for release
 CREATE TABLE IF NOT EXISTS loginEmail (
-	emailAddr VARCHAR(255) NOT NULL UNIQUE);
+	emailHash VARCHAR(255) NOT NULL UNIQUE,
+	otp VARCHAR(255) NOT NULL);
 
 
-INSERT INTO loginEmail (emailAddr) VALUES ('tbcclv@gmail.com');
+--INSERT INTO loginEmail (emailAddr) VALUES ('tbcclv@gmail.com');
 
 
 -- sql table for links (social media links)

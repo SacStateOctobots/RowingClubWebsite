@@ -11,7 +11,7 @@ while True:
     if(correct == 'Y' or 
        correct == 'y' or
        correct == ''):
-        email_hash = sha256(bytes(str(email), 'utf-8')).hexdigest()
+        email_hash = sha256(bytes(str(email).strip(), 'utf-8')).hexdigest()
         try:
             file = open('LOGIN_HASH', 'a')
         except FileNotFoundError:

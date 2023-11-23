@@ -91,6 +91,17 @@ def delete_alumni(name):
 	delete_from_db("alumni","name",name)
 
 #######################################################
+# email/otp table functions
+#######################################################
+def get_otp():
+	return query_db('select * from loginEmail')
+def insert_otp(email,otp):
+	insert_to_db("loginEmail","(emailHash,otp)","(?,?)",(email,otp))
+def delete_otp(emailHash):
+	delete_from_db("loginEmail","emailHash",emailHash)
+
+
+#######################################################
 # team_members table
 #######################################################
 def get_team_members():
