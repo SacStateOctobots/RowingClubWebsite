@@ -216,7 +216,8 @@ def contact_post():
 				sender=request.form['email'],
 				recipients=[emailAddress.rstrip()])
 	mail.send(msg)
-	return render_template("contactus.html",logo=db.get_page("contact"),social=db.get_page("social"))
+	return render_template("contactus.html",social=db.get_page("social"),logo=db.get_page("contact_logo"),
+			   mailingFormLink = db.get_link("mailingform"))
 
 @app.route("/recruitment")
 def recruitment():
@@ -546,9 +547,3 @@ def updateLinks():
 			'data' : db.get_links(),
 			'message': "Saved Changes"
 		}
-
-
-
-          
-	
-            
