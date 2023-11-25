@@ -65,52 +65,51 @@ Admin Page
 <!-- Script for displaying tabs and saving tab state -->
 <!-- https://www.w3schools.com/w3css/w3css_tabulators.asp-->
 <script>
-	//window.onload = Loader;
+	window.onload = Loader;
 
 	//Selected Tab
-	function openTab(evt, tabName) {
-		var i, x, tabname;
-		x = document.getElementsByClassName("tabname");
+	function openTab(tabName, btnID) {
+		var i;
+		var x = document.getElementsByClassName("tab");
+
 		for (i = 0; i < x.length; i++) {
 			x[i].style.display = "none";
 		}
 
-		tablinks = document.getElementsByClassName("tablink");
-
+		var x = document.getElementsByClassName("w3-button");
 		for (i = 0; i < x.length; i++) {
-			tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+			x[i].style.background = "#043927";
 		}
 
 		document.getElementById(tabName).style.display = "block";
-		localStorage.setItem('activeTab', tabName);
-	
-		evt.currentTarget.className += " w3-red";
+		document.getElementById(btnID).style.background = "red";
 
-	} // End Selected Tab
+		localStorage.setItem('activeTab', tabName);
+		localStorage.setItem('activeBtn', btnID);
+	}
 
 	function Loader() {
 		str = localStorage.getItem('activeTab');
+		str2 = localStorage.getItem('activeBtn');
 
 		switch (str) {
-			case 'Players':
+			case 'Alumni':
 			case 'TeamMembers':
 			case 'Officers':
 			case 'Testimonials':
 			case 'Content':
-      case 'SocialLinks':
-				openTab(" w3-red", str);
+			case 'SocialLinks':
+				openTab(str,str2);
 				break;
 			default:
 				alert("no value");
 		}
-
 	}
 
 </script>
 
 <!--tabs + person lists-->
 <div onload="Loader()"></div>
-
 
 <div class="container">
 	<hr />
@@ -163,16 +162,17 @@ Admin Page
 
 <!--tab field-->
 <div class="container-fluid">
+	<!--<div class="w3-bar w3-black">-->
 	<div class="w3-bar green_back_gold_front" style="font-size: 18px;">
-		<button class="w3-bar-item w3-button tablink" id="team-tab" onclick="openTab(event,'TeamMembers')">Team
-			Members</button>
-		<button class="w3-bar-item w3-button tablink" id="officers-tab"
-			onclick="openTab(event,'Officers')">Officers</button>
-		<button class="w3-bar-item w3-button tablink" id="testimonials-tab"
-			onclick="openTab(event,'Testimonials')">Testimonials</button>
-		<button class="w3-bar-item w3-button tablink" id="content-block-tab" onclick="openTab(event,'Content')">Content
-			Blocks</button>
-			<button class="w3-bar-item w3-button tablink" id="sociallinks-block-tab" onclick="openTab(event,'SocialLinks')">Social Links</button>
+		<button class="w3-bar-item w3-button" id="team-tab" onclick="openTab('TeamMembers','team-tab')">
+			Team Members</button>
+		<button class="w3-bar-item w3-button" id="officers-tab"
+			onclick="openTab('Officers','officers-tab')">Officers</button>
+		<button class="w3-bar-item w3-button" id="testimonials-tab"
+			onclick="openTab('Testimonials','testimonials-tab')">Testimonials</button>
+		<button class="w3-bar-item w3-button" id="content-block-tab" onclick="openTab('Content','content-block-tab')">
+			Content Blocks</button>
+		<button class="w3-bar-item w3-button tablink" id="sociallinks-block-tab" onclick="openTab('SocialLinks','sociallinks-block-tab')"> Social Links</button>
 		<a href="logout" style="position: absolute; right: 14px; font-weight: 500; font-size: 20px;"
 			class="btn btn-outline-dark green_back_gold_front_lightened" role="button"> Logout </a>
 	</div>
@@ -271,13 +271,10 @@ Admin Page
 							<input type="submit" id='delete-officers-button-id' name='delete-officers-button'
 								value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
 						</form>
-						<div class="space"></div>
-						<input type="submit" id='delete-officers-button-id' name='delete-officers-button'
-							value="Delete Officers" class="btn btn-outline-dark green_back_gold_front_lightened">
-					</form>
 					<div class="space"></div>
 				</div>
 			</div>
+		</div>
 
 			<!-- form to add officers -->
 			<div class="col-4">
@@ -308,7 +305,7 @@ Admin Page
 				<div class="col-16">
 					<div class="card mb-2 green_back_gold_front">
 						<h4 style="text-align: center;">Officer Selected:</h4>
-						<img id="officerImage" src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top"
+						<img id="officerImage" src="/static/image_uploads/No Photo.jpg" class="card-img-top"
 							alt="'s profile photo">
 						<div class="card-body">
 							<h5 id="officerTitle" class="card-title">Nothing selected!</h5>
@@ -393,13 +390,10 @@ Admin Page
 							<input type="submit" id='delete-testimonial-button-id' name='delete-testimonial-button'
 								value="Delete Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
 						</form>
-						<div class="space"></div>
-						<input type="submit" id='delete-testimonial-button-id' name='delete-testimonial-button'
-							value="Delete Testimonial" class="btn btn-outline-dark green_back_gold_front_lightened">
-					</form>
 					<div class="space"></div>
 				</div>
 			</div>
+		</div>
 			
 			<!-- form to add testimonials-->
 			<div class="col-4">
@@ -433,7 +427,7 @@ Admin Page
 				<div class="col-16">
 					<div class="card mb-2 green_back_gold_front">
 						<h4 style="text-align: center;">Testimonial Selected:</h4>
-						<img id=testimonialImage src="/static/image_uploads/Erika_Mitchell.jpg" class="card-img-top"
+						<img id=testimonialImage src="/static/image_uploads/No Photo.jpg" class="card-img-top"
 							alt="'s profile photo">
 						<div class="card-body">
 							<h5 id="testimonialTitle" class="card-title">Nothing selected!</h5>
