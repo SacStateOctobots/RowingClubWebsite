@@ -11,21 +11,13 @@ import datetime
 import hashlib
 from random import randrange
 
-
 app = flask.Flask(__name__)
-app.secret_key = os.urandom(16).hex() # Random 16 character string
+#app.secret_key = os.urandom(16).hex() # Random 16 character string
+app.secret_key = "super secret string"
 
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
-# Our mock databases.
-# irl we should use an actual database for this.
-# We would also obviously not want to store username/login info in plain text like this.
-#users = {'foo@bar.tld': {'pw': 'secret'}, #for old login setup [Remove]
-#		 '08efdf7f9d382f19802a6ccb1a39c7531be4b1e5aaebdc2a49395ee656df22ab': {'pw': ''}, #testing personal gmail hash, use https://tools.keycdn.com/sha256-online-generator and insert email
-#		 '633f1794c55003374a30f8c046ed3022bae38f9ec9da834ce09c2e51b2e35e00': {'pw': ''}, #Club CSUS Email Hash
-#		 'c875fee06a22feda7227845dcd9680c34efd134d8d51fff72baffc08ba5bdeb5': {'pw': ''}} #Club Gmail Hash
-current_user = {'email': ''} #will be updated in verify() to house hash of user inputed email for referance in validate()
 
 #Set up valid login dictionary
 #users = dict()
@@ -66,14 +58,9 @@ mail = Mail(app)
 
 #PyOTP TOTP instance
 validation_interval_min = 3
-secret =  pyotp.random_base32()
-totp = pyotp.TOTP(secret, interval = (60 * validation_interval_min))
+#secret =  pyotp.random_base32()
+#totp = pyotp.TOTP(secret, interval = (60 * validation_interval_min))
 
-# clear the whole dictionary
-#def clear_dict():
-	#users[current_user['email']]['pw'] = ''
-	#current_user['email'] = ''
-	#return
 def clear_otp_key(email_hash_str):
 	#email_hash = hashlib.sha256(bytes(email,'utf-8')).hexdigest()
 	db.delete_otp(email_hash_str) # clear old otp record
@@ -84,46 +71,70 @@ class User(flask_login.UserMixin):
 
 @login_manager.user_loader
 def user_loader(email):
-	user_list = map(lambda x: x[0],db.get_otp()) # get list of user hashes from db
-	if email not in user_list:
+	print("Debug: user loader runs.",flush=True)
+	print("Debug: email="+str(email),flush=True)
+	
+	# get the user email hash
+	email_hash = hashlib.sha256(bytes(str(email).strip(),'utf-8')).hexdigest()
+
+	# check if user email is in list of hashes
+	db_list = db.get_otp()
+	valid_email = False
+	for tup in db_list:
+		if tup[0] == str(email_hash):
+			valid_email = True
+	if valid_email == False:
 		return
+
+	print("Debug: user found",flush=True)
 
 	user = User()
 	user.id = email
 	return user
 
-@login_manager.request_loader
-def request_loader(request):
-	email = request.form.get('email')
+# I don't really know what this code does. Deleting it does not seem to break anything.
+#@login_manager.request_loader
+#def request_loader(request):
+	#print("Debug: Request loader runs.",flush=True)
+	#print("Debug: request.form="+str(dict(request.form)),flush=True)
+	#email = request.form.get('confirm_email')
 
-	# Check if the hash is in list of hashes from db
-	user_list = map(lambda x: x[0],db.get_otp()) # get list of user hashes from db
-	if email is None:
-		email_hash = ""	
-	else:
-		email_hash = hashlib.sha256(bytes(email),'utf-8').hexdigest() # check if user email is in list of hashes
-	if str(email_hash) not in user_list:
-		return
+	#if email is None:
+	#	email_hash = ""	
+	#else:
+	#	email_hash = hashlib.sha256(bytes(str(email).strip(),'utf-8')).hexdigest() # check if user email is in list of hashes
 
-	user = User()
-	user.id = email
+	#print("Debug: verify email",flush=True)
+	# Verify the users email hash is in our db
+	#db_list = db.get_otp()
+	#valid_email = False
+	#for tup in db_list:
+	#	if tup[0] == str(email_hash):
+	#		valid_email = True
+	#if valid_email == False:
+	#	return
+	#print("Debug: email found",flush=True)
 
+
+	#user = User()
+	#user.id = email
+
+	#print("Debug: lookup otp",flush=True)
 	# Lookup the otp for the input user in the database
 	# By this point we already know the correct hash is in the db
-	user_list = db.get_otp()
-	pw =""
-	for tup in user_list:
-		if tup[0] == str(email_hash):
-			pw = tup[1]
+	#pw =""
+	#for tup in db_list:
+	#	if tup[0] == str(email_hash):
+	#		pw = tup[1]
 
+	#print("Debug: check if user is authenticated",flush=True)
 	# Check if user is authenticated
-	user.is_authenticated = (request.form['pw'] == pw)
+	#user.is_authenticated = (request.form.get('otp') == pw)
 	
 	# Clear otp key
-	clear_otp_key(str(email_hash))
+	#clear_otp_key(str(email_hash))
 
-	return user
-
+	#return user
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
@@ -228,41 +239,32 @@ def recruitment():
 		#return flask.redirect(flask.url_for('protected'))
 	#return 'Bad login'
 
-@app.route('/login_otp')
+@app.route('/login_otp',methods=['GET', 'POST'])
 def login_otp():
-	return render_template('login_otp.html', social=db.get_page("social") )
+	print("Debug: login_otp runs.",flush=True)
+	# If a basic get request is sent then just load the login_otp page
+	if flask.request.method == 'GET':
+		return render_template('login_otp.html', social=db.get_page("social") )
 
-@app.route('/verify', methods = ["POST"])
-def verify():
-	print("Verify runs...")
-	#Generates OTP with PyOTP global var
-	generated_otp = totp.now()
-	#translates user inputed email to a hash value
+	# If a post request is sent
 	email_hash = hashlib.sha256(bytes(str(request.form['email_otp']).strip(), 'utf-8')).hexdigest()
-	#Validate if email entered is in the system and
-	#assigns the OTP to the email as its key value pair if email is in dictionary
-	#try:
-		#users[email_hash]['pw'] = str(generated_otp)
-	#except KeyError:
-		#flash("Email entered is invalid. Please try again")
-		#return render_template('login_otp.html', social=db.get_page("social") )
-
 	# Check if user entered email has a hash in the database
-	print(str(email_hash))
 	db_list = db.get_otp()
 	valid_email = False
 	for tup in db_list:
 		if tup[0] == str(email_hash):
 			valid_email = True
 
-	# If the hash is not found then we need redirect
+	# If email is bad quit out else we generate otp and proceed as normal
 	if valid_email == False:
-		flash("Email entered is invalid. Please try again")
-		#return render_template('login_otp.html', social=db.get_page("social") )
-		return flask.redirect(flask.url_for('login_otp'))
-	else:
-		print("Debug: Valid hash found.")
+		return "BAD EMAIL"
 
+	#Generates OTP 
+	generated_otp = pyotp.TOTP("MYSECRET", interval = (60 * validation_interval_min)).now()
+	print("Debug: generated_otp="+str(generated_otp),flush=True)
+	# Replace otp for this hash in database
+	db.delete_otp(email_hash)
+	db.insert_otp(email_hash,generated_otp)
 
 	#Sends message to email put in form
 	msg = Message(subject="Rowing Club Sign-in Passcode",
@@ -271,48 +273,32 @@ def verify():
 				  sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
 				  recipients=[request.form['email_otp']])
 	mail.send(msg)
-	#Saves email hash for referance when validating user with flask login in validate(). 
-	current_user['email'] = email_hash
-	return render_template('login_otp_validate.html', social=db.get_page("social") ) 
+	return flask.redirect(flask.url_for('validate'))
 
-
-@app.route('/validate',methods=["POST"])
+@app.route('/validate',methods=["POST","GET"])
 def validate():
-	print("Debug: entering /validate call")
+	# If a basic get request is sent then just load the validate page
+	if flask.request.method == 'GET':
+		return render_template('login_otp_validate.html', social=db.get_page("social") )
+
+	print("Debug: entering /validate call",flush=True)
 	# OTP Entered by the User
+	user_email = request.form['confirm_email'] 
 	user_otp = request.form['otp'] 
-	#if totp.verify(otp=str(user_otp)):
-	if totp.verify(otp=user_otp):
+	if pyotp.TOTP("MYSECRET", interval = (60 * validation_interval_min)).verify(user_otp):
 		#validates user with Flask Login and generates Log-in token
+		print("Debug: Login successful redirecting to protected.",flush=True)
 		user = User()
-		user.id = str(current_user['email'])
+		user.id = user_email
+		#flask_login.login_user(user, duration=datetime.timedelta(minutes=time_out_interval))
 		flask_login.login_user(user, duration=datetime.timedelta(minutes=time_out_interval))
-		clear_otp_key(str(current_user['email'])) # Clear out old otp key
+		#clear_otp_key(str(current_user['email'])) # Clear out old otp key
 		return flask.redirect(flask.url_for('protected'))
 	else:
-		flash('Passcode Entered not valid, redirecting to login.')
-		#return render_template('login_otp.html', social=db.get_page("social") )
-		return flask.redirect(flask.url_for('login_otp'))
-		
-		#checks whether the entered OTP is incorrect or if the Passcode has expired
-		#otp_table = db.get_otp()
-		#print("DEBUG!")
-		#print(current_user)
-		#pw = ''
-		#for tup in otp_table:
-			#if tup[0] == current_user['email']:
-				#pw = tup[1]
-		##if  totp.verify(otp=users[current_user['email']]['pw']):
-		#if  totp.verify(otp=pw):
-			#flash('Incorrect Passcode Entered, Try again')
-			#return render_template('login_otp_validate.html', social=db.get_page("social") )
-		#else:
-			#flash('Passcode has timed out. Redirected to Login page.')
-			#clear_dict()
-			#clear_otp_key(str(current_user['email']))
-			#return render_template('login_otp.html', social=db.get_page("social") )
-
-
+		print("Debug: Login unsuccessful.",flush=True)
+		#return flask.redirect(flask.url_for('login_otp'))
+		return "FAILED TO VALIDATE OTP"
+	
 def file_allowed_handler(file):
 	fname_prefix = file.filename.split(".")[0]
 	fname_suffix = file.filename.split(".")[1]
