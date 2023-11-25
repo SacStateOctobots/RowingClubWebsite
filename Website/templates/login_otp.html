@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Rowing Club Website Templates Demo
+Admin Login
 {% endblock %}
 
 {% block body %}
@@ -12,7 +12,7 @@ Rowing Club Website Templates Demo
 
 	<div class="login">
 		<div class="container">
-			<h1>Hello Admin<br />Welcome to Admin Portal</h1>
+			<h1>Hello Admin<br />Welcome to Login Page</h1>
 			{% with messages = get_flashed_messages() %}
     	    {% if messages %}
     	        <div class=flashes>
@@ -23,7 +23,7 @@ Rowing Club Website Templates Demo
     	    {% endif %}
     		{% endwith %}
 			<div class="login-form">
-				<form action = "verify" method = "POST">
+				<form action = "login_otp" method = "POST">
 					<input type="email" name="email_otp" id='email_otp' placeholder="Enter Email Address" class="form-control"></input>
 					<button type='submit' name='submit'>Send Email</button> 
 				</form> 
@@ -31,7 +31,11 @@ Rowing Club Website Templates Demo
 		</div>
 	</div>
 </div>
-<br>
-<div class="space15"></div>
+<!--Removes footer from page-->
+<style>
+	footer {
+		display: none;
+	}
+</style>
 
 {% endblock %}

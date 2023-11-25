@@ -1,50 +1,17 @@
 {% extends 'base.html' %}
 
-{% block custom_head %} 
-	<style>
-		body {
-			background-color: #c3b680;
-		}
-		.carousel {
-			background-size: cover;
-			height:540px;
-			overflow: hidden;
-		}
+{% block custom_head %}
+<style>
+	body {
+		background-color: #c3b680;
+	}
 
-		.overlay { 
-			color:#fff;
-			position:absolute;
-			z-index:12;
-			top:0%;
-			left:0;
-			width:100%;
-			text-align:center;
-		}
+	.hold {
+		position: relative;
+		text-align: center;
+	}
 
-		@media (max-width :567px) {
-			.carousel {
-				height: 400px;
-			}
-		}
-
-		@media (max-width :567px) {
-			.mobile-item {
-				height: 300px;
-			}
-		}
-
-		@media (max-width :800px) {
-			.space80 {
-				padding-top: 0px;
-			}
-		}
-
-		.hold {
-			position: relative;
-			text-align: center;
-		}
-
-	</style>
+</style>
 {% endblock %}
 
 {% block title %}
@@ -55,82 +22,87 @@ Alumni - Rowing Club
 <!--copied from the about us page-->
 
 <body>
-<!--Alumni Introduction Banner-->
-<div class="hold">
-<div class="container-fluid px-0 shadow-lg">
-	<div class="overlay banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
+	<!--Alumni Introduction Banner-->
+	<div class="hold">
+		<div class="container-fluid px-0 shadow-lg">
+			<div class="overlay banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
+				<h1 class="hero-heading2">Alumni</h1>
+			</div>
+
+			<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+						aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+						aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+						aria-label="Slide 3"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active" data-bs-interval="5000">
+						<img src="./static/img/p9.jpg" class="d-block w-100" alt="Alum1">
+						<div class="carousel-caption d-none d-md-block">
+						</div>
+					</div>
+					<div class="carousel-item" data-bs-interval="2000">
+
+						<img src="./static/img/p13.png" class="d-block w-100" alt="Alum2">
+
+						<div class="carousel-caption d-none d-md-block">
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img src="./static/img/p7.jpeg" class="d-block w-100" alt="Alum3">
+						<div class="carousel-caption d-none d-md-block">
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+
+		</div>
+		<!-- Alumni Association Text Boxes -->
+		<div class="container-xxl py-5">
+			<div class="container">
+				<div class="row g-4">
+					{{block1[0][2] | safe}}
+				</div>
+			</div>
+		</div>
+
+		<div class="space15"></div>
+
+		<!-- Mailing List Button -->
+		<div class="video-introduction-content">
+			<h1 data-aos="fade-up" data-aos-duration="1000" class="hero-heading">Join our Mailing List!</h1>
+			<a data-aos="fade-down" data-aos-duration="1000" href="{{mailingFormLink[0][2]}}">Sign-up</a>
+		</div>
+
+		<div class="space"></div>
+
+		<!-- Alumni Database and Text Boxes -->
+		<div class="container">
+			{{block2[0][2] | safe}}
+		</div>
 		<div class="space80"></div>
-		<h1 class="hero-heading">Alumni</h1></div>
-	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-		<!-- Slider Buttons -->
-		<div class="carousel-indicators">
-		  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-		  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-		  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-		</div>
-
-		<!-- Slider Images -->
-		<div class="carousel-inner">
-		  	<div class="carousel-item active">
-				<img src="./static/img/p9.jpg" class="mobile-item img-responsive w-100" style="width: 1280px;
-				height: 840px;"  alt="Alum1">
-		  	</div>
-		 	 <div class="carousel-item">
-				<img src="./static/img/p10.jpg" class="mobile-item d-block img-responsive w-100" style="width: 1280px;
-				height: 840px;" alt="Alum2">
-			</div>
-			<div class="carousel-item">
-				<img src="./static/img/p7.jpeg" class="mobile-item d-block img-responsive w-100" style="width: 1280px;
-				height: 840px;" alt="Alum3">
-			</div>
-		</div>
-
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		  </button>
-		  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
-</div>
-</div>
-<!-- Alumni Association Text Boxes -->
-<div class="container-xxl py-5">
-	<div class="container">
-		<div class="row g-4">
-			{{block1[0][2] | safe}}
-		</div>
 	</div>
-</div>
-<!--Sean's version: verify which version Tyler wants-->
-<!-- Mailing List Button -->
-<div class="video-introduction-content">
-	<h1 data-aos="fade-up" data-aos-duration="1000" class="hero-heading">Join our Mailing List!</h1>
-	<a data-aos="fade-down" data-aos-duration="1000"
-		href="https://forms.gle/4r7Mjue4fTxdWX716">Sign-up</a>
-</div>
-
-<!-- Alumni Database and Text Boxes -->
-<div class="container">
-	{{block2[0][2] | safe}}
-
-	<br>
-	<!--Karl's version: verify which version Tyler wants-->
-	<!--Fix button to not wrap text and have link open in new tab.-->
-	<div class="card green_back_gold_front text-center container-xl" data-aos="fade-right" data-aos-duration="1000">
-	<!--<img src="https://cdn.discordapp.com/attachments/1014300694238482442/1092929612880805949/image.png"
-		style="height: 460px;" class="card-img" alt="...">-->
-		<div class="mx-auto">
-			<h1 class="card-title text-center">Join our Mailing List</h1>
-			<button onclick="document.location='https://forms.gle/4r7Mjue4fTxdWX716'"
-				class="btn green_back_gold_front btn-lg" data-aos="zoom-in-up"
-				data-aos-duration="1000">Mailing List Sign-up Form</button>
-	</div>
-</div>
-
-	<br>
-	<hr/>
-</div>
 </body>
+
+<style>
+	/* Footer removal */
+	footer {
+			display: none;
+	}
+</style>
+
+
 {% endblock %}

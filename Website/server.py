@@ -1,5 +1,3 @@
-import datetime
-from time import sleep
 import flask
 import flask_login
 import os
@@ -10,21 +8,31 @@ import google_calendar_reader as cal
 import database_library as db
 import pyotp
 import datetime
+import hashlib
 from random import randrange
 
-
 app = flask.Flask(__name__)
-app.secret_key = 'super secret string'  # Change this!
+#app.secret_key = os.urandom(16).hex() # Random 16 character string
+app.secret_key = "super secret string"
 
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
-# Our mock databases.
-# irl we should use an actual database for this.
-# We would also obviously not want to store username/login info in plain text like this.
-users = {'foo@bar.tld': {'pw': 'secret'}} #for user login info
 
-
+#Set up valid login dictionary
+#users = dict()
+with app.app_context():
+	# Clear the hash/otp keys from the database first
+	database_contents = db.get_otp()
+	for tup in database_contents:
+		db.delete_otp(tup[0])
+	# Load in the hashes with blank passcodes from the database
+	with open('LOGIN_HASH') as fp:
+		Hashs = fp.readlines()
+		for line in Hashs:
+			#email_hash = hashlib.sha256(bytes(line.strip(),'utf-8')).hexdigest()
+			db.insert_otp(line.strip(),"")
+		print(db.get_otp())
 
 # see: https://flask.palletsprojects.com/en/2.2.x/patterns/fileuploads/
 # directory where uploaded images will be stored
@@ -50,92 +58,152 @@ mail = Mail(app)
 
 #PyOTP TOTP instance
 validation_interval_min = 3
-secret =  pyotp.random_base32()
-totp = pyotp.TOTP(secret, interval = (60 * validation_interval_min))
+#secret =  pyotp.random_base32()
+#totp = pyotp.TOTP(secret, interval = (60 * validation_interval_min))
+
+def clear_otp_key(email_hash_str):
+	#email_hash = hashlib.sha256(bytes(email,'utf-8')).hexdigest()
+	db.delete_otp(email_hash_str) # clear old otp record
+	db.insert_otp(email_hash_str,"") # reinsert otp record with empty key
 
 class User(flask_login.UserMixin):
-    pass
+	pass
 
 @login_manager.user_loader
 def user_loader(email):
-    if email not in users:
-        return
+	print("Debug: user loader runs.",flush=True)
+	print("Debug: email="+str(email),flush=True)
+	
+	# get the user email hash
+	email_hash = hashlib.sha256(bytes(str(email).strip(),'utf-8')).hexdigest()
 
-    user = User()
-    user.id = email
-    return user
+	# check if user email is in list of hashes
+	db_list = db.get_otp()
+	valid_email = False
+	for tup in db_list:
+		if tup[0] == str(email_hash):
+			valid_email = True
+	if valid_email == False:
+		return
 
-@login_manager.request_loader
-def request_loader(request):
-    email = request.form.get('email')
-    if email not in users:
-        return
+	print("Debug: user found",flush=True)
 
-    user = User()
-    user.id = email
+	user = User()
+	user.id = email
+	return user
 
-    # DO NOT ever store passwords in plaintext and always compare password
-    # hashes using constant-time comparison!
-    user.is_authenticated = request.form['pw'] == users[email]['pw']
+# I don't really know what this code does. Deleting it does not seem to break anything.
+#@login_manager.request_loader
+#def request_loader(request):
+	#print("Debug: Request loader runs.",flush=True)
+	#print("Debug: request.form="+str(dict(request.form)),flush=True)
+	#email = request.form.get('confirm_email')
 
-    return user
+	#if email is None:
+	#	email_hash = ""	
+	#else:
+	#	email_hash = hashlib.sha256(bytes(str(email).strip(),'utf-8')).hexdigest() # check if user email is in list of hashes
 
+	#print("Debug: verify email",flush=True)
+	# Verify the users email hash is in our db
+	#db_list = db.get_otp()
+	#valid_email = False
+	#for tup in db_list:
+	#	if tup[0] == str(email_hash):
+	#		valid_email = True
+	#if valid_email == False:
+	#	return
+	#print("Debug: email found",flush=True)
+
+
+	#user = User()
+	#user.id = email
+
+	#print("Debug: lookup otp",flush=True)
+	# Lookup the otp for the input user in the database
+	# By this point we already know the correct hash is in the db
+	#pw =""
+	#for tup in db_list:
+	#	if tup[0] == str(email_hash):
+	#		pw = tup[1]
+
+	#print("Debug: check if user is authenticated",flush=True)
+	# Check if user is authenticated
+	#user.is_authenticated = (request.form.get('otp') == pw)
+	
+	# Clear otp key
+	#clear_otp_key(str(email_hash))
+
+	#return user
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
     return 'Unauthorized'
 
-#@app.route('/')
-#def index():
-#    if flask_login.current_user.is_anonymous:
-#        return 'Hello anonymous user'
-#    else:
-#        return f'Hello {flask_login.current_user.id}'
-#        #return 'Hello user' 
+#used to time out session token after a set ammount of time of inactivity
+time_out_interval = 10;
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
+    app.permanent_session_lifetime = datetime.timedelta(minutes=time_out_interval)
 
 @app.route("/")
 def welcome():
     newEvents = cal.get_next_five_events()
     #newEvents=[]
-    return render_template("welcome.html",next_events=newEvents,block=db.get_page("homepage_about"))
+    return render_template("welcome.html",next_events=newEvents,block=db.get_page("homepage_about"),
+			   joinusLink=db.get_link("joinusform"),donateLink=db.get_link("donate"),
+			   social=db.get_page("social"))
+
 
 @app.route("/donate")
 def donate():
-    return render_template("donate.html")
+    return render_template("donate.html", donateLink=db.get_link("donate"), donateAffiliateLink = db.get_link("donateaff"),
+			   social=db.get_page("social"), additional_donate_block=db.get_page("additional_info_donate"),
+			   makedonation=db.get_page("make_a_donation"))
 
 @app.route("/members")
 def members():
-    return render_template("members.html", member=db.get_team_members())
+    return render_template("members.html", member=db.get_team_members(),joinusLink=db.get_link("joinusform"),
+	social=db.get_page("social"))
 
 @app.route("/alumni")	
 def alumni():
 	print(db.get_alumni())
-	return render_template("alumni.html", alumni=db.get_alumni(), block1=db.get_page("alumni1"),block2=db.get_page("alumni2"))
+	return render_template("alumni.html", alumni=db.get_alumni(), 
+			block1=db.get_page("alumni1"),block2=db.get_page("alumni2"),
+			mailingFormLink = db.get_link("mailingform"),
+			social=db.get_page("social"))
 
 @app.route("/calendar")
 def calendar():
 	oldEvents = cal.get_last_five_events()[:4]
 	newEvents = cal.get_next_five_events()[:4]
-	return render_template("calendar.html",past_events = oldEvents,next_events = newEvents)
+	return render_template("calendar.html",past_events = oldEvents,next_events = newEvents,social=db.get_page("social"))
 
 @app.route("/instagram")
 def instagram():
-    return render_template("instagram.html",social=db.get_page("social"), contact=db.get_page("contact"))
+    return render_template("instagram.html",
+			   instagramLink = db.get_link("instagram"), flickrLink = db.get_link("flickr"),social=db.get_page("social"))
 
 @app.route("/about")
 def about():
-    return render_template("about_us.html", officers=db.get_about(), content=db.get_page("aboutus"))
+    return render_template("about_us.html", officers=db.get_about(), content=db.get_page("aboutus"), 
+			   joinusLink=db.get_link("joinusform"),social=db.get_page("social"))
 
 #recruitment page
 @app.route("/join")
 def join():
     test = db.get_testimonial()
     
-    return render_template("join.html",test=test,block1=db.get_page("join_block1"),block2=db.get_page("join_block2"),block3=db.get_page("join_block3"))
+    return render_template("join.html",test=test,
+			   block1=db.get_page("join_block1"),block2=db.get_page("join_block2"),block3=db.get_page("join_block3"),
+			   joinusLink = db.get_link("joinusform"),social=db.get_page("social"))
 
 @app.route("/contact")
 def contact():
-    return render_template("contactus.html",social=db.get_page("social"),logo=db.get_page("contact_logo"))
+    return render_template("contactus.html",social=db.get_page("social"),logo=db.get_page("contact_logo"),
+			   mailingFormLink = db.get_link("mailingform"))
 
 
 @app.route("/contact",methods=['POST'])
@@ -148,78 +216,90 @@ def contact_post():
 				sender=request.form['email'],
 				recipients=[emailAddress.rstrip()])
 	mail.send(msg)
-	return render_template("contactus.html")
+	return render_template("contactus.html",social=db.get_page("social"),logo=db.get_page("contact_logo"),
+			   mailingFormLink = db.get_link("mailingform"))
 
 @app.route("/recruitment")
 def recruitment():
     return render_template("recruitment.html")
  
+#Remove before transfering to client
+#@app.route('/login')
+#def login():
+#    return render_template("login.html",social=db.get_page("social"))
 
-@app.route('/login')
-def login():
-    return render_template("login.html")
+#Remove before transfering to client
+#@app.route('/login', methods=['POST'])
+#def login_form():
+	#print("LOGIN POST REQUEST")
+	#email = flask.request.form['email']
+	#if flask.request.form['pw'] == users[email]['pw']:
+		#user = User()
+		#user.id = email
+		#flask_login.login_user(user)
+		#return flask.redirect(flask.url_for('protected'))
+	#return 'Bad login'
 
-@app.route('/login', methods=['POST'])
-def login_form():
-	email = flask.request.form['email']
-	if flask.request.form['pw'] == users[email]['pw']:
-		user = User()
-		user.id = email
-		flask_login.login_user(user)
-		return flask.redirect(flask.url_for('protected'))
-	return 'Bad login'
-	#return render_template("login.html")
-
-##TO-DO:
-#	- check email to make sure it is a valid email addr and that it matches set email
-#		- see if email storage should be done with hash value and to validate with hash match
-#	- email message needs to be secure, email text should be hidden from traffic sniffing -> for testing
-#	- not sure if valid code will work twice in a row if time limit is set long enough
-#	- figure out way to remove validation token to access protected page after a certain amount of time
-
-
-@app.route('/login_otp')
+@app.route('/login_otp',methods=['GET', 'POST'])
 def login_otp():
-	return render_template('login_otp.html')
+	print("Debug: login_otp runs.",flush=True)
+	# If a basic get request is sent then just load the login_otp page
+	if flask.request.method == 'GET':
+		return render_template('login_otp.html', social=db.get_page("social") )
 
-@app.route('/verify', methods = ["POST"])
-def verify():
-	#Generates OTP with PyOTP global var
-	generated_otp = totp.now()
+	# If a post request is sent
+	email_hash = hashlib.sha256(bytes(str(request.form['email_otp']).strip(), 'utf-8')).hexdigest()
+	# Check if user entered email has a hash in the database
+	db_list = db.get_otp()
+	valid_email = False
+	for tup in db_list:
+		if tup[0] == str(email_hash):
+			valid_email = True
+
+	# If email is bad quit out else we generate otp and proceed as normal
+	if valid_email == False:
+		return "BAD EMAIL"
+
+	#Generates OTP 
+	generated_otp = pyotp.TOTP("MYSECRET", interval = (60 * validation_interval_min)).now()
+	print("Debug: generated_otp="+str(generated_otp),flush=True)
+	# Replace otp for this hash in database
+	db.delete_otp(email_hash)
+	db.insert_otp(email_hash,generated_otp)
+
 	#Sends message to email put in form
 	msg = Message(subject="Rowing Club Sign-in Passcode",
-				body="Passcode for log-in verification: "
-				+ str(generated_otp) + "\n Passcode will expire in " + str(validation_interval_min) + " minute.",  
-				sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
-				recipients=[request.form['email_otp']])
+				  body="Passcode for log-in verification: "
+				  + str(generated_otp) + "\nPasscode will expire in " + str(validation_interval_min) + " minute(s).",  
+				  sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
+				  recipients=[request.form['email_otp']])
 	mail.send(msg)
-	#Sets a session var to be referenced for validate page to test is code has expired. 
-	session['generated_otp'] = generated_otp
-	return render_template('login_otp_validate.html') 
+	return flask.redirect(flask.url_for('validate'))
 
-
-@app.route('/validate',methods=["POST"])
+@app.route('/validate',methods=["POST","GET"])
 def validate():
+	# If a basic get request is sent then just load the validate page
+	if flask.request.method == 'GET':
+		return render_template('login_otp_validate.html', social=db.get_page("social") )
+
+	print("Debug: entering /validate call",flush=True)
 	# OTP Entered by the User
+	user_email = request.form['confirm_email'] 
 	user_otp = request.form['otp'] 
-	if totp.verify(otp=str(user_otp)):
-		#User var setting done manually so session cookies can be generated to access page
-		#Will need to alter to change to authorized rowing club email when published
+	if pyotp.TOTP("MYSECRET", interval = (60 * validation_interval_min)).verify(user_otp):
+		#validates user with Flask Login and generates Log-in token
+		print("Debug: Login successful redirecting to protected.",flush=True)
 		user = User()
-		user.id = 'foo@bar.tld'
-		flask_login.login_user(user)
+		user.id = user_email
+		#flask_login.login_user(user, duration=datetime.timedelta(minutes=time_out_interval))
+		flask_login.login_user(user, duration=datetime.timedelta(minutes=time_out_interval))
+		#clear_otp_key(str(current_user['email'])) # Clear out old otp key
 		return flask.redirect(flask.url_for('protected'))
 	else:
-		if totp.verify(session['generated_otp']):
-			flash('Incorrect Passcode Entered, Try again')
-			return render_template('login_otp_validate.html')
-		else:
-			flash('Passcode has timed out. Redirected to Login page.')
-			render_template('login_otp_validate.html')
-			sleep(10)
-			return render_template('login_otp.html')
-
-
+		print("Debug: Login unsuccessful.",flush=True)
+		#return flask.redirect(flask.url_for('login_otp'))
+		return "FAILED TO VALIDATE OTP"
+	
 def file_allowed_handler(file):
 	fname_prefix = file.filename.split(".")[0]
 	fname_suffix = file.filename.split(".")[1]
@@ -377,11 +457,7 @@ def protected_post():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_testimonial(nametext,text1,filename,text2)
-	
-	players = db.get_players()
-	#print(players)
-	alumni = db.get_alumni()
-	#print(alumni)
+
 	team_members = db.get_team_members()
 	#print(team_members)
 	officers = db.get_about()
@@ -389,33 +465,29 @@ def protected_post():
 	testimonial=db.get_testimonial()
 	#print(testimonial)
 	return render_template("admin.html", 
-							players=players, 
-							alumni=alumni, 
 							team_members=team_members, 
 							officers=officers, 
 							testimonial=testimonial,
-              blocks=db.get_pages())
+              blocks=db.get_pages(),
+			  links =db.get_links(),
+			  social=db.get_page("social"))
 
 @app.route('/protected')
 @flask_login.login_required
 def protected():
-	players = db.get_players()
-	#print(players)
-	alumni = db.get_alumni()
-	#print(alumni)
 	team_members = db.get_team_members()
 	#print(team_members)
 	officers = db.get_about()
 	#print(officers)
 	testimonial=db.get_testimonial()
 	#print(testimonial)
-	return render_template("admin.html", 
-							players=players, 
-							alumni=alumni, 
+	return render_template("admin.html",
 							team_members=team_members, 
 							officers=officers, 
 							testimonial=testimonial,
-              blocks=db.get_pages())
+              blocks=db.get_pages(),
+			  links =db.get_links(),
+			  social=db.get_page("social"))
 
 @app.route('/logout')
 def logout():
@@ -439,9 +511,8 @@ def cmsPages():
 		db.update_page(json_data["id"],json_data["content"])
 		return {
 			'data' : db.get_page(json_data["id"]),
-			'message': "Updated!"
+			'message': "Updated Content!"
 		}
-	return render_template('admin.html')
 
 
 @app.route('/editpage', methods=['POST'])
@@ -452,7 +523,6 @@ def updatePage():
 		return {
 			'data' : db.get_page(json_data["id"])
 		}
-	return render_template('admin.html')
 
 @app.route('/uploadimage', methods=['POST'])
 @flask_login.login_required
@@ -465,9 +535,15 @@ def uploadImage():
 	return {
 			'location' : os.path.join(app.config['UPLOAD_FOLDER'], file)
 		}
-			
 
-
-          
-	
-            
+@app.route('/updatelinks', methods=['POST'])
+@flask_login.login_required
+def updateLinks():
+	if flask.request.method == 'POST':
+		json_data = flask.request.get_json()
+		for object in json_data["data"]:
+			db.update_link(object,json_data["data"][object])
+		return {
+			'data' : db.get_links(),
+			'message': "Saved Changes"
+		}

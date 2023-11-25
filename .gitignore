@@ -19,6 +19,9 @@
 **/EMAIL_KEY
 **/EMAIL_ADDRESS
 
+#Login hash storage file
+**/LOGIN_HASH
+
 __pycache__/
 # compiled output
 /dist
