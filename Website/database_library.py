@@ -97,6 +97,13 @@ def get_otp():
 	return query_db('select * from loginEmail')
 def insert_otp(email,otp):
 	insert_to_db("loginEmail","(emailHash,otp)","(?,?)",(email,otp))
+def update_otp(email, otp):
+	query = 'UPDATE loginEmail SET otp= :otp WHERE emailHash= :emailHash'
+	args = {'otp': otp, 'emailHash': email}
+	if(update_to_db(query, args)):
+		return True
+	else:
+		return False	
 def delete_otp(emailHash):
 	delete_from_db("loginEmail","emailHash",emailHash)
 
