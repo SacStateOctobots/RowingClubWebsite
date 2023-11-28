@@ -95,4 +95,3 @@ INSERT INTO links (id, title, url) VALUES ('instagram', 'Instagram', 'https://ww
 INSERT INTO links (id, title, url) VALUES ('flickr', 'Flickr', 'https://www.flickr.com/photos/199260406@N02/albums/72177720311662792');
 INSERT INTO links (id, title, url) VALUES ('mailingform', 'Mailing List Form', 'https://forms.gle/4r7Mjue4fTxdWX716');
 INSERT INTO links (id, title, url) VALUES ('donate', 'Donate','https://swarmfunding.csus.edu/project/36577/donate');
-INSERT INTO links (id, title, url) VALUES ('donateaff', 'Donate to Affiliates','#');
