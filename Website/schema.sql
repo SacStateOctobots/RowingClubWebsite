@@ -84,9 +84,6 @@ CREATE TABLE IF NOT EXISTS loginEmail (
 	otp VARCHAR(255) NOT NULL);
 
 
---INSERT INTO loginEmail (emailAddr) VALUES ('tbcclv@gmail.com');
-
-
 -- sql table for links (social media links)
 CREATE TABLE IF NOT EXISTS links (
 	id VARCHAR(255) NOT NULL UNIQUE,

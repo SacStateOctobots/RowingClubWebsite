@@ -170,8 +170,7 @@ def members():
 
 @app.route("/alumni")
 def alumni():
-	print(db.get_alumni())
-	return render_template("alumni.html", alumni=db.get_alumni(), 
+	return render_template("alumni.html", 
 			block1=db.get_page("alumni1"),block2=db.get_page("alumni2"),
 			mailingFormLink = db.get_link("mailingform"),
 			social=db.get_page("social"))
@@ -370,34 +369,6 @@ def protected_post():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_player(nametext,desc,filename)
-            
-#######################################################
-# Alumni form -> needs to be changed to edit text. Alumni memebers not a part of page
-#######################################################
-
-	if "deletealumni" in request.form:
-		text = request.form['deletealumni']
-		db.delete_alumni(text)
-	if "alumni-name" in request.form:
-		nametext = request.form['alumni-name']
-		desc = request.form['alumni-desc']
-		# check if the post request has the file part
-		if 'alumni-file' not in request.files:
-			print('No file part')
-			return redirect(request.url)
-		file = request.files['alumni-file']
-		# If the user does not select a file, the browser submits an
-		# empty file without a filename.
-		if file.filename == '':
-			print('No file name')
-			return redirect(request.url)
-		if file and allowed_file(file.filename):
-			print('Success alumni')
-			filename = file_allowed_handler(file)
-		else:
-			print('File name not allowed')
-			return redirect(request.url)
-		db.insert_alumni(nametext,desc,filename)
 
 #######################################################
 # team members form

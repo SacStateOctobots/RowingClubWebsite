@@ -79,16 +79,6 @@ def insert_testimonial(name, testimonial, imgfilename,job):
 def delete_testimonial(name):
 	delete_from_db("testimonials","name",name)
 
-#######################################################
-# alumni table functions
-#######################################################
-def get_alumni():
-	return query_db('select * from alumni\norder by name')
-def insert_alumni(name,desc,filename):
-	insert_to_db("alumni","(name,description,imgfilename)","(?,?,?)",(name,desc,filename))
-	formatImage(filename,300,450)
-def delete_alumni(name):
-	delete_from_db("alumni","name",name)
 
 #######################################################
 # email/otp table functions
