@@ -10,6 +10,7 @@ import pyotp
 import datetime
 import hashlib
 from random import randrange
+from base64 import b32encode
 
 app = flask.Flask(__name__)
 #app.secret_key = os.urandom(16).hex() # Random 16 character string
@@ -18,8 +19,8 @@ app.secret_key = "super secret string"
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
-
-#Set up valid login dictionary
+#See set_login.py for how LOGIN_HASH is populated
+#Reset logins in the DB and enters hashes from LOGIN_HASH file
 #users = dict()
 with app.app_context():
 	# Clear the hash/otp keys from the database first
@@ -70,12 +71,12 @@ class User(flask_login.UserMixin):
 	pass
 
 @login_manager.user_loader
-def user_loader(email):
+def user_loader(email_hash):
 	print("Debug: user loader runs.",flush=True)
-	print("Debug: email="+str(email),flush=True)
+	print("Debug: email="+str(email_hash),flush=True)
 	
 	# get the user email hash
-	email_hash = hashlib.sha256(bytes(str(email).strip(),'utf-8')).hexdigest()
+	#email_hash = hashlib.sha256(bytes(str(email).strip(),'utf-8')).hexdigest()
 
 	# check if user email is in list of hashes
 	db_list = db.get_otp()
@@ -89,7 +90,7 @@ def user_loader(email):
 	print("Debug: user found",flush=True)
 
 	user = User()
-	user.id = email
+	user.id = email_hash
 	return user
 
 # I don't really know what this code does. Deleting it does not seem to break anything.
@@ -169,8 +170,7 @@ def members():
 
 @app.route("/alumni")
 def alumni():
-	print(db.get_alumni())
-	return render_template("alumni.html", alumni=db.get_alumni(), 
+	return render_template("alumni.html", 
 			block1=db.get_page("alumni1"),block2=db.get_page("alumni2"),
 			mailingFormLink = db.get_link("mailingform"),
 			social=db.get_page("social"))
@@ -248,7 +248,9 @@ def login_otp():
 		return render_template('login_otp.html', social=db.get_page("social") )
 
 	# If a post request is sent
-	email_hash = hashlib.sha256(bytes(str(request.form['email_otp']).strip(), 'utf-8')).hexdigest()
+	#make hash of entered email
+	email_hash = str(hashlib.sha256(bytes(str(request.form['email_otp']).strip(), 'utf-8')).hexdigest())
+	secret = hashlib.sha256(bytes(str(request.form['email_otp']).strip(), 'utf-8')).digest()
 	# Check if user entered email has a hash in the database
 	db_list = db.get_otp()
 	valid_email = False
@@ -256,16 +258,18 @@ def login_otp():
 		if tup[0] == str(email_hash):
 			valid_email = True
 
-	# If email is bad quit out else we generate otp and proceed as normal
+	# If email is bad quit reload page and let user know email is invalid
 	if valid_email == False:
-		return "BAD EMAIL"
+		flash('Email entered is invalid. Please re-enter your email.')
+		return flask.redirect(flask.url_for('login_otp'))
 
 	#Generates OTP 
-	generated_otp = pyotp.TOTP("MYSECRET", interval = (60 * validation_interval_min)).now()
+	generated_otp = pyotp.TOTP(s= b32encode(secret), interval = (60 * validation_interval_min)).now()
 	print("Debug: generated_otp="+str(generated_otp),flush=True)
 	# Replace otp for this hash in database
-	db.delete_otp(email_hash)
-	db.insert_otp(email_hash,generated_otp)
+	db.update_otp(email_hash, generated_otp)
+	#db.delete_otp(email_hash)
+	#db.insert_otp(email_hash,generated_otp)
 
 	#Sends message to email put in form
 	msg = Message(subject="Rowing Club Sign-in Passcode",
@@ -274,31 +278,53 @@ def login_otp():
 				  sender="noreply@rowingclub.com", #curr ver shows sender same as recipient in actal email, see if there is a fix for this
 				  recipients=[request.form['email_otp']])
 	mail.send(msg)
-	return flask.redirect(flask.url_for('validate'))
+	return render_template('login_otp_validate.html', social=db.get_page("social") )
 
-@app.route('/validate',methods=["POST","GET"])
+@app.route('/validate',methods=["POST"])
 def validate():
+	#this page should only be redirected to, shouldn't be able to load via url
 	# If a basic get request is sent then just load the validate page
-	if flask.request.method == 'GET':
-		return render_template('login_otp_validate.html', social=db.get_page("social") )
+	#if flask.request.method == 'GET':
+	#	return render_template('login_otp_validate.html', social=db.get_page("social") )
 
 	print("Debug: entering /validate call",flush=True)
 	# OTP Entered by the User
-	user_email = request.form['confirm_email'] 
+	#user_email = request.form['confirm_email']
+	user_email_hash = str(hashlib.sha256(bytes(str(request.form['confirm_email']).strip(), 'utf-8')).hexdigest()) 
 	user_otp = request.form['otp'] 
-	if pyotp.TOTP("MYSECRET", interval = (60 * validation_interval_min)).verify(user_otp):
+
+	#re-validate email
+	valid_login = []
+	db_list = db.get_otp()
+	valid_email = False
+	for tup in db_list:
+		if tup[0] == user_email_hash :
+			valid_login = tup
+			valid_email = True
+	if(valid_email == False):
+		flash('Invalid email address entered. Please resubmit Email and Passcode.')
+		return render_template('login_otp_validate.html', social=db.get_page("social") )
+	#validate otp
+	secret = hashlib.sha256(bytes(str(request.form['confirm_email']).strip(), 'utf-8')).digest()
+	if pyotp.TOTP(s= b32encode(secret), interval = (60 * validation_interval_min)).verify(user_otp):
 		#validates user with Flask Login and generates Log-in token
 		print("Debug: Login successful redirecting to protected.",flush=True)
 		user = User()
-		user.id = user_email
+		user.id = user_email_hash
 		#flask_login.login_user(user, duration=datetime.timedelta(minutes=time_out_interval))
 		flask_login.login_user(user, duration=datetime.timedelta(minutes=time_out_interval))
 		#clear_otp_key(str(current_user['email'])) # Clear out old otp key
 		return flask.redirect(flask.url_for('protected'))
 	else:
 		print("Debug: Login unsuccessful.",flush=True)
+		if(pyotp.TOTP(s= b32encode(secret), interval = (60 * validation_interval_min)).verify(valid_login[1])):
+			flash('OTP entered is invalid. Please reenter Email and Passcode')
+			return render_template('login_otp_validate.html', social=db.get_page("social") )
+		else:
+			flash('Passcode has expired. Please re-enter email to send a new passcode.')
+			return flask.redirect(flask.url_for('login_otp'))
 		#return flask.redirect(flask.url_for('login_otp'))
-		return "FAILED TO VALIDATE OTP"
+		#return "FAILED TO VALIDATE OTP"
 	
 def file_allowed_handler(file):
 	fname_prefix = file.filename.split(".")[0]
@@ -343,34 +369,6 @@ def protected_post():
 			print('File name not allowed')
 			return redirect(request.url)
 		db.insert_player(nametext,desc,filename)
-            
-#######################################################
-# Alumni form -> needs to be changed to edit text. Alumni memebers not a part of page
-#######################################################
-
-	if "deletealumni" in request.form:
-		text = request.form['deletealumni']
-		db.delete_alumni(text)
-	if "alumni-name" in request.form:
-		nametext = request.form['alumni-name']
-		desc = request.form['alumni-desc']
-		# check if the post request has the file part
-		if 'alumni-file' not in request.files:
-			print('No file part')
-			return redirect(request.url)
-		file = request.files['alumni-file']
-		# If the user does not select a file, the browser submits an
-		# empty file without a filename.
-		if file.filename == '':
-			print('No file name')
-			return redirect(request.url)
-		if file and allowed_file(file.filename):
-			print('Success alumni')
-			filename = file_allowed_handler(file)
-		else:
-			print('File name not allowed')
-			return redirect(request.url)
-		db.insert_alumni(nametext,desc,filename)
 
 #######################################################
 # team members form
