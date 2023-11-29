@@ -560,13 +560,10 @@ Admin Page
 	formLinks.addEventListener("submit", function (e) {
 		var formLinksData = {
 			joinusform : document.querySelector("#joinusform").value,
-			//instagram : document.querySelector("#instagram").value,
-			//facebook : document.querySelector("#facebook").value,
-			//youtube : document.querySelector("#youtube").value,
+			instagram : document.querySelector("#instagram").value,
 			flickr : document.querySelector("#flickr").value,
 			mailform : document.querySelector("#mailingform").value,
-			donate : document.querySelector("#donate").value,
-			donateaff : document.querySelector("#donateaff").value,
+			donate : document.querySelector("#donate").value
 		}
 		console.log(formLinksData);
 		fetch('/updatelinks', {
