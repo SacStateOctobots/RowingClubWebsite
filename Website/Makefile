@@ -1,5 +1,6 @@
 run_local:
-	flask --app server run --debug
+	python3 set_logins.py
+	flask --app server run
 run_remote:
 	gunicorn -w 4 -b 0.0.0.0 'server:app' --keyfile private_key.pem --certfile certificate.pem
 setup_db:

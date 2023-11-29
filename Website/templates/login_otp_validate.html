@@ -24,6 +24,7 @@ Admin Login OTP Validate
     		{% endwith %}
 			<div class="login-form">
 				<form action="/validate" method="POST">
+					<input type="email" name="confirm_email" id="email-id" placeholder="Enter Email" class="form-control"></input>
 					<input type="password" name="otp" id="otp-id" placeholder="Enter OTP(One-time password)" class="form-control"></input>
 					<button type='submit' name='submit'>Validate Code</button>
 				</form>

@@ -12,8 +12,8 @@ import join_page
 import admin_page
 
 if __name__ == "__main__":
-	admin_page.main()
 	login_page.main()
+	admin_page.main()
 	about_page.main()
 	alumni_page.main()
 	contact_us_page.main()
