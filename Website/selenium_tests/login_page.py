@@ -72,7 +72,7 @@ def login_form_test(driver):
 	print("Logout succeeded")
 
 def main():
-    run_tests(login_form_test, PATH_STRING)
+    run_tests(login_form_test, PATH_STRING+"/login_otp")
 
 if __name__ == "__main__":
     main()
