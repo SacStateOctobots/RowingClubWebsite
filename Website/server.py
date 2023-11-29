@@ -168,7 +168,7 @@ def members():
     return render_template("members.html", member=db.get_team_members(),joinusLink=db.get_link("joinusform"),
 	social=db.get_page("social"))
 
-@app.route("/alumni")
+@app.route("/alumni")	
 def alumni():
 	return render_template("alumni.html", 
 			block1=db.get_page("alumni1"),block2=db.get_page("alumni2"),
