@@ -149,8 +149,8 @@ def make_session_permanent():
 
 @app.route("/")
 def welcome():
-    newEvents = cal.get_next_five_events()
-    #newEvents=[]
+    #newEvents = cal.get_next_five_events()
+    newEvents=[]
     return render_template("welcome.html",next_events=newEvents,block=db.get_page("homepage_about"),
 			   joinusLink=db.get_link("joinusform"),donateLink=db.get_link("donate"),
 			   social=db.get_page("social"))
