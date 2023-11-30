@@ -1,5 +1,5 @@
 run_local:
-	flask --app server run 
+	flask --app server run
 run_remote:
 	gunicorn -w 4 -b 0.0.0.0 'server:app' --keyfile private_key.pem --certfile certificate.pem
 setup_db:
