@@ -9,6 +9,7 @@ import os
 def test_input_helper(driver,tab,field_input_pairs,submit_id):
 	# Navigate to admin page
 	driver.get(PATH_STRING+"/protected")
+
 	# Navigate to the required tab
 	input("Press enter to continue test.")
 	element = driver.find_element(By.ID,tab)
@@ -39,6 +40,7 @@ def test_input_helper(driver,tab,field_input_pairs,submit_id):
 	input("Press enter if submission worked correctly.")
 
 def test_delete_helper(driver,tab,field_id,field_input,submit_id):
+
 	# Navigate to admin page
 	driver.get(PATH_STRING+"/protected")
 	# Navigate to the required tab
@@ -79,16 +81,29 @@ def test_delete_helper(driver,tab,field_id,field_input,submit_id):
 def admin_page_test(driver): 
 
 	print("Testing admin page.")
-
 	print("Testing correct login, please wait.")
-	print("Attempting to connect to "+PATH_STRING+"/login")
-	driver.get(PATH_STRING+"/login")
-	element = driver.find_element(By.ID, "email")
-	element.send_keys("foo@bar.tld")
-	element = driver.find_element(By.ID, "pw")
-	element.send_keys("secret")
+	print("Attempting to connect to "+PATH_STRING+"/login_otp")
+	driver.get(PATH_STRING+"/login_otp")
+	# Enter valid login credentials
+	input("Testing correct login. ")
+	element = driver.find_element(By.ID, 'email_otp')
+	in_email = input("Please enter a valid email: ")
+	element.send_keys(in_email)
+	input("Entering your email to the webpage. Press enter to continue.")  
 	element = driver.find_element(By.NAME, "submit")
-	element.submit()
+	element.submit()    
+	# Wait for login to complete (wait for the logout link to appear)
+	input("Testing using correct email and OTP key. ")  
+	in_email = input("Please re-enter the corresponding email: ")
+	element = driver.find_element(By.ID, 'email-id')
+	element.send_keys(in_email)
+	in_code = input("Please enter the passcode received by the email input above: ")
+	element = driver.find_element(By.ID, 'otp-id')
+	element.send_keys(in_code)
+	element = driver.find_element(By.NAME, "submit")
+	element.submit()      
+
+
 	input("Press enter if login worked correctly.")
 
 	dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -99,7 +114,7 @@ def admin_page_test(driver):
 		("team-name-id","Test Member "+now),
 		("team-player-desc-id","Test Member Player Description "+now),
 		("team-role-desc-id","Test Member Role Description "+now),
-		("team-file-id",dir_path+"\sample-image.jpg")
+		("team-file-id",dir_path+os.sep+"sample-image.jpg")
 	]
 	print("Testing team member input.")
 	test_input_helper(driver,"team-tab",form_input_pairs,"team-button-id")
@@ -110,7 +125,7 @@ def admin_page_test(driver):
 	form_input_pairs = [
 		("officers-name-id","Test Officer "+now),
 		("officers-desc-id","Test Officer Description "+now),
-		("officers-file-id",dir_path+"\sample-image.jpg")
+		("officers-file-id",dir_path+os.sep+"sample-image.jpg")
 	]
 	print("Testing officers input.")
 	test_input_helper(driver,"officers-tab",form_input_pairs,"officers-button-id")
@@ -122,7 +137,7 @@ def admin_page_test(driver):
 		("testimonial-name-id","Test Testimonial "+now),
 		("testimonial-text1-id","Testimonial Text1 "+now),
 		("testimonial-text2-id","Testimonial Text2 "+now),
-		("testimonial-file-id",dir_path+"\sample-image.jpg")
+		("testimonial-file-id",dir_path+os.sep+"sample-image.jpg")
 	]
 	print("Testing testimonial input.")
 	test_input_helper(driver,"testimonials-tab",form_input_pairs,"testimonial-button-id")

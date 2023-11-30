@@ -93,7 +93,6 @@ Admin Page
 		str2 = localStorage.getItem('activeBtn');
 
 		switch (str) {
-			case 'Alumni':
 			case 'TeamMembers':
 			case 'Officers':
 			case 'Testimonials':
@@ -102,7 +101,7 @@ Admin Page
 				openTab(str,str2);
 				break;
 			default:
-				alert("no value");
+				console.log("no value");
 		}
 	}
 
