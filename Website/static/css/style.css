@@ -1021,7 +1021,8 @@ h1.hero-heading2 {
         font-weight: 520;
         position: absolute;
         top: -30px;
-        left: 22%;
+        left: 50%;
+        transform: translate(-50%,0);
         height: 40px;
         width: 600px;
         background-color: rgb(255, 255, 255);

@@ -6,6 +6,8 @@ from dateutil.parser import *
 from dateutil.rrule import *
 from dateutil.tz import UTC
 
+unix_epoch = datetime.datetime(1970,1,1)
+
 # Some debugging/error prevention notes:
 #	- Try to always compare dates by timestamps.
 #	- Try to always set things up to ignore timezone details.
@@ -53,14 +55,17 @@ def get_next_five_events():
 
 		# if the event is recurring get the next five dates
 		# otherwise just get the next date
+		print(a['start'].keys())
 		if "recurrence" in a.keys():
-			#now = datetime.datetime.now(UTC)
 			now = datetime.datetime.now()
 			for i in range(5):
 				# Check first if now was set to None object by a previous iteration
 				if now is None:
 					break
-				now = rrulestr(a["recurrence"][0],ignoretz=True).after(now)
+				# We need to set the start time for the recurrence or it will use whatever
+				# the default value is
+				start = parse(a['start']['dateTime'],ignoretz=True,default=unix_epoch)
+				now = rrulestr(a["recurrence"][0],dtstart=start,ignoretz=True).after(now)
 				date += str(now)
 				events.append((summary,description,location,date))
 				date=""
@@ -75,7 +80,7 @@ def get_next_five_events():
 			date=""
 		elif "date" in a["start"].keys(): # just the date is present
 			date += a["start"]["date"]	
-			date += " 00:00:00" # a dummy time
+			#date += " 00:00:00" # a dummy time
 			events.append((summary,description,location,date))
 			date=""
 		else: #in this case we cannot parse the event
@@ -87,14 +92,14 @@ def get_next_five_events():
 		newEvent = []
 		newEvent = list(i)
 		try: 
-			parse(newEvent[3])
+			parse(newEvent[3],default=unix_epoch)
 		except:
 			newEvent[3] = "1970-01-01 00:00:00"
 		tmp.append(newEvent)
 	events = tmp
 
 	# sort events by date entry in format year-month-day hours:minutes:seconds
-	events = sorted(events,key=lambda x: parse(x[3]))
+	events = sorted(events,key=lambda x: parse(x[3],default=unix_epoch))
 	cnt = 1
 	out = []
 	for i in events:
@@ -104,12 +109,13 @@ def get_next_five_events():
 
 		# here we are just printing events, but this general structure can be used to build a list of the
 		# next five events or to do processing on the next five events.
-		eventDate = parse(i[3])
+		eventDate = parse(i[3],default=unix_epoch)
 		# it might make sense to set this to another day so that events today remain on the website all day?
 		nowDate = datetime.datetime.now() 
 		if eventDate.timestamp() > nowDate.timestamp(): # only print events after the current date
 			out.append(i)
 			cnt += 1 # increment the counter of events
+	print(out)
 	return out
 
 # get the previous (at most) five google calendar events that have already ended
@@ -156,8 +162,12 @@ def get_last_five_events():
 		# if the event is recurring get the next five dates
 		# otherwise just get the next date
 		if "recurrence" in a.keys():
+			# get the start time of this recurrence	
+			start = parse(a['start']['dateTime'],ignoretz=True,default=unix_epoch)
 			now = datetime.datetime.now()
 			last_month = now + dateutil.relativedelta.relativedelta(months=-1)
+			# update the last_month variable with the correct times for this event
+			last_month = last_month.replace(hour=start.hour,minute=start.minute)
 			start = rrulestr(a["recurrence"][0],dtstart=last_month,ignoretz=True).after(last_month)
 			for i in range(5):
 				if start.timestamp() < now.timestamp():	# only include dates before the current date
