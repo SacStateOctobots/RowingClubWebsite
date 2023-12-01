@@ -193,7 +193,7 @@
    - Upcoming Events Block: 
    Shows a list of the next four upcoming events for the club. This is based on events in the clubs Google Calendar.
 
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_homepage_events.png" width="400">
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_homepage_event.png" width="400">
 
    - Contribute Block: 
    Provides the user with a quick link to the Donate page if they wish to contribute financially to the club.
@@ -362,23 +362,23 @@
 * Login OTP:
   - This page will be hidden to the user, and it will not show on the navigation bar (only show in testing mode). Login page is using the Email One-time Passcode (OTP) method. Users, in this case, administrator, must enter a valid email to which an OTP code will be sent. Entry of valid code will redirect to the Admin Page.
   
-  Notice: This page can be accessed by entering https://<Site Domain Name>/login_otp
+  - Notice: This page can be accessed by entering https://<Site Domain Name>/login_otp. 
   For example: (Example: https://octobotgroup.work/login_otp)
 
-      - Step 1: Enter the admin email present in the website database. Entering an unassigned email will prompt the user to re-enter a valid email. Entering a valid email will redirect user to the validation page.
+    - Step 1: Enter the admin email present in the website database. Entering an unassigned email will prompt the user to re-enter a valid email. Entering a valid email will redirect user to the validation page.
 
-          <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_login_otp.PNG" width="400">
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_login_otp.PNG" width="400">
              
-      - Step 2: Check entered email to get passcode for entry on next page. Passcode will expire in 3 minutes. 
+    - Step 2: Check entered email to get passcode for entry on next page. Passcode will expire in 3 minutes. 
       Notice: If users enter the email at step 1 that is different from database, they will have a notification such as "Email entered is invalid. Please re-enter your email."
 
-          <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_login_step2.PNG" width="400">
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_login_step2.PNG" width="400">
 
-      - Step 3: Enter passcode. If incorrect email or passcode is entered the page will reload and re-prompt the user for entry of credentials. If passcode has expired the page will redirect to the previous email entry page and warn the user that the passcode has expired re-prompting for email entry to send a new passcode.
+    - Step 3: Enter passcode. If incorrect email or passcode is entered the page will reload and re-prompt the user for entry of credentials. If passcode has expired the page will redirect to the previous email entry page and warn the user that the passcode has expired re-prompting for email entry to send a new passcode.
       Once the process is successful, the page will redirect user to the Admin page.
       Notice: If users enter the email at step 3 that is different from received email, they will have a notification such as "Passcode entered is invalid. Please re-enter Passcode."
 
-          <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_login_step3.PNG" width="400">
+        <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_login_step3.PNG" width="400">
 
 
 ## Project Timeline
