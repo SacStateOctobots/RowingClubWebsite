@@ -512,7 +512,7 @@
   
     - Should the admin wish to alter the visibility or delete event blocks from calendar:
   
-      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_g2.png" width="500">
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_g3.png" width="500">
 
       - Step: Double click on the event you wish to change and further edit or delete the event in the menu that opens.
 
