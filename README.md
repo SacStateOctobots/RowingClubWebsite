@@ -22,7 +22,7 @@
 - [Project Timeline](#project-timeline)
     - [Spring 2023](#spring-2023)
     - [Fall 2023](#fall-2023)
-- [AMI Setup](#instructions-for-migrating-website-to-a-new-amazon-account)
+- [AMI Setup](#ami-setup)
 
 ## Tools
 * Python 3
@@ -298,7 +298,8 @@
   * Sprint 08
      - Held in reserve for client feedback and timeline delay
   
-## Instructions for migrating website to a new amazon account.
+## AMI Setup
+### Instructions for migrating website to a new amazon account.
     - Follow the below instructions for handoff/serving of the website to another amazon account.
 ### 1. Make an AMI instance from the currently running website.
     - From our own dev amazon accounts/machines.
@@ -373,7 +374,7 @@
             - Running the commands listed in the Makefile file under the teardown section individually (omit any @ signs at the start of any commands).
             - If none of the above works, identify the failing command in make teardown and consult its corresponding documentation.
             - Note: Errors here may be spurious. Do not consider this part failed until after verifying later make deploy commands fail too.
-    -- Run the command: `make deploy`
+    - Run the command: `make deploy`
         - Troubleshooting make deploy:
             - You can try to rerun make teardown, then rerun make deploy.
             - You can try to rerun make teardown, then rerun the individual commands in the Makefile under the deploy section.
