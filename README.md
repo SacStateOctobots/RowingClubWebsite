@@ -6,7 +6,7 @@
 
   The OctoBots team was contracted by the Sacramento State Rowing Club to build an updated club website. The Rowing Club needed a website that can serve as a central hub for sharing information, connecting with members, and recruiting new members. This project is building a new website to fill these needs.
   
-  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rHomepage.gif" width="500">
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_home.PNG" width="500">
 
 
 
@@ -148,105 +148,225 @@
 ## Mock-up Diagrams
 * Sitemap
   
-  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSitemap.png" width="400">
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_sitemap.PNG" width="500">
   
-* Flowchart
-  
-  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rFlowchart.png" width="400">
   
 ## Project Features
-* Landing Page:
-  - Animated background.
-  - Responsive animated page elements.
-  - Access to rowing club recruitment form.
+
+* Navigation Bar
+
+   - The Navigation bar is visible at the top of all pages of the website. Clicking on the Logo will redirect the user to the Homepage of the website.
+
+      - Desktop version:
+      
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_menu_pc.PNG" width="600">
+
+      - Tablet/ Mobile version: 
+
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_menu_phone1.PNG" width="400">
+
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_menu_phone2.PNG" width="400">
+
+* Social Media Links Footer
+   - This Footer is located at the bottom of all pages of the website. Provides quick links to the clubs main social media pages. Clicking on any of the provided buttons will redirect the user to the corresponding social media page for the club. Current links go to Facebook, the Rowing Clubs Instagram, and YouTube.
+
+   <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_footer.png" width="400">
    
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rRecruitment.png" width="400">
-  
-  - Brief display of upcoming events via event cards.
- 
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rEvenCard.png" width="400">
-  
+* Homepage:
 
-* Gallery Page:
-  - Provides link to third party image hosting resource for rowing club event photos.
+   - Video Introduction Block:
+   Plays a video of the Rowing Club in action creating an eye catching first impression for the site and shows users what the club is like.
 
-* Calendar Page:
-  - Display of upcoming and past events via event cards.
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_homepage_banner.png" width="400">
   
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rUpcomingEvent.png" width="400">
-  
-  - Embedded calendar provides an in-depth view of all past and present events.
-  
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rCalendar.png" width="400">
-  
-  - All events are modifiable by club members via access to a shared google calendar.
+   - About Us Block: 
+   Shows a brief description about the Sacramento State Rowing Club’s history and mission statement
 
-* Team Members Page:
-  - Display of active team members via team member cards.
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_homepage_about.png" width="400">
   
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rTeamMemberCard.png" width="400">
+   - Interest Block: 
+   Provides a quick link to the Join Page if they have interest in joining the team.
+   Clicking the “Join Us” button, it will redirect the user to Join page.
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_homepage_interesting.png" width="400">
+   
+   - Upcoming Events Block: 
+   Shows a list of the next four upcoming events for the club. This is based on events in the clubs Google Calendar.
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_homepage_events.png" width="400">
+
+   - Contribute Block: 
+   Provides the user with a quick link to the Donate page if they wish to contribute financially to the club.
+   Clicking the Donate button, it will redirect the user to the Donate page.
+
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_homepage_contribute.png" width="400">
+
+
+* Calendar Page: Display of upcoming and past events via event cards.
+
+   - Upcoming Events Block: 
+   Shows a list of the next four upcoming events for the club. This is based on events in the clubs Google Calendar.
+
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_cal_banner.PNG" width="400">
+
+   - Full Calendar Block:
+   Displays the clubs Google calendar, listing all events for the current month.
+
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_cal_fullcal.PNG" width="400">
+
+   - Past Events Block:
+   Shows a list of the last four pasted events for the club. This is based on events in the clubs Google Calendar.
+
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_cal_pastevents.PNG" width="400">
+
+   - Notice: All events are modifiable by club members via access to a shared google calendar.
+
+* Current Roster Page:
+
+   - Team member Banner:
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_team_banner.PNG" width="400">
+
+   - Team member Block:
+   Shows team member cards that contain information about each current member of the team. Displayed items include a photo of the team member, name, description, and player’s position.
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_team_member.PNG" width="400">
   
-  - Team member cards will be modifiable through the admin page to keep the list of members up to date.
-  - Links to alumni association page.
-  
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rAlumni.png" width="400">
+   - Interested Block: 
+   Provides user with a quick link to the Recruitment Form that can be filled out in order to join the club.
+   Clicking the Join Us button will redirect user to the Recruitment Form (Google Form) (*).
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_homepage_interesting.png" width="400">
+   
+   - Notice: Team member cards will be modifiable through the admin page to keep the list of members up to date.
+
+* Social Media Page:
+
+   - Instagram Embed and Flickr Embed:
+   Shows a preview of the clubs Instagram and Flickr page. 
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_social.PNG" width="600">
+   
+   - Notice: For Instagram, clicking on the embedded view will redirect the user to the Instagram account & clicking on one of the images will redirect the user to the Instagram post. For Flickr, clicking on the embedded view will redirect the user to the Flickr album.
+
+
 
 * Alumni Page:
+
+   - Alumni Banner: There is a slider with 2 (or more) photos that will be changed every 5 sec.
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_alumni_banner.PNG" width="400">
+
+   - Alumni Block 1:
+   A description about the Alumni Association alongside a photo of the alumni’s rowing team
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_alumni_about.PNG" width="400">
+  
+   - Join Mailing List and description Block: 
+   Provides a  link to the Rowing Club Mailing List sign-up Form to receive updates about the club activities. Clicking the button will redirect the user to Sign-up Mailing list Form (Google Form) (*)
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_alumni_join.PNG" width="400">
+
+
+* About Us Page:
+
+   - About Us Banner:
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_about_banner.PNG" width="400">
+
+   - About Us Block 1:
+   A description about the accolades and history of the club alongside a group photo of the rowing team.
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_about_info.PNG" width="400">
+  
+   - Officer Block:
+   A content block full of the rowing club officers. Editable as an admin in admin login page
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_about_officer.PNG" width="400">
+
+   - Interested Block: 
+   Provides user with a quick link to the Recruitment Form that can be filled out in order to join the club.
+   Clicking the Join Us button will redirect user to the Recruitment Form (Google Form) (*).
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_homepage_interesting.png" width="400">
+   
+   - Notice: Officer cards will be modifiable through the admin page to keep the list of officers up to date.
+
+* Contact Us Page:
+
+   - Video Introduction Block:
+   Presents an introduction video giving a glimpse of sample club activities.
+   Clicking the Sign up button redirects the user to the Sign-up Mailing list Form (Google Form) (*)
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_contact_intro.PNG" width="400">
+
+   - Contact Info Block:
+   Provides site users with the clubs address, email, and phone number as methods of getting in contact with them.
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_contact_info.PNG" width="400">
+  
+   - Rowing Club Email Form Block:
+   Can be filled and submitted by site users to send an email to the rowing club email address.
+   Form prompts user for name, email address (for responses), phone number, email subject, and message
+
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_contact_form.PNG" width="400">
+
+   - Club Location Map Block:
+   Shows the location of the rowing club to site users via an interactive Google map.
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_contact_map.PNG" width="400">
+   
+
+* Join Page:
+
+   - Video Introduction Block:
+   Plays a video of the Rowing Club in action creating an eye catching first impression for the site and shows users what the club is like.
+   Clicking the Click Here button will redirect the user to the Recruitment Form (Google Form) (*)
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_join_intro.PNG" width="400">
+
+   - Why Us Block:
+   Lists the reasons why site user should participate in the Team.
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_join_why.PNG" width="400">
+  
+   - Interested Block: 
+   Offers user second link to the Recruitment Form.
+   Clicking the Join Us button, it will jump to Recruitment Form (Google Form) (*).
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_join_like.PNG" width="400">
+
+   - Testimonials Block: 
+   Testimonials about what it is like being a part of the club, written or spoken by current or past members or associates of the club.
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_contact_cmt.PNG" width="400">
+
+
+* Contribute Page:
+
+   - Video Introduction Block:
+   Presenting and introduction video.
+   Clicking the More Information button will redirect the user to the Contact Page if the user wants to learn more about the club before contributing.
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_donate_intro.PNG" width="400">
+
+   - Contribution Block:
+   The user is provided two different ways to support the Team.
+   Clicking Donate button will redirect the user to Sac State Sport Club page (*).
+   Below this is Rowing Club’s address where a user can send a check.
+
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_donate_btn.PNG" width="400">
+  
 
 * Login/Admin Page:
   - Not public facing.
   - Login page provides secure login to admin page. 
   
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rLogin.png" width="400">
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_login_otp.PNG" width="400">
   
   - Admin page allows for modification of site data by users.
 
-* About Us Page:
-  - Contains responsive animated page elements.
-  - Displays a brief description of the rowing club.
-  
-    <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rBriefDes.png" width="400">
-  
-  - Includes cards displaying club officers.
-  - Club officer cards and club information will be modifiable thru admin page.
-  
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rClubOfficer.png" width="400">
-  
-
-* Social Media Page:
-  - Contains an embedded instagram feed showing rowing club instagram posts.
-  
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSocial1.png" width="400">
-  
-  - Contains links to various rowing club social media accounts.
-  
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSocial2.png" width="400">
-
-* Contact Page:
-   - Links to rowing club social media.
-
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rContact1.png" width="400">
-  
-  - Includes video background.
-  - Includes responsive animated page elements.
-  - Contains various other club related contact info.
-  - Includes “Contact Us” form which sends emails containing contact info from site users to a rowing club email for potential club members to inquire about the club.	
-
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rContact2.png" width="400">
-  
-  - Contains embedded map showing club location.
-  
-    <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rContact3.png" width="400">
-
-* Join Page:
-  - Also contains video background and responsive page elements.
-  - Links to rowing club recruitment form.
-  
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rJoin1.png" width="400">
-  
-  - Provides information to users interesting in joining the rowing club.
-  
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rJoin2.png" width="400">
 
 ## Project Timeline
  ### Spring 2023
