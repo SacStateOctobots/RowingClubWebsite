@@ -551,21 +551,40 @@
  ### Fall 2023
   * Sprint 05
      - Start work on backend and backend dependent features (database, mailing list).
-  
-         <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSprint5.png" width="400">
+     - Research Database Solutions and begin database implemenation
+     - Register URL and get site hosted
+     - Create Google Forms for mail list and club sign up
 
   * Sprint 06
-     - Expand capabilities of admin user
-  
-         <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSprint6.png" width="400">
+     - Standardize UI and fix display errors
+     - Setup scripts for testing and deployment
+     - Create Alumni Page
+     - Make UI compatible with mobile devices
+     - Research 3rd party image hosting
 
   * Sprint 07
-     - Final cleanup, standardization of desktop and mobile display
-  
-         <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/img/rSprint7.png" width="400">
+     - Standardization of desktop and mobile display
+     - Change gallery page to donate page
+     - Implement Admin page secure login
+     - Admin Page visual overhall
+     - Implement Admin page database access and site editability
+     - Implement testing with Selenium
 
   * Sprint 08
-     - Held in reserve for client feedback and timeline delay
+     - Expand abilities of admin page to edit site
+     - General site and admin page UI tweaks
+     - Bug fixes
+     - backend clean up
+     - expand login process
   
+  * Sprint 09
+     - Increase security features of login process
+     - implement client requested UI tweaks
+     - Create procedures to restore site in case of incident
+     - Social Media page tweaks
+     - Implement admin page ability to change where site links direct to
 
-
+  * Sprint 10
+     - Code Clean Up and Finalization
+     - Documentation for Client User and Maintenance Manuals
+     - Product Delivery
