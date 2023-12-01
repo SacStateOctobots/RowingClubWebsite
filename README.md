@@ -359,6 +359,14 @@
      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_donate_btn.PNG" width="400">
   
 
+* External Links:
+  - [Sac State Rowing Club Recruitment Form](https://docs.google.com/forms/d/e/1FAIpQLSfZgOi84FUsV-uXBSIsJuTX3pKZdlFydBgsojzrhYNo09q4ZA/viewform)
+
+  - [Rowing Club Mailing List Sign-up](https://docs.google.com/forms/d/e/1FAIpQLSe4fk45Z9j-oDdYpRmqj_QyHlHeVUtFmN9naGly7g6DEWgDOg/viewform)
+
+  - [Sacramento State Sport Clubs](https://swarmfunding.csus.edu/project/36577/donate)
+
+
 * Login OTP:
   - This page will be hidden to the user, and it will not show on the navigation bar (only show in testing mode). Login page is using the Email One-time Passcode (OTP) method. Users, in this case, administrator, must enter a valid email to which an OTP code will be sent. Entry of valid code will redirect to the Admin Page.
   
@@ -379,6 +387,132 @@
       Notice: If users enter the email at step 3 that is different from received email, they will have a notification such as "Passcode entered is invalid. Please re-enter Passcode."
 
         <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_login_step3.PNG" width="400">
+
+
+* Admin Portal:
+
+  - General Admin page layout 
+  This layout applies for Team Members, Officers, and Testimonial Tabs.
+
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_general.png" width="600">
+
+    - Selection Area [Red]: Listing all Team members, officers, and current Testimonials that are present on the site.
+
+    - Tabs  [Blue]: Clicking on different tabs will show different prompts for section of the site that are editable. Tabs including Team Members, Officers, Testimonial, Content Blocks, and Social Links.
+
+    - Deleting Section [Orange]: Dropdown lists all “items” on database for selected tab. Once clicking the Delete button, the item will be deleted from the database. Confirmation of deletion is reflected by the corresponding “item” being removed  from Selection Area. 
+
+    - Adding Section [Green]: Form lists all information that the admin needs to enter to add a new “item.” Once clicking the Add button, the item will be added in database. Confirmation of this addition is reflected by the corresponding “item” appearing on the Selection Area.
+
+    - Showing Section [Purple]: This section shows the “item” which is selected from Selection area. Displaying photo, name, position, etc. 
+
+
+  - Selection Area: Item Selection
+  How to select and view information for an “item” from the Selection Area of the Admin Portal.
+  This applies for Team Member, Officers, and Testimonial tabs.
+  
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_selection.png" width="600">
+
+    - Step 1: Select and “item” from the Selection Area. Image shows “Officer 3” under the Current Officers List is selected by admin.
+
+    - Step 2: If not already on the related tab, admin will need to navigate to the corresponding tab to the selected “item”. Image shows Officer Tab is selected.
+
+    - Step 3: All information of the selected “item” will be show in the Member Selected section. Image shows the information for “Officer 3”.
+
+
+  - Deleting Section: Deleting an Item
+  How to delete an “item” that is present on the Selection Area of the Admin Portal so it will be removed from the database and no longer appear on the related site page.
+  This applies for Team Member, Officers, and Testimonial tabs.
+
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_delete1.png" width="600">
+
+    - Step 1:  Select the corresponding tab for the item the admin wants to delete. Example image shows the Officer Tab is selected.
+
+    - Step 2: In the Deletion Section select the item the admin wants to delete from the dropdown menu. Then, click “Delete Officer” button to confirm selection.
+    Example image shows “Officer 3” is selected from the dropdown list. 
+
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_delete2.png" width="600">
+
+    - Step 3: Confirmation of  “item” deletion can be seen in the  Selection Area. 
+    Example image shows there is now 1 less officer and Officer 3 is no longer listed.
+
+
+  - Adding Section: Adding an Item
+  How to add an “item” to the database so it will appear on the related site page and on the Selection Area of the Admin Portal.
+  This applies for Team Member, Officers, and Testimonial tabs.
+
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_add1.png" width="600">
+
+    - Step 1:  Select the corresponding tab for the item the admin wants to add. Example image shows the Officer Tab is selected.
+
+    - Step 2: Fill out all information, such as name, officer's description, and photo. Then, click “Add Officer.”
+
+
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_add2.png" width="600">
+
+    - Step 3: Confirmation of  “item” creation can be seen in the  Selection Area. 
+    The example image shows the new “John Doe” item and there are 3 officers instead of 4.
+
+    - Step 4: Further confirmation of added item information can be seen in the Selection View section of the Admin Page. 
+    Example image shows the additional information for the added “John Doe” item.
+
+  - Content Block Tab: 
+  Content Blocks provide the admin ability to modify contents of the website, including text and photo from Admin Portal.
+
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_content.png" width="600">
+
+    - Step1: Select the Content Block tab.
+
+    - Step 2: In the content block table click on the text from a cell under the Title column.
+    Example image shows the About Us text selected. 
+
+    - Step 3: Admin user can change the text and images in the text editor window for the selected Content Block section. 
+    Example image shows the About Page text content and an image.
+
+    <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_content1.png" width="300">
+
+    - Step 4: Should the admin want to change the image, right click the image and choose upload. When uploading new image, remove the value on width and height attributes then click save.
+
+    - Step 5: When all changed have been made click the“Update Now” button.
+
+    <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_content2.png" width="500">
+
+    - Step 6: Confirmation that the changes have been made by navigating to the associated site page and viewing the section that was changed.
+    Example image shows changes made to the About page.
+
+  - Social Links Tab:
+  The Social Media tab provides the admin ability to modify the links to off site pages on the website from the Admin Portal.
+
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_social.png" width="500">
+
+    - Step 1: Social Links is chosen.
+
+    - Steep 2: Add/ Change links. Then “Save Changes” 
+
+
+  - Google Calendar:
+  Instruction for accessing and adding an event to the google calendar for admin users.
+
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_g1.png" width="500">
+
+    - Step 1: Click on the google calendar icon on the bottom right of the calendar embed. 
+
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_g2.png" width="500">
+
+    - Step 2: Make sure only the appropriate calendar is selected in the My Calendars dropdown of your Google Calendar account
+
+    - Step 3: Click on the desired time and date on the google calendar area to open the event edit menu.
+
+    - Step 4: Make any adjustments to the event in the menu and click “Save” to add the event to the calendar.
+
+  
+  
+  Should the admin wish to alter the visibility or delete event blocks from calendar:
+  
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_g2.png" width="500">
+
+  - Step: Double click on the event you wish to change and further edit or delete the event in the menu that opens.
+
 
 
 ## Project Timeline
