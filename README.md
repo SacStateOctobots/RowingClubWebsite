@@ -391,20 +391,19 @@
 
 * Admin Portal:
 
-  - General Admin page layout 
-  This layout applies for Team Members, Officers, and Testimonial Tabs.
+  - General Admin page layout: This layout applies for Team Members, Officers, and Testimonial Tabs.
 
-  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_general.png" width="600">
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_admin_general.png" width="600">
 
-    - Selection Area [Red]: Listing all Team members, officers, and current Testimonials that are present on the site.
+      - Selection Area [Red]: Listing all Team members, officers, and current Testimonials that are present on the site.
 
-    - Tabs  [Blue]: Clicking on different tabs will show different prompts for section of the site that are editable. Tabs including Team Members, Officers, Testimonial, Content Blocks, and Social Links.
+      - Tabs  [Blue]: Clicking on different tabs will show different prompts for section of the site that are editable. Tabs including Team Members, Officers, Testimonial, Content Blocks, and Social Links.
 
-    - Deleting Section [Orange]: Dropdown lists all “items” on database for selected tab. Once clicking the Delete button, the item will be deleted from the database. Confirmation of deletion is reflected by the corresponding “item” being removed  from Selection Area. 
+      - Deleting Section [Orange]: Dropdown lists all “items” on database for selected tab. Once clicking the Delete button, the item will be deleted from the database. Confirmation of deletion is reflected by the corresponding “item” being removed  from Selection Area. 
 
-    - Adding Section [Green]: Form lists all information that the admin needs to enter to add a new “item.” Once clicking the Add button, the item will be added in database. Confirmation of this addition is reflected by the corresponding “item” appearing on the Selection Area.
+      - Adding Section [Green]: Form lists all information that the admin needs to enter to add a new “item.” Once clicking the Add button, the item will be added in database. Confirmation of this addition is reflected by the corresponding “item” appearing on the Selection Area.
 
-    - Showing Section [Purple]: This section shows the “item” which is selected from Selection area. Displaying photo, name, position, etc. 
+      - Showing Section [Purple]: This section shows the “item” which is selected from Selection area. Displaying photo, name, position, etc. 
 
 
   - Selection Area: Item Selection
