@@ -170,7 +170,7 @@
 * Social Media Links Footer
    - This Footer is located at the bottom of all pages of the website. Provides quick links to the clubs main social media pages. Clicking on any of the provided buttons will redirect the user to the corresponding social media page for the club. Current links go to Facebook, the Rowing Clubs Instagram, and YouTube.
 
-   <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_footer.png" width="400">
+      <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_footer.png" width="400">
    
 * Homepage:
 
@@ -340,7 +340,7 @@
    - Testimonials Block: 
    Testimonials about what it is like being a part of the club, written or spoken by current or past members or associates of the club.
 
-     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_contact_cmt.PNG" width="400">
+     <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_join_cmt.PNG" width="400">
 
 
 * Contribute Page:
