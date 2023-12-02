@@ -151,6 +151,9 @@
   
   <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_sitemap.PNG" width="500">
   
+* Database: 
+
+  <img src="https://github.com/SacStateOctobots/RowingClubWebsite/blob/main/Website/static/readmePhoto/rm_database.png" width="500">
   
 ## Project Features
 
