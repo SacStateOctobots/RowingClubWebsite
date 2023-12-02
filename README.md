@@ -116,15 +116,27 @@
   
 
 ## Testing
-* Contact Us Email:
+* How to Run the Following Tests:
+  - In your IDE of choice, an instance of the website must first be locally ran, refer to [How To Use](#how-to-use) on how to do so.
+  - Open a new terminal, then navigate and change directory(cd) into the "selenium_tests" folder of the File Exploerer.
+  - From there, you can run all tests by running the command: 'python run_all_tests.py'
+  - To test a specific page refer to the .py file that corresponds to the desired page in the selenium_tests folder: 'python (Page Name)_page.py'
+  - The tester should follow the prompts given in the terminal in order to progress and validate the tests.
 
-  - Navigate to contact us page.
-  - Fill out contact us form and click submit.
-  - Verify email submission is received in the email account setup in dev instructions section.
+  
+* Custom Tests (Selenium)
+  - These tests were designed for the pages that had various or important interactability that needed to be tested the same way each time.
+  - These tests use Selenium, an automated testing framework used to validate and bring consistency to web applicaiton testing.
+  - Pages these tests are applicable to: Admin, Contact Us, Login, Welcome.
+
+
+* Common Tests
+  - These tests were designed for the pages that did not have any important interactability and instead tested if each link, image, and source tag were functional.
+  - These tests had the tester validate that each part was working as intended.
+  - Pages these tests are applicable to: About, Alumni, Calendar, Donate, Instagram, Join, Members.
 
 
 * Google Calendar Website Event Cards:
-
   - Verify landing page loads.
   - Verify cards at bottom of screen for landing page load with event data.
   - Verify event data consists of the four most recent events from the google calendar linked in setup from dev instructions.
@@ -136,14 +148,9 @@
 
 
 * Responsive Feature on Mobile Devices
-    - Feature not yet implemented
-
-
-* Login Function:
-  - Navigate to <SITE URL>/login, enter admin login+password.
-  - Make changes to data in admin panel.
-  - Verify changes made in admin panel are updated on their corresponding site pages.
-
+    - To emulate a mobile view on your desktop device, navigate to a chrome or firefox browser.
+    - Firefox and chrome both have a built in mobile view function that can be easily found through a quick google search.
+    - An alternative option is downloading a mobile view extension.
 
 
 ## Mock-up Diagrams
