@@ -6,27 +6,38 @@ Team Roster - Rowing Club
 
 {% block body %}
 
-<head>
-    <style>
-        body {
-            background-color: #c3b680;
-        }
+{% block custom_head %}
+<style>
+    body {
+        background-color: #c3b680;
+    }
+
 
         .smashinglogo {
-            background-image: url(./static/img/TeamMember.jpeg);
+            background-image: url(./static/img/IMG_0539.JPG);
             background-size: cover;
             background-position: center;
             height: 600px;
         }
+        
+        @media only screen and (max-width: 600px) {
+        .smashinglogo {
+            height: 300px;
+            }
+        }
     </style>
-</head>
+
+{% endblock %}
 
 <!-- Banner-->
 <section id="first" class="story" data-speed="8" data-type="background">
     <div class="smashinglogo" data-offsetY="100" data-Xposition="50%" data-speed="-2">
         <div class="banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
             <div style="padding-top: 40px;"></div>
-            <h1 class="team-member">Team Members</h1>
+
+            <h1 class="team-member-desktop">Current Roster</h1>
+            <h1 class="team-member-phone">Current <br/> Roster</h1>
+
         </div>
     </div>
 </section>
@@ -37,25 +48,20 @@ Team Roster - Rowing Club
 <!--Team Member-->
 <body>
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"/>
-    <div class="container">
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" />
+    <div class="container" style="padding-left: 40px;">
         <div class="row justify-content-center">
             {% for tup in member %}
             <div class="col-md-6 col-lg-3 mb-30">
                 <div class="team-item" data-aos="fade-down" data-aos-duration="1000">
-                    <div class="mb-30 position-relative d-flex align-items-center">
-                        <span class="socials d-inline-block">
-                            <a href="#" class="zmdi zmdi-facebook"></a>
-                            <a href="#" class="zmdi zmdi-twitter"></a>
-                            <a href="#" class="zmdi zmdi-instagram"></a>
-                        </span>
+                    <div class="mb-30">
                         <span class="img-holder d-inline-block">
                             <img src="static/image_uploads/{{ tup[2] }}" alt="Team">
                         </span>
                     </div>
                     <div class="team-content">
                         <h5 class="mb-2">{{ tup[0] }}</h5>
-                        <p class="text-uppercase mb-0">{{ tup[1] }}</p>
+                        <p class="text-uppercase mb-0"> <strong> {{ tup[1] }} </strong></p>
                         <p class="text-uppercase mb-0">{{ tup[3] }}</p>
                     </div>
                 </div>
@@ -74,19 +80,18 @@ Team Roster - Rowing Club
 	<div class="space80"></div>
 	<div class="row">
 		<div class="column" data-aos="fade-up" data-aos-duration="1000">
-			<h2>Are you interested</h2>
-			<h2>in joining?</h2>
+			<h2>Are you interested
+			<br/>in joining?</h2>
 		</div>
 		<div class="column">
 			<div class="recruitment-button">
 				<a data-aos="fade-up" data-aos-duration="1000"
-					href="https://docs.google.com/forms/d/e/1FAIpQLSfZgOi84FUsV-uXBSIsJuTX3pKZdlFydBgsojzrhYNo09q4ZA/formResponse">Join us</a>
+					href="{{joinusLink[0][2]}}">Join us</a>
 			</div>
 		</div>
-
-		<div class="space15"></div>
-		<div class="space80"></div>
+		<div style="padding-bottom: 110px;"></div>
 	</div>
+	<div class="space15"></div>
 </div>
 <!--END Block interested-->
 

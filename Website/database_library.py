@@ -5,6 +5,7 @@ from flask import Flask
 from flask import g
 import shutil
 from datetime import datetime
+from PIL import Image
 
 app = Flask(__name__)
 DATABASE = "./database.db"
@@ -63,6 +64,8 @@ def get_players():
 def insert_player(name,desc,filename):
 	#runs cur.execute("INSERT INTO players (name, description,imgfilename) VALUES (?, ?)",(name,desc,imgfile))
 	insert_to_db("players","(name,description,imgfilename)","(?,?,?)",(name,desc,filename))
+	#standardizes the player's portrait 
+	formatImage(filename,300,450)
 def delete_player(name):
 	#runs cur.execute("DELETE FROM players WHERE name=(?)",(name,))
 	delete_from_db("players","name",name)
@@ -76,15 +79,24 @@ def insert_testimonial(name, testimonial, imgfilename,job):
 def delete_testimonial(name):
 	delete_from_db("testimonials","name",name)
 
+
 #######################################################
-# alumni table functions
+# email/otp table functions
 #######################################################
-def get_alumni():
-	return query_db('select * from alumni\norder by name')
-def insert_alumni(name,desc,filename):
-	insert_to_db("alumni","(name,description,imgfilename)","(?,?,?)",(name,desc,filename))
-def delete_alumni(name):
-	delete_from_db("alumni","name",name)
+def get_otp():
+	return query_db('select * from loginEmail')
+def insert_otp(email,otp):
+	insert_to_db("loginEmail","(emailHash,otp)","(?,?)",(email,otp))
+def update_otp(email, otp):
+	query = 'UPDATE loginEmail SET otp= :otp WHERE emailHash= :emailHash'
+	args = {'otp': otp, 'emailHash': email}
+	if(update_to_db(query, args)):
+		return True
+	else:
+		return False	
+def delete_otp(emailHash):
+	delete_from_db("loginEmail","emailHash",emailHash)
+
 
 #######################################################
 # team_members table
@@ -93,6 +105,7 @@ def get_team_members():
 	return query_db('select * from team_members\norder by name')
 def insert_team_members(name,desc,filename,role):
 	insert_to_db("team_members","(name,description,imgfilename,role)","(?,?,?,?)", (name,desc,filename,role))
+	formatImage(filename,300,450)
 def delete_team_members(name):
 	delete_from_db("team_members","name",name)
 
@@ -103,6 +116,7 @@ def get_about():
 	return query_db('select * from officers\norder by name')
 def insert_about(name,desc,filename):
 	insert_to_db("officers","(name,description,filename)","(?,?,?)", (name,desc,filename))
+	formatImage(filename,300,450)
 def delete_about(name):
 	delete_from_db("officers","name",name)
 
@@ -116,16 +130,43 @@ def delete_about(name):
 #######################################################
 def get_pages():
 	return query_db('select * from cmspages')
-def get_page(slug):
-	return query_db('select * from cmspages where slug = :val',{'val': slug})
-def insert_cmspage(slug, title, content,date):
-	insert_to_db("cmspages","(slug, title, content,date)","(?,?,?)", (slug, title, content,date))
-def update_page(slug, content):
-	query = "UPDATE cmspages SET content= :content , modifieddate= :date WHERE slug= :slug"
-	args = {'content': content, 'slug': slug, 'date': datetime.now()}
+def get_page(id):
+	return query_db('select * from cmspages where id = :val',{'val': id})
+def insert_cmspage(id, title, content,date):
+	insert_to_db("cmspages","(id, title, content,date)","(?,?,?)", (id, title, content,date))
+def update_page(id, content):
+	query = "UPDATE cmspages SET content= :content , modifieddate= :date WHERE id= :id"
+	args = {'content': content, 'id': id, 'date': datetime.now()}
 	if(update_to_db(query, args)):
-		return query_db('select * from cmspages where slug = :val',{'val': slug})
+		return query_db('select * from cmspages where id = :val',{'val': id})
 	else:
 		return None
-def delete_page(slug):
-	delete_from_db("cmspages","slug",slug)
+def delete_page(id):
+	delete_from_db("cmspages","id",id)
+
+#######################################################
+# links table
+#######################################################
+def get_links():
+	return query_db('select * from links')
+def update_link(id, url):
+	query = "UPDATE links SET url= :url WHERE id= :id"
+	args = {'url': url, 'id': id}
+	if(update_to_db(query, args)):
+		return True
+	else:
+		return False
+def get_link(id):
+	return query_db('select * from links where id = :val',{'val': id})
+
+#######################################################
+# Image Formatting
+#######################################################
+#height and width measured in pixels. Stretches image to fit dimensions.
+def formatImage(name,height,width):
+	try:
+		image = Image.open('./static/image_uploads/'+name)
+		new_image = image.resize((height, width))
+		new_image.save('./static/image_uploads/' + name)
+	except:
+		print("formating for image "+ name +" failed.")

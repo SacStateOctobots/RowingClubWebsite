@@ -1,212 +1,99 @@
 {% extends 'base.html' %}
 
+{% block custom_head %}
+<style>
+	body {
+		background-color: #c3b680;
+	}
+
+	.hold {
+		position: relative;
+		text-align: center;
+	}
+
+</style>
+{% endblock %}
+
 {% block title %}
 Alumni - Rowing Club
 {% endblock %}
 
 {% block body %}
 <!--copied from the about us page-->
-<head>
-	<style>
-		body {
-			background-color: #c3b680;
-		}
-		.carousel {
-			background-size: cover;
-			height:540px;
-			overflow: hidden;
-		}
-
-		.overlay { 
-			color:#fff;
-			position:absolute;
-			z-index:12;
-			top:0%;
-			left:0;
-			width:100%;
-			text-align:center;
-		}
-
-		@media (max-width :567px) {
-			.carousel {
-				height: 300px;
-			}
-		}
-
-		@media (max-width :567px) {
-			.mobile-item {
-				height: 300px;
-			}
-		}
-
-		@media (max-width :800px) {
-			.space80 {
-				padding-top: 0px;
-			}
-		}
-
-		.hold {
-			position: relative;
-			text-align: center;
-		}
-
-	</style>
-</head>
 
 <body>
-<!--Alumni Introduction Banner-->
-<div class="hold">
-<div class="container-fluid px-0 shadow-lg">
-	<div class="overlay banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
+	<!--Alumni Introduction Banner-->
+	<div class="hold">
+		<div class="container-fluid px-0 shadow-lg">
+			<div class="overlay banner-introduction-content" data-aos="fade-up" data-aos-duration="1000">
+				<h1 class="hero-heading2">Alumni</h1>
+			</div>
+
+			<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" 
+						class="active" aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+						aria-label="Slide 2"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active" data-bs-interval="5000">
+						<img src="./static/img/p13.png" class="d-block w-100" alt="Alum1">
+						<div class="carousel-caption d-none d-md-block">
+						</div>
+					</div>
+					<div class="carousel-item" data-bs-interval="2000">
+						<img src="./static/img/p9.jpg" class="d-block w-100" alt="Alum2">
+						<div class="carousel-caption d-none d-md-block">
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+
+		</div>
+		<!-- Alumni Association Text Boxes -->
+		<div class="container-xxl py-5">
+			<div class="container">
+				<div class="row g-4">
+					{{block1[0][2] | safe}}
+				</div>
+			</div>
+		</div>
+
+		<div class="space15"></div>
+
+		<!-- Mailing List Button -->
+		<div class="video-introduction-content">
+			<h1 data-aos="fade-up" data-aos-duration="1000" class="hero-heading">Join our Mailing List!</h1>
+			<a data-aos="fade-down" data-aos-duration="1000" href="{{mailingFormLink[0][2]}}">Sign-up</a>
+		</div>
+
+		<div class="space"></div>
+
+		<!-- Alumni Database and Text Boxes -->
+		<div class="container">
+			{{block2[0][2] | safe}}
+		</div>
 		<div class="space80"></div>
-		<h1 class="hero-heading">Alumni</h1></div>
-	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-		<!-- Slider Buttons -->
-		<div class="carousel-indicators">
-		  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-		  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-		  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-		</div>
-
-		<!-- Slider Images -->
-		<div class="carousel-inner">
-		  	<div class="carousel-item active">
-				<img src="./static/img/p9.jpg" class="mobile-item img-responsive w-100" alt="Alum1">
-		  	</div>
-		 	 <div class="carousel-item">
-				<img src="./static/img/p10.jpg" class="mobile-item d-block img-responsive w-100" alt="Alum2">
-			</div>
-			<div class="carousel-item">
-				<img src="./static/img/p11.png" class="mobile-item d-block img-responsive w-100" alt="Alum3">
-			</div>
-		</div>
-
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		  </button>
-		  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
-</div>
-</div>
-<!-- Alumni Association Text Boxes -->
-<div class="container-xxl py-5">
-	<div class="container">
-		<div class="row g-4">
-			<div class="col-lg-6">
-				<p style="font-size: 22px;" data-aos="fade-right" data-aos-duration="1000"> 
-					&#x2022; This section will be a few paragraphs long and have info regarding what
-					the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
-					dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-					labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-				</p>
-				<p style="font-size: 22px;" data-aos="fade-left" data-aos-duration="1000"> &#x2022; This section will 
-					be a few paragraphs long and have info regarding what the Alumni Association is and what Alumni in
-					general have been doing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-				</p>
-			</div>
-			<div class="col-md-6" data-aos="fade-down" data-aos-duration="1000">
-				<img class="img-fluid rounded w-100" src="./static/img/p5.jpeg">
-			</div>
-		</div>
 	</div>
-</div>
-<!--Sean's version: verify which version Tyler wants-->
-<!-- Mailing List Button -->
-<div class="video-introduction-content">
-	<h1 data-aos="fade-up" data-aos-duration="1000" class="hero-heading">Join our Mailing List!</h1>
-	<a data-aos="fade-down" data-aos-duration="1000"
-		href="https://forms.gle/4r7Mjue4fTxdWX716">Sign-up</a>
-</div>
-
-<!-- Alumni Database and Text Boxes -->
-<div class="container">
-	<div class="text-heading mx-auto">
-		<h1>What Have Alumni Been Up To?</h1>
-	</div>
-	<div class="card text-left green_back_gold_front mx-auto">
-		<div class="card-body">
-			<p style="font-size: 22px;" data-aos="fade-right" data-aos-duration="1000"> 
-				This section will be a few paragraphs long and have info regarding what
-				the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
-				dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-			</p>
-			<p style="font-size: 22px;" data-aos="fade-left" data-aos-duration="1000"> 
-				This section will be a few paragraphs long and have info regarding what
-				the Alumni Association is and what Alumni in general have been doing. Lorem ipsum 
-				dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-			</p>
-		</div>
-	</div>
-
-	<br>
-	<!--Karl's version: verify which version Tyler wants-->
-	<!--Fix button to not wrap text and have link open in new tab.-->
-	<div class="card green_back_gold_front text-center container-xl" data-aos="fade-right" data-aos-duration="1000">
-	<!--<img src="https://cdn.discordapp.com/attachments/1014300694238482442/1092929612880805949/image.png"
-		style="height: 460px;" class="card-img" alt="...">-->
-		<div class="mx-auto">
-			<h1 class="card-title text-center">Join our Mailing List</h1>
-			<button onclick="document.location='https://forms.gle/4r7Mjue4fTxdWX716'"
-				class="btn green_back_gold_front btn-lg" data-aos="zoom-in-up"
-				data-aos-duration="1000">Mailing List Sign-up Form</button>
-	</div>
-</div>
-
-	<br>
-	<hr/>
-</div>
-
-
-
 </body>
 
+<style>
+	/* Footer removal */
+	footer {
+			display: none;
+	}
+</style>
 
-<div class="space80">
-	<!--Last Block for Social-->
-	<div class="last-video-help-block">
-		<section class="video-help" style="background-color: #005440">
-		   
-			<div class="video-help-content">
-				<br>
-				<p>Have any questions?</p>
-				<br>
-				<p>Email us at abcd@csus.com</p>
-				<div class="wrapper-social-icon">
-					<div class="button-social" data-aos="fade-down" data-aos-duration="1000">
-		
-						<div class="social-icon">
-							<i class="fab fa-facebook-f"></i>
-						</div>
-						<a href="https://facebook.com"><span>Facebook</span></a>
-					</div></a>
-					<div class="button-social" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-						<div class="social-icon">
-							<i class="fab fa-instagram"></i>
-						</div>
-						<a href="https://instagram.com"><span>Instagram</span></a>
-					</div></a>
-					<div class="button-social" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="400">
-						<div class="social-icon">
-							<i class="fab fa-youtube"></i>
-						</div>
-						<a href="https://youtube.com"><span>YouTube</span></a>
-					</div></a>
-					<div class="space80"></div>
-				</div>
-				<!--Social media-->
-			</div>
-		</section>
-	</div>
 
-<!--Amination-->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-	AOS.init();
-</script>
 {% endblock %}

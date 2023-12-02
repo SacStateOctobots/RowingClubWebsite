@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Admin Login OTP Validate
+{% endblock %}
+
+{% block body %}
+<div class="parent clearfix">
+	<div class="bg-illustration">
+		<img src=".\static\img\Rowinglogo.svg" alt="logo">
+	</div>
+
+	<div class="login">
+		<div class="container">
+			<h1>Hello Admin<br />Please Validate OTP to Access the Admin Portal</h1>
+			{% with messages = get_flashed_messages() %}
+    	    {% if messages %}
+    	        <div class=flashes>
+    	        {% for message in messages %}
+    	            <p>{{ message }}</p>
+    	        {% endfor %}
+    	        </div>
+    	    {% endif %}
+    		{% endwith %}
+			<div class="login-form">
+				<form action="/validate" method="POST">
+					<input type="email" name="confirm_email" id="email-id" placeholder="Enter Email" class="form-control"></input>
+					<input type="password" name="otp" id="otp-id" placeholder="Enter OTP(One-time password)" class="form-control"></input>
+					<button type='submit' name='submit'>Validate Code</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Removes footer from page-->
+<style>
+	footer {
+		display: none;
+	}
+</style>
+
+{% endblock %}

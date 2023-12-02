@@ -1,25 +1,41 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>OTP Verification</title>
-</head>
+{% block title %}
+Admin Login
+{% endblock %}
 
-<body> 
-    <h4> OTP has been sent to the email id. Please check the email for the confirmation.</h4>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class=flashes>
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
-    <form action="/validate" method="POST">
-        Enter OTP(One-time password): <input type="text" name="otp">
-        <input type="submit" value="Submit">
-    </form>
-</body>
+{% block body %}
+<div class="parent clearfix">
+	<div class="bg-illustration">
+		<img src=".\static\img\Rowinglogo.svg" alt="logo">
+	</div>
 
-</html>
+	<div class="login">
+		<div class="container">
+			<h1>Hello Admin<br />Welcome to Login Page</h1>
+			{% with messages = get_flashed_messages() %}
+    	    {% if messages %}
+    	        <div class=flashes>
+    	        {% for message in messages %}
+    	            <p>{{ message }}</p>
+    	        {% endfor %}
+    	        </div>
+    	    {% endif %}
+    		{% endwith %}
+			<div class="login-form">
+				<form action = "login_otp" method = "POST">
+					<input type="email" name="email_otp" id='email_otp' placeholder="Enter Email Address" class="form-control"></input>
+					<button type='submit' name='submit'>Send Email</button> 
+				</form> 
+			</div>
+		</div>
+	</div>
+</div>
+<!--Removes footer from page-->
+<style>
+	footer {
+		display: none;
+	}
+</style>
+
+{% endblock %}

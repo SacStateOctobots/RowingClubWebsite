@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -74,42 +74,45 @@
               <a class="nav-link" href="/calendar" >Calendar</a>
             </li>
             <li class="nav-item p-2">
-              <a class="nav-link" href="/members" >Team Members</a>
+              <a class="nav-link" href="/members" >Current Roster</a>
             </li>
              <li class="nav-item p-2">
-              <a class="nav-link" href="/instagram" >Social Medias</a>
+              <a class="nav-link" href="/instagram" >Social Media</a>
             </li>
-            <li class="nav-item dropdown p-2">
-              <a class="nav-link dropdown-toggle" href="#" id="moreInfoDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                More Info
-              </a>
-              <div class="dropdown-menu" aria-labelledby="moreInfoDropdown">
-                <a class="dropdown-item" href="/alumni" >Alumni</a>
-                <a class="dropdown-item" href="/about">About Us</a>
-                <a class="dropdown-item" href="/contact" >Contact</a>
-              </div>
-            </li>
-            <!--Alternate version without dropdown
-              <li class="nav-item">
-                <a class="nav-link" href="/alumni" >Alumni</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about" >About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/contact" >Contact</a>
+            <!--Alternate version with dropdown
+              <li class="nav-item dropdown p-2">
+                <a class="nav-link dropdown-toggle" href="#" id="moreInfoDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  More Info
+                </a>
+                <div class="dropdown-menu" aria-labelledby="moreInfoDropdown">
+                  <a class="dropdown-item" href="/alumni" >Alumni</a>
+                  <a class="dropdown-item" href="/about">About Us</a>
+                  <a class="dropdown-item" href="/contact" >Contact</a>
+                </div>
               </li>
             -->
+            
+            <li class="nav-item p-2">
+              <a class="nav-link" href="/alumni" >Alumni</a>
+            </li>
+            <li class="nav-item p-2">
+              <a class="nav-link" href="/about" >About Us</a>
+            </li>
+            <li class="nav-item p-2">
+              <a class="nav-link" href="/contact" >Contact</a>
+            </li>
+            
             <li  class="nav-item p-2">
               <a class="nav-link" href="/join">Join</a>
             </li>
             <li class="nav-item p-2">
               <a class="nav-link" href="/donate" >Donate</a>
             </li>
-            <!--Link to log-in page should be hidden when project is ready for release-->
-            <li class="nav-item p-2">
-              <a class="nav-link" href="/login" >Login</a>
-            </li>
+            <!--Link to log-in page hidden when project is ready for release
+              <li class="nav-item p-2">
+                <a class="nav-link" href="/login_otp" >Login</a>
+              </li>
+            -->
           </ul>
         </div>
       </div>
@@ -121,22 +124,26 @@
 
 </body>
 
-<!--
-  footer still in construction
-  <footer class="p-3 green_back_gold_front">
-    <div class="container">
-      <span class="text-muted">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start green_back_gold_front">
-          <p class="">
-            This site was created by Octobots for the Sacramento State Rowing Club.
-          </p>
-        </div>
-        <div class="d-flex flex-wrap align-items-center justify-content-end green_back_gold_front">
-          <a class="btn green_back_gold_front" href="/login" role="button">Log-in</a> </!-- quick access for testing purposes should be removed when published --/>
-        </div>
-      </span>
-    </div>
+<!-- Footer -->
+  <footer>
+    <div>
+      <!--Last Block for Social-->
+      <div class="last-video-help-block">
+        <section class="video-help" style="background-color: #005440">
+          <div class="video-help-content">
+
+            {{social[0][2] | safe}}
+            <!--Social media-->
+          </div>
+        </section>
+      </div>
   </footer>
--->
+
+<!--Amination-->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>
+
 
 </html>

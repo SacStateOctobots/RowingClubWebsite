@@ -12,12 +12,15 @@
 #Database
 **/database.db
 #Image Uploads from DB setup
-/Website/static/image_uploads/**.*
+/Website/static/image_uploads/**/**.*
 
 #Google Calender API key
 **/API_KEY
 **/EMAIL_KEY
 **/EMAIL_ADDRESS
+
+#Login hash storage file
+**/LOGIN_HASH
 
 __pycache__/
 # compiled output
