@@ -22,6 +22,7 @@
 - [Project Timeline](#project-timeline)
     - [Spring 2023](#spring-2023)
     - [Fall 2023](#fall-2023)
+- [AMI Setup](#ami-setup)
 
 ## Tools
 * Python 3
@@ -588,3 +589,98 @@
      - Code Clean Up and Finalization
      - Documentation for Client User and Maintenance Manuals
      - Product Delivery
+
+  
+## AMI Setup
+### Instructions for migrating website to a new amazon account.
+  - Follow the below instructions for handoff/serving of the website to another amazon account.
+### 1. Make an AMI instance from the currently running website.
+  - From our own dev amazon accounts/machines.
+  - Follow instructions here: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html   
+  - In particular follow the "Create a Linux AMI from an instance" section.
+### 2. Share the AMI with another amazon account.
+  - From our own dev amazon accounts/machines.
+  - Retrieve the account ID of the amazon account you wish to share the AMI with.
+  - Follow the instructions here: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-explicit.html
+### 3. Configure the AMI for use by the second account.
+  - From user amazon accounts/machines.
+  - Under the AMIs tab of the ec2 console select launch instance and select the shared rowing club AMI.
+  - Under Key pair (login) section select create a new keypair.
+    - On linux I use the following config.
+      - key pair name: Pick any key name you want. 
+      - Key pair type: RSA
+      - Private key file format: .pem
+      - Then select create key pair and verify the file is downloaded to your local machine.
+  - Under network settings select the "Allow HTTPS traffic from the internet" and "Allow HTTP traffic from the internet".
+    - Leave other settings here as their defaults.
+  - Start the instance by selecting launch instance.
+  - Verify ssh works as expected.
+    - On linux with the above config I do the following:
+      - In the instances section of the amazon ec2 console copy the public ipv4 address of the instance.
+      - Navigate to the directory containing the pem file.
+      - Run `chmod go= your_pem_file_here.pem` in order to set up the permissions of the pem file.
+      - run `ssh -i your_pem_file_here.pem ubuntu@ipv4_address_of_instance_here` to connect.
+      - Verify that you are connected to the remote server.
+    - On windows this process will be different.
+  - Verify the website is currently being served by the instance.
+    - On any web browser navigate to the address httpss://ipv4_address_of_instance_here to connect.
+    - HTTPS keys and domain names will not yet be set up so this may trigger an https warning in your local browser.
+    - Navigate through any warnings that your browser serves and you ought to finally be able to see the page.
+### 4. Finalize website server setup.
+  - From user amazon accounts/machines.
+  - Setup Elastic ip address:
+    - Follow the instructions here to allocate an elastic IP: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-allocating
+    - Next associate the allocated elastic IP to your instance.
+    - Follow the instructions here to associate the elastic IP with your instance: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating
+    - With the new IP reverify you can connect to the website in the browser and via ssh as described above.
+  - Point your domain name to the new elastic IP:
+    - Consult your domain name providers documentation.
+    - With the new domain name reverify you can connect to the website in the browser and via ssh like above but using your domain name.
+  - Set up server side config files:
+    - Navigate to /home/ubuntu/RowingClubWebsite/Website:
+      - ssh into your instance as described in previous steps.
+      - Run the following command to navigate to the website code: cd /home/ubuntu/RowingClubWebsite/Website
+      - For the files ./nginx_venv_gunicorn_scripts/gen_ca_https_key.sh and ./nginx_venv_gunicorn_scripts/website:
+        - Run the command: `./domain_name_changer.sh`
+        - Input your domain name.
+        - This regenerates several config files.
+      - For the file API_KEY:
+        - Run the command: `echo "YOUR_GOOGLE_CALENDAR_API_KEY_HERE" > API_KEY`
+        - With your google calenddar api key in place of YOUR_GOOGLE_CALENDAR_API_KEY_HERE.
+        - This command overwrites the API_KEY file with a new file containing your google calendar api key.
+        - See user manual entry on setting up a google calendar api key.
+      - For the file EMAIL_ADDRESS:
+        - Run the command: `echo "YOUR_EMAIL_HERE" > EMAIL_ADDRESS`
+        - With the email address you have setup for smtp in place of YOUR_EMAIL_HERE.
+        - This command overwrites the EMAIL_ADDRESS file with the email you intend to use for smtp.
+        - See user manual entry on setting up smtp.
+      - For the file /EMAIL_KEY:
+        - Run the command: `echo "SMTP_KEY_HERE" > EMAIL_KEY`
+        - With the email key you have setup for smtp in place of SMTP_KEY_HERE.
+        - This command overwrites the EMAIL_KEY file with the email key you intend to use for smtp.
+        - See user manual entry on setting up smtp.
+### 5. Restart the configured server.
+  - Run the command: `make teardown`
+    - Troubleshooting make teardown:
+      - You can try and rerun make teardown several times.
+      - Waiting for several minutes then rerunning make deploy.
+      - Running the commands listed in the Makefile file under the teardown section individually (omit any @ signs at the start of any commands).
+      - If none of the above works, identify the failing command in make teardown and consult its corresponding documentation.
+      - Note: Errors here may be spurious. Do not consider this part failed until after verifying later make deploy commands fail too.
+  - Run the command: `make deploy`
+    - Troubleshooting make deploy:
+      - You can try to rerun make teardown, then rerun make deploy.
+      - You can try to rerun make teardown, then rerun the individual commands in the Makefile under the deploy section.
+      - You can try and rerun the individual commands in the teardown, then deploy section of the Makefile.
+      - You can try waiting several minutes then attempting all/some of the above again.
+      - If none of the above works, identify the failing command in make deploy and consult its corresponding documentation.
+      - Note: Errors here may be spurious. If the website is served (with no https errors) and works as expected consider this to be a success.
+  - When make deploy is ran: 
+      - you will need to click q when the nginx and/or gunicorn status screens are shown.
+      - When the gen_ca_https_key.sh script runs you may be prompted to install a new cert or to renew an existing cert. You should prefer to renew the existing cert if the existing cert is currently valid and for the correct domain name.
+        - Note: The certifying authority (letsencrypt) may rate limit you if you request too many certs within a short timeframe.
+  - Note that if you delete a file, misconfigure a file, or otherwise ruin your current instance, you can always create a new fresh instance from our shared AMI. Doing this will require starting these instructions over however.
+  - Note that if your https keys expire you can rerun the above command to renew them.
+### 6. Final test of running website.
+  - Check each page on the website to verify it displays correctly and all links/functionality work as intended.
+  - Note that in particular you should verify in your browser that you are connected to the website using https without errors. View your browsers documentation for information on how to do this.
