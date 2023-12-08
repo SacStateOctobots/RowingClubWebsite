@@ -1866,7 +1866,7 @@ img {
 
     .bg-illustration {
         float: none;
-        background: url("https://hornetsports.com/images/2023/4/30/23_2V8_WIRA.jpg?width=1416&height=797&mode=crop&scale=both&format=jpg&quality=80") center center;
+        background: url(/static/img/Login_Page_Photo_Replacement.JPG) center center;
         background-size: cover;
         -webkit-animation: slideIn 0.8s ease-in-out forwards;
         animation: slideIn 0.8s ease-in-out forwards;
