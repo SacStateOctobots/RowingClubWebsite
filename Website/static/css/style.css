@@ -1642,7 +1642,7 @@ img {
     position: relative;
     height: 100vh;
     width: 1194px;
-    background: url("https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/hornetsports.com/images/2023/5/4/23_Johnson_web.jpg") no-repeat center center scroll;
+    background: url(/static/img/Login_Page_Photo_Replacement.JPG) no-repeat center center scroll;
     background-size: cover;
     float: left;
     -webkit-animation: bgslide 2.3s forwards;

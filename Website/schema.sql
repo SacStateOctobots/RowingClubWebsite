@@ -92,6 +92,6 @@ CREATE TABLE IF NOT EXISTS links (
 
 INSERT INTO links (id, title, url) VALUES ('joinusform', 'Join Us Form', 'https://docs.google.com/forms/d/e/1FAIpQLSfZgOi84FUsV-uXBSIsJuTX3pKZdlFydBgsojzrhYNo09q4ZA/viewform');
 INSERT INTO links (id, title, url) VALUES ('instagram', 'Instagram', 'https://www.instagram.com/sacstaterowing/?utm_source=ig_embed&ig_rid=e3bcb0d8-a7ed-4db4-91de-788cbab2536c');
-INSERT INTO links (id, title, url) VALUES ('flickr', 'Flickr', 'https://www.flickr.com/photos/199260406@N02/albums/72177720311662792');
+INSERT INTO links (id, title, url) VALUES ('flickr', 'Flickr', 'https://www.flickr.com/photos/199521142@N06/albums/72177720313001542');
 INSERT INTO links (id, title, url) VALUES ('mailingform', 'Mailing List Form', 'https://forms.gle/4r7Mjue4fTxdWX716');
 INSERT INTO links (id, title, url) VALUES ('donate', 'Donate','https://swarmfunding.csus.edu/project/36577/donate');
